@@ -1,4 +1,8 @@
-export function renderPolygon(x1, y1, x2, y2, x3, y3, x4, y4, color, alpha, index, worldContainer){
+import {worldContainer, canvasH} from './canvas.js';
+import { gameData, defaultGameData, gameSettings,defaultData} from './game.js';
+
+
+export function renderPolygon(x1, y1, x2, y2, x3, y3, x4, y4, color, alpha, index){
 	var shape = new createjs.Shape();
 	shape.graphics.beginFill(color)
 				.beginStroke()
@@ -16,7 +20,7 @@ export function renderPolygon(x1, y1, x2, y2, x3, y3, x4, y4, color, alpha, inde
 	}
 }
 
-export function renderSegment(width, x1, y1, w1, x2, y2, w2, fog, color, index, worldContainer, gameData, defaultGameData, gameSettings, canvasH){
+export function renderSegment(width, x1, y1, w1, x2, y2, w2, fog, color, index){
 	var shape = new createjs.Shape();
 	shape.graphics.beginFill(color.base).drawRect(0, y2, width, y1 - y2);
 	worldContainer.addChild(shape);
@@ -144,7 +148,7 @@ export function renderSegment(width, x1, y1, w1, x2, y2, w2, fog, color, index, 
     renderFog(0, y1, width, y2-y1, fog, worldContainer, gameSettings, gameData);
 }
 
-export function renderBackground(background, width, height, layer, rotation, offset, worldContainer, defaultData){
+export function renderBackground(background, width, height, layer, rotation, offset){
 	var newBackground = $.background[layer.id].clone();
 	var newBackgroundMirror = $.background[layer.id].clone();
     rotation = rotation || 0;
@@ -166,7 +170,7 @@ export function renderBackground(background, width, height, layer, rotation, off
 	newBackgroundMirror.y = newBackground.y;
 }
 
-export function renderSprite(width, height, resolution, roadWidth, sprites, sprite, scale, destX, destY, offsetX, offsetY, clipY, worldContainer, defaultData){
+export function renderSprite(width, height, resolution, roadWidth, sprites, sprite, scale, destX, destY, offsetX, offsetY, clipY){
 	var newSprite = sprite.clone(true);
 	
 	var destW  = (sprite.w * scale * width/2) * (defaultData.scale * roadWidth);

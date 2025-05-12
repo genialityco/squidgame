@@ -8,6 +8,8 @@ import { numberTxt, levelTxt, roundTxt, roundShadowTxt, roundNameTxt, roundNameS
 import { pressMove, guideline, bg, logo,timerTxt, candyDrawing,buttonOdd, buttonEven} from './canvas.js';
 import {canvasW,canvasH,stage,resizeCanvas} from './canvas.js';
 
+import {renderBackground,renderSegment,renderSprite} from './renderMisc.js';
+
 ////////////////////////////////////////////////////////////
 // GAME v3.5
 ////////////////////////////////////////////////////////////
@@ -612,7 +614,6 @@ export function goPage(page){
 	switch(page){
 		case 'main':
 			targetContainer = mainContainer;
-
 			roundData.playerNumber = randomPlayerNumber();
 			logo.visible = true;
 			buttonStart.visible = true;
@@ -622,7 +623,6 @@ export function goPage(page){
 			toggleRound(true);
 			prepareRound();
 			resetWorld();
-
 			playMusicLoop('musicGame');
 		break;
 		
@@ -932,6 +932,7 @@ export function prepareRound(){
 
 	changeGameViewport()
 	resetWorld();
+	resetPath();
 }
 
 export function changeGameViewport(){
@@ -2142,7 +2143,7 @@ function toggleGameTimer(con){
  * 
  */
 function updateWorld(){
-	//updateSprites();
+	updateSprites();
 	renderWorld();
 }
 
@@ -2190,9 +2191,9 @@ function updateSprites() {
 
 	if(gameData.roundNum == 1){
 		for(n = 0 ; n < playerSegment.players.length ; n++) {
-			player  = playerSegment.players[n];
+			let player  = playerSegment.players[n];
 			if(player.index != 0){
-				thisPlayerW = player.sprite.w * defaultData.scale;
+				let thisPlayerW = player.sprite.w * defaultData.scale;
 				if (defaultData.speed > player.speed) {
 					if (getOverlap(defaultData.playerX, playerW, player.offset, thisPlayerW, 0.8)) {
 						defaultData.speed    = player.speed * (player.speed/defaultData.speed);
@@ -2437,7 +2438,7 @@ function updatePlayers(dt) {
 		newSegment  = findSegment(player.z);
 		
 		if (oldSegment != newSegment) {
-			index = oldSegment.players.indexOf(player);
+			let index = oldSegment.players.indexOf(player);
 			oldSegment.players.splice(index, 1);
 			newSegment.players.push(player);
 		}
@@ -2553,6 +2554,7 @@ function renderWorld() {
 		  continue;
 		
 		defaultData.lastY = segment.p1.screen.y;
+		// render the road
 		renderSegment(defaultData.width,
 					   segment.p1.screen.x,
 					   segment.p1.screen.y,
@@ -2567,15 +2569,22 @@ function renderWorld() {
 		maxy = segment.p1.screen.y;
 	}
 	
+	
   	for(n = (defaultData.drawDistance-1) ; n > 0 ; n--) {
 		segment = segments[(baseSegment.index + n) % segments.length];
 		
+		
 		for(i = 0 ; i < segment.players.length ; i++) {
-			player      = segment.players[i];
-			sprite      = player.sprite;
-			spriteScale = getInterpolate(segment.p1.screen.scale, segment.p2.screen.scale, player.percent);
-			spriteX     = getInterpolate(segment.p1.screen.x,     segment.p2.screen.x,     player.percent) + (spriteScale * player.offset * gameSettings['game'+gameData.roundNum].path.width * defaultData.width/2);
-			spriteY     = getInterpolate(segment.p1.screen.y,     segment.p2.screen.y,     player.percent);
+		
+
+			if (!segment.players[i]){
+				console.log('i',segment.players);
+				break;
+			}
+			let player      = segment.players[i];
+			let spriteScale = getInterpolate(segment.p1.screen.scale, segment.p2.screen.scale, player.percent);
+			let spriteX     = getInterpolate(segment.p1.screen.x,     segment.p2.screen.x,     player.percent) + (spriteScale * player.offset * gameSettings['game'+gameData.roundNum].path.width * defaultData.width/2);
+			let spriteY     = getInterpolate(segment.p1.screen.y,     segment.p2.screen.y,     player.percent);
 
 			if(player.active)
 				renderSprite(defaultData.width, defaultData.height, resolution, gameSettings['game'+gameData.roundNum].path.width, sprites, player.sprite, spriteScale, spriteX, spriteY, -0.5, -1, segment.clip);
@@ -2753,7 +2762,7 @@ function resetPath() {
 			addSprite(defaultGameData.survivalStart + gameSettings.game6.length + 3, $.sprites['guard'+guardIndex], pos[n]);
 		}
 	}
-
+	console.log('segments', segments);
 	resetPlayers();
 	defaultData.trackLength = segments.length * defaultData.segmentLength;
 }
@@ -2765,6 +2774,7 @@ function resetPlayers() {
 	var n, player, segment, offset, z, speed;
 	var playerTurnIndex = 0;
 	var halfPeople = Math.floor(gameSettings.game3.players/2);
+	console.log('halfPeople',roundData.totalPlayers, halfPeople)
 
 	for (var n = 0 ; n < roundData.totalPlayers; n++) {
 		var randomSegment = randomInt(roundData.players.startZ, roundData.players.endZ);
@@ -2849,12 +2859,223 @@ export function randomPlayerNumber(){
 
 /*!
  * 
- * FORMAT TIME - This is the function that converts milliseconds to a time string
+ * END GAME - This is the function that runs for end game
  * 
  */
-function millisecondsToTimeGame(milliseconds) {
-	const totalSeconds = Math.floor(milliseconds / 1000);
-	const minutes = Math.floor(totalSeconds / 60);
-	const seconds = totalSeconds % 60;
-	return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+function endGame(win, timer){
+	if(!gameData.ended){
+		playerData.win = win;
+		toggleGameInstruction(false);
+		clearCandyDrawing();
+
+		gameData.ended = true;
+		gameData.interact = false;
+
+		roundData.lightData.forward = false;
+		roundData.lightData.stop = true;
+
+		roundData.survivalData.start = false;
+		roundData.survivalData.move = false;
+		itemControl.visible = false;
+
+		if(win){
+			//calculate score
+			if(gameData.roundNum == 6){
+				var lifeLeft = roundData.survivalData.userHealth;
+				var roundScore = lifeLeft * .05;
+			}else{
+				var timeLeft = gameSettings['game'+gameData.roundNum].timer - timeData.timer;
+				var roundScore = timeLeft * .0005;
+			}
+			playerData.score += Math.round(roundScore);
+
+
+		}else if(!win){
+			var deadArr = [1,2,4];
+			if(deadArr.indexOf(gameData.roundNum) != -1){
+				updatePlayerFrame(0, 'dead');
+			}
+		}
+
+		TweenMax.to(resultContainer, 0, {delay:.8, overwrite:true, onComplete:function(){
+			if(!win){
+				displayGameRound(false, false);
+			}else{
+				displayGameRound(false, true);
+			}
+
+			TweenMax.to(resultContainer, 3, {delay:0, overwrite:true, onComplete:function(){
+				if(playerData.win){
+					var newRound = gameData.roundNum + 1;
+					if(newRound <= gameData.totalRound){
+						gameData.roundNum = newRound;
+
+						stopGame();
+						startGame();
+						resetWorld();
+						resetPath();
+					}else{
+						goPage('result');	
+					}
+				}else{
+					goPage('result');
+				}
+			}});
+		}});
+	}
+
+	if(timer){
+		if(gameData.roundNum == 1){
+			TweenMax.killTweensOf(roundData.lightData);
+			TweenMax.killTweensOf(roundData.lightData.moveTween);
+			TweenMax.killTweensOf(roundData.lightData.timeTween);
+			
+			for(var n=1; n<players.length; n++){
+				players[n].speed = 0;
+				players[n].moveTime = 0;
+
+				if(players[n].status != 'dead'){
+					if(players[n].status != 'complete'){
+						players[n].status = 'nextDead';
+					}
+				}
+			}
+			
+			loopPlayerDead();
+		}else if(gameData.roundNum == 3){
+			gameData.paused = true;
+			stopSoundLoop('soundRope');
+		}
+
+		toggleGameTimer(false);
+	}
+}
+
+/*!
+ * 
+ * MILLISECONDS CONVERT - This is the function that runs to convert milliseconds to time
+ * 
+ */
+function millisecondsToTimeGame(milli) {
+	var milliseconds = milli % 1000;
+	var seconds = Math.floor((milli / 1000) % 60);
+	var minutes = Math.floor((milli / (60 * 1000)) % 60);
+	
+	if(seconds<10){
+		seconds = '0'+seconds;  
+	}
+	
+	if(minutes<10){
+		minutes = '0'+minutes;
+	}
+	
+	return minutes+':'+seconds;
+}
+
+/*!
+ * 
+ * OPTIONS - This is the function that runs to mute and fullscreen
+ * 
+ */
+function toggleSoundMute(con){
+	buttonSoundOff.visible = false;
+	buttonSoundOn.visible = false;
+	toggleSoundInMute(con);
+	if(con){
+		buttonSoundOn.visible = true;
+	}else{
+		buttonSoundOff.visible = true;	
+	}
+}
+
+function toggleMusicMute(con){
+	buttonMusicOff.visible = false;
+	buttonMusicOn.visible = false;
+	toggleMusicInMute(con);
+	if(con){
+		buttonMusicOn.visible = true;
+	}else{
+		buttonMusicOff.visible = true;	
+	}
+}
+
+function toggleFullScreen() {
+  if (!document.fullscreenElement &&    // alternative standard method
+      !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement ) {  // current working methods
+    if (document.documentElement.requestFullscreen) {
+      document.documentElement.requestFullscreen();
+    } else if (document.documentElement.msRequestFullscreen) {
+      document.documentElement.msRequestFullscreen();
+    } else if (document.documentElement.mozRequestFullScreen) {
+      document.documentElement.mozRequestFullScreen();
+    } else if (document.documentElement.webkitRequestFullscreen) {
+      document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+    }
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    }
+  }
+}
+
+/*!
+ * 
+ * OPTIONS - This is the function that runs to toggle options
+ * 
+ */
+
+function toggleOption(){
+	if(optionsContainer.visible){
+		optionsContainer.visible = false;
+	}else{
+		optionsContainer.visible = true;
+	}
+}
+
+
+/*!
+ * 
+ * SHARE - This is the function that runs to open share url
+ * 
+ */
+function share(action){
+	gtag('event','click',{'event_category':'share','event_label':action});
+	
+	var loc = location.href
+	loc = loc.substring(0, loc.lastIndexOf("/") + 1);
+	
+	var title = '';
+	var text = '';
+	
+	if(playerData.win){
+		title = shareWinTitle.replace("[SCORE]", addCommas(gameData.roundNum));
+		text = shareWinMessage.replace("[SCORE]", addCommas(gameData.roundNum));
+	}else{
+		title = shareTitle.replace("[SCORE]", addCommas(gameData.roundNum));
+		text = shareMessage.replace("[SCORE]", addCommas(gameData.roundNum));
+	}
+
+	if(gameCustomScore.status){
+		title = shareTitle.replace("[SCORE]", addCommas(playerData.score));
+		text = shareMessage.replace("[SCORE]", addCommas(playerData.score));
+	}
+	var shareurl = '';
+	
+	if( action == 'twitter' ) {
+		shareurl = 'https://twitter.com/intent/tweet?url='+loc+'&text='+text;
+	}else if( action == 'facebook' ){
+		shareurl = 'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(loc+'share.php?desc='+text+'&title='+title+'&url='+loc+'&thumb='+loc+'share.jpg&width=590&height=300');
+	}else if( action == 'google' ){
+		shareurl = 'https://plus.google.com/share?url='+loc;
+	}else if( action == 'whatsapp' ){
+		shareurl = "whatsapp://send?text=" + encodeURIComponent(text) + " - " + encodeURIComponent(loc);
+	}
+	
+	window.open(shareurl);
 }
