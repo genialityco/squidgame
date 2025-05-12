@@ -1,16 +1,32 @@
+import { loader } from './loader.js'; // Import loader
+import {shareEnable,shareText,shareWinTitle,shareWinMessage,shareTitle,shareMessage ,  updateGame, players_arr, guards_arr, gameData, gameSettings, gameTextDisplay, defaultGameData,defaultData, changeGameViewport,curPage} from './game.js'; // Import required variables
+import { stageW, stageH, landscapeSize, portraitSize, viewport } from './main.js'; // Import stageW, stageH, landscapeSize, portraitSize, and viewport
+import { resizeGameFunc } from './mobile.js'; // Import resizeGameFunc
+
 ////////////////////////////////////////////////////////////
-// CANVAS
+// CANVAS 
 ////////////////////////////////////////////////////////////
-var stage
-var canvasW=0;
-var canvasH=0;
+export let stage; // Declare stage
+export let canvasW = 0; // Declare canvasW
+export let canvasH = 0; // Declare canvasH
+export let levelContainer, numberContainer, moneyContainer, piggyContainer, candyContainer, healthContainer, handContainer, handHandsContainer, handButtonContainer, cacheContainer, gameRoundContainer, gameInstructContainer, canvasContainer, mainContainer, gameContainer, gameStatusContainer, worldContainer, resultContainer, confirmContainer;
+export let buttonChoose, buttonNumberL, buttonNumberR, buttonLevel, buttonArrowL, buttonArrowR, buttonStart, buttonRestart, buttonFacebook, buttonTwitter, buttonWhatsapp, buttonFullscreen, buttonSoundOn, buttonSoundOff, buttonMusicOn, buttonMusicOff, buttonExit, buttonSettings, buttonConfirm, buttonCancel;
+export let itemPiggy, itemTimer, itemLight, itemCandyCover, itemCandyBase, itemPixel, itemNeedle, itemControl, itemResult, itemResultP, itemExit, itemExitP, itemCenter;
+export let numberTxt, levelTxt, roundTxt, roundShadowTxt, roundNameTxt, roundNameShadowTxt, instructionTxt, resultTitleTxt, resultScoreTxt, resultShareTxt, confirmMessageTxt;
+export let pressMove, guideline, bg, logo,timerTxt, candyDrawing,buttonOdd, buttonEven;
+let guide = false;
+
+$.money = {};
+$.sprites = {};
+$.background = {};
+
 
 /*!
  * 
  * START GAME CANVAS - This is the function that runs to setup game canvas
  * 
  */
-function initGameCanvas(w,h){
+export function initGameCanvas(w,h){
 	var gameCanvas = document.getElementById("gameCanvas");
 	gameCanvas.width = w;
 	gameCanvas.height = h;
@@ -24,23 +40,20 @@ function initGameCanvas(w,h){
 	stage.mouseMoveOutside = true;
 	
 	createjs.Ticker.framerate = 60;
+	console.log('ticker')
 	createjs.Ticker.addEventListener("tick", tick);	
 }
-
-var guide = false;
-var canvasContainer, mainContainer, gameContainer, gameStatusContainer, worldContainer, resultContainer, confirmContainer;
-var guideline, bg, logo, buttonStart, buttonRestart, buttonFacebook, buttonTwitter, buttonWhatsapp, buttonFullscreen, buttonSoundOn, buttonSoundOff;
-
-$.money = {};
-$.sprites = {};
-$.background = {};
 
 /*!
  * 
  * BUILD GAME CANVAS ASSERTS - This is the function that runs to build game canvas asserts
  * 
  */
-function buildGameCanvas(){
+export function buildGameCanvas() { // Export buildGameCanvas
+	// Initialize stage if not already initialized
+	if (!stage) {
+		stage = new createjs.Stage("gameCanvas");
+	}
 	canvasContainer = new createjs.Container();
 	mainContainer = new createjs.Container();
 	levelContainer = new createjs.Container();
@@ -60,7 +73,6 @@ function buildGameCanvas(){
 	worldContainer = new createjs.Container();
 	resultContainer = new createjs.Container();
 	confirmContainer = new createjs.Container();
-	
 	logo = new createjs.Bitmap(loader.getResult('logo'));
 	centerReg(logo);
 	
@@ -291,6 +303,12 @@ function buildGameCanvas(){
 
 
 	//candy
+	itemCandyCover = null; // Initialize itemCandyCover
+	itemCandyBase = null; // Initialize itemCandyBase
+	itemPixel = null; // Initialize itemPixel
+	itemNeedle = null; // Initialize itemNeedle
+	candyDrawing = null; // Initialize candyDrawing
+
 	itemCandyCover = new createjs.Bitmap(loader.getResult('itemCandyCover'));
 	centerReg(itemCandyCover);
 	itemCandyBase = new createjs.Bitmap(loader.getResult('itemCandy'));
@@ -390,7 +408,7 @@ function buildGameCanvas(){
 		$.sprites['handWrap'+n].addChild($.sprites['hand'+n], $.sprites['handWinStatTxt'+n]);
 		handHandsContainer.addChild($.sprites['handWrap'+n], $.sprites['handStat'+n]);
 	}
-
+	
 	buttonOdd = new createjs.Bitmap(loader.getResult('buttonOdd'));
 	centerReg(buttonOdd);
 	buttonEven = new createjs.Bitmap(loader.getResult('buttonEven'));
@@ -414,7 +432,7 @@ function buildGameCanvas(){
 	$.sprites['handStat'+1].x = 250;
 	$.sprites['handStat'+0].y = $.sprites['handStat'+1].y = 220;
 
-	itemCenter = new createjs.Bitmap(loader.getResult('itemCenter'));
+	let itemCenter = new createjs.Bitmap(loader.getResult('itemCenter'));
 
 	for(var n = 0; n<2; n++) {
 		$.sprites['health'+n] = new createjs.Container();
@@ -446,7 +464,7 @@ function buildGameCanvas(){
 		$.sprites['healthTypeTxt'+n].font = "30px kimberleyblack";
 		$.sprites['healthTypeTxt'+n].color = gameSettings.game6.bar.turnColor;
 		$.sprites['healthTypeTxt'+n].textAlign = "left";
-		$.sprites['healthTypeTxt'+n].textBaseline='alphabetic';
+		$.sprites['healthTypeTxt'+n].titemCandyBaseextBaseline='alphabetic';
 		$.sprites['healthTypeTxt'+n].text = gameTextDisplay.user;
 
 		$.sprites['healthTypeShadowTxt'+n] = new createjs.Text();
@@ -530,53 +548,47 @@ function buildGameCanvas(){
 	centerReg(buttonSoundOn);
 	buttonSoundOff = new createjs.Bitmap(loader.getResult('buttonSoundOff'));
 	centerReg(buttonSoundOff);
-	buttonSoundOn.visible = false;
 	buttonMusicOn = new createjs.Bitmap(loader.getResult('buttonMusicOn'));
 	centerReg(buttonMusicOn);
 	buttonMusicOff = new createjs.Bitmap(loader.getResult('buttonMusicOff'));
 	centerReg(buttonMusicOff);
 	buttonMusicOn.visible = false;
-	
+
 	buttonExit = new createjs.Bitmap(loader.getResult('buttonExit'));
 	centerReg(buttonExit);
-	buttonSettings = new createjs.Bitmap(loader.getResult('buttonSettings'));
+	buttonSettings = new createjs.Bitmap(loader.getResult('buttonSettings')); // Initialize buttonSettings
 	centerReg(buttonSettings);
-	
-	createHitarea(buttonFullscreen);
-	createHitarea(buttonSoundOn);
-	createHitarea(buttonSoundOff);
-	createHitarea(buttonMusicOn);
-	createHitarea(buttonMusicOff);
-	createHitarea(buttonExit);
-	createHitarea(buttonSettings);
+
+	let optionsContainer;
 	optionsContainer = new createjs.Container();
-	optionsContainer.addChild(buttonFullscreen, buttonSoundOn, buttonSoundOff, buttonMusicOn, buttonMusicOff, buttonExit);
+	optionsContainer.addChild(buttonFullscreen, buttonSoundOn, buttonSoundOff, buttonMusicOn, buttonMusicOff, buttonExit, buttonSettings); // Add buttonSettings to optionsContainer
 	optionsContainer.visible = false;
 	
 	//exit
 	itemExit = new createjs.Bitmap(loader.getResult('itemExit'));
-	itemExitP = new createjs.Bitmap(loader.getResult('itemExitP'));
-	
-	buttonConfirm = new createjs.Bitmap(loader.getResult('buttonConfirm'));
+	 itemExitP = new createjs.Bitmap(loader.getResult('itemExitP'));
+
+	 buttonConfirm = new createjs.Bitmap(loader.getResult('buttonConfirm'));
 	centerReg(buttonConfirm);
-	
-	buttonCancel = new createjs.Bitmap(loader.getResult('buttonCancel'));
+
+	 buttonCancel = new createjs.Bitmap(loader.getResult('buttonCancel'));
 	centerReg(buttonCancel);
-	
-	confirmMessageTxt = new createjs.Text();
+
+	 confirmMessageTxt = new createjs.Text();
 	confirmMessageTxt.font = "40px kimberleyblack";
 	confirmMessageTxt.color = "#fff";
 	confirmMessageTxt.textAlign = "center";
 	confirmMessageTxt.textBaseline='alphabetic';
 	confirmMessageTxt.text = gameTextDisplay.exitMessage;
-	
+
 	confirmContainer.addChild(itemExit, itemExitP, buttonConfirm, buttonCancel, confirmMessageTxt);
 	confirmContainer.visible = false;
+
 	
 	if(guide){
 		guideline = new createjs.Shape();
 	}
-	
+
 	pressMove = new createjs.Shape();
 	cacheContainer.visible = false;
 
@@ -596,11 +608,12 @@ function buildGameCanvas(){
 	resizeGameFunc(viewport.isLandscape);
 }
 
-function changeViewport(isLandscape){
+export function changeViewport(isLandscape){
+	let localStageW, localStageH, contentW, contentH; // Declare contentW and contentH as local variables
 	if(isLandscape){
 		//landscape
-		stageW=landscapeSize.w;
-		stageH=landscapeSize.h;
+		localStageW = landscapeSize.w;
+		localStageH = landscapeSize.h;
 		contentW = landscapeSize.cW;
 		contentH = landscapeSize.cH;
 
@@ -609,8 +622,8 @@ function changeViewport(isLandscape){
 		defaultData.scale = defaultData.viewport.landscape.scale;
 	}else{
 		//portrait
-		stageW=portraitSize.w;
-		stageH=portraitSize.h;
+		localStageW = portraitSize.w;
+		localStageH = portraitSize.h;
 		contentW = portraitSize.cW;
 		contentH = portraitSize.cH;
 
@@ -619,17 +632,17 @@ function changeViewport(isLandscape){
 		defaultData.scale = defaultData.viewport.portrait.scale;
 	}
 	
-	gameCanvas.width = stageW;
-	gameCanvas.height = stageH;
+	gameCanvas.width = localStageW;
+	gameCanvas.height = localStageH;
 	
-	canvasW=stageW;
-	canvasH=stageH;
+	canvasW = localStageW;
+	canvasH = localStageH;
 	
-	changeCanvasViewport();
+	changeCanvasViewport(contentW, contentH); // Pass contentW and contentH to changeCanvasViewport
 	changeGameViewport();
 }
 
-function changeCanvasViewport(){
+export function changeCanvasViewport(contentW, contentH){
 	if(canvasContainer!=undefined){
 		if(guide){
 			guideline.graphics.clear().setStrokeStyle(2).beginStroke('red').drawRect((stageW-contentW)/2, (stageH-contentH)/2, contentW, contentH);
@@ -764,7 +777,7 @@ function changeCanvasViewport(){
  * RESIZE GAME CANVAS - This is the function that runs to resize game canvas
  * 
  */
-function resizeCanvas(){
+export function resizeCanvas(){
  	if(canvasContainer!=undefined){
 		buttonSettings.x = (canvasW - offset.x) - 60;
 		buttonSettings.y = offset.y + 45;
@@ -864,3 +877,21 @@ function centerReg(obj){
 function createHitarea(obj){
 	obj.hitArea = new createjs.Shape(new createjs.Graphics().beginFill("#000").drawRect(0, 0, obj.image.naturalWidth, obj.image.naturalHeight));
 }
+
+
+
+function resizeGameWorld() {
+	if (gameData.roundNum === 6) {
+		if (viewport.isLandscape) {
+			worldContainer.y = -150;
+		} else {
+			worldContainer.y = 0;
+		}
+	}
+
+	instructionTxt.x = canvasW / 100 * gameSettings['game' + gameData.roundNum].instruction.x;
+	instructionTxt.y = canvasH / 100 * gameSettings['game' + gameData.roundNum].instruction.y;
+}
+
+let offset = { x: 0, y: 0 }; // Define offset variable
+

@@ -1,3 +1,7 @@
+import { isTablet } from './helpers/device.js'; // Import isTablet helper
+import { viewport } from './main.js'; // Import viewport
+import { changeViewport } from './canvas.js'; // Import changeViewport
+
 ////////////////////////////////////////////////////////////
 // MOBILE
 ////////////////////////////////////////////////////////////
@@ -8,8 +12,8 @@ var resizeTimer;
  * START MOBILE CHECK - This is the function that runs for mobile event
  * 
  */
-function checkMobileEvent(){
-	if($.browser.mobile || isTablet){
+export function checkMobileEvent(){
+	if($.browser.mobile || isTablet()){
 		$( window ).off('orientationchange').on( "orientationchange", function( event ) {
 			$('#canvasHolder').hide();
 			$('#rotateHolder').hide();
@@ -27,7 +31,7 @@ function checkMobileEvent(){
  * MOBILE ORIENTATION CHECK - This is the function that runs to check mobile orientation
  * 
  */
-function checkMobileOrientation() {
+export function checkMobileOrientation() {
 	var isLandscape=false;
 	
 	if(window.innerWidth>window.innerHeight){
@@ -53,4 +57,9 @@ function toggleRotate(con){
 		$('#rotateHolder').fadeOut();		
 	}
 	resizeGameFunc();
+}
+
+export function resizeGameFunc() {
+	// Placeholder implementation or actual logic for resizing the game
+	console.log("resizeGameFunc called");
 }

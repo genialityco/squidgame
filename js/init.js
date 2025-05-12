@@ -1,16 +1,18 @@
+import { initPreload } from './loader.js';
+
 ////////////////////////////////////////////////////////////
 // INIT
 ////////////////////////////////////////////////////////////
- var stageWidth,stageHeight=0;
- var isLoaded=false;
- 
- /*!
+var stageWidth, stageHeight = 0;
+var isLoaded = false;
+
+/*!
  * 
  * DOCUMENT READY
  * 
  */
- $(function() {
-	 var resumeAudioContext = function() {
+$(function() {
+	var resumeAudioContext = function() {
 		// handler for fixing suspended audio context in Chrome
 		try {
 			if (createjs.WebAudioPlugin.context.state === "suspended") {
@@ -43,7 +45,7 @@
  * LOADER RESIZE - This is the function that runs to centeralised loader when resize
  * 
  */
- function resizeLoaderFunc(){
+function resizeLoaderFunc(){
 	stageWidth=$(window).width();
 	stageHeight=$(window).height();
 	
@@ -56,23 +58,22 @@
  * BROWSER DETECT - This is the function that runs for browser and feature detection
  * 
  */
-var browserSupport=false;
-var isTablet;
-function checkBrowser(){
-	isTablet = (/ipad|android|android 3.0|xoom|sch-i800|playbook|tablet|kindle/i.test(navigator.userAgent.toLowerCase()));
-	deviceVer=getDeviceVer();
+var browserSupport = false;
+let deviceVer = navigator.userAgent; // Declare and initialize deviceVer
+function checkBrowser() {
+	deviceVer = getDeviceVer();
 	
 	var canvasEl = document.createElement('canvas');
-	if(canvasEl.getContext){ 
-	  browserSupport=true;
+	if (canvasEl.getContext) { 
+		browserSupport = true;
 	}
 	
-	if(browserSupport){
-		if(!isLoaded){
-			isLoaded=true;
+	if (browserSupport) {
+		if (!isLoaded) {
+			isLoaded = true;
 			initPreload();
 		}
-	}else{
+	} else {
 		//browser not support
 		$('#notSupportHolder').show();
 	}

@@ -1,3 +1,13 @@
+import { viewport } from './main.js'; // Import viewport
+import { isTablet } from './helpers/device.js'; // Import isTablet helper
+
+import { levelContainer, numberContainer, moneyContainer, piggyContainer, candyContainer, healthContainer, handContainer, handHandsContainer, handButtonContainer, cacheContainer, gameRoundContainer, gameInstructContainer, canvasContainer, mainContainer, gameContainer, gameStatusContainer, worldContainer, resultContainer, confirmContainer} from './canvas.js';
+import { buttonChoose, buttonNumberL, buttonNumberR, buttonLevel, buttonArrowL, buttonArrowR, buttonStart, buttonRestart, buttonFacebook, buttonTwitter, buttonWhatsapp, buttonFullscreen, buttonSoundOn, buttonSoundOff, buttonMusicOn, buttonMusicOff, buttonExit, buttonSettings, buttonConfirm, buttonCancel} from './canvas.js';
+import { itemPiggy, itemTimer, itemLight, itemCandyCover, itemCandyBase, itemPixel, itemNeedle, itemControl, itemResult, itemResultP, itemExit, itemExitP, itemCenter} from './canvas.js';
+import { numberTxt, levelTxt, roundTxt, roundShadowTxt, roundNameTxt, roundNameShadowTxt, instructionTxt, resultTitleTxt, resultScoreTxt, resultShareTxt, confirmMessageTxt} from './canvas.js';
+import { pressMove, guideline, bg, logo,timerTxt, candyDrawing,buttonOdd, buttonEven} from './canvas.js';
+import {canvasW,canvasH,stage,resizeCanvas} from './canvas.js';
+
 ////////////////////////////////////////////////////////////
 // GAME v3.5
 ////////////////////////////////////////////////////////////
@@ -8,7 +18,7 @@
  * 
  */
 
-var gameSettings = {
+export var gameSettings = {
 	game0:{
 		background:{
 			base0: { src:'assets/bg_menu.png'},
@@ -190,17 +200,16 @@ var gameSettings = {
 }
 
 //player assets
-var players_arr = [
-					{src:'assets/player.png'}
-				];
+export var players_arr = [
+	{ src: 'assets/player.png' }
+];
 
-//guard assets
-var guards_arr = [
-	{src:'assets/guard.png'}
+export var guards_arr = [
+	{ src: 'assets/guard.png' }
 ];
 
 //game text desiplay
-var gameTextDisplay = {
+export var gameTextDisplay = {
 	round:'Round [NUMBER]',
 	roundFinal:'Final Round',
 	game1:'Hold to run',
@@ -225,26 +234,26 @@ var gameTextDisplay = {
 }
 
 //result custom score
-var gameCustomScore = {
+export var gameCustomScore = {
 	status:false,
 	text:'[SCORE] BILLION'
 };
 
 //Social share, [SCORE] will replace with game score
-var shareEnable = true; //toggle share
-var shareText = 'SHARE YOUR SCORE'; //social share message
-var shareWinTitle = 'I won 45.6 billion on Survival Game.';//social share score title
-var shareWinMessage = 'I won 45.6 billion on Survival Game! Try it now!'; //social share score message
-var shareTitle = 'High score on Survival Game is ROUND [SCORE].';//social share score title
-var shareMessage = 'ROUND [SCORE] is my new high score on Survival Game! Try it now!'; //social share score message
+export var shareEnable = true; //toggle share
+export var shareText = 'SHARE YOUR SCORE'; //social share message
+export var shareWinTitle = 'I won 45.6 billion on Survival Game.';//social share score title
+export var shareWinMessage = 'I won 45.6 billion on Survival Game! Try it now!'; //social share score message
+export var shareTitle = 'High score on Survival Game is ROUND [SCORE].';//social share score title
+export var shareMessage = 'ROUND [SCORE] is my new high score on Survival Game! Try it now!'; //social share score message
 				
 /*!
  *
  * GAME SETTING CUSTOMIZATION END
  *
  */
-var dt;
-var defaultData = {width:0,
+export var dt;
+export var defaultData = {width:0,
 				height:0,
 				scale:0.00145,
 				viewport:{landscape:{w:1280, h:840, scale:0.00125}, portrait:{w:768, h:840, scale:0.00205}},
@@ -278,7 +287,7 @@ var defaultData = {width:0,
 				lastY:0
 				};
 
-var defaultGameData = {
+export var defaultGameData = {
 						playerSpeed:[500,1500],
 						sandTime:[5,10],
 						ropeWidth:1,
@@ -308,7 +317,7 @@ var resolution = null;
 var currentLapTime = 0;
 
 var playerData = {win:false, bestTime:0, score:0};
-var gameData = {paused:true, money:[], roundNum:0, ended:false, totalRound:6};
+export var gameData = {paused:true, money:[], roundNum:0, ended:false, totalRound:6};
 var timeData = {enable:false, startDate:null, nowDate:null, timer:0, oldTimer:0};
 var roundData = {players:{}, lightData:{forward:false, stop:false, moveTween:{}, timeTween:{}}, tugData:{moveTween:{}}, candyData:{}, bridgeData:{}, marbleData:{}, survivalData:{}};
 var collisionMethod = ndgmr.checkPixelCollision;
@@ -318,7 +327,7 @@ var collisionMethod = ndgmr.checkPixelCollision;
  * GAME BUTTONS - This is the function that runs to setup button event
  * 
  */
-function buildGameButton(){
+export function buildGameButton(){
 	$(window).focus(function() {
 		if(!buttonSoundOn.visible){
 			toggleSoundInMute(false);
@@ -343,7 +352,7 @@ function buildGameButton(){
 		}
 	});
 
-	if($.browser.mobile || isTablet){
+	if($.browser.mobile || isTablet()){
 		
 	}else{
 		
@@ -588,8 +597,8 @@ function toggleRound(con){
  * DISPLAY PAGES - This is the function that runs to display pages
  * 
  */
-var curPage=''
-function goPage(page){
+export var curPage=''
+export function goPage(page){
 	curPage=page;
 	
 	levelContainer.visible = false;
@@ -656,7 +665,7 @@ function goPage(page){
 	resizeCanvas();
 }
 
-function toggleConfirm(con){
+export function toggleConfirm(con){
 	confirmContainer.visible = con;
 	
 	if(con){
@@ -688,7 +697,7 @@ function loopPiggyMoney(){
 	}
 }
 
-function displayChooseNumber(){
+export function displayChooseNumber(){
 	logo.visible = false;
 	buttonStart.visible = false;
 	numberContainer.visible = true;
@@ -698,7 +707,7 @@ function displayChooseNumber(){
 }
 
 var chooseNumberData = {interval:null, number:0, timer:0, max:100, mix:1, bet:0};
-function toggleChooseNumber(con){
+export function toggleChooseNumber(con){
 	if(con){
 		roundData.bet = 1;
 	}else if(!con){
@@ -740,7 +749,7 @@ function updateChooseNumber(){
  * 
  */
 
-function startGame(){
+export function startGame(){
 	playerData.win = false;
 
 	gameData.paused = false;
@@ -757,7 +766,7 @@ function startGame(){
  * PREPARE GAME ROUND - This is the function that runs to build game round
  * 
  */
-function prepareRound(){
+export function prepareRound(){
 	defaultData.position = 0;
 	defaultData.playerX = 0;
 	defaultData.speed = 0;
@@ -923,10 +932,9 @@ function prepareRound(){
 
 	changeGameViewport()
 	resetWorld();
-	resetPath();
 }
 
-function changeGameViewport(){
+export function changeGameViewport(){
 	if(viewport.isLandscape){
 		//landscape
 		if(gameData.roundNum == 0){
@@ -970,7 +978,7 @@ function changeGameViewport(){
 	defaultData.cameraHeight = roundData.camera;
 }
 
- /*!
+ /*!!
  * 
  * DISPLAY GAME ROUND - This is the function that runs to display game round
  * 
@@ -1007,12 +1015,12 @@ function displayGameRound(round, win){
 	}});
 }
 
- /*!
+ /*!!
  * 
  * GAME INSTRUCTION - This is the function that runs to show game instruction
  * 
  */
-function toggleGameInstruction(con){
+export function toggleGameInstruction(con){
 	instructionTxt.text = gameTextDisplay['game'+gameData.roundNum];
 	instructionTxt.color = gameSettings['game'+gameData.roundNum].instruction.color;
 
@@ -1037,12 +1045,12 @@ function resizeGameWorld(){
 	}
 }
 
- /*!
+ /*!!
  * 
  * GAME CAMERA ANIMATE - This is the function that runs to animate game camera
  * 
  */
-function startPanCamera(){
+export function startPanCamera(){
 	if(gameData.roundNum == 1){
 		roundData.followCamera = false;
 
@@ -1089,12 +1097,12 @@ function startPanCamera(){
 	}
 }
 
- /*!
+ /*!!
  * 
  * GAME ROUND BEGIN - This is the function that runs to start game round
  * 
  */
-function startGameRound(){
+export function startGameRound(){
 	gameData.interact = true;
 
 	if(gameData.roundNum == 1){
@@ -1131,7 +1139,7 @@ function startGameRound(){
 	toggleGameInstruction(true);
 }
 
- /*!
+ /*!!
  * 
  * RED LIGHT GREEN LIGHT GAME - This is the function that runs for red light green light game
  * 
@@ -1232,12 +1240,12 @@ function loopPlayerDead(){
 	}});
 }
 
- /*!
+ /*!!
  * 
  * GAME CONTROL - This is the function that runs for game control
  * 
  */
-function toggleGameControl(type, con){
+export function toggleGameControl(type, con){
 	if(gameData.ended){
 		return;
 	}
@@ -1288,12 +1296,12 @@ function toggleGameControl(type, con){
 	}
 }
 
- /*!
+ /*!!
  * 
  * BRIDGE GAME - This is the function that runs for bridge game
  * 
  */
-function moveFrontPlayer(){
+export function moveFrontPlayer(){
 	gameData.interact = false;
 
 	var getPlayerIndex = roundData.bridgeData.turnArr.indexOf(roundData.bridgeData.playerIndex);
@@ -1449,12 +1457,12 @@ function moveLastStep(){
 	}
 }
 
- /*!
+ /*!!
  * 
  * CANDY GAME - This is the function that runs for candy game
  * 
  */
-function initCandyDrawingPos(x, y){
+export function initCandyDrawingPos(x, y){
 	roundData.candyData.x = x;
 	roundData.candyData.y = y;
 
@@ -1464,7 +1472,7 @@ function initCandyDrawingPos(x, y){
 	}
 }
 
-function checkCandyDrawingPos(x, y){
+export function checkCandyDrawingPos(x, y){
 	var doneCount = 0;
 	var distanceNum = 30;
 	for(var n = 0; n<roundData.candyData.checkpoint.length; n++) {
@@ -1489,7 +1497,7 @@ function checkCandyDrawingPos(x, y){
 	}
 }
 
-function chooseRandomCandy(){
+export function chooseRandomCandy(){
 	itemPixel.visible = true;
 	itemNeedle.visible = true;
 	itemCandyBase.visible = true;
@@ -1504,12 +1512,12 @@ function chooseRandomCandy(){
 	$.sprites['candyFinal'+roundData.candyData.candyNum].alpha = 0;
 }
 
-function clearCandyDrawing(){
+export function clearCandyDrawing(){
 	roundData.candyData.draw = false;
 	candyDrawing.graphics.clear();
 }
 
-function revealCandy(){
+export function revealCandy(){
 	itemPixel.visible = false;
 	itemNeedle.visible = false;
 	clearCandyDrawing();
@@ -1522,13 +1530,13 @@ function revealCandy(){
 	endGame(true, false);
 }
 
- /*!
+ /*!!
  * 
  * TUG OF WAR GAME - This is the function that runs for tug of war game
  * 
  */
 
- function startTugGame(){
+ export function startTugGame(){
 	TweenMax.to(roundData.tugData, 0, {overwrite:true, onComplete:function(){
 		playSoundLoop('soundRope');
 
@@ -1555,7 +1563,7 @@ function revealCandy(){
 	}});
 }
 
-function playerTugAction(){
+export function playerTugAction(){
 	roundData.tugData.speed = getMaxTugSpeed(roundData.tugData.speed, -randomInt(roundData.tugData.userSpeed[0], roundData.tugData.userSpeed[1]));
 }
 
@@ -1567,7 +1575,7 @@ function getMaxTugSpeed(val, speed){
 	return result;
 }
 
-function endTugGame(){
+export function endTugGame(){
 	if(roundData.followCamera){
 		roundData.followCamera = false;
 		gameData.interact = false;
@@ -1605,12 +1613,12 @@ function endTugGame(){
 	}
 }
 
- /*!
+ /*!!
  * 
  * MARBLE GAME - This is the function that runs for marble game
  * 
  */
-function resetMarbleGame(){
+export function resetMarbleGame(){
 	for(var n = 0; n<3; n++) {
 		$.sprites['marbleBall'+n].visible = false;
 	}
@@ -1625,7 +1633,7 @@ function resetMarbleGame(){
 	updateMarbleStats()
 }
 
-function changeMarbleTurn(){
+export function changeMarbleTurn(){
 	for(var n = 0; n<3; n++) {
 		$.sprites['marbleBall'+n].visible = false;
 	}
@@ -1679,7 +1687,7 @@ function changeMarbleTurnComplete(){
 	}
 }
 
-function toggleHandStatus(con){
+export function toggleHandStatus(con){
 	toggleGameInstruction(false);
 	showMarbleResult(con);
 }
@@ -1790,12 +1798,12 @@ function updateMarbleStats(){
 	$.sprites['handMarbleBallTxt1'].text = 'x' + roundData.marbleData.opponent;	
 }
 
- /*!
+ /*!!
  * 
  * SURVIVAL GAME - This is the function that runs for survival game
  * 
  */
- function startSurvivalGame(){
+ export function startSurvivalGame(){
 	itemControl.visible = true;
 	itemControl.alpha = 1;
 	roundData.survivalData.turn = randomBoolean();
@@ -1846,7 +1854,7 @@ function stopSurvivalRound(){
 	beginSurvivalRound(3);
 }
 
- function swithTurn(){
+ export function swithTurn(){
 	roundData.survivalData.oppData.speedTime = 0;
 
 	if(roundData.survivalData.turn){
@@ -1992,7 +2000,7 @@ function updatePlayerHealth(){
 		endGame(false, false);
 	}
 
-	if(roundData.survivalData.oppHealth <= 0){
+	if(roundData.survivalData.oppHealth <=  0){
 		oppPlayer.status = 'dead';
 		updatePlayerFrame(1, 'dead');
 		toggleGameTimer(false);
@@ -2000,7 +2008,7 @@ function updatePlayerHealth(){
 	}
 }
 
-function updatePlayerHealthBar(){
+export function updatePlayerHealthBar(){
 	var userBar = roundData.survivalData.userHealth/100 * defaultGameData.survivalBarW;
 	var oppBar = roundData.survivalData.oppHealth/100 * defaultGameData.survivalBarW;
 
@@ -2015,12 +2023,12 @@ function updatePlayerHealthBar(){
 	}});
 }
 
- /*!
+/*!
  * 
  * STOP GAME - This is the function that runs to stop play game
  * 
  */
-function stopGame(){
+export function stopGame(){
 	gameData.paused = true;
 
 	toggleChooseNumber();
@@ -2034,7 +2042,7 @@ function stopGame(){
  * SAVE GAME - This is the function that runs to save game
  * 
  */
-function saveGame(score){
+export function saveGame(score){
 	if ( typeof toggleScoreboardSave == 'function' ) { 
 		$.scoreData.score = score;
 		if(typeof type != 'undefined'){
@@ -2058,7 +2066,8 @@ function saveGame(score){
  * LOOP UPDATE GAME - This is the function that runs to update game loop
  * 
  */
-function updateGame(){
+export function updateGame(){
+	
 	for(var n=0; n<gameData.money.length; n++){
 		var thisMoney = gameData.money[n];
 		thisMoney.y += thisMoney.speed;
@@ -2069,7 +2078,7 @@ function updateGame(){
 			thisMoney.y = thisMoney.oriY;
 		}
 	}
-
+	
 	if(curPage == 'game'){
 		if(!gameData.paused){
 			updateWorld();
@@ -2133,7 +2142,7 @@ function toggleGameTimer(con){
  * 
  */
 function updateWorld(){
-	updateSprites();
+	//updateSprites();
 	renderWorld();
 }
 
@@ -2500,6 +2509,11 @@ function updatePlayerOffset(player, oldSegment, playerSegment, playerW) {
  * 
  */
 function renderWorld() {
+	if (segments.length === 0) {
+		//console.error("Segments array is empty. Cannot render world.");
+		return;
+	}
+
 	var baseSegment   = findSegment(defaultData.position);
 	var basePercent   = percentRemaining(defaultData.position, defaultData.segmentLength);
 	var playerSegment = findSegment(defaultData.position+defaultData.playerZ);
@@ -2649,7 +2663,7 @@ function addPath(enter, hold, leave, curve, y) {
  * 
  */
 
-function resetWorld(){
+export function resetWorld(){
 	defaultData.maxSpeed = defaultData.segmentLength/(1/60);
 	defaultData.accel          =  defaultData.maxSpeed/5;
 	defaultData.breaking       = -defaultData.maxSpeed;
@@ -2661,9 +2675,9 @@ function resetWorld(){
 	defaultData.playerZ = (roundData.players.playerZ * defaultData.segmentLength) + (defaultData.segmentLength/2); //(defaultData.cameraHeight * defaultData.cameraDepth) + 400;
 	defaultData.oriPlayerZ = defaultData.playerZ;
 	resolution = defaultData.height/1024;
-	  
+	  	
 	for(var key in defaultData) {
-		worldData[key] = defaultData[key];
+		worldData[key] = defaultData[key]; // Ensure segments array is reset
 	}
 }
 
@@ -2827,7 +2841,7 @@ function resetPlayers() {
 	}
 }
 
-function randomPlayerNumber(){
+export function randomPlayerNumber(){
 	var playerNumber = randomInt(1, 999);
 
 	return pad(playerNumber, 3);
@@ -2835,425 +2849,12 @@ function randomPlayerNumber(){
 
 /*!
  * 
- * RENDER MISC - This is the function that runs for render misc
+ * FORMAT TIME - This is the function that converts milliseconds to a time string
  * 
  */
-function renderPolygon(x1, y1, x2, y2, x3, y3, x4, y4, color, alpha, index){
-	var shape = new createjs.Shape();
-	shape.graphics.beginFill(color)
-				.beginStroke()
-				.moveTo(x1, y1)
-				.lineTo(x2, y2)
-				.lineTo(x3, y3)
-				.lineTo(x4, y4)
-				.endStroke();
-
-	shape.alpha = alpha == undefined ? 1 : alpha;
-	worldContainer.addChild(shape);
-
-	if(index != undefined){
-		worldContainer.setChildIndex(shape, 10);
-	}
-}
-
-function renderSegment(width, x1, y1, w1, x2, y2, w2, fog, color, index){	
-	var shape = new createjs.Shape();
-	shape.graphics.beginFill(color.base).drawRect(0, y2, width, y1 - y2);
-	worldContainer.addChild(shape);
-    
-	if(gameData.roundNum == 3){
-		var holeLength = defaultGameData.tugHole;
-		var totalLength = (holeLength) + defaultGameData.tugStart;
-		if(index < defaultGameData.tugStart || index >= totalLength + 2){
-			if(index >= totalLength + 2 && index <= totalLength + 4){
-				renderPolygon(x1-w1, y1, x1+w1, y1, x1+w1, y2+canvasH, x2-w2, y2+canvasH, gameSettings['game'+gameData.roundNum].path.fog, 1, 1);
-			}
-
-			renderPolygon(x1-w1, y1, x1+w1, y1, x2+w2, y2, x2-w2, y2, color.path);
-			
-			var sideW = 10;
-			var holderData = {
-				space1:w1/100 * holderSpace,
-				space2:w2/100 * holderSpace,
-				w1:w1/100 * sideW,
-				w2:w2/100 * sideW,
-			}
-			renderPolygon(x1-w1-holderData.w1, y1, x1-w1, y1, x2-w2, y2, x2-w2-holderData.w2, y2, color.side);
-    		renderPolygon(x1+w1+holderData.w1, y1, x1+w1, y1, x2+w2, y2, x2+w2+holderData.w2, y2, color.side);
-		}
-
-		var holderSpace = 0;
-		var ropeW = defaultGameData.ropeWidth;
-		var ropeY = defaultGameData.ropeY;
-		var holderData = {
-			space1:w1/100 * 0,
-			space2:w2/100 * 0,
-			w1:w1/100 * ropeW,
-			w2:w2/100 * ropeW,
-		}
-
-		renderPolygon(x1-holderData.w1, y1-ropeY, x1-holderData.space1, y1-ropeY, x2-holderData.space2, y2-ropeY, x2-holderData.w2, y2-ropeY, color.rope);
-		renderPolygon(x1+holderData.w1, y1-ropeY, x1+holderData.space1, y1-ropeY, x2+holderData.space2, y2-ropeY, x2+holderData.w2, y2-ropeY, color.rope);
-	}else if(gameData.roundNum == 5){
-		var glassW = defaultGameData.bridgeGlassWidth;
-		var holderW = defaultGameData.bridgeGlassHoldWidth;
-		var holderSpace = defaultGameData.bridgeGlassHoldSpace;
-
-		var glassData = {
-			space1:w1/100 * 5,
-			space2:w2/100 * 5,
-			w1:w1/100 * glassW,
-			w2:w2/100 * glassW,
-		}
-
-		var findIndex = index - (defaultGameData.bridgeStart + 2);
-		for(var n=0; n<roundData.bridgeData.seqArr.length; n++){
-			var firstIndex = n * defaultGameData.bridgeSteps;
-			var nextIndex = firstIndex + 1;
-
-			var renderCon = false;
-			if(firstIndex == findIndex){
-				renderCon = true;
-			}else if(nextIndex == findIndex){
-				renderCon = true;
-			}
-
-			if(renderCon){
-				var glassLeft = color.glass;
-				var glassRight = color.glass;
-
-				if(roundData.bridgeData.seqArr[n].fail){
-					if(roundData.bridgeData.seqArr[n].side == 1){
-						glassLeft = '';
-					}else{
-						glassRight = '';
-					}
-				}
-
-				renderPolygon(x1-glassData.w1, y1, x1-glassData.space1, y1, x2-glassData.space2, y2, x2-glassData.w2, y2, glassLeft, gameSettings.game5.glassAlpha);
-				renderPolygon(x1+glassData.w1, y1, x1+glassData.space1, y1, x2+glassData.space2, y2, x2+glassData.w2, y2, glassRight, gameSettings.game5.glassAlpha);
-			}
-		}
-
-		var holderData = {
-			space1:w1/100 * holderSpace,
-			space2:w2/100 * holderSpace,
-			w1:w1/100 * holderW,
-			w2:w2/100 * holderW,
-		}
-
-		renderPolygon(x1-holderData.w1, y1, x1-holderData.space1, y1, x2-holderData.space2, y2, x2-holderData.w2, y2, color.holder);
-		renderPolygon(x1+holderData.w1, y1, x1+holderData.space1, y1, x2+holderData.space2, y2, x2+holderData.w2, y2, color.holder);
-
-		var holderData = {
-			space1:w1/100 * glassW,
-			space2:w2/100 * glassW,
-			w1:w1/100 * (glassW + (holderW - holderSpace)),
-			w2:w2/100 * (glassW + (holderW - holderSpace)),
-		}
-
-		renderPolygon(x1-holderData.w1, y1, x1-holderData.space1, y1, x2-holderData.space2, y2, x2-holderData.w2, y2, color.holder);
-		renderPolygon(x1+holderData.w1, y1, x1+holderData.space1, y1, x2+holderData.space2, y2, x2+holderData.w2, y2, color.holder);
-
-		var totalLength = (gameSettings.game5.length * defaultGameData.bridgeSteps) + defaultGameData.bridgeStart;
-		if(index < defaultGameData.bridgeStart || index >= totalLength + 2){
-			if(index >= totalLength + 2 && index <= totalLength + 4){
-				renderPolygon(x1-w1, y1, x1+w1, y1, x1+w1, y2+canvasH, x2-w2, y2+canvasH, gameSettings['game'+gameData.roundNum].path.fog, 1, 1);
-			}
-
-			renderPolygon(x1-w1, y1, x1+w1, y1, x2+w2, y2, x2-w2, y2, color.path);
-		}
-	}else if(gameData.roundNum == 6){
-		if(index >= defaultGameData.survivalStart && index <= defaultGameData.survivalStart + gameSettings.game6.length){
-			var sideW = 10;
-			var holderData = {
-				space1:w1/100 * holderSpace,
-				space2:w2/100 * holderSpace,
-				w1:w1/100 * sideW,
-				w2:w2/100 * sideW,
-			}
-			renderPolygon(x1-w1-holderData.w1, y1, x1-w1, y1, x2-w2, y2, x2-w2-holderData.w2, y2, color.line);
-    		renderPolygon(x1+w1+holderData.w1, y1, x1+w1, y1, x2+w2, y2, x2+w2+holderData.w2, y2, color.line);
-		}
-
-		renderPolygon(x1-w1, y1, x1+w1, y1, x2+w2, y2, x2-w2, y2, color.path);
-	}else{
-		renderPolygon(x1-w1, y1, x1+w1, y1, x2+w2, y2, x2-w2, y2, color.path);
-	}
-    
-    renderFog(0, y1, width, y2-y1, fog);
-}
-
-function renderBackground(background, width, height, layer, rotation, offset){
-	var newBackground = $.background[layer.id].clone();
-	var newBackgroundMirror = $.background[layer.id].clone();
-    rotation = rotation || 0;
-    offset   = offset   || 0;
-	
-	newBackground.x = rotation * layer.w;
-	if(rotation > 0){
-		newBackground.x = -(newBackground.x);	
-	}else{
-		newBackground.x = Math.abs(newBackground.x);	
-	}
-	
-	var destY = (defaultData.lastY/defaultData.height) * .2;
-	newBackground.y = destY+offset;
-	
-	worldContainer.addChild(newBackground, newBackgroundMirror);
-	
-	newBackgroundMirror.x = newBackground.x + layer.w;
-	newBackgroundMirror.y = newBackground.y;
-}
-
-function renderSprite(width, height, resolution, roadWidth, sprites, sprite, scale, destX, destY, offsetX, offsetY, clipY){
-	var newSprite = sprite.clone(true);
-	
-	var destW  = (sprite.w * scale * width/2) * (defaultData.scale * roadWidth);
-    var destH  = (sprite.h * scale * width/2) * (defaultData.scale * roadWidth);
-
-    destX = destX + (destW * (offsetX || 0));
-    destY = destY + (destH * (offsetY || 0));
-	
-    var clipH = clipY ? Math.max(0, destY+destH-clipY) : 0;
-    if (clipH < destH){
-		newSprite.x = destX;
-		newSprite.y = destY;
-		newSprite.scaleX = destW/sprite.w;
-		newSprite.scaleY = (destH - clipH)/sprite.h;
-		
-		worldContainer.addChild(newSprite);
-	}
-}
-
-function renderFog(x, y, width, height, fog){
-	if (fog < 1) {
-		var shape = new createjs.Shape();
-		shape.graphics.beginFill(gameSettings['game'+gameData.roundNum].path.fog).drawRect(x, y, width, height);
-		shape.alpha = (1-fog);
-		worldContainer.addChild(shape);
-    }
-}
-
-/*!
- * 
- * END GAME - This is the function that runs for end game
- * 
- */
-function endGame(win, timer){
-	if(!gameData.ended){
-		playerData.win = win;
-		toggleGameInstruction(false);
-		clearCandyDrawing();
-
-		gameData.ended = true;
-		gameData.interact = false;
-
-		roundData.lightData.forward = false;
-		roundData.lightData.stop = true;
-
-		roundData.survivalData.start = false;
-		roundData.survivalData.move = false;
-		itemControl.visible = false;
-
-		if(win){
-			//calculate score
-			if(gameData.roundNum == 6){
-				var lifeLeft = roundData.survivalData.userHealth;
-				var roundScore = lifeLeft * .05;
-			}else{
-				var timeLeft = gameSettings['game'+gameData.roundNum].timer - timeData.timer;
-				var roundScore = timeLeft * .0005;
-			}
-			playerData.score += Math.round(roundScore);
-
-
-		}else if(!win){
-			var deadArr = [1,2,4];
-			if(deadArr.indexOf(gameData.roundNum) != -1){
-				updatePlayerFrame(0, 'dead');
-			}
-		}
-
-		TweenMax.to(resultContainer, 0, {delay:.8, overwrite:true, onComplete:function(){
-			if(!win){
-				displayGameRound(false, false);
-			}else{
-				displayGameRound(false, true);
-			}
-
-			TweenMax.to(resultContainer, 3, {delay:0, overwrite:true, onComplete:function(){
-				if(playerData.win){
-					var newRound = gameData.roundNum + 1;
-					if(newRound <= gameData.totalRound){
-						gameData.roundNum = newRound;
-
-						stopGame();
-						startGame();
-						resetWorld();
-						resetPath();
-					}else{
-						goPage('result');	
-					}
-				}else{
-					goPage('result');
-				}
-			}});
-		}});
-	}
-
-	if(timer){
-		if(gameData.roundNum == 1){
-			TweenMax.killTweensOf(roundData.lightData);
-			TweenMax.killTweensOf(roundData.lightData.moveTween);
-			TweenMax.killTweensOf(roundData.lightData.timeTween);
-			
-			for(var n=1; n<players.length; n++){
-				players[n].speed = 0;
-				players[n].moveTime = 0;
-
-				if(players[n].status != 'dead'){
-					if(players[n].status != 'complete'){
-						players[n].status = 'nextDead';
-					}
-				}
-			}
-			
-			loopPlayerDead();
-		}else if(gameData.roundNum == 3){
-			gameData.paused = true;
-			stopSoundLoop('soundRope');
-		}
-
-		toggleGameTimer(false);
-	}
-}
-
-/*!
- * 
- * MILLISECONDS CONVERT - This is the function that runs to convert milliseconds to time
- * 
- */
-function millisecondsToTimeGame(milli) {
-	var milliseconds = milli % 1000;
-	var seconds = Math.floor((milli / 1000) % 60);
-	var minutes = Math.floor((milli / (60 * 1000)) % 60);
-	
-	if(seconds<10){
-		seconds = '0'+seconds;  
-	}
-	
-	if(minutes<10){
-		minutes = '0'+minutes;
-	}
-	
-	return minutes+':'+seconds;
-}
-
-/*!
- * 
- * OPTIONS - This is the function that runs to mute and fullscreen
- * 
- */
-function toggleSoundMute(con){
-	buttonSoundOff.visible = false;
-	buttonSoundOn.visible = false;
-	toggleSoundInMute(con);
-	if(con){
-		buttonSoundOn.visible = true;
-	}else{
-		buttonSoundOff.visible = true;	
-	}
-}
-
-function toggleMusicMute(con){
-	buttonMusicOff.visible = false;
-	buttonMusicOn.visible = false;
-	toggleMusicInMute(con);
-	if(con){
-		buttonMusicOn.visible = true;
-	}else{
-		buttonMusicOff.visible = true;	
-	}
-}
-
-function toggleFullScreen() {
-  if (!document.fullscreenElement &&    // alternative standard method
-      !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement ) {  // current working methods
-    if (document.documentElement.requestFullscreen) {
-      document.documentElement.requestFullscreen();
-    } else if (document.documentElement.msRequestFullscreen) {
-      document.documentElement.msRequestFullscreen();
-    } else if (document.documentElement.mozRequestFullScreen) {
-      document.documentElement.mozRequestFullScreen();
-    } else if (document.documentElement.webkitRequestFullscreen) {
-      document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
-    }
-  } else {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
-    } else if (document.mozCancelFullScreen) {
-      document.mozCancelFullScreen();
-    } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-    }
-  }
-}
-
-/*!
- * 
- * OPTIONS - This is the function that runs to toggle options
- * 
- */
-
-function toggleOption(){
-	if(optionsContainer.visible){
-		optionsContainer.visible = false;
-	}else{
-		optionsContainer.visible = true;
-	}
-}
-
-
-/*!
- * 
- * SHARE - This is the function that runs to open share url
- * 
- */
-function share(action){
-	gtag('event','click',{'event_category':'share','event_label':action});
-	
-	var loc = location.href
-	loc = loc.substring(0, loc.lastIndexOf("/") + 1);
-	
-	var title = '';
-	var text = '';
-	
-	if(playerData.win){
-		title = shareWinTitle.replace("[SCORE]", addCommas(gameData.roundNum));
-		text = shareWinMessage.replace("[SCORE]", addCommas(gameData.roundNum));
-	}else{
-		title = shareTitle.replace("[SCORE]", addCommas(gameData.roundNum));
-		text = shareMessage.replace("[SCORE]", addCommas(gameData.roundNum));
-	}
-
-	if(gameCustomScore.status){
-		title = shareTitle.replace("[SCORE]", addCommas(playerData.score));
-		text = shareMessage.replace("[SCORE]", addCommas(playerData.score));
-	}
-	var shareurl = '';
-	
-	if( action == 'twitter' ) {
-		shareurl = 'https://twitter.com/intent/tweet?url='+loc+'&text='+text;
-	}else if( action == 'facebook' ){
-		shareurl = 'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(loc+'share.php?desc='+text+'&title='+title+'&url='+loc+'&thumb='+loc+'share.jpg&width=590&height=300');
-	}else if( action == 'google' ){
-		shareurl = 'https://plus.google.com/share?url='+loc;
-	}else if( action == 'whatsapp' ){
-		shareurl = "whatsapp://send?text=" + encodeURIComponent(text) + " - " + encodeURIComponent(loc);
-	}
-	
-	window.open(shareurl);
+function millisecondsToTimeGame(milliseconds) {
+	const totalSeconds = Math.floor(milliseconds / 1000);
+	const minutes = Math.floor(totalSeconds / 60);
+	const seconds = totalSeconds % 60;
+	return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }

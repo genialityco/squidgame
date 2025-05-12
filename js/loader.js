@@ -1,3 +1,10 @@
+import { players_arr, guards_arr, gameData, gameSettings } from './game.js'; // Import gameData
+import { checkMobileEvent, resizeGameFunc } from './mobile.js';
+import { isTablet } from './helpers/device.js'; // Import isTablet helper
+import { initMain } from './main.js'; // Import initMain
+
+export let loader; // Export loader
+
 ////////////////////////////////////////////////////////////
 // CANVAS LOADER
 ////////////////////////////////////////////////////////////
@@ -7,18 +14,20 @@
  * START CANVAS PRELOADER - This is the function that runs to preload canvas asserts
  * 
  */
-function initPreload(){
+export function initPreload(){
+	console.log('players_arr',players_arr); // Ensure it's accessible
 	toggleLoader(true);
 	
-	checkMobileEvent();
+	// checkMobileEvent();
 	
-	$(window).resize(function(){
-		resizeGameFunc();
-	});
-	resizeGameFunc();
+	// $(window).resize(function(){
+	// 	resizeGameFunc();
+	// });
+	// resizeGameFunc();
+	
 	
 	loader = new createjs.LoadQueue(false);
-	manifest=[
+	let manifest = [ // Declare manifest variable
 			{src:'assets/logo.png', id:'logo'},
 			{src:'assets/button_start.png', id:'buttonStart'},
 			{src:'assets/button_choose.png', id:'buttonChoose'},
@@ -96,13 +105,13 @@ function initPreload(){
 	}
 	
 	soundOn = true;
-	if($.browser.mobile || isTablet){
-		if(!enableMobileSound){
-			soundOn=false;
+	if ($.browser.mobile || isTablet()) { // Use isTablet function
+		if (!enableMobileSound) {
+			soundOn = false;
 		}
-	}else{
-		if(!enableDesktopSound){
-			soundOn=false;
+	} else {
+		if (!enableDesktopSound) {
+			soundOn = false;
 		}
 	}
 	
@@ -154,7 +163,9 @@ function initPreload(){
 	loader.addEventListener("fileload", fileComplete);
 	loader.addEventListener("error",handleFileError);
 	loader.on("progress", handleProgress, this);
+	
 	loader.loadManifest(manifest);
+	
 }
 
 /*!
