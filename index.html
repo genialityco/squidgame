@@ -48,7 +48,7 @@
   <body>
     <!-- USER EMAIL DISPLAY -->
     <div
-      id="userEmailDisplay"
+     
       style="
         position: fixed;
         top: 10px;
@@ -57,11 +57,15 @@
         background: rgba(255, 255, 255, 0.8);
         padding: 6px 14px;
         border-radius: 8px;
-        display: none;
         font-size: 15px;
         font-weight: bold;
       "
-    ></div>
+    >
+    <div  id="userEmailDisplay"></div>
+    <div  id="scoreDisplay"></div>
+
+</div>
+
     <!-- AUTH STATUS MESSAGE -->
     <div
       id="authStatusMsg"
@@ -224,6 +228,7 @@
 
     <script type="module" src="js/helpers/firebase.js"></script>
     <script type="module" src="js/helpers/auth.js"></script>
+    <script type="module" src="js/helpers/score.js"></script>
 
     <script src="js/plugins.js"></script>
     <script src="js/sound.js"></script>
