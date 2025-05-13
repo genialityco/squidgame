@@ -1,6 +1,8 @@
 
+import { canvasH, stage } from "../canvas.js";
 import { updatePlayerFrame } from "../game.js"; // Import player helper
 import { defaultGameData, roundData, players, gameData, worldData, endGame,findSegment,defaultData } from "../game.js"; // Import shared variables
+import { getOppAway, updatePlayerHealth, updatePlayerMoveSpeed } from "../games/SurvivalGame.js";
 import { endTugGame } from "../games/TugGame.js";
 import { gameSettings } from '../gameSettings.js';
 

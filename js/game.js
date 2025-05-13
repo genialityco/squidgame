@@ -566,8 +566,8 @@ export function goPage(page) {
       logo.visible = true;
       buttonStart.visible = true;
       piggyContainer.visible = true;
-      gameData.roundNum = 4;
-      gameData.roundSelect = 4;
+      gameData.roundNum = 0;
+      gameData.roundSelect = 0;
       toggleRound(true);
       prepareRound();
       resetWorld();
@@ -1140,9 +1140,7 @@ export function startPanCamera() {
       overwrite: true,
       onComplete: function () {
         roundData.followCamera = true;
-        showPreGameQuestions(() => {
-          startSurvivalGame();
-        });
+        startSurvivalGame();
       },
     });
   }
