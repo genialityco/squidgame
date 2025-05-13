@@ -1,4 +1,4 @@
-import { timeData, gameData, toggleGameTimer, players } from "./game.js";
+import { timeData, gameData, toggleGameTimer, players, roundData } from "./game.js";
 import { questionPool } from "./questionPool.js";
 
 export function showQuestionModal() {
@@ -78,6 +78,7 @@ function handleAnswer(correct) {
 }
 
 function pauseGameForModal() {
+  // Pausar todo
   TweenMax.pauseAll(true, true);
   gameData.paused = true;
 
@@ -87,6 +88,8 @@ function pauseGameForModal() {
   }
 
   toggleGameTimer(false);
+
+  TweenMax.pauseTweensOf(roundData.lightData.timeTween);
 }
 
 function resumeGameAfterModal() {
@@ -100,4 +103,6 @@ function resumeGameAfterModal() {
   }
 
   toggleGameTimer(true);
+
+  TweenMax.resumeTweensOf(roundData.lightData.timeTween);
 }

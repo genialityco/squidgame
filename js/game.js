@@ -104,6 +104,7 @@ import {
   checkCandyDrawingPos,
   clearCandyDrawing,
   initCandyDrawingPos,
+  startCandyGame,
 } from "./games/CandyGame.js";
 import { startTugGame, playerTugAction, endTugGame } from "./games/TugGame.js";
 import {
@@ -391,6 +392,7 @@ export function buildGameButton() {
       .s(gameSettings.game2.drawColor);
 
     initCandyDrawingPos(event.stageX - canvasW / 2, event.stageY - canvasH / 2);
+	startCandyGame();
   });
 
   itemCandyBase.addEventListener("pressmove", function (event) {
@@ -564,8 +566,8 @@ export function goPage(page) {
       logo.visible = true;
       buttonStart.visible = true;
       piggyContainer.visible = true;
-      gameData.roundNum = 0;
-      gameData.roundSelect = 0;
+      gameData.roundNum = 1;
+      gameData.roundSelect = 1;
       toggleRound(true);
       prepareRound();
       resetWorld();
