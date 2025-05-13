@@ -89,6 +89,7 @@ import { gameTextDisplay } from "./gameTextDisplay.js";
 import { gameSettings } from "./gameSettings.js";
 import { updatePlayers } from "./gameLogic/updatePlayers.js";
 import { share } from "./helpers/social.js"; // Import social share helper
+import {updateScore} from "./helpers/score.js"; // Import updateScore function
 // import {randomInt, getIncrease,pad} from './plugins.js'
 ////////////////////////////////////////////////////////////
 // GAMES
@@ -991,10 +992,12 @@ function displayGameRound(round, win) {
   roundNameShadowTxt.color =
     gameSettings["game" + gameData.roundNum].textShadowColor;
 
+
+
   if (round) {
     roundNameTxt.text = roundNameShadowTxt.text =
       gameSettings["game" + gameData.roundNum].name;
-  } else {
+  } else {	
     if (win) {
       playSound("soundComplete");
       roundNameTxt.text = roundNameShadowTxt.text =
@@ -2054,7 +2057,7 @@ export function randomPlayerNumber() {
 
 /*!
  *
- * END GAME - This is the function that runs for end game
+ * END GAME - This is the function that runs for end game, meaning when each round is finished
  *
  */
 export function endGame(win, timer) {
@@ -2081,9 +2084,15 @@ export function endGame(win, timer) {
       } else {
         var timeLeft =
           gameSettings["game" + gameData.roundNum].timer - timeData.timer;
-        var roundScore = timeLeft * 0.0005;
+        var roundScore = Math.round(timeLeft * 0.0005);
       }
+
       playerData.score += Math.round(roundScore);
+
+     /** HERE THE PLAYER SCORE is going to be UPDATED TO THE DATABASE FIRESTORE */
+	  alert('Ganaste: '+roundScore+' puntos')
+	  updateScore(roundScore);
+
     } else if (!win) {
       var deadArr = [1, 2, 4];
       if (deadArr.indexOf(gameData.roundNum) != -1) {
