@@ -16,6 +16,7 @@ export let buttonChoose, buttonNumberL, buttonNumberR, buttonLevel, buttonArrowL
 export let itemPiggy, itemTimer, itemLight, itemCandyCover, itemCandyBase, itemPixel, itemNeedle, itemControl, itemResult, itemResultP, itemExit, itemExitP, itemCenter;
 export let numberTxt, levelTxt, roundTxt, roundShadowTxt, roundNameTxt, roundNameShadowTxt, instructionTxt, resultTitleTxt, resultScoreTxt, resultShareTxt, confirmMessageTxt;
 export let pressMove, guideline, bg, logo,timerTxt, candyDrawing,buttonOdd, buttonEven;
+export let optionsContainer;
 let guide = false;
 
 $.money = {};
@@ -562,7 +563,7 @@ export function buildGameCanvas() { // Export buildGameCanvas
 	buttonSettings = new createjs.Bitmap(loader.getResult('buttonSettings')); // Initialize buttonSettings
 	centerReg(buttonSettings);
 
-	let optionsContainer;
+
 	optionsContainer = new createjs.Container();
 	optionsContainer.addChild(buttonFullscreen, buttonSoundOn, buttonSoundOff, buttonMusicOn, buttonMusicOff, buttonExit, buttonSettings); // Add buttonSettings to optionsContainer
 	optionsContainer.visible = false;

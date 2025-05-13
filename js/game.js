@@ -21,6 +21,7 @@ import {
   worldContainer,
   resultContainer,
   confirmContainer,
+  optionsContainer,
 } from "./canvas.js";
 import {
   buttonChoose,
