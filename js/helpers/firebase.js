@@ -10,7 +10,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyAD6tkYtcVJqBIirwSMePmGiM6TNHu8MZ0",
   authDomain: "game-calamar.firebaseapp.com",
   projectId: "game-calamar",
-  storageBucket: "game-calamar.firebasestorage.app",
+  storageBucket: "game-calamar.appspot.com",
   messagingSenderId: "557519792859",
   appId: "1:557519792859:web:15a46af616dc4642d0fafe",
   measurementId: "G-N07Q2MH81P",
