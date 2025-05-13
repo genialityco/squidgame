@@ -1,17 +1,38 @@
 export const questionPool = [
   {
-    text: "¿Cuál es la capital de Francia?",
-    options: ["Madrid", "París", "Roma"],
+    text: "La capacitación en ética e integridad es un proceso único y no necesita actualización?",
+    options: [
+      "VERDADERO",
+      "FALSO",
+      "Es un proceso solo para empleados nuevos"
+    ],
     correctIndex: 1,
   },
   {
-    text: "¿Cuánto es 2 + 2?",
-    options: ["3", "4", "5"],
+    text: "La denuncia de irregularidades por parte de empleados es una parte importante de un programa de compliance?",
+    options: [
+      "FALSO",
+      "VERDADERO",
+      "Solo si el empleado tiene pruebas"
+    ],
     correctIndex: 1,
   },
   {
-    text: "¿Cuál es un lenguaje de programación?",
-    options: ["HTML", "CSS", "Python"],
-    correctIndex: 2,
+    text: "El incumplimiento de las normativas de ética e integridad solo afecta a la alta dirección de la empresa?",
+    options: [
+      "FALSO",
+      "VERDADERO",
+      "Solo a los socios"
+    ],
+    correctIndex: 0,
+  },
+  {
+    text: "El departamento legal es el único responsable del cumplimiento dentro de una empresa?",
+    options: [
+      "FALSO",
+      "VERDADERO",
+      "Legal y control interno"
+    ],
+    correctIndex: 0,
   },
 ];
