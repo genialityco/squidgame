@@ -1036,42 +1036,6 @@ export function toggleGameControl(type, con){
 	}
 }
 
- /*!!
- * 
- * RED LIGHT GREEN LIGHT GAME - This is the function that runs for red light green light game
- * 
- */
-
- /*!!
- * 
- * BRIDGE GAME - This is the function that runs for bridge game
- * 
- */
-
- /*!!
- * 
- * TUG OF WAR GAME - This is the function that runs for tug of war game
- * 
- */
-
- /*!!
- * 
- * SURVIVAL GAME - This is the function that runs for survival game
- * 
- */
-
-/*!
- * 
- * STOP GAME - This is the function that runs to stop play game
- * 
- */
-
- /*!!
- * 
- * MARBLE GAME - This is the function that runs for marble game
- * 
- */
-
 export function stopGame(){
 	gameData.paused = true;
 
