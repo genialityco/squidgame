@@ -7,13 +7,17 @@ import { itemPiggy, itemTimer, itemLight, itemCandyCover, itemCandyBase, itemPix
 import { numberTxt, levelTxt, roundTxt, roundShadowTxt, roundNameTxt, roundNameShadowTxt, instructionTxt, resultTitleTxt, resultScoreTxt, resultShareTxt, confirmMessageTxt} from './canvas.js';
 import { pressMove, guideline, bg, logo,timerTxt, candyDrawing,buttonOdd, buttonEven} from './canvas.js';
 import {canvasW,canvasH,stage,resizeCanvas} from './canvas.js';
-
 import {renderBackground,renderSegment,renderSprite} from './renderMisc.js';
-
+// import {randomInt, getIncrease,pad} from './plugins.js'
 ////////////////////////////////////////////////////////////
-// GAME v3.5
+// GAMES
 ////////////////////////////////////////////////////////////
-
+import {startGreenLightCount,startRedLightCount, loopPlayerDead} from './games/RedLightGame.js';
+import {chooseRandomCandy,checkCandyDrawingPos,clearCandyDrawing,initCandyDrawingPos} from './games/CandyGame.js';
+import {startTugGame, playerTugAction, endTugGame} from './games/TugGame.js';
+import {resetMarbleGame,changeMarbleTurn,toggleHandStatus} from './games/MarbleGame.js';
+import {startSurvivalGame,updatePlayerHealthBar,updatePlayerHealth,updatePlayerMoveSpeed,getOppAway,stopSurvivalRound} from './games/SurvivalGame.js';
+import {moveFrontPlayer} from './games/BridgeGame.js';
 /*!
  * 
  * GAME SETTING CUSTOMIZATION START
@@ -312,17 +316,17 @@ export var defaultGameData = {
 				
 var worldData = {};
 var segments = [];
-var players = [];
+export var players = [];
 var background = null;
 var sprites = null;
 var resolution = null;
 var currentLapTime = 0;
 
-var playerData = {win:false, bestTime:0, score:0};
+export var playerData = {win:false, bestTime:0, score:0};
 export var gameData = {paused:true, money:[], roundNum:0, ended:false, totalRound:6};
-var timeData = {enable:false, startDate:null, nowDate:null, timer:0, oldTimer:0};
-var roundData = {players:{}, lightData:{forward:false, stop:false, moveTween:{}, timeTween:{}}, tugData:{moveTween:{}}, candyData:{}, bridgeData:{}, marbleData:{}, survivalData:{}};
-var collisionMethod = ndgmr.checkPixelCollision;
+export var timeData = {enable:false, startDate:null, nowDate:null, timer:0, oldTimer:0};
+export var roundData = {players:{}, lightData:{forward:false, stop:false, moveTween:{}, timeTween:{}}, tugData:{moveTween:{}}, candyData:{}, bridgeData:{}, marbleData:{}, survivalData:{}};
+export var collisionMethod = ndgmr.checkPixelCollision;
 
 /*!
  * 
@@ -751,7 +755,6 @@ function updateChooseNumber(){
 
 export function startGame(){
 	playerData.win = false;
-
 	gameData.paused = false;
 	gameData.ended = false;
 	gameData.interact = false;
@@ -1098,6 +1101,22 @@ export function startPanCamera(){
 	}
 }
 
+
+function loopPlayrMoveTimer(){
+    TweenMax.to(roundData.lightData.moveTween, .1, {overwrite:true, onComplete:function(){
+        loopPlayrMoveTimer();
+        updatePlayerTime();
+    }});
+}
+
+function updatePlayerTime(){
+    for(var n=1; n<players.length; n++){
+        if(players[n].moveTime > 0){
+            players[n].moveTime -= 100;
+        }
+    }
+}
+
  /*!!
  * 
  * GAME ROUND BEGIN - This is the function that runs to start game round
@@ -1140,106 +1159,7 @@ export function startGameRound(){
 	toggleGameInstruction(true);
 }
 
- /*!!
- * 
- * RED LIGHT GREEN LIGHT GAME - This is the function that runs for red light green light game
- * 
- */
-function loopPlayrMoveTimer(){
-	TweenMax.to(roundData.lightData.moveTween, .1, {overwrite:true, onComplete:function(){
-		loopPlayrMoveTimer();
-		updatePlayerTime();
-	}});
-}
 
-function updatePlayerTime(){
-	for(var n=1; n<players.length; n++){
-		if(players[n].moveTime > 0){
-			players[n].moveTime -= 100;
-		}
-	}
-}
-
-function startGreenLightCount(){
-	TweenMax.killTweensOf(roundData.lightData);
-
-	itemLight.gotoAndStop('green');
-	gameData.doll.gotoAndPlay('close');
-	playSound('soundLightOn');
-
-	var activePlayers = [];
-	for(var n=1; n<players.length; n++){
-		if(players[n].status == ''){
-			var countTime = roundData.lightData.countTime * 1000;
-			players[n].speed = randomInt(defaultGameData.playerSpeed[0], defaultGameData.playerSpeed[1]);
-			players[n].moveTime = randomInt(countTime-500, countTime);
-			players[n].sandTime = randomInt(defaultGameData.sandTime[0], defaultGameData.sandTime[1]);
-			activePlayers.push(n);
-		}
-	}
-
-	shuffle(activePlayers);
-
-	var totalPlayerDead = randomInt(gameSettings.game1.dead[0], gameSettings.game1.dead[1]);
-	for(var n=0; n<totalPlayerDead; n++){
-		if(n <activePlayers.length){
-			var playerIndex = activePlayers[n];
-			var countTime = roundData.lightData.countTime * 1000;
-			players[n].moveTime = randomInt(countTime, countTime + 500);
-			players[n].sandTime = randomInt(defaultGameData.sandTime[0], defaultGameData.sandTime[1]);
-			players[playerIndex].status = 'nextDead';
-		}
-	}
-	
-
-	roundData.lightData.countTime = decreaseTime(roundData.lightData.countTime, gameSettings.game1.decreaseTime);
-	TweenMax.to(roundData.lightData.timeTween, roundData.lightData.countTime, {overwrite:true, onComplete:function(){
-		startRedLightCount();
-	}});
-	roundData.lightData.moveCon = true;
-}
-
-function startRedLightCount(){
-	playSound('soundLighOff');
-
-	itemLight.gotoAndStop('red');
-	gameData.doll.gotoAndPlay('peek');
-	
-	loopPlayerDead();
-
-	roundData.lightData.peekTime = decreaseTime(roundData.lightData.peekTime, gameSettings.game1.decreaseTime);
-	TweenMax.to(roundData.lightData.timeTween, roundData.lightData.peekTime, {overwrite:true, onComplete:function(){
-		startGreenLightCount();
-	}});
-
-	roundData.lightData.moveCon = false;
-}
-
-function decreaseTime(value, time){
-	value = value - time < 1 ? 1 : value;
-	return value;
-}
-
-function loopPlayerDead(){
-	var delayNum = Math.random() * randomChoice([.2, .5]);
-	TweenMax.to(roundData.lightData, delayNum, {overwrite:true, onComplete:function(){
-		var deadCon = false;
-		var nextDeadCount = 0;
-		for(var n=1; n<players.length; n++){
-			if(players[n].status == 'nextDead'){
-				if(!deadCon){
-					deadCon = true;
-					players[n].status = 'dead';
-					updatePlayerFrame(n, 'dead');
-				}
-				nextDeadCount++;
-			}
-		}
-
-		if(nextDeadCount > 0)
-			loopPlayerDead();
-	}});
-}
 
  /*!!
  * 
@@ -1299,237 +1219,15 @@ export function toggleGameControl(type, con){
 
  /*!!
  * 
- * BRIDGE GAME - This is the function that runs for bridge game
+ * RED LIGHT GREEN LIGHT GAME - This is the function that runs for red light green light game
  * 
  */
-export function moveFrontPlayer(){
-	gameData.interact = false;
-
-	var getPlayerIndex = roundData.bridgeData.turnArr.indexOf(roundData.bridgeData.playerIndex);
-	var player = players[getPlayerIndex];
-
-	roundData.bridgeData.lastPos = {z:player.z, offset:player.offset};
-
-	var newOffset = .2;
-	var stageMouseX = (stage.mouseX - (canvasW/2));
-	if(stageMouseX < 0){
-		newOffset = -newOffset;
-	}
-
-	var posData = {z:player.z + (defaultGameData.bridgeSteps * defaultData.segmentLength), offset:newOffset};
-	roundData.bridgeData.newPos = {z:posData.z, offset:posData.offset};
-
-	animatePlayerJump(player, posData, true, true);
-
-	var newCameraPostion = defaultData.position + (defaultGameData.bridgeSteps * defaultData.segmentLength);
-	TweenMax.to(defaultData, 1, {position:newCameraPostion, overwrite:true});
-}
-
-function animatePlayerJump(player, posData, con){
-	player.tweenData = {z:player.z, offset:player.offset};
-	player.bounceData = {y:0};
-	
-	var totalLength = (gameSettings.game5.length * defaultGameData.bridgeSteps) * defaultData.segmentLength;
-	totalLength += ((defaultGameData.bridgeStart - 2) * defaultData.segmentLength);
-	var moveSpeed = player.z > (defaultGameData.bridgeStart - 2) * defaultData.segmentLength ? 1 : .5;
-	if(player.z > totalLength + (defaultData.segmentLength * 2)){
-		moveSpeed = .5;
-	}
-	
-	if(moveSpeed == 1){
-		updatePlayerFrame(player.index, 'run');
-
-		TweenMax.to(player.bounceData, moveSpeed / 4, {y:300, ease:Power2.easeOut});
-  		TweenMax.to(player.bounceData, moveSpeed / 2, {y:0, ease:Bounce.easeOut, delay:moveSpeed / 4});
-
-		var randomFrame = Math.floor(Math.random()*3);
-		playSound('soundGlass'+(randomFrame+1));
-	}
-
-	TweenMax.to(player.tweenData, moveSpeed, {z:posData.z, offset:posData.offset, overwrite:true, onUpdate:function(){
-		oldSegment  = findSegment(player.z);
-
-		player.z = player.tweenData.z + player.bounceData.y;
-		player.offset = player.tweenData.offset;
-		player.percent = percentRemaining(player.z, defaultData.segmentLength);
-		var newSegment  = findSegment(player.z);
-		
-		if (oldSegment != newSegment) {
-			index = oldSegment.players.indexOf(player);
-			oldSegment.players.splice(index, 1);
-			newSegment.players.push(player);
-		}
-	}, onComplete:function(){
-		updatePlayerFrame(player.index, 'idle');
-
-		if(con){
-			roundData.bridgeData.fail = false;
-			var checkSide = posData.offset < 0 ? 0 : 1;
-			if(roundData.bridgeData.seqArrIndex < roundData.bridgeData.seqArr.length){
-				if(roundData.bridgeData.seqArr[roundData.bridgeData.seqArrIndex].side != checkSide){
-					roundData.bridgeData.newPos.offset = posData.offset > 0 ? -.2 : .2;
-					
-					roundData.bridgeData.fail = true;
-					roundData.bridgeData.seqArr[roundData.bridgeData.seqArrIndex].fail = true;
-					animatePlayerJumpFail(player);
-				}
-			}
-
-			roundData.bridgeData.seqArrIndex++;
-			moveOtherPlayers(true);
-
-			if(roundData.bridgeData.fail){
-				if(roundData.bridgeData.playerIndex >= roundData.bridgeData.turnArr.length-1){
-					endGame(false, false);
-				}
-			}
-		}else{
-			roundData.bridgeData.animateCount--;
-			if(roundData.bridgeData.animateCount == 0){
-				moveOtherPlayersComplete();
-			}
-		}
-	}});
-}
-
-function animatePlayerJumpFail(player){
-	var randomFrame = Math.floor(Math.random()*3);
-	playSound('soundScream'+(randomFrame+1));
-	playSound('soundGlassBroken');
-	TweenMax.to(player.sprite, .5, {alpha:0, overwrite:true, onComplete:function(){
-		player.active = false;
-	}});
-}
-
-function moveOtherPlayers(con){
-	gameData.interact = false;
-
-	var firstCount = con;
-	var animateCount = 0;
-	for(var n=roundData.bridgeData.playerIndex; n<roundData.bridgeData.turnArr.length; n++) {
-		var getPlayerIndex = roundData.bridgeData.turnArr.indexOf(n);
-		var player = players[getPlayerIndex];
-
-		if(!firstCount){
-			roundData.bridgeData.animateCount++;
-			animatePlayerJump(player, roundData.bridgeData.lastPos, false);
-			roundData.bridgeData.lastPos.z = player.z;
-			roundData.bridgeData.lastPos.offset = player.offset;
-			animateCount++;
-		}
-
-		firstCount = false;
-	}
-
-	if(animateCount == 0){
-		if(!roundData.bridgeData.fail){
-			moveLastStep();
-		}
-		gameData.interact = true;
-	}
-}
-
-function moveOtherPlayersComplete(){
-	gameData.interact = true;
-
-	if(roundData.bridgeData.fail){
-		roundData.bridgeData.fail = false;
-
-		roundData.bridgeData.lastPos.z = roundData.bridgeData.newPos.z;
-		roundData.bridgeData.lastPos.offset = roundData.bridgeData.newPos.offset;
-
-		roundData.bridgeData.playerIndex++;
-		moveOtherPlayers(false);
-	}else{
-		moveLastStep();
-	}
-}
-
-function moveLastStep(){
-	if(roundData.bridgeData.seqArrIndex >= roundData.bridgeData.seqArr.length){
-		var newOffset = Math.random() * randomChoice([-0.1, 0.1]);
-		roundData.bridgeData.newPos = {z:roundData.bridgeData.newPos.z + (defaultGameData.bridgeSteps * defaultData.segmentLength), offset:newOffset};
-
-		roundData.bridgeData.lastPos.z = roundData.bridgeData.newPos.z;
-		roundData.bridgeData.lastPos.offset = roundData.bridgeData.newPos.offset;
-
-		moveOtherPlayers(false);
-		endGame(true, false);
-	}
-}
 
  /*!!
  * 
- * CANDY GAME - This is the function that runs for candy game
+ * BRIDGE GAME - This is the function that runs for bridge game
  * 
  */
-export function initCandyDrawingPos(x, y){
-	roundData.candyData.x = x;
-	roundData.candyData.y = y;
-
-	var candyNum = roundData.candyData.candyNum;
-	for(var n = 0; n<gameSettings['game2'].candy[candyNum].checkpoint.length; n++) {
-		roundData.candyData.checkpoint.push({x:gameSettings['game2'].candy[candyNum].checkpoint[n].x - (itemCandyBase.image.naturalWidth/2), y:gameSettings['game2'].candy[candyNum].checkpoint[n].y - (itemCandyBase.image.naturalHeight/2), done:false});
-	}
-}
-
-export function checkCandyDrawingPos(x, y){
-	var doneCount = 0;
-	var distanceNum = 30;
-	for(var n = 0; n<roundData.candyData.checkpoint.length; n++) {
-		var getTwoDistance = getDistance(x, y, roundData.candyData.checkpoint[n].x, roundData.candyData.checkpoint[n].y);
-		if(getTwoDistance < distanceNum){
-			roundData.candyData.checkpoint[n].done = true;
-		}
-	}
-
-	for(var n = 0; n<roundData.candyData.checkpoint.length; n++) {
-		if(roundData.candyData.checkpoint[n].done){
-			doneCount++;
-		}
-	}
-
-	if(doneCount >= roundData.candyData.checkpoint.length){
-		var getTwoDistance = getDistance(x, y, roundData.candyData.x, roundData.candyData.y);
-		if(getTwoDistance < distanceNum){
-			toggleGameTimer(false);
-			revealCandy();
-		}
-	}
-}
-
-export function chooseRandomCandy(){
-	itemPixel.visible = true;
-	itemNeedle.visible = true;
-	itemCandyBase.visible = true;
-	roundData.candyData.candyNum = Math.floor(Math.random() * gameSettings.game2.candy.length);
-	
-	for(var n = 0; n<gameSettings['game2'].candy.length; n++) {
-		$.sprites['candy'+n].alpha = 0;
-		$.sprites['candyFinal'+n].alpha = 0;
-	}
-
-	$.sprites['candy'+roundData.candyData.candyNum].alpha = 1;
-	$.sprites['candyFinal'+roundData.candyData.candyNum].alpha = 0;
-}
-
-export function clearCandyDrawing(){
-	roundData.candyData.draw = false;
-	candyDrawing.graphics.clear();
-}
-
-export function revealCandy(){
-	itemPixel.visible = false;
-	itemNeedle.visible = false;
-	clearCandyDrawing();
-
-	TweenMax.to($.sprites['candy'+roundData.candyData.candyNum], .5, {alpha:0, overwrite:true});
-	$.sprites['candyFinal'+roundData.candyData.candyNum].alpha = 1;
-	itemCandyBase.visible = false;
-
-	playSound('soundCrackFinal');
-	endGame(true, false);
-}
 
  /*!!
  * 
@@ -1537,498 +1235,24 @@ export function revealCandy(){
  * 
  */
 
- export function startTugGame(){
-	TweenMax.to(roundData.tugData, 0, {overwrite:true, onComplete:function(){
-		playSoundLoop('soundRope');
-
-		var halfPeople = Math.floor(gameSettings.game3.players/2);
-		for(var n=0; n<players.length-1; n++){
-			var player = players[n];
-			player.sprite.sprite.gotoAndPlay('pull');
-
-			if(n >= halfPeople){
-				player.sprite.sprite.gotoAndPlay('frontpull');
-			}
-		}
-
-		playSound('soundLightOn');
-		itemLight.gotoAndStop('green');
-		loopTugMoveTimer();
-	}});
- }
-
- function loopTugMoveTimer(){
-	roundData.tugData.speed = getMaxTugSpeed(roundData.tugData.speed, randomInt(roundData.tugData.oppSpeed[0], roundData.tugData.oppSpeed[1]));
-	TweenMax.to(roundData.tugData.moveTween, .1, {overwrite:true, onComplete:function(){
-		loopTugMoveTimer();
-	}});
-}
-
-export function playerTugAction(){
-	roundData.tugData.speed = getMaxTugSpeed(roundData.tugData.speed, -randomInt(roundData.tugData.userSpeed[0], roundData.tugData.userSpeed[1]));
-}
-
-function getMaxTugSpeed(val, speed){
-	var maxVal = 100;
-	var result = val + speed;
-	result = result > maxVal ? maxVal : result;
-	result = result < -maxVal ? -maxVal : result;
-	return result;
-}
-
-export function endTugGame(){
-	if(roundData.followCamera){
-		roundData.followCamera = false;
-		gameData.interact = false;
-		TweenMax.killTweensOf(roundData.tugData.moveTween);
-
-		var roundWin = true;
-		var halfPeople = Math.floor(gameSettings.game3.players/2);
-		for(var n=0; n<players.length; n++){
-			var player = players[n];
-
-			if(n < halfPeople){
-				if(!player.active){
-					roundWin = false;
-				}
-			}else{
-				if(!player.active){
-					roundWin = true;
-				}
-			}
-		}
-
-		var newSpeed = 1200;
-		if(roundWin){
-			endGame(true, false);
-			newSpeed = -newSpeed;
-		}else{
-			endGame(false, false);
-		}
-
-		TweenMax.to(roundData.tugData, 1, {speed:newSpeed, overwrite:true, onComplete:function(){
-			TweenMax.to(roundData.tugData, .5, {delay:1, speed:0, overwrite:true, onComplete:function(){
-				
-			}});
-		}});
-	}
-}
-
- /*!!
- * 
- * MARBLE GAME - This is the function that runs for marble game
- * 
- */
-export function resetMarbleGame(){
-	for(var n = 0; n<3; n++) {
-		$.sprites['marbleBall'+n].visible = false;
-	}
-
-	$.sprites['hand'+0].sprite.gotoAndStop(1);
-	$.sprites['hand'+1].sprite.gotoAndStop(1);
-
-	handButtonContainer.visible = false;
-	$.sprites['handWinStatTxt0'].text = '';
-	$.sprites['handWinStatTxt1'].text = '';
-
-	updateMarbleStats()
-}
-
-export function changeMarbleTurn(){
-	for(var n = 0; n<3; n++) {
-		$.sprites['marbleBall'+n].visible = false;
-	}
-
-	$.sprites['hand'+0].sprite.gotoAndStop(1);
-	$.sprites['hand'+1].sprite.gotoAndStop(1);
-
-	var circleRange = 50;
-	roundData.marbleData.chooseNum = 0;
-	roundData.marbleData.guessNum = 1;
-	roundData.marbleData.result = randomBoolean();
-
-	var pathArr = [{x:0, y:0}, {x:-circleRange, y:-circleRange}, {x:-(circleRange * 2), y:0}, {x:-circleRange, y:circleRange}, {x:0, y:0}];
-
-	if(roundData.marbleData.turn == 1){
-		if(roundData.marbleData.user == 1){
-			roundData.marbleData.result = false;
-		}
-
-		roundData.marbleData.chooseNum = 1;
-		roundData.marbleData.guessNum = 0;
-		pathArr = [{x:0, y:0}, {x:circleRange, y:-circleRange}, {x:circleRange * 2, y:0}, {x:circleRange, y:circleRange}, {x:0, y:0}];
-	}else{
-		//user
-		if(roundData.marbleData.opponent == 1){
-			roundData.marbleData.result = false;
-		}
-	}
-
-	playSound('soundMarbleRoll');
-	TweenMax.to($.sprites['handWrap'+roundData.marbleData.guessNum], .5, {bezier:{curviness:1, values:pathArr}, ease:Linear.easeNone, overwrite:true, repeat:1, onComplete:function(){
-		changeMarbleTurnComplete();
-	}})
-}
-
-function changeMarbleTurnComplete(){
-	$.sprites['hand'+roundData.marbleData.chooseNum].sprite.gotoAndStop(0);
-
-	handButtonContainer.visible = false;
-	if(roundData.marbleData.turn == 0){
-		handButtonContainer.visible = true;
-	}else{
-		TweenMax.to(handContainer, .5, {overwrite:true, onComplete:function(){
-			roundData.marbleData.oppResult = randomBoolean();
-
-			if(roundData.marbleData.user == 1){
-				roundData.marbleData.oppResult = false;
-			}
-			toggleHandStatus(roundData.marbleData.oppResult);
-		}});
-	}
-}
-
-export function toggleHandStatus(con){
-	toggleGameInstruction(false);
-	showMarbleResult(con);
-}
-
-function showMarbleResult(result){
-	handButtonContainer.visible = false;
-
-	var resultTxt = result == true ? gameTextDisplay.even : gameTextDisplay.odd;
-	var tweenSpeed = .8;
-
-	if(roundData.marbleData.turn == 1){
-		tweenSpeed = 1.3;
-		$.sprites['handWinStatTxt'+roundData.marbleData.guessNum].text = resultTxt;
-	}
-
-	TweenMax.to(handContainer, tweenSpeed, {overwrite:true, onComplete:function(){
-		$.sprites['handWinStatTxt0'].text = '';
-		$.sprites['handWinStatTxt1'].text = '';
-		$.sprites['hand'+roundData.marbleData.guessNum].sprite.gotoAndStop(2);
-
-		var guessX = roundData.marbleData.guessNum == 1 ? roundData.marbleData.ballX : -roundData.marbleData.ballX;
-		var guessY = 0;
-		var chooseX = roundData.marbleData.guessNum == 1 ? -roundData.marbleData.ballX : roundData.marbleData.ballX;
-		var totalBall = 1;
-
-		if(roundData.marbleData.result){
-			totalBall = 2;
-		}
-
-		var randomDis = 50;
-		for(var n = 0; n<totalBall; n++) {
-			$.sprites['marbleBall'+n].visible = true;
-			$.sprites['marbleBall'+n].x = guessX + randomInt(-randomDis, randomDis) + (n * 20);
-			$.sprites['marbleBall'+n].y = guessY + randomInt(-randomDis, randomDis) + (n * 20);
-		}
-
-		TweenMax.to(handContainer, 1, {overwrite:true, onComplete:function(){
-			$.sprites['hand'+roundData.marbleData.chooseNum].sprite.gotoAndStop(2);
-			
-			var randomBall = 0;
-			if(totalBall > 1){
-				randomBall = Math.floor(Math.random()*2);
-			}
-			if(roundData.marbleData.result == result){
-				$.sprites['marbleBall'+randomBall].visible = true;
-
-				TweenMax.to($.sprites['marbleBall'+randomBall], .5, {x:chooseX, overwrite:true, onComplete:function(){
-					endMarbleTurn(true);
-				}})
-			}else{
-				$.sprites['marbleBall'+2].x = chooseX;
-				$.sprites['marbleBall'+2].visible = true;
-
-				TweenMax.to($.sprites['marbleBall'+2], .5, {x:guessX, overwrite:true, onComplete:function(){
-					endMarbleTurn(false);
-				}})
-			}
-		}})
-	}})
-}
-
-function endMarbleTurn(win){
-	playSound('soundMarbleHit');
-	
-	if(roundData.marbleData.turn == 0){
-		if(win){
-			roundData.marbleData.user++;
-			roundData.marbleData.opponent--;
-		}else{
-			roundData.marbleData.user--;
-			roundData.marbleData.opponent++;
-		}
-	}else{
-		if(win){
-			roundData.marbleData.user--;
-			roundData.marbleData.opponent++;
-		}else{
-			roundData.marbleData.user++;
-			roundData.marbleData.opponent--;
-		}
-	}
-
-	updateMarbleStats();
-
-	TweenMax.to(handContainer, .5, {overwrite:true, onComplete:function(){
-		if(roundData.marbleData.turn == 1){
-			roundData.marbleData.turn = 0;
-		}else{
-			roundData.marbleData.turn = 1;
-		}
-
-		var finalTotalBall = gameSettings.game4.totalBall * 2;
-		if(roundData.marbleData.user >= finalTotalBall){
-			endGame(true, false);
-		}else if(roundData.marbleData.opponent >= finalTotalBall){
-			endGame(false, false);
-		}else{
-			changeMarbleTurn();
-		}
-	}})	
-}
-
-function updateMarbleStats(){
-	roundData.survivalData.instruction = false;
-	playSound('soundMarble');
-
-	$.sprites['handMarbleBallTxt0'].text = 'x' + roundData.marbleData.user;
-	$.sprites['handMarbleBallTxt1'].text = 'x' + roundData.marbleData.opponent;	
-}
-
  /*!!
  * 
  * SURVIVAL GAME - This is the function that runs for survival game
  * 
  */
- export function startSurvivalGame(){
-	itemControl.visible = true;
-	itemControl.alpha = 1;
-	roundData.survivalData.turn = randomBoolean();
-	swithTurn();
-	beginSurvivalRound(3);
-}
-
-function beginSurvivalRound(time){
-	TweenMax.to(roundData.survivalData, time, {overwrite:true, onComplete:function(){
-		gameData.interact = true;
-
-		itemLight.gotoAndStop('green');
-		playSound('soundLightOn');
-		toggleGameTimer(true);
-
-		if(!roundData.survivalData.instruction){
-			roundData.survivalData.instruction = true;
-			toggleGameInstruction(true);
-		}
-
-		roundData.survivalData.start = true;
-	}});
-}
-
-function stopSurvivalRound(){
-	gameData.interact = false;
-
-	timerTxt.text = millisecondsToTimeGame(timeData.countdown);
-	roundData.survivalData.start = false;
-	roundData.survivalData.move = false;
-	
-	if(randomBoolean()){
-		updatePlayerFrame(0, 'idle');
-	}else{
-		updatePlayerFrame(0, 'front');
-	}
-	if(randomBoolean()){
-		updatePlayerFrame(1, 'idle');
-	}else{
-		updatePlayerFrame(1, 'front');
-	}
-
-	toggleGameTimer(false);
-	itemLight.gotoAndStop('red');
-	playSound('soundLightOff');
-
-	swithTurn();
-	beginSurvivalRound(3);
-}
-
- export function swithTurn(){
-	roundData.survivalData.oppData.speedTime = 0;
-
-	if(roundData.survivalData.turn){
-		roundData.survivalData.turn = false;
-	}else{
-		roundData.survivalData.turn = true;
-	}
-
-	var userTxt = gameTextDisplay.kill;
-	var oppTxt = gameTextDisplay.run;
-	if(roundData.survivalData.turn){
-		userTxt = gameTextDisplay.run;
-		oppTxt = gameTextDisplay.kill;
-	}
-
-	$.sprites['healthTypeTxt'+0].text = $.sprites['healthTypeShadowTxt'+0].text = userTxt;
-	$.sprites['healthTypeTxt'+1].text = $.sprites['healthTypeShadowTxt'+1].text = oppTxt;
-
-	$.sprites['healthType'+0].x = $.sprites['healthType'+0].oriX + 50;
-	$.sprites['healthType'+0].alpha = 0;
-	TweenMax.to($.sprites['healthType'+0], .5, {x:$.sprites['healthType'+0].oriX, alpha:1, overwrite:true});
-
-	$.sprites['healthType'+1].x = $.sprites['healthType'+1].oriX - 50;
-	$.sprites['healthType'+1].alpha = 0;
-	TweenMax.to($.sprites['healthType'+1], .5, {x:$.sprites['healthType'+1].oriX, alpha:1, overwrite:true});
-
-	playSound('soundSwitch');
- }
-
-function getOppAway(){
-	var targetPlayer = players[0];
-	var oppPlayer = players[1];
-
-	var distanceZ = targetPlayer.z - oppPlayer.z;
-	var distanceX = targetPlayer.offset - oppPlayer.offset;
-	var rangeNumZ = 800;
-	var rangeNumX = .3;
-	var startZ = defaultGameData.survivalStart * defaultData.segmentLength;
-	var endZ = (defaultGameData.survivalStart + gameSettings.game6.length) * defaultData.segmentLength;
-	var randomX = false;
-
-	if(Math.abs(distanceX) < rangeNumX - .1){
-		if(distanceX < 0){
-			roundData.survivalData.oppData.offset = targetPlayer.offset + roundData.survivalData.oppData.speedX;
-			if(roundData.survivalData.oppData.offset >= 1){
-				roundData.survivalData.oppData.offset = targetPlayer.offset - roundData.survivalData.oppData.speedX;
-			}
-		}else if(distanceX > 0){
-			roundData.survivalData.oppData.offset = targetPlayer.offset - roundData.survivalData.oppData.speedX;
-			if(roundData.survivalData.oppData.offset <= -1){
-				roundData.survivalData.oppData.offset = targetPlayer.offset + roundData.survivalData.oppData.speedX;
-			}
-		}
-	}else{
-		randomX = true;
-	}
-
-	if(Math.abs(distanceZ) < rangeNumZ - 50){
-		roundData.survivalData.oppData.time = 0;
-
-		if(distanceZ < 0){
-			roundData.survivalData.oppData.z = targetPlayer.z + rangeNumZ;
-			if(roundData.survivalData.oppData.z >= endZ){
-				roundData.survivalData.oppData.z = targetPlayer.z - rangeNumZ;
-			}
-		}else if(distanceZ > 0){
-			roundData.survivalData.oppData.z = targetPlayer.z - rangeNumZ;
-			if(roundData.survivalData.oppData.z <= startZ){
-				roundData.survivalData.oppData.z = targetPlayer.z + rangeNumZ;
-			}
-		}
-	}else{
-		//random
-		if(roundData.survivalData.oppData.time > 0){
-			roundData.survivalData.oppData.time--;
-		}else{
-			roundData.survivalData.oppData.time = randomInt(10, 20);
-			roundData.survivalData.oppData.z = randomInt(defaultGameData.survivalStart, defaultGameData.survivalStart + gameSettings.game6.length) * defaultData.segmentLength;
-
-			if(randomX){
-				roundData.survivalData.oppData.offset = Math.random() * randomChoice([-0.8, 0.8]);
-			}
-		}
-	}
-}
-
-function updatePlayerMoveSpeed(){
-	if(roundData.survivalData.oppData.speedTime > 0){
-		roundData.survivalData.oppData.speedTime--;
-	}else{
-		roundData.survivalData.oppData.speedTime = randomInt(30, 50);
-
-		if(roundData.survivalData.turn){
-			//opp kill
-			roundData.survivalData.oppData.speedX = .3;
-			roundData.survivalData.oppData.speedZ = randomInt(defaultGameData.survivalSpeed-300, defaultGameData.survivalSpeed+100);
-		}else{
-			roundData.survivalData.oppData.speedX = .3;
-			roundData.survivalData.oppData.speedZ = randomInt(defaultGameData.survivalSpeed-900, defaultGameData.survivalSpeed-600);
-		}
-	}
-}
-
-function updatePlayerHealth(){
-	if(!roundData.survivalData.start){
-		return;
-	}
-
-	var targetPlayer = players[0];
-	var oppPlayer = players[1];
-
-	var distanceZ = targetPlayer.z - oppPlayer.z;
-	var distanceX = targetPlayer.offset - oppPlayer.offset;
-	var healthDec = 15;
-
-	if(Math.abs(distanceZ) < 100){
-		if(roundData.survivalData.healthTime > 0){
-			roundData.survivalData.healthTime--;
-		}else{
-			roundData.survivalData.healthTime = 20;
-			
-			var disNum = 50 * defaultData.scale;
-			if(Math.abs(distanceX) <= disNum){
-				if(!roundData.survivalData.turn){
-					roundData.survivalData.oppHealth -= healthDec;
-					roundData.survivalData.oppHealth = roundData.survivalData.oppHealth < 0 ? 0 : roundData.survivalData.oppHealth;
-				}else{
-					roundData.survivalData.userHealth -= healthDec;
-					roundData.survivalData.userHealth = roundData.survivalData.userHealth < 0 ? 0 : roundData.survivalData.userHealth;
-				}
-
-				var randomFrame = Math.floor(Math.random()*3);
-				playSound('soundStab'+(randomFrame+1));
-				updatePlayerHealthBar();
-			}
-		}
-	}
-
-	if(roundData.survivalData.userHealth <= 0){
-		targetPlayer.status = 'dead';
-		updatePlayerFrame(0, 'dead');
-		toggleGameTimer(false);
-		endGame(false, false);
-	}
-
-	if(roundData.survivalData.oppHealth <=  0){
-		oppPlayer.status = 'dead';
-		updatePlayerFrame(1, 'dead');
-		toggleGameTimer(false);
-		endGame(true, false);
-	}
-}
-
-export function updatePlayerHealthBar(){
-	var userBar = roundData.survivalData.userHealth/100 * defaultGameData.survivalBarW;
-	var oppBar = roundData.survivalData.oppHealth/100 * defaultGameData.survivalBarW;
-
-	$.sprites['healthGreen'+0].graphics.clear().beginFill(gameSettings.game6.bar.health).drawRect(0, 0, userBar, defaultGameData.survivalBarH);
-	TweenMax.to($.sprites['healthBlood'+0], .5, {delay:.5, overwrite:true, onComplete:function(){
-		$.sprites['healthBlood'+0].graphics.clear().beginFill(gameSettings.game6.bar.blood).drawRect(0, 0, userBar, defaultGameData.survivalBarH);
-	}});
-
-	$.sprites['healthGreen'+1].graphics.clear().beginFill(gameSettings.game6.bar.health).drawRect(0, 0, oppBar, defaultGameData.survivalBarH);
-	TweenMax.to($.sprites['healthBlood'+1], .5, {delay:.5, overwrite:true, onComplete:function(){
-		$.sprites['healthBlood'+1].graphics.clear().beginFill(gameSettings.game6.bar.blood).drawRect(0, 0, oppBar, defaultGameData.survivalBarH);
-	}});
-}
 
 /*!
  * 
  * STOP GAME - This is the function that runs to stop play game
  * 
  */
+
+ /*!!
+ * 
+ * MARBLE GAME - This is the function that runs for marble game
+ * 
+ */
+
 export function stopGame(){
 	gameData.paused = true;
 
@@ -2128,7 +1352,7 @@ export function updateGame(){
  * GAME TIMER - This is the function that runs for game timer
  * 
  */
-function toggleGameTimer(con){	
+export function toggleGameTimer(con){	
 	if(con){
 		timeData.startDate = new Date();
 	}else{
@@ -2445,7 +1669,7 @@ function updatePlayers(dt) {
 	}
 }
 
-function updatePlayerFrame(index, action){
+export function updatePlayerFrame(index, action){
 	if(players[index].action != action){
 		players[index].action = action;
 		players[index].sprite.sprite.gotoAndPlay(action);
@@ -2602,7 +1826,7 @@ function renderWorld() {
   	}
 }
 
-function findSegment(z) {
+export function findSegment(z) {
 	return segments[Math.floor(z/defaultData.segmentLength) % segments.length]; 
 }
 
@@ -2853,7 +2077,6 @@ function resetPlayers() {
 
 export function randomPlayerNumber(){
 	var playerNumber = randomInt(1, 999);
-
 	return pad(playerNumber, 3);
 }
 
@@ -2862,7 +2085,7 @@ export function randomPlayerNumber(){
  * END GAME - This is the function that runs for end game
  * 
  */
-function endGame(win, timer){
+export function endGame(win, timer){
 	if(!gameData.ended){
 		playerData.win = win;
 		toggleGameInstruction(false);
@@ -2956,7 +2179,7 @@ function endGame(win, timer){
  * MILLISECONDS CONVERT - This is the function that runs to convert milliseconds to time
  * 
  */
-function millisecondsToTimeGame(milli) {
+export function millisecondsToTimeGame(milli) {
 	var milliseconds = milli % 1000;
 	var seconds = Math.floor((milli / 1000) % 60);
 	var minutes = Math.floor((milli / (60 * 1000)) % 60);

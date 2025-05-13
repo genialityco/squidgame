@@ -2,6 +2,7 @@ import { players_arr, guards_arr, gameData, gameSettings } from './game.js'; // 
 import { checkMobileEvent, resizeGameFunc } from './mobile.js';
 import { isTablet } from './helpers/device.js'; // Import isTablet helper
 import { initMain } from './main.js'; // Import initMain
+// import {enableDesktopSound, enableMobileSound} from './sound.js'; // Import sound variables
 
 export let loader; // Export loader
 
@@ -104,7 +105,7 @@ export function initPreload(){
 		addScoreboardAssets();
 	}
 	
-	soundOn = true;
+	let soundOn = true;
 	if ($.browser.mobile || isTablet()) { // Use isTablet function
 		if (!enableMobileSound) {
 			soundOn = false;

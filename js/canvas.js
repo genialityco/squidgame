@@ -432,7 +432,8 @@ export function buildGameCanvas() { // Export buildGameCanvas
 	$.sprites['handStat'+1].x = 250;
 	$.sprites['handStat'+0].y = $.sprites['handStat'+1].y = 220;
 
-	let itemCenter = new createjs.Bitmap(loader.getResult('itemCenter'));
+
+	itemCenter = new createjs.Bitmap(loader.getResult('itemCenter'));
 
 	for(var n = 0; n<2; n++) {
 		$.sprites['health'+n] = new createjs.Container();

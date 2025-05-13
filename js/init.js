@@ -1,3 +1,5 @@
+// import {checkContentWidth, checkContentHeight} from './plugins.js';
+// import { getDeviceVer } from './plugins.js';
 import { initPreload } from './loader.js';
 
 ////////////////////////////////////////////////////////////

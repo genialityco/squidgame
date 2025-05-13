@@ -1,5 +1,5 @@
 import {worldContainer, canvasH} from './canvas.js';
-import { gameData, defaultGameData, gameSettings,defaultData} from './game.js';
+import { gameData, defaultGameData, gameSettings,defaultData,roundData} from './game.js';
 
 
 export function renderPolygon(x1, y1, x2, y2, x3, y3, x4, y4, color, alpha, index){
