@@ -118,49 +118,49 @@ export function initPreload(){
 		}
 	}
 	
-	if(soundOn){
-		manifest.push({src:'assets/sounds/music.ogg', id:'musicGame'});
+	// if(soundOn){
+	// 	manifest.push({src:'assets/sounds/music.ogg', id:'musicGame'});
 		
-		manifest.push({src:'assets/sounds/click.ogg', id:'soundClick'});
-		manifest.push({src:'assets/sounds/fail.ogg', id:'soundFail'});
-		manifest.push({src:'assets/sounds/win.ogg', id:'soundWin'});
-		manifest.push({src:'assets/sounds/complete.ogg', id:'soundComplete'});
-		manifest.push({src:'assets/sounds/lighton.ogg', id:'soundLightOn'});
-		manifest.push({src:'assets/sounds/lightoff.ogg', id:'soundLightOff'});
-		manifest.push({src:'assets/sounds/shot1.ogg', id:'soundShot1'});
-		manifest.push({src:'assets/sounds/shot2.ogg', id:'soundShot2'});
-		manifest.push({src:'assets/sounds/shot3.ogg', id:'soundShot3'});
-		manifest.push({src:'assets/sounds/crack1.ogg', id:'soundCrack1'});
-		manifest.push({src:'assets/sounds/crack2.ogg', id:'soundCrack2'});
-		manifest.push({src:'assets/sounds/crack3.ogg', id:'soundCrack3'});
-		manifest.push({src:'assets/sounds/crack_error.ogg', id:'soundCrackError'});
-		manifest.push({src:'assets/sounds/crack_final.ogg', id:'soundCrackFinal'});
-		manifest.push({src:'assets/sounds/glass1.ogg', id:'soundGlass1'});
-		manifest.push({src:'assets/sounds/glass2.ogg', id:'soundGlass2'});
-		manifest.push({src:'assets/sounds/glass3.ogg', id:'soundGlass3'});
-		manifest.push({src:'assets/sounds/glass_broken.ogg', id:'soundGlassBroken'});
-		manifest.push({src:'assets/sounds/sand1.ogg', id:'soundSand1'});
-		manifest.push({src:'assets/sounds/sand2.ogg', id:'soundSand2'});
-		manifest.push({src:'assets/sounds/sand3.ogg', id:'soundSand3'});
-		manifest.push({src:'assets/sounds/marble.ogg', id:'soundMarble'});
-		manifest.push({src:'assets/sounds/marble_roll.ogg', id:'soundMarbleRoll'});
-		manifest.push({src:'assets/sounds/marble_hit.ogg', id:'soundMarbleHit'});
-		manifest.push({src:'assets/sounds/scream1.ogg', id:'soundScream1'});
-		manifest.push({src:'assets/sounds/scream2.ogg', id:'soundScream2'});
-		manifest.push({src:'assets/sounds/scream3.ogg', id:'soundScream3'});
-		manifest.push({src:'assets/sounds/ropecracking.ogg', id:'soundRope'});
-		manifest.push({src:'assets/sounds/stab1.ogg', id:'soundStab1'});
-		manifest.push({src:'assets/sounds/stab2.ogg', id:'soundStab2'});
-		manifest.push({src:'assets/sounds/stab3.ogg', id:'soundStab3'});
-		manifest.push({src:'assets/sounds/switch.ogg', id:'soundSwitch'});
+	// 	manifest.push({src:'assets/sounds/click.ogg', id:'soundClick'});
+	// 	manifest.push({src:'assets/sounds/fail.ogg', id:'soundFail'});
+	// 	manifest.push({src:'assets/sounds/win.ogg', id:'soundWin'});
+	// 	manifest.push({src:'assets/sounds/complete.ogg', id:'soundComplete'});
+	// 	manifest.push({src:'assets/sounds/lighton.ogg', id:'soundLightOn'});
+	// 	manifest.push({src:'assets/sounds/lightoff.ogg', id:'soundLightOff'});
+	// 	manifest.push({src:'assets/sounds/shot1.ogg', id:'soundShot1'});
+	// 	manifest.push({src:'assets/sounds/shot2.ogg', id:'soundShot2'});
+	// 	manifest.push({src:'assets/sounds/shot3.ogg', id:'soundShot3'});
+	// 	manifest.push({src:'assets/sounds/crack1.ogg', id:'soundCrack1'});
+	// 	manifest.push({src:'assets/sounds/crack2.ogg', id:'soundCrack2'});
+	// 	manifest.push({src:'assets/sounds/crack3.ogg', id:'soundCrack3'});
+	// 	manifest.push({src:'assets/sounds/crack_error.ogg', id:'soundCrackError'});
+	// 	manifest.push({src:'assets/sounds/crack_final.ogg', id:'soundCrackFinal'});
+	// 	manifest.push({src:'assets/sounds/glass1.ogg', id:'soundGlass1'});
+	// 	manifest.push({src:'assets/sounds/glass2.ogg', id:'soundGlass2'});
+	// 	manifest.push({src:'assets/sounds/glass3.ogg', id:'soundGlass3'});
+	// 	manifest.push({src:'assets/sounds/glass_broken.ogg', id:'soundGlassBroken'});
+	// 	manifest.push({src:'assets/sounds/sand1.ogg', id:'soundSand1'});
+	// 	manifest.push({src:'assets/sounds/sand2.ogg', id:'soundSand2'});
+	// 	manifest.push({src:'assets/sounds/sand3.ogg', id:'soundSand3'});
+	// 	manifest.push({src:'assets/sounds/marble.ogg', id:'soundMarble'});
+	// 	manifest.push({src:'assets/sounds/marble_roll.ogg', id:'soundMarbleRoll'});
+	// 	manifest.push({src:'assets/sounds/marble_hit.ogg', id:'soundMarbleHit'});
+	// 	manifest.push({src:'assets/sounds/scream1.ogg', id:'soundScream1'});
+	// 	manifest.push({src:'assets/sounds/scream2.ogg', id:'soundScream2'});
+	// 	manifest.push({src:'assets/sounds/scream3.ogg', id:'soundScream3'});
+	// 	manifest.push({src:'assets/sounds/ropecracking.ogg', id:'soundRope'});
+	// 	manifest.push({src:'assets/sounds/stab1.ogg', id:'soundStab1'});
+	// 	manifest.push({src:'assets/sounds/stab2.ogg', id:'soundStab2'});
+	// 	manifest.push({src:'assets/sounds/stab3.ogg', id:'soundStab3'});
+	// 	manifest.push({src:'assets/sounds/switch.ogg', id:'soundSwitch'});
 
-		manifest.push({src:'assets/sounds/sound_beep.ogg', id:'soundCountdown'});
-		manifest.push({src:'assets/sounds/sound_beep_end.ogg', id:'soundCountdownEnd'});
-		manifest.push({src:'assets/sounds/sound_beep_close.ogg', id:'soundCountdownClose'});
+	// 	manifest.push({src:'assets/sounds/sound_beep.ogg', id:'soundCountdown'});
+	// 	manifest.push({src:'assets/sounds/sound_beep_end.ogg', id:'soundCountdownEnd'});
+	// 	manifest.push({src:'assets/sounds/sound_beep_close.ogg', id:'soundCountdownClose'});
 		
-		createjs.Sound.alternateExtensions = ["mp3"];
-		loader.installPlugin(createjs.Sound);
-	}
+	// 	createjs.Sound.alternateExtensions = ["mp3"];
+	// 	loader.installPlugin(createjs.Sound);
+	// }
 	
 	loader.addEventListener("complete", handleComplete);
 	loader.addEventListener("fileload", fileComplete);

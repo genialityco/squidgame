@@ -8,8 +8,9 @@
 import { decreaseTime } from "../helpers/time.js"; // Import time helper
 import { updatePlayerFrame } from "../game.js"; // Import player helper
 import { defaultGameData, roundData, players, gameData } from "../game.js"; // Import shared variables
-import { gameSettings } from '../gameSettings.js';
+import { gameSettings } from "../gameSettings.js";
 import { itemLight } from "../canvas.js"; // Import shared variables
+import { showQuestionModal } from "../questionModal.js";
 // import { playSound } from "../sound.js"; // Import sound helper
 //import { playSound } from "../sound.js"; // Import sound helper
 
@@ -24,27 +25,42 @@ export function startGreenLightCount() {
   for (var n = 1; n < players.length; n++) {
     if (players[n].status == "") {
       var countTime = roundData.lightData.countTime * 1000;
-      players[n].speed = randomInt(defaultGameData.playerSpeed[0], defaultGameData.playerSpeed[1]);
+      players[n].speed = randomInt(
+        defaultGameData.playerSpeed[0],
+        defaultGameData.playerSpeed[1]
+      );
       players[n].moveTime = randomInt(countTime - 500, countTime);
-      players[n].sandTime = randomInt(defaultGameData.sandTime[0], defaultGameData.sandTime[1]);
+      players[n].sandTime = randomInt(
+        defaultGameData.sandTime[0],
+        defaultGameData.sandTime[1]
+      );
       activePlayers.push(n);
     }
   }
 
   shuffle(activePlayers);
 
-  var totalPlayerDead = randomInt(gameSettings.game1.dead[0], gameSettings.game1.dead[1]);
+  var totalPlayerDead = randomInt(
+    gameSettings.game1.dead[0],
+    gameSettings.game1.dead[1]
+  );
   for (var n = 0; n < totalPlayerDead; n++) {
     if (n < activePlayers.length) {
       var playerIndex = activePlayers[n];
       var countTime = roundData.lightData.countTime * 1000;
       players[n].moveTime = randomInt(countTime, countTime + 500);
-      players[n].sandTime = randomInt(defaultGameData.sandTime[0], defaultGameData.sandTime[1]);
+      players[n].sandTime = randomInt(
+        defaultGameData.sandTime[0],
+        defaultGameData.sandTime[1]
+      );
       players[playerIndex].status = "nextDead";
     }
   }
 
-  roundData.lightData.countTime = decreaseTime(roundData.lightData.countTime, gameSettings.game1.decreaseTime);
+  roundData.lightData.countTime = decreaseTime(
+    roundData.lightData.countTime,
+    gameSettings.game1.decreaseTime
+  );
   TweenMax.to(roundData.lightData.timeTween, roundData.lightData.countTime, {
     overwrite: true,
     onComplete: function () {
@@ -59,10 +75,14 @@ export function startRedLightCount() {
 
   itemLight.gotoAndStop("red");
   gameData.doll.gotoAndPlay("peek");
+  showQuestionModal();
 
   loopPlayerDead();
 
-  roundData.lightData.peekTime = decreaseTime(roundData.lightData.peekTime, gameSettings.game1.decreaseTime);
+  roundData.lightData.peekTime = decreaseTime(
+    roundData.lightData.peekTime,
+    gameSettings.game1.decreaseTime
+  );
   TweenMax.to(roundData.lightData.timeTween, roundData.lightData.peekTime, {
     overwrite: true,
     onComplete: function () {
