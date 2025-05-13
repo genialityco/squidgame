@@ -87,10 +87,7 @@ function pauseGameForModal() {
     timeData.savedTime = timeData.timer;
   }
 
-  toggleGameTimer(false);
-
-  TweenMax.pauseTweensOf(roundData.lightData.timeTween);
-}
+  toggleGameTimer(false);}
 
 function resumeGameAfterModal() {
   TweenMax.resumeAll(true, true);
