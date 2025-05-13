@@ -7,6 +7,7 @@ import {
   candyDrawing,
 } from "../canvas.js";
 import { gameSettings } from "../gameSettings.js";
+import { showPreGameQuestions } from "./pregameQuestions.js";
 // import {playSound} from "../sound.js"; // Import sound helper
 
 

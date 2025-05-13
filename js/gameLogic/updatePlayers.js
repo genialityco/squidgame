@@ -1,6 +1,7 @@
 
 import { updatePlayerFrame } from "../game.js"; // Import player helper
-import { defaultGameData, roundData, players, gameData, endGame,findSegment,defaultData } from "../game.js"; // Import shared variables
+import { defaultGameData, roundData, players, gameData, worldData, endGame,findSegment,defaultData } from "../game.js"; // Import shared variables
+import { endTugGame } from "../games/TugGame.js";
 import { gameSettings } from '../gameSettings.js';
 
 export function updatePlayers(dt) {

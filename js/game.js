@@ -89,7 +89,7 @@ import { gameTextDisplay } from "./gameTextDisplay.js";
 import { gameSettings } from "./gameSettings.js";
 import { updatePlayers } from "./gameLogic/updatePlayers.js";
 import { share } from "./helpers/social.js"; // Import social share helper
-import {updateScore} from "./helpers/score.js"; // Import updateScore function
+import { updateScore } from "./helpers/score.js"; // Import updateScore function
 // import {randomInt, getIncrease,pad} from './plugins.js'
 ////////////////////////////////////////////////////////////
 // GAMES
@@ -121,6 +121,7 @@ import {
   stopSurvivalRound,
 } from "./games/SurvivalGame.js";
 import { moveFrontPlayer } from "./games/BridgeGame.js";
+import { showPreGameQuestions } from "./games/pregameQuestions.js";
 
 //player assets
 export var players_arr = [{ src: "assets/player.png" }];
@@ -207,7 +208,7 @@ export var defaultGameData = {
   survivalBarBorder: 3,
 };
 
-var worldData = {};
+export var worldData = {};
 var segments = [];
 export var players = [];
 var background = null;
@@ -392,7 +393,6 @@ export function buildGameButton() {
       .s(gameSettings.game2.drawColor);
 
     initCandyDrawingPos(event.stageX - canvasW / 2, event.stageY - canvasH / 2);
-	startCandyGame();
   });
 
   itemCandyBase.addEventListener("pressmove", function (event) {
@@ -566,8 +566,8 @@ export function goPage(page) {
       logo.visible = true;
       buttonStart.visible = true;
       piggyContainer.visible = true;
-      gameData.roundNum = 1;
-      gameData.roundSelect = 1;
+      gameData.roundNum = 4;
+      gameData.roundSelect = 4;
       toggleRound(true);
       prepareRound();
       resetWorld();
@@ -814,7 +814,9 @@ export function prepareRound() {
     roundData.players.endZ = 25;
     roundData.players.playerZ = 10;
 
-    chooseRandomCandy();
+    // chooseRandomCandy();
+    // Inicia el juego de la galleta, con las preguntas al inicio
+    // startCandyGame();
   } else if (gameData.roundNum == 3) {
     worldContainer.y = -100;
 
@@ -992,12 +994,10 @@ function displayGameRound(round, win) {
   roundNameShadowTxt.color =
     gameSettings["game" + gameData.roundNum].textShadowColor;
 
-
-
   if (round) {
     roundNameTxt.text = roundNameShadowTxt.text =
       gameSettings["game" + gameData.roundNum].name;
-  } else {	
+  } else {
     if (win) {
       playSound("soundComplete");
       roundNameTxt.text = roundNameShadowTxt.text =
@@ -1125,7 +1125,9 @@ export function startPanCamera() {
       position: totalLength,
       overwrite: true,
       onComplete: function () {
-        startGameRound();
+        showPreGameQuestions(() => {
+          startGameRound();
+        });
       },
     });
   } else if (gameData.roundNum == 6) {
@@ -1138,7 +1140,9 @@ export function startPanCamera() {
       overwrite: true,
       onComplete: function () {
         roundData.followCamera = true;
-        startSurvivalGame();
+        showPreGameQuestions(() => {
+          startSurvivalGame();
+        });
       },
     });
   }
@@ -1182,6 +1186,7 @@ export function startGameRound() {
       overwrite: true,
       onComplete: function () {},
     });
+    startCandyGame();
   } else if (gameData.roundNum == 3) {
     startTugGame();
   } else if (gameData.roundNum == 4) {
@@ -1199,7 +1204,9 @@ export function startGameRound() {
       alpha: 1,
       overwrite: true,
       onComplete: function () {
-        changeMarbleTurn();
+        showPreGameQuestions(() => {
+          changeMarbleTurn();
+        });
       },
     });
   } else {
@@ -2089,10 +2096,9 @@ export function endGame(win, timer) {
 
       playerData.score += Math.round(roundScore);
 
-     /** HERE THE PLAYER SCORE is going to be UPDATED TO THE DATABASE FIRESTORE */
-	  alert('Ganaste: '+roundScore+' puntos')
-	  updateScore(roundScore);
-
+      /** HERE THE PLAYER SCORE is going to be UPDATED TO THE DATABASE FIRESTORE */
+      alert("Ganaste: " + roundScore + " puntos");
+      updateScore(roundScore);
     } else if (!win) {
       var deadArr = [1, 2, 4];
       if (deadArr.indexOf(gameData.roundNum) != -1) {

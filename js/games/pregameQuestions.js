@@ -1,5 +1,5 @@
 import { questionPool } from "../questionPool.js";
-import { timeData, gameData, toggleGameTimer } from "./game.js";
+import { timeData, gameData, toggleGameTimer } from "../game.js";
 
 let questionIndex = 0;
 let correctAnswers = 0;
@@ -75,6 +75,6 @@ function pauseGameForQuestions() {
 
 function resumeGameAfterQuestions() {
   document.getElementById("questionModal").style.display = "none";
-  toggleGameTimer(false);
+  toggleGameTimer(true);
   gameData.paused = false;
 }
