@@ -3,8 +3,9 @@
  * CANDY GAME - This is the function that runs for candy game
  * 
  */
-import  {roundData, gameSettings,toggleGameTimer,endGame} from "../game.js"; // Import shared variables
+import  {roundData,toggleGameTimer,endGame} from "../game.js"; // Import shared variables
 import {itemCandyBase,itemNeedle,itemPixel,candyDrawing} from "../canvas.js"; // Import shared variables
+import { gameSettings } from '../gameSettings.js';
 // import {playSound} from "../sound.js"; // Import sound helper
 
 export function initCandyDrawingPos(x, y){

@@ -1,11 +1,12 @@
-import { loader } from './loader.js'; // Import loader
-import {shareEnable,shareText,shareWinTitle,shareWinMessage,shareTitle,shareMessage ,  updateGame, players_arr, guards_arr, gameData, gameSettings, gameTextDisplay, defaultGameData,defaultData, changeGameViewport,curPage} from './game.js'; // Import required variables
-import { stageW, stageH, landscapeSize, portraitSize, viewport } from './main.js'; // Import stageW, stageH, landscapeSize, portraitSize, and viewport
-import { resizeGameFunc } from './mobile.js'; // Import resizeGameFunc
-
 ////////////////////////////////////////////////////////////
 // CANVAS 
 ////////////////////////////////////////////////////////////
+import { loader } from './loader.js'; // Import loader
+import {shareEnable,shareText,shareWinTitle,shareWinMessage,shareTitle,shareMessage ,  updateGame, players_arr, guards_arr, gameData, gameTextDisplay, defaultGameData,defaultData, changeGameViewport,curPage} from './game.js'; // Import required variables
+import { stageW, stageH, landscapeSize, portraitSize, viewport } from './main.js'; // Import stageW, stageH, landscapeSize, portraitSize, and viewport
+import { resizeGameFunc } from './mobile.js'; // Import resizeGameFunc
+import { gameSettings } from './gameSettings.js';
+
 export let stage; // Declare stage
 export let canvasW = 0; // Declare canvasW
 export let canvasH = 0; // Declare canvasH

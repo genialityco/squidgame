@@ -7,7 +7,8 @@
 
 import { decreaseTime } from "../helpers/time.js"; // Import time helper
 import { updatePlayerFrame } from "../game.js"; // Import player helper
-import { gameSettings, defaultGameData, roundData, players, gameData } from "../game.js"; // Import shared variables
+import { defaultGameData, roundData, players, gameData } from "../game.js"; // Import shared variables
+import { gameSettings } from '../gameSettings.js';
 import { itemLight } from "../canvas.js"; // Import shared variables
 // import { playSound } from "../sound.js"; // Import sound helper
 //import { playSound } from "../sound.js"; // Import sound helper

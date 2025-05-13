@@ -1,7 +1,8 @@
-import { players_arr, guards_arr, gameData, gameSettings } from './game.js'; // Import gameData
+import { players_arr, guards_arr, gameData } from './game.js'; // Import gameData
 import { checkMobileEvent, resizeGameFunc } from './mobile.js';
 import { isTablet } from './helpers/device.js'; // Import isTablet helper
 import { initMain } from './main.js'; // Import initMain
+import { gameSettings } from './gameSettings.js';
 // import {enableDesktopSound, enableMobileSound} from './sound.js'; // Import sound variables
 
 export let loader; // Export loader

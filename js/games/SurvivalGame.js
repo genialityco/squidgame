@@ -5,7 +5,6 @@
  */
 import {
   roundData,
-  gameSettings,
   endGame,
   updatePlayerFrame,
   defaultGameData,
@@ -13,6 +12,7 @@ import {
   players,
   millisecondsToTimeGame,
 } from "../game.js"; // Import shared variables
+import { gameSettings } from '../gameSettings.js';
 import { itemControl, itemLight } from "../canvas.js"; // Import shared variables
 import { gameData, timeData, defaultData } from "../game.js"; // Import shared variables
 import { timerTxt } from "../canvas.js"; // Import shared variables

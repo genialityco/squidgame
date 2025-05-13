@@ -3,10 +3,10 @@
  * BRIDGE GAME - This is the function that runs for bridge game
  * 
  */
-import  {roundData, gameSettings,endGame} from "../game.js"; // Import shared variables
+import  {roundData,endGame} from "../game.js"; // Import shared variables
 import { gameData, players, defaultGameData, defaultData,updatePlayerFrame,findSegment } from "../game.js"; // Import gameData, players, defaultGameData, defaultData
 import { stage, canvasW } from "../canvas.js"; // Import stage and canvasW
-
+import { gameSettings } from '../gameSettings.js';
 // import {playSound} from "../sound.js"; // Import sound helper
 export function moveFrontPlayer(){
     gameData.interact = false;

@@ -3,7 +3,8 @@
  * TUG OF WAR GAME - This is the function that runs for tug of war game
  * 
  */
- import  {roundData, gameSettings, players,endGame,gameData} from "../game.js"; // Import shared variables
+ import  {roundData, players,endGame,gameData} from "../game.js"; // Import shared variables
+ import { gameSettings } from '../gameSettings.js';
  import {itemLight} from "../canvas.js"; // Import shared variables
 //  import {playSoundLoop} from "../sound.js"; // Import sound helper
 

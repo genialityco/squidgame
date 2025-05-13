@@ -3,7 +3,8 @@
  * MARBLE GAME - This is the function that runs for marble game
  * 
  */
- import  {roundData, gameSettings,endGame, toggleGameInstruction} from "../game.js"; // Import shared variables
+ import  {roundData,endGame, toggleGameInstruction} from "../game.js"; // Import shared variables
+ import { gameSettings } from '../gameSettings.js';
  // import {playSound} from "../sound.js"; // Import sound helper
 import { handButtonContainer, handContainer } from "../canvas.js"; // Import hand containers
 import { gameTextDisplay } from "../game.js"; // Import game text display
