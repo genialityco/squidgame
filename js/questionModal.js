@@ -1,5 +1,5 @@
 import { timeData, gameData, toggleGameTimer, players } from "./game.js";
-import { questionPool } from "./questionPool.js"; 
+import { questionPool } from "./questionPool.js";
 
 export function showQuestionModal() {
   const randomIndex = Math.floor(Math.random() * questionPool.length);
@@ -26,7 +26,7 @@ export function showQuestionModal() {
 
   // Pausar juego
   pauseGameForModal();
-};
+}
 
 window.closeQuestionModal = function () {
   document.getElementById("questionModal").style.display = "none";
@@ -35,24 +35,46 @@ window.closeQuestionModal = function () {
 };
 
 function handleAnswer(correct) {
-  const modal = document.getElementById("questionModal");
-  modal.style.display = "none";
+  const questionOptions = document.getElementById("questionOptions");
+  questionOptions.innerHTML = ""; // Oculta las opciones
 
+  // Mostrar resultado visual
+  const result = document.createElement("div");
+  result.innerText = correct
+    ? "✅ ¡Respuesta correcta, ganas 5 segundos!"
+    : "❌ Respuesta incorrecta, pierdes 5 segundos.";
+  result.style.fontSize = "20px";
+  result.style.fontWeight = "bold";
+  result.style.marginTop = "10px";
+  result.style.color = correct ? "green" : "red";
+  questionOptions.appendChild(result);
+
+  // Ajustar velocidad y tiempo
   if (correct) {
-	console.log("Es correcta")
-    // Dale más velocidad al jugador
     players[0].speed += 300;
-    // setTimeout(() => {
-    //   players[0].speed -= 300;
-    // }, 5000);
+    setTimeout(() => {
+      players[0].speed -= 300;
+    }, 5000);
+
+    // ⏱️ Sumar 5 segundos (5000ms)
+    timeData.savedTime += 5000;
   } else {
-	console.log("Es incorrecta")
-    // Reduce velocidad un poco o no se modifica
     players[0].speed = Math.max(players[0].speed - 200, 400);
-    console.log("❌ Respuesta incorrecta, menos velocidad.");
+
+    // ⏱️ Restar 5 segundos (pero no menos de 0)
+    timeData.savedTime = Math.max(timeData.savedTime - 5000, 0);
   }
 
-  resumeGameAfterModal();
+  // Botón para continuar
+  const continueBtn = document.createElement("button");
+  continueBtn.innerText = "Continuar";
+  continueBtn.style.marginTop = "20px";
+  continueBtn.style.padding = "10px 20px";
+  continueBtn.onclick = () => {
+    document.getElementById("questionModal").style.display = "none";
+    resumeGameAfterModal();
+  };
+  questionOptions.appendChild(continueBtn);
 }
 
 function pauseGameForModal() {
