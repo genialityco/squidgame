@@ -8,7 +8,6 @@ import {
   endGame,
   updatePlayerFrame,
   defaultGameData,
-  gameTextDisplay,
   players,
   millisecondsToTimeGame,
 } from "../game.js"; // Import shared variables
@@ -18,6 +17,7 @@ import { gameData, timeData, defaultData } from "../game.js"; // Import shared v
 import { timerTxt } from "../canvas.js"; // Import shared variables
 //  import { playSound } from "../sound.js"; // Import sound helper
 import { toggleGameTimer, toggleGameInstruction } from "../game.js"; // Import shared functions
+import { gameTextDisplay } from "../gameTextDisplay.js";
 //  import { randomBoolean } from "../plugins.js"; // Import utility function
 export function startSurvivalGame() {
   itemControl.visible = true;

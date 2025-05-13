@@ -7,7 +7,7 @@
  import { gameSettings } from '../gameSettings.js';
  // import {playSound} from "../sound.js"; // Import sound helper
 import { handButtonContainer, handContainer } from "../canvas.js"; // Import hand containers
-import { gameTextDisplay } from "../game.js"; // Import game text display
+import { gameTextDisplay } from "../gameTextDisplay.js";
 // import { randomBoolean, randomInt } from "../plugins.js"; // Import random utility functions
 
 export function resetMarbleGame(){

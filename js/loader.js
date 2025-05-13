@@ -3,6 +3,7 @@ import { checkMobileEvent, resizeGameFunc } from './mobile.js';
 import { isTablet } from './helpers/device.js'; // Import isTablet helper
 import { initMain } from './main.js'; // Import initMain
 import { gameSettings } from './gameSettings.js';
+import { gameTextDisplay } from './gameTextDisplay.js'; // Import gameTextDisplay
 // import {enableDesktopSound, enableMobileSound} from './sound.js'; // Import sound variables
 
 export let loader; // Export loader

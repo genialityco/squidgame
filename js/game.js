@@ -8,7 +8,7 @@ import { numberTxt, levelTxt, roundTxt, roundShadowTxt, roundNameTxt, roundNameS
 import { pressMove, guideline, bg, logo,timerTxt, candyDrawing,buttonOdd, buttonEven} from './canvas.js';
 import {canvasW,canvasH,stage,resizeCanvas} from './canvas.js';
 import {renderBackground,renderSegment,renderSprite} from './renderMisc.js';
-
+import { gameTextDisplay } from "./gameTextDisplay.js";
 import { gameSettings } from './gameSettings.js';
 import {updatePlayers} from './gameLogic/updatePlayers.js'
 import {share} from './helpers/social.js'; // Import social share helper
@@ -33,30 +33,7 @@ export var guards_arr = [
 	{ src: 'assets/guard.png' }
 ];
 
-//game text desiplay
-export var gameTextDisplay = {
-	round:'Round [NUMBER]',
-	roundFinal:'Final Round',
-	game1:'Hold to run',
-	game2:'Hold to cut',
-	game3:'Tap repeatly to pull',
-	game4:'Win all marble balls',
-	game5:'Tap left / right to move',
-	game6:'Hold controller to move',
-	user:'User',
-	opponent:'Opponent',
-	odd:'ODD',
-	even:'EVEN',
-	kill:'ATTACK',
-	run:'SURVIVE',
-	roundFail:'GAME OVER',
-	roundComplete:'COMPLETE',
-	exitMessage:'Are you sure\nyou want to quit?',
-	resultFailTitle:'YOU ARE DEAD',
-	resultFailDesc:'GAME OVER',
-	resultWinTitle:'YOU WON',
-	resultWinDesc:'45.6 BILLION'
-}
+
 
 //result custom score
 export var gameCustomScore = {
