@@ -22,6 +22,29 @@ export async function updateScore(points) {
   await setDoc(playerRef, { email: user.email, nombre: user.email, score: increment(points) }, { merge: true });
 }
 
+export async function updateLevel(level) {
+    const user = auth.currentUser;
+    if (!user) return;
+    const playerRef = doc(db, "players", user.uid);
+    await setDoc(playerRef, { level: level}, { merge: true });
+  }
+
+export async function getCurrentUserLevel() {
+  const user = auth.currentUser;
+  console.log("docSnap");
+  return 0;
+  
+  if (!user) return 0;
+  const playerRef = doc(db, "players", user.uid);
+  const docSnap = await getDoc(playerRef);
+  console.log("docSnap2" );
+  if (docSnap.exists()) {
+    const data = docSnap.data();
+    return data.level ?? 0;
+  }
+  return 0;
+}
+
 // Listen for auth changes and subscribe to score updates
 onAuthStateChanged(auth, (user) => {
   if (unsubscribeScore) {
