@@ -401,13 +401,6 @@ export function buildGameButton() {
   loopPiggyMoney();
 }
 
-function appendFocusFrame() {
-  $("#mainHolder").prepend('<div id="focus" style="position:absolute; width:100%; height:100%; z-index:1000;"></div');
-  $("#focus").click(function () {
-    $("#focus").remove();
-  });
-}
-
 function toggleRound(con) {
   if (con) {
     gameData.roundSelect++;

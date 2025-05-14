@@ -4,7 +4,7 @@
 var enableDesktopSound = true; //sound for dekstop
 var enableMobileSound = true; //sound for mobile and tablet
 
-var soundOn;
+var soundOn = true;
 var soundMute = false;
 var musicMute = false;
 
@@ -79,13 +79,17 @@ function stopSoundLoop(soundName){
 }
 
 function playMusicLoop(soundName){
+	
 	if(soundOn){
+		
 		if($.sound[soundName]==null){
 			musicPushArr.push(soundName);
+			console.log("playMusicLoop", soundName,soundOn,musicPushArr);
 
 			$.sound[soundName] = createjs.Sound.play(soundName);
 			$.sound[soundName].defaultVol = 1;
 			setMusicVolume(soundName);
+			console.log("playMusicLoop", soundName,soundOn,$.sound[soundName]);
 
 			$.sound[soundName].removeAllEventListeners();
 			$.sound[soundName].addEventListener ("complete", function() {

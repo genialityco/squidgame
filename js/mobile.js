@@ -1,7 +1,7 @@
 import { isTablet } from './helpers/device.js'; // Import isTablet helper
 import { viewport } from './main.js'; // Import viewport
 import { changeViewport } from './canvas.js'; // Import changeViewport
-
+import {resizeGameFunc} from './main.js'; // Import resizeGameFunc
 ////////////////////////////////////////////////////////////
 // MOBILE
 ////////////////////////////////////////////////////////////
@@ -59,7 +59,3 @@ function toggleRotate(con){
 	resizeGameFunc();
 }
 
-export function resizeGameFunc() {
-	// Placeholder implementation or actual logic for resizing the game
-	console.log("resizeGameFunc called");
-}
