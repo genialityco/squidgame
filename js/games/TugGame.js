@@ -53,7 +53,7 @@ export async function startTugGame() {
         loopTugMoveTimer();
       },
     });
- // });
+  });
 }
 
 // Continuously updates the tug movement by adjusting the speed
