@@ -587,6 +587,27 @@ export function goPage(page) {
         resultScoreTxt.text = gameTextDisplay.resultFailDesc;
       }
 
+      // Crear botón personalizado
+      if (!resultContainer.getChildByName("backToGamesBtn")) {
+        const backToGamesBtn = new createjs.Text(
+          "Volver a los juegos",
+          "20px Arial",
+          "#ffffff"
+        );
+        backToGamesBtn.name = "backToGamesBtn";
+        backToGamesBtn.textAlign = "center";
+        backToGamesBtn.x = 640; // centro del canvas (1280 / 2)
+        backToGamesBtn.y = 535; // posición vertical deseada
+        backToGamesBtn.cursor = "pointer";
+        backToGamesBtn.shadow = new createjs.Shadow("#000", 2, 2, 4);
+
+        backToGamesBtn.addEventListener("click", () => {
+          window.location.href = "https://squidgenfar.netlify.app/";
+        });
+
+        resultContainer.addChild(backToGamesBtn);
+      }
+
       if (gameCustomScore.status) {
         resultScoreTxt.text = gameCustomScore.text.replace(
           "[SCORE]",
