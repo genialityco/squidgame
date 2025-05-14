@@ -84,12 +84,10 @@ function playMusicLoop(soundName){
 		
 		if($.sound[soundName]==null){
 			musicPushArr.push(soundName);
-			console.log("playMusicLoop", soundName,soundOn,musicPushArr);
 
 			$.sound[soundName] = createjs.Sound.play(soundName);
 			$.sound[soundName].defaultVol = 1;
 			setMusicVolume(soundName);
-			console.log("playMusicLoop", soundName,soundOn,$.sound[soundName]);
 
 			$.sound[soundName].removeAllEventListeners();
 			$.sound[soundName].addEventListener ("complete", function() {

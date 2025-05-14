@@ -111,7 +111,6 @@ export function initGameCanvas(w, h) {
   stage.mouseMoveOutside = true;
 
   createjs.Ticker.framerate = 60;
-  console.log("ticker");
   createjs.Ticker.addEventListener("tick", tick);
 }
 

@@ -99,7 +99,6 @@ export function resizeGameFunc() {
 
     $("canvas").css("width", newCanvasW);
     $("canvas").css("height", newCanvasH);
-    console.log("canvas width", newCanvasW);
 
     $("canvas").css("left", offset.left / 2);
     $("canvas").css("top", offset.top / 2);

@@ -72,7 +72,6 @@ export function startGreenLightCount() {
     roundData.lightData.countTime,
     gameSettings.game1.decreaseTime
   );
-  console.log("Green light duration: ",roundData.lightData.timeTween, roundData.lightData.countTime);
   // Start timer for green light phase, then switch to red light
   TweenMax.to(roundData.lightData.timeTween, roundData.lightData.countTime, {
     overwrite: true,

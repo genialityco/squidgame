@@ -4,11 +4,22 @@ import { timeData, gameData, toggleGameTimer } from "../game.js";
 let questionIndex = 0;
 let correctAnswers = 0;
 let onComplete = null;
+let selectedQuestions = [];
+
+// Función para seleccionar preguntas aleatorias
+function getRandomQuestions(pool, count) {
+  const shuffled = [...pool].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
+}
 
 export function showPreGameQuestions(callback) {
   questionIndex = 0;
   correctAnswers = 0;
   onComplete = callback;
+
+  // Seleccionar 8 preguntas al azar sin repetir
+  selectedQuestions = getRandomQuestions(questionPool, 8);
+
   pauseGameForQuestions();
   renderQuestion();
 }
@@ -18,15 +29,15 @@ function renderQuestion() {
   const questionText = document.getElementById("questionText");
   const questionOptions = document.getElementById("questionOptions");
 
-  if (questionIndex >= questionPool.length) {
-    const adjustment = (correctAnswers * 5 - (questionPool.length - correctAnswers) * 5) * 1000;
+  if (questionIndex >= selectedQuestions.length) {
+    const adjustment = (correctAnswers * 5 - (selectedQuestions.length - correctAnswers) * 5) * 1000;
     timeData.countdown = Math.max(timeData.countdown + adjustment, 0);
     resumeGameAfterQuestions();
     if (typeof onComplete === "function") onComplete();
     return;
   }
 
-  const question = questionPool[questionIndex];
+  const question = selectedQuestions[questionIndex];
   questionText.innerText = question.text;
   questionOptions.innerHTML = "";
 

@@ -19,7 +19,6 @@ export let loader; // Export loader
  *
  */
 export function initPreload() {
-  console.log("players_arr", players_arr); // Ensure it's accessible
   toggleLoader(true);
 
   checkMobileEvent();
@@ -119,7 +118,7 @@ export function initPreload() {
     }
   }
 
-  if (soundOn) {
+  if (!soundOn) {
     manifest.push({ src: "assets/sounds/music.ogg", id: "musicGame" });
 
     manifest.push({ src: "assets/sounds/click.ogg", id: "soundClick" });
