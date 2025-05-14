@@ -1,7 +1,15 @@
-import { timeData, gameData, toggleGameTimer, players, roundData } from "./game.js";
+import { timeData, players } from "./game.js";
 import { questionPool } from "./questionPool.js";
 
-export function showQuestionModal() {
+let resolveQuestionModal; // Variable para almacenar la función de resolución de la promesa del modal
+
+/**
+ * @description Función para mostrar un modal con una pregunta aleatoria
+ * @returns Promesa que se resuelve cuando se cierra el modal se hace de esta manera para poder desacoplar 
+ * el modal de la lógica del juego y poder usarlo en cualquier parte del juego
+ */
+
+export async function showQuestionModal() {
   const randomIndex = Math.floor(Math.random() * questionPool.length);
   const question = questionPool[randomIndex];
 
@@ -24,14 +32,20 @@ export function showQuestionModal() {
   // Mostrar modal
   document.getElementById("questionModal").style.display = "flex";
 
-  // Pausar juego
-  pauseGameForModal();
+  // Await until closeQuestionModal is called
+  return new Promise((resolve) => {
+    resolveQuestionModal = resolve;
+  });
 }
 
 window.closeQuestionModal = function () {
   document.getElementById("questionModal").style.display = "none";
-  // Reanuda el juego
-  resumeGameAfterModal();
+
+  // Resolviendo la promesa
+  if (typeof resolveQuestionModal === "function") {
+    resolveQuestionModal();
+    resolveQuestionModal = undefined;
+  }
 };
 
 function handleAnswer(correct) {
@@ -72,34 +86,12 @@ function handleAnswer(correct) {
   continueBtn.style.padding = "10px 20px";
   continueBtn.onclick = () => {
     document.getElementById("questionModal").style.display = "none";
-    resumeGameAfterModal();
+
+    // Resolviendo la promesa
+    if (typeof resolveQuestionModal === "function") {
+      resolveQuestionModal();
+      resolveQuestionModal = undefined;
+    }
   };
   questionOptions.appendChild(continueBtn);
-}
-
-function pauseGameForModal() {
-  // Pausar todo
-  TweenMax.pauseAll(true, true);
-  gameData.paused = true;
-
-  // Guardar tiempo restante
-  if (timeData.enable) {
-    timeData.savedTime = timeData.timer;
-  }
-
-  toggleGameTimer(false);}
-
-function resumeGameAfterModal() {
-  TweenMax.resumeAll(true, true);
-  gameData.paused = false;
-
-  if (typeof timeData.savedTime !== "undefined") {
-    timeData.countdown = timeData.savedTime;
-    timeData.startDate = new Date();
-    timeData.oldTimer = -1;
-  }
-
-  toggleGameTimer(true);
-
-  TweenMax.resumeTweensOf(roundData.lightData.timeTween);
 }

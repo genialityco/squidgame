@@ -11,16 +11,24 @@ import { defaultGameData, roundData, players, gameData } from "../game.js"; // I
 import { gameSettings } from "../gameSettings.js";
 import { itemLight } from "../canvas.js"; // Import shared variables
 import { showQuestionModal } from "../questionModal.js";
+import { pauseGameForModal,resumeGameAfterModal } from "../helpers/pauseresume.js";
 // import { playSound } from "../sound.js"; // Import sound helper
 //import { playSound } from "../sound.js"; // Import sound helper
 
+//This holds the current timer object for the red light game is a TweenMax instance that can be controller via API
+//https://gsap.com/docs/v3/GSAP/gsap.to()
+export let RedLightGameTweenTimer = null;
+
 export function startGreenLightCount() {
+  // Stop any ongoing tweens on lightData
   TweenMax.killTweensOf(roundData.lightData);
 
+  // Set light to green and doll animation to "close"
   itemLight.gotoAndStop("green");
   gameData.doll.gotoAndPlay("close");
   playSound("soundLightOn");
 
+  // Prepare list of active players and assign random speed/move/sand times
   var activePlayers = [];
   for (var n = 1; n < players.length; n++) {
     if (players[n].status == "") {
@@ -38,8 +46,10 @@ export function startGreenLightCount() {
     }
   }
 
+  // Shuffle active players for randomization
   shuffle(activePlayers);
 
+  // Randomly select a number of players to be marked as "nextDead"
   var totalPlayerDead = randomInt(
     gameSettings.game1.dead[0],
     gameSettings.game1.dead[1]
@@ -57,25 +67,28 @@ export function startGreenLightCount() {
     }
   }
 
+  // Decrease the green light duration for next round
   roundData.lightData.countTime = decreaseTime(
     roundData.lightData.countTime,
     gameSettings.game1.decreaseTime
   );
+  console.log("Green light duration: ",roundData.lightData.timeTween, roundData.lightData.countTime);
+  // Start timer for green light phase, then switch to red light
   TweenMax.to(roundData.lightData.timeTween, roundData.lightData.countTime, {
     overwrite: true,
     onComplete: function () {
       startRedLightCount();
     },
   });
+  // Allow player movement during green light
   roundData.lightData.moveCon = true;
 }
 
-export function startRedLightCount() {
+export async function startRedLightCount() {
   playSound("soundLighOff");
 
   itemLight.gotoAndStop("red");
   gameData.doll.gotoAndPlay("peek");
-  showQuestionModal();
 
   loopPlayerDead();
 
@@ -83,12 +96,18 @@ export function startRedLightCount() {
     roundData.lightData.peekTime,
     gameSettings.game1.decreaseTime
   );
-  TweenMax.to(roundData.lightData.timeTween, roundData.lightData.peekTime, {
+  let tween = TweenMax.to(roundData.lightData.timeTween, roundData.lightData.peekTime, {
     overwrite: true,
     onComplete: function () {
       startGreenLightCount();
     },
   });
+
+    /** QUESTIONS TO GAMIFY KNOWLEDGE */
+    pauseGameForModal();
+    // The code will wait here until the modal is closed
+    await showQuestionModal();
+    resumeGameAfterModal();
 
   roundData.lightData.moveCon = false;
 }

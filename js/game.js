@@ -1173,8 +1173,10 @@ export function startGameRound() {
   gameData.interact = true;
 
   if (gameData.roundNum == 1) {
+    //DEVNOW
     loopPlayrMoveTimer();
     startGreenLightCount();
+
   } else if (gameData.roundNum == 2) {
     candyContainer.visible = true;
     candyContainer.alpha = 0;
