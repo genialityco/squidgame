@@ -71,12 +71,12 @@ function handleAnswer(correct) {
     }, 5000);
 
     // ⏱️ Sumar 5 segundos (5000ms)
-    timeData.savedTime += 5000;
+    timeData.savedTime += 3000;
   } else {
     players[0].speed = Math.max(players[0].speed - 200, 400);
 
     // ⏱️ Restar 5 segundos (pero no menos de 0)
-    timeData.savedTime = Math.max(timeData.savedTime - 5000, 0);
+    timeData.savedTime = Math.max(timeData.savedTime - 3000, 0);
   }
 
   // Botón para continuar

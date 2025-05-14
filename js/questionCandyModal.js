@@ -70,7 +70,7 @@ function handleAnswer(correct) {
 function finishSequence() {
   document.getElementById("questionModal").style.display = "none";
 
-  const secondsDelta = (correctAnswers - (questionsToAsk.length - correctAnswers)) * 5000;
+  const secondsDelta = (correctAnswers - (questionsToAsk.length - correctAnswers)) * 3000;
   timeData.savedTime = Math.max(timeData.savedTime + secondsDelta, 0);
 
   resumeGameAfterModal();
