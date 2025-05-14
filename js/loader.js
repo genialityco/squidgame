@@ -118,7 +118,7 @@ export function initPreload() {
     }
   }
 
-  if (!soundOn) {
+  if (soundOn) {
     manifest.push({ src: "assets/sounds/music.ogg", id: "musicGame" });
 
     manifest.push({ src: "assets/sounds/click.ogg", id: "soundClick" });
