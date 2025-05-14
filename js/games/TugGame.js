@@ -7,11 +7,25 @@ import { roundData, players, endGame, gameData } from "../game.js"; // Import sh
 import { gameSettings } from "../gameSettings.js";
 import { itemLight } from "../canvas.js"; // Import shared variables
 import { showPreGameQuestions } from "./pregameQuestions.js";
+import { showInstructionModal } from "../helpers/instructions.js";
 //  import {playSoundLoop} from "../sound.js"; // Import sound helper
 
-// Starts the Tug of War game after pre-game questions are answered
-export function startTugGame() {
- // showPreGameQuestions(() => {
+export async function startTugGame() {
+  await showInstructionModal(
+    `💪 ¡Desafío Tira y Afloja!
+
+📚 Antes de comenzar, responde unas preguntas.
+❌ Cada error te resta 5 segundos del tiempo total.
+
+🎮 Luego, al iniciar el juego:
+👉 Presiona rápidamente la pantalla, el mouse o el botón verde en la parte superior.
+¡Hazlo sin parar hasta que el equipo rival caiga al vacío! 😱
+
+⏱️ ¡Velocidad, fuerza y concentración!
+¿Tienes lo que se necesita para ganar?`
+  );
+
+  showPreGameQuestions(() => {
     // Esta lógica solo se ejecuta después de contestar las preguntas
     // Reset tugData and start the rope sound
     TweenMax.to(roundData.tugData, 0, {

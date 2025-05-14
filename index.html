@@ -7,45 +7,45 @@
 <!--<![endif]-->
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Survival Game</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Survival Game</title>
 
-    <meta name="Title" content="Survival Game" />
-    <meta name="description" content="Survival Game by Squid Game on ETH" />
-    <meta name="keywords"
-        content="squid, survive, candy, bridge, 456, run, death, money, contest, doll, tug of war, marble" />
+  <meta name="Title" content="Survival Game" />
+  <meta name="description" content="Survival Game by Squid Game on ETH" />
+  <meta name="keywords"
+    content="squid, survive, candy, bridge, 456, run, death, money, contest, doll, tug of war, marble" />
 
-    <!-- for Facebook -->
-    <meta property="og:title" content="Survival Game" />
-    <meta property="og:site_name" content="Survival Game" />
-    <meta property="og:image" content="https://demonisblack.com/code/2021/survivalgame/game/share.jpg" />
-    <meta property="og:url" content="https://demonisblack.com/code/2021/survivalgame/game/" />
-    <meta property="og:description" content="Survival Game by Squid Game on ETH" />
-    <!-- for Twitter -->
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Survival Game" />
-    <meta name="twitter:description" content="Survival Game by Squid Game on ETH" />
-    <meta name="twitter:image" content="https://demonisblack.com/code/2021/survivalgame/game/share.jpg" />
+  <!-- for Facebook -->
+  <meta property="og:title" content="Survival Game" />
+  <meta property="og:site_name" content="Survival Game" />
+  <meta property="og:image" content="https://demonisblack.com/code/2021/survivalgame/game/share.jpg" />
+  <meta property="og:url" content="https://demonisblack.com/code/2021/survivalgame/game/" />
+  <meta property="og:description" content="Survival Game by Squid Game on ETH" />
+  <!-- for Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Survival Game" />
+  <meta name="twitter:description" content="Survival Game by Squid Game on ETH" />
+  <meta name="twitter:image" content="https://demonisblack.com/code/2021/survivalgame/game/share.jpg" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <script>
-        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-            var msViewportStyle = document.createElement("style");
-            msViewportStyle.appendChild(document.createTextNode("@-ms-viewport{width:device-width}"));
-            document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
-        }
-    </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <script>
+    if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+      var msViewportStyle = document.createElement("style");
+      msViewportStyle.appendChild(document.createTextNode("@-ms-viewport{width:device-width}"));
+      document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+    }
+  </script>
 
-    <link rel="shortcut icon" href="icon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  <link rel="shortcut icon" href="icon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 
 <body>
-    <!-- USER EMAIL DISPLAY -->
-    <div style="
+  <!-- USER EMAIL DISPLAY -->
+  <div style="
         position: fixed;
         top: 10px;
         left: 10px;
@@ -56,13 +56,13 @@
         font-size: 15px;
         font-weight: bold;
       ">
-        <div id="userEmailDisplay"></div>
-        <div id="scoreDisplay"></div>
+    <div id="userEmailDisplay"></div>
+    <div id="scoreDisplay"></div>
 
-    </div>
+  </div>
 
-    <!-- AUTH STATUS MESSAGE -->
-    <div id="authStatusMsg" style="
+  <!-- AUTH STATUS MESSAGE -->
+  <div id="authStatusMsg" style="
         position: fixed;
         top: 60px;
         left: 50%;
@@ -79,8 +79,8 @@
         word-break: break-word;
         text-align: center;
       "></div>
-    <!-- LOGIN MODAL -->
-    <div id="loginModal" style="
+  <!-- LOGIN MODAL -->
+  <div id="loginModal" style="
         display: none;
         position: fixed;
         z-index: 10001;
@@ -92,7 +92,7 @@
         justify-content: center;
         align-items: center;
       ">
-        <form id="loginForm" style="
+    <form id="loginForm" style="
           background: #fff;
           padding: 32px 28px;
           border-radius: 12px;
@@ -102,8 +102,8 @@
           align-items: center;
           min-width: 320px;
         ">
-            <h2 style="margin-bottom: 18px">Login</h2>
-            <input id="loginEmail" type="email" placeholder="Email" required style="
+      <h2 style="margin-bottom: 18px">Login</h2>
+      <input id="loginEmail" type="email" placeholder="Email" required style="
             margin-bottom: 12px;
             padding: 10px 12px;
             width: 220px;
@@ -111,7 +111,7 @@
             border-radius: 6px;
             border: 1px solid #ccc;
           " />
-            <input id="loginPassword" type="password" placeholder="Password" required style="
+      <input id="loginPassword" type="password" placeholder="Password" required style="
             margin-bottom: 18px;
             padding: 10px 12px;
             width: 220px;
@@ -119,7 +119,7 @@
             border-radius: 6px;
             border: 1px solid #ccc;
           " />
-            <button id="loginBtn" type="submit" style="
+      <button id="loginBtn" type="submit" style="
             padding: 10px 0;
             width: 100%;
             font-size: 16px;
@@ -129,34 +129,34 @@
             border: none;
             cursor: pointer;
           ">
-                Login
-            </button>
-        </form>
+        Login
+      </button>
+    </form>
+  </div>
+
+  <!-- PERCENT LOADER START-->
+  <div id="mainLoader"><img src="assets/loader.png" /><br /><span>0</span></div>
+  <!-- PERCENT LOADER END-->
+
+  <!-- CONTENT START-->
+  <div id="mainHolder">
+    <!-- BROWSER NOT SUPPORT START-->
+    <div id="notSupportHolder">
+      <div class="notSupport">
+        YOUR BROWSER ISN'T SUPPORTED.<br />PLEASE UPDATE YOUR BROWSER IN ORDER TO RUN THE GAME
+      </div>
     </div>
+    <!-- BROWSER NOT SUPPORT END-->
 
-    <!-- PERCENT LOADER START-->
-    <div id="mainLoader"><img src="assets/loader.png" /><br /><span>0</span></div>
-    <!-- PERCENT LOADER END-->
-
-    <!-- CONTENT START-->
-    <div id="mainHolder">
-        <!-- BROWSER NOT SUPPORT START-->
-        <div id="notSupportHolder">
-            <div class="notSupport">
-                YOUR BROWSER ISN'T SUPPORTED.<br />PLEASE UPDATE YOUR BROWSER IN ORDER TO RUN THE GAME
-            </div>
-        </div>
-        <!-- BROWSER NOT SUPPORT END-->
-
-        <!-- CANVAS START-->
-        <div id="canvasHolder">
-            <canvas id="gameCanvas" style="border: 3px solid blue" width="1280" height="768"></canvas>
-        </div>
-        <!-- CANVAS END-->
+    <!-- CANVAS START-->
+    <div id="canvasHolder">
+      <canvas id="gameCanvas" style="border: 3px solid blue" width="1280" height="768"></canvas>
     </div>
-    <!-- CONTENT END-->
+    <!-- CANVAS END-->
+  </div>
+  <!-- CONTENT END-->
 
-    <div id="questionModal" style="
+  <div id="questionModal" style="
         display: none;
         position: fixed;
         top: 0;
@@ -168,7 +168,7 @@
         justify-content: center;
         align-items: center;
       ">
-        <div style="
+    <div style="
           background: white;
           padding: 20px;
           border-radius: 10px;
@@ -176,40 +176,52 @@
           text-align: center;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         ">
-            <p id="questionText" style="font-size: 18px; margin-bottom: 20px"></p>
-            <div id="questionOptions"></div>
-        </div>
+      <p id="questionText" style="font-size: 18px; margin-bottom: 20px"></p>
+      <div id="questionOptions"></div>
     </div>
+  </div>
 
-    <div id="questionModal"
-        style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:9999; flex-direction:column; color:white;">
-        <div id="questionText" style="font-size:24px; margin-bottom:20px; text-align:center;"></div>
-        <div id="questionOptions" style="display:flex; flex-direction:column; align-items:center;"></div>
+  <div id="questionModal"
+    style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:9999; flex-direction:column; color:white;">
+    <div id="questionText" style="font-size:24px; margin-bottom:20px; text-align:center;"></div>
+    <div id="questionOptions" style="display:flex; flex-direction:column; align-items:center;"></div>
+  </div>
+
+  <div id="instructionModal"
+    style="display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); color: white; font-family: sans-serif; padding: 40px; box-sizing: border-box;">
+    <div
+      style="max-width: 600px; margin: 80px auto; background: #222; border-radius: 8px; padding: 30px; text-align: center;">
+      <h2 id="instructionTitle">Instrucciones del Juego</h2>
+      <p id="instructionText" style="white-space: pre-wrap;"></p>
+      <button id="continueInstruction"
+        style="margin-top: 20px; padding: 10px 20px; font-size: 16px; cursor: pointer;">Continuar</button>
     </div>
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
-        window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>');
-    </script>
-
-    <script src="js/vendor/detectmobilebrowser.js"></script>
-    <script src="js/vendor/createjs.min.js"></script>
-    <script src="js/vendor/TweenMax.min.js"></script>
-    <script src="js/vendor/ndgmr.Collision.js"></script>
+  </div>
 
 
-    <script src="js/plugins.js"></script>
-    <script src="js/sound.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>');
+  </script>
 
-    <script type="module" src="js/helpers/firebase.js"></script>
-    <script type="module" src="js/helpers/auth.js"></script>
-    <script type="module" src="js/helpers/score.js"></script>
-    <script type="module" src="js/canvas.js"></script>
-    <script type="module" src="js/game.js"></script>
-    <script type="module" src="js/mobile.js"></script>
-    <script type="module" src="js/main.js"></script>
-    <script type="module" src="js/loader.js"></script>
-    <script type="module" src="js/init.js"></script>
+  <script src="js/vendor/detectmobilebrowser.js"></script>
+  <script src="js/vendor/createjs.min.js"></script>
+  <script src="js/vendor/TweenMax.min.js"></script>
+  <script src="js/vendor/ndgmr.Collision.js"></script>
+
+
+  <script src="js/plugins.js"></script>
+  <script src="js/sound.js"></script>
+
+  <script type="module" src="js/helpers/firebase.js"></script>
+  <script type="module" src="js/helpers/auth.js"></script>
+  <script type="module" src="js/helpers/score.js"></script>
+  <script type="module" src="js/canvas.js"></script>
+  <script type="module" src="js/game.js"></script>
+  <script type="module" src="js/mobile.js"></script>
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/loader.js"></script>
+  <script type="module" src="js/init.js"></script>
 </body>
 
 </html>

@@ -11,7 +11,11 @@ import { defaultGameData, roundData, players, gameData } from "../game.js"; // I
 import { gameSettings } from "../gameSettings.js";
 import { itemLight } from "../canvas.js"; // Import shared variables
 import { showQuestionModal } from "../questionModal.js";
-import { pauseGameForModal,resumeGameAfterModal } from "../helpers/pauseresume.js";
+import {
+  pauseGameForModal,
+  resumeGameAfterModal,
+} from "../helpers/pauseresume.js";
+import { showInstructionModal } from "../helpers/instructions.js";
 // import { playSound } from "../sound.js"; // Import sound helper
 //import { playSound } from "../sound.js"; // Import sound helper
 
@@ -95,18 +99,30 @@ export async function startRedLightCount() {
     roundData.lightData.peekTime,
     gameSettings.game1.decreaseTime
   );
-  let tween = TweenMax.to(roundData.lightData.timeTween, roundData.lightData.peekTime, {
-    overwrite: true,
-    onComplete: function () {
-      startGreenLightCount();
-    },
-  });
+  let tween = TweenMax.to(
+    roundData.lightData.timeTween,
+    roundData.lightData.peekTime,
+    {
+      overwrite: true,
+      onComplete: function () {
+        startGreenLightCount();
+      },
+    }
+  );
 
-    /** QUESTIONS TO GAMIFY KNOWLEDGE */
-    pauseGameForModal();
-    // The code will wait here until the modal is closed
-    await showQuestionModal();
-    resumeGameAfterModal();
+  /** QUESTIONS TO GAMIFY KNOWLEDGE */
+  pauseGameForModal();
+  await showInstructionModal(
+    `🟥🟢 Red Light, Green Light:
+Corre mientras el semáforo esté en VERDE.
+¡Detente cuando esté en ROJO o serás eliminado!
+
+📚 Luego responderás preguntas de selección múltiple.
+Responde bien para mejorar tu puntuación.`
+  );
+
+  await showQuestionModal();
+  resumeGameAfterModal();
 
   roundData.lightData.moveCon = false;
 }

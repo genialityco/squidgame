@@ -111,6 +111,7 @@ import {
 } from "./games/SurvivalGame.js";
 import { moveFrontPlayer } from "./games/BridgeGame.js";
 import { showPreGameQuestions } from "./games/pregameQuestions.js";
+import { showInstructionModal } from "./helpers/instructions.js";
 
 //player assets
 export var players_arr = [{ src: "assets/player.png" }];
@@ -1173,9 +1174,24 @@ export function startGameRound() {
     TweenMax.to(candyContainer, 0.5, {
       alpha: 1,
       overwrite: true,
-      onComplete: function () {},
+      onComplete: async function () {
+        await showInstructionModal(
+          `🍬 Solo los más pacientes y precisos lograrán superar esta dulce prueba…
+
+📚 Antes de empezar, responde unas preguntas.
+❌ Cada error te restará 5 segundos del tiempo total.
+
+🖱️ Luego, usa tu dedo, mouse o cursor para recortar la figura sin romper la galleta.
+
+⏱️ ¡Tienes tiempo limitado, así que ve con cuidado y precisión!
+💥 Si rompes el borde… ¡quedarás eliminado!
+
+✨ Pulso firme, mente fría…`
+        );
+
+        startCandyGame();
+      },
     });
-    startCandyGame();
   } else if (gameData.roundNum == 3) {
     startTugGame();
   } else if (gameData.roundNum == 4) {
@@ -1186,13 +1202,27 @@ export function startGameRound() {
     $.sprites["handWrap" + 1].x += 200;
 
     resetMarbleGame();
+
     TweenMax.to($.sprites["handWrap" + 0], 0.5, { x: 0, overwrite: true });
     TweenMax.to($.sprites["handWrap" + 1], 0.5, { x: 0, overwrite: true });
 
     TweenMax.to(handContainer, 0.5, {
       alpha: 1,
       overwrite: true,
-      onComplete: function () {
+      onComplete: async function () {
+        await showInstructionModal(
+          `🟢 JUEGO DE LAS CANICAS 🟢
+
+📚 Antes de jugar, responde unas preguntas.
+❌ Por cada error, perderás 5 segundos de tu tiempo total.
+
+🎮 En el juego, deberás adivinar si la posición de las canicas de tu oponente está arriba o abajo.
+✔️ Cada acierto te acerca a la victoria… ❌ cada fallo, a la eliminación. 💀
+
+¡Piensa bien, juega con estrategia y no te confíes!
+¿Sobrevivirás al juego de las canicas?`
+        );
+
         showPreGameQuestions(() => {
           changeMarbleTurn();
         });
