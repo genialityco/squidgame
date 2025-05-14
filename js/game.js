@@ -1,89 +1,20 @@
 import { viewport } from "./main.js"; // Import viewport
 import { isTablet } from "./helpers/device.js"; // Import isTablet helper
 
-import {
-  levelContainer,
-  numberContainer,
-  moneyContainer,
-  piggyContainer,
-  candyContainer,
-  healthContainer,
-  handContainer,
-  handHandsContainer,
-  handButtonContainer,
-  cacheContainer,
-  gameRoundContainer,
-  gameInstructContainer,
-  canvasContainer,
-  mainContainer,
-  gameContainer,
-  gameStatusContainer,
-  worldContainer,
-  resultContainer,
-  confirmContainer,
-  optionsContainer,
-} from "./canvas.js";
-import {
-  buttonChoose,
-  buttonNumberL,
-  buttonNumberR,
-  buttonLevel,
-  buttonArrowL,
-  buttonArrowR,
-  buttonStart,
-  buttonRestart,
-  buttonFacebook,
-  buttonTwitter,
-  buttonWhatsapp,
-  buttonFullscreen,
-  buttonSoundOn,
-  buttonSoundOff,
-  buttonMusicOn,
-  buttonMusicOff,
-  buttonExit,
-  buttonSettings,
-  buttonConfirm,
-  buttonCancel,
-} from "./canvas.js";
-import {
-  itemPiggy,
-  itemTimer,
-  itemLight,
-  itemCandyCover,
-  itemCandyBase,
-  itemPixel,
-  itemNeedle,
-  itemControl,
-  itemResult,
-  itemResultP,
-  itemExit,
-  itemExitP,
-  itemCenter,
-} from "./canvas.js";
-import {
-  numberTxt,
-  levelTxt,
-  roundTxt,
-  roundShadowTxt,
-  roundNameTxt,
-  roundNameShadowTxt,
-  instructionTxt,
-  resultTitleTxt,
-  resultScoreTxt,
-  resultShareTxt,
-  confirmMessageTxt,
-} from "./canvas.js";
-import {
-  pressMove,
-  guideline,
-  bg,
-  logo,
-  timerTxt,
-  candyDrawing,
-  buttonOdd,
-  buttonEven,
-} from "./canvas.js";
+import { levelContainer, numberContainer, moneyContainer, piggyContainer, candyContainer } from "./canvas.js";
+import { handContainer, cacheContainer, gameRoundContainer, gameInstructContainer, mainContainer } from "./canvas.js";
+import { healthContainer, gameContainer, worldContainer } from "./canvas.js";
+import { resultContainer, confirmContainer, optionsContainer } from "./canvas.js";
+import { buttonChoose, buttonNumberL, buttonNumberR, buttonLevel, buttonArrowL, buttonArrowR } from "./canvas.js";
+import { buttonStart, buttonRestart, buttonFacebook, buttonTwitter, buttonWhatsapp } from "./canvas.js";
+import { buttonFullscreen, buttonSoundOn, buttonSoundOff, buttonMusicOn, buttonMusicOff } from "./canvas.js";
+import { buttonExit, buttonSettings, buttonConfirm, buttonCancel } from "./canvas.js";
+import { itemPiggy, itemLight, itemCandyBase, itemPixel, itemNeedle, itemControl, itemCenter } from "./canvas.js";
+import { numberTxt, levelTxt, roundTxt, roundShadowTxt, roundNameTxt } from "./canvas.js";
+import { roundNameShadowTxt, instructionTxt, resultTitleTxt, resultScoreTxt } from "./canvas.js";
+import { pressMove, logo, timerTxt, candyDrawing, buttonOdd, buttonEven } from "./canvas.js";
 import { canvasW, canvasH, stage, resizeCanvas } from "./canvas.js";
+
 import { renderBackground, renderSegment, renderSprite } from "./renderMisc.js";
 import { gameTextDisplay } from "./gameTextDisplay.js";
 import { gameSettings } from "./gameSettings.js";
@@ -94,32 +25,11 @@ import { updateScore } from "./helpers/score.js"; // Import updateScore function
 ////////////////////////////////////////////////////////////
 // GAMES
 ////////////////////////////////////////////////////////////
-import {
-  startGreenLightCount,
-  startRedLightCount,
-  loopPlayerDead,
-} from "./games/RedLightGame.js";
-import {
-  chooseRandomCandy,
-  checkCandyDrawingPos,
-  clearCandyDrawing,
-  initCandyDrawingPos,
-  startCandyGame,
-} from "./games/CandyGame.js";
-import { startTugGame, playerTugAction, endTugGame } from "./games/TugGame.js";
-import {
-  resetMarbleGame,
-  changeMarbleTurn,
-  toggleHandStatus,
-} from "./games/MarbleGame.js";
-import {
-  startSurvivalGame,
-  updatePlayerHealthBar,
-  updatePlayerHealth,
-  updatePlayerMoveSpeed,
-  getOppAway,
-  stopSurvivalRound,
-} from "./games/SurvivalGame.js";
+import { startGreenLightCount, loopPlayerDead } from "./games/RedLightGame.js";
+import { checkCandyDrawingPos, clearCandyDrawing, initCandyDrawingPos, startCandyGame } from "./games/CandyGame.js";
+import { startTugGame, playerTugAction } from "./games/TugGame.js";
+import { resetMarbleGame, changeMarbleTurn, toggleHandStatus } from "./games/MarbleGame.js";
+import { startSurvivalGame, updatePlayerHealthBar, stopSurvivalRound } from "./games/SurvivalGame.js";
 import { moveFrontPlayer } from "./games/BridgeGame.js";
 import { showPreGameQuestions } from "./games/pregameQuestions.js";
 
@@ -140,8 +50,7 @@ export var shareText = "SHARE YOUR SCORE"; //social share message
 export var shareWinTitle = "I won 45.6 billion on Survival Game."; //social share score title
 export var shareWinMessage = "I won 45.6 billion on Survival Game! Try it now!"; //social share score message
 export var shareTitle = "High score on Survival Game is ROUND [SCORE]."; //social share score title
-export var shareMessage =
-  "ROUND [SCORE] is my new high score on Survival Game! Try it now!"; //social share score message
+export var shareMessage = "ROUND [SCORE] is my new high score on Survival Game! Try it now!"; //social share score message
 
 /*!
  *
@@ -388,28 +297,17 @@ export function buildGameButton() {
     roundData.candyData.lastPoint = { x: 0, y: 0 };
     roundData.candyData.lastPoint.x = itemNeedle.x = event.stageX - canvasW / 2;
     roundData.candyData.lastPoint.y = itemNeedle.y = event.stageY - canvasH / 2;
-    candyDrawing.graphics
-      .ss(gameSettings.game2.drawStroke, "round")
-      .s(gameSettings.game2.drawColor);
+    candyDrawing.graphics.ss(gameSettings.game2.drawStroke, "round").s(gameSettings.game2.drawColor);
 
     initCandyDrawingPos(event.stageX - canvasW / 2, event.stageY - canvasH / 2);
   });
 
   itemCandyBase.addEventListener("pressmove", function (event) {
     if (roundData.candyData.draw) {
-      candyDrawing.graphics.mt(
-        roundData.candyData.lastPoint.x,
-        roundData.candyData.lastPoint.y
-      );
-      candyDrawing.graphics.lt(
-        event.stageX - canvasW / 2,
-        event.stageY - canvasH / 2
-      );
+      candyDrawing.graphics.mt(roundData.candyData.lastPoint.x, roundData.candyData.lastPoint.y);
+      candyDrawing.graphics.lt(event.stageX - canvasW / 2, event.stageY - canvasH / 2);
 
-      checkCandyDrawingPos(
-        event.stageX - canvasW / 2,
-        event.stageY - canvasH / 2
-      );
+      checkCandyDrawingPos(event.stageX - canvasW / 2, event.stageY - canvasH / 2);
       itemPixel.x = event.stageX - canvasW / 2;
       itemPixel.y = event.stageY - canvasH / 2;
 
@@ -419,10 +317,7 @@ export function buildGameButton() {
         event.stageX - canvasW / 2,
         event.stageY - canvasH / 2
       );
-      var intersection1 = ndgmr.checkPixelCollision(
-        itemPixel,
-        $.sprites["candy" + roundData.candyData.candyNum]
-      );
+      var intersection1 = ndgmr.checkPixelCollision(itemPixel, $.sprites["candy" + roundData.candyData.candyNum]);
       if (intersection1) {
         if (mouseDistance >= 1.5) {
           var randomFrame = Math.floor(Math.random() * 3);
@@ -433,10 +328,8 @@ export function buildGameButton() {
         clearCandyDrawing();
       }
 
-      roundData.candyData.lastPoint.x = itemNeedle.x =
-        event.stageX - canvasW / 2;
-      roundData.candyData.lastPoint.y = itemNeedle.y =
-        event.stageY - canvasH / 2;
+      roundData.candyData.lastPoint.x = itemNeedle.x = event.stageX - canvasW / 2;
+      roundData.candyData.lastPoint.y = itemNeedle.y = event.stageY - canvasH / 2;
     }
   });
 
@@ -509,9 +402,7 @@ export function buildGameButton() {
 }
 
 function appendFocusFrame() {
-  $("#mainHolder").prepend(
-    '<div id="focus" style="position:absolute; width:100%; height:100%; z-index:1000;"></div'
-  );
+  $("#mainHolder").prepend('<div id="focus" style="position:absolute; width:100%; height:100%; z-index:1000;"></div');
   $("#focus").click(function () {
     $("#focus").remove();
   });
@@ -520,25 +411,16 @@ function appendFocusFrame() {
 function toggleRound(con) {
   if (con) {
     gameData.roundSelect++;
-    gameData.roundSelect =
-      gameData.roundSelect >= gameData.totalRound
-        ? gameData.totalRound
-        : gameData.roundSelect;
+    gameData.roundSelect = gameData.roundSelect >= gameData.totalRound ? gameData.totalRound : gameData.roundSelect;
   } else {
     gameData.roundSelect--;
     gameData.roundSelect = gameData.roundSelect < 1 ? 1 : gameData.roundSelect;
   }
 
   if (gameData.roundSelect == 6) {
-    levelTxt.text = gameTextDisplay.roundFinal.replace(
-      "[NUMBER]",
-      gameData.roundSelect
-    );
+    levelTxt.text = gameTextDisplay.roundFinal.replace("[NUMBER]", gameData.roundSelect);
   } else {
-    levelTxt.text = gameTextDisplay.round.replace(
-      "[NUMBER]",
-      gameData.roundSelect
-    );
+    levelTxt.text = gameTextDisplay.round.replace("[NUMBER]", gameData.roundSelect);
   }
 }
 
@@ -596,10 +478,7 @@ export function goPage(page) {
       }
 
       if (gameCustomScore.status) {
-        resultScoreTxt.text = gameCustomScore.text.replace(
-          "[SCORE]",
-          playerData.score
-        );
+        resultScoreTxt.text = gameCustomScore.text.replace("[SCORE]", playerData.score);
         saveGame(playerData.score);
       } else {
         saveGame(gameData.roundNum);
@@ -685,25 +564,18 @@ export function toggleChooseNumber(con) {
 
 function loopChooseNumber() {
   clearInterval(chooseNumberData.interval);
-  chooseNumberData.interval = setInterval(
-    loopChooseNumber,
-    chooseNumberData.timer
-  );
+  chooseNumberData.interval = setInterval(loopChooseNumber, chooseNumberData.timer);
   chooseNumberData.timer -= 10;
   chooseNumberData.timer =
-    chooseNumberData.timer < chooseNumberData.min
-      ? chooseNumberData.max
-      : chooseNumberData.timer;
+    chooseNumberData.timer < chooseNumberData.min ? chooseNumberData.max : chooseNumberData.timer;
 
   updateChooseNumber();
 }
 
 function updateChooseNumber() {
   chooseNumberData.number += roundData.bet;
-  chooseNumberData.number =
-    chooseNumberData.number <= 1 ? 1 : chooseNumberData.number;
-  chooseNumberData.number =
-    chooseNumberData.number >= 999 ? 999 : chooseNumberData.number;
+  chooseNumberData.number = chooseNumberData.number <= 1 ? 1 : chooseNumberData.number;
+  chooseNumberData.number = chooseNumberData.number >= 999 ? 999 : chooseNumberData.number;
 
   roundData.playerNumber = pad(chooseNumberData.number, 3);
   numberTxt.text = roundData.playerNumber;
@@ -840,17 +712,12 @@ export function prepareRound() {
       roundData.turnArr.push(tugSegment);
       if (n >= halfPeople - 1 && !oppositeCon) {
         oppositeCon = true;
-        tugSegment =
-          defaultGameData.tugStart +
-          defaultGameData.tugHole +
-          defaultGameData.tugGap;
+        tugSegment = defaultGameData.tugStart + defaultGameData.tugHole + defaultGameData.tugGap;
       }
     }
 
     roundData.totalPlayers += 1;
-    roundData.turnArr.push(
-      defaultGameData.tugStart + defaultGameData.tugHole / 2
-    );
+    roundData.turnArr.push(defaultGameData.tugStart + defaultGameData.tugHole / 2);
 
     roundData.playerSet = true;
     itemLight.visible = true;
@@ -901,12 +768,8 @@ export function prepareRound() {
 
     roundData.playerSet = true;
 
-    $.sprites["healthTypeTxt" + 0].text = $.sprites[
-      "healthTypeShadowTxt" + 0
-    ].text = "";
-    $.sprites["healthTypeTxt" + 1].text = $.sprites[
-      "healthTypeShadowTxt" + 1
-    ].text = "";
+    $.sprites["healthTypeTxt" + 0].text = $.sprites["healthTypeShadowTxt" + 0].text = "";
+    $.sprites["healthTypeTxt" + 1].text = $.sprites["healthTypeShadowTxt" + 1].text = "";
 
     itemLight.visible = true;
     itemLight.gotoAndStop("red");
@@ -977,31 +840,21 @@ function displayGameRound(round, win) {
   gameRoundContainer.alpha = 0;
 
   if (gameData.roundNum == 6) {
-    roundTxt.text = roundShadowTxt.text = gameTextDisplay.roundFinal.replace(
-      "[NUMBER]",
-      gameData.roundNum
-    );
+    roundTxt.text = roundShadowTxt.text = gameTextDisplay.roundFinal.replace("[NUMBER]", gameData.roundNum);
   } else {
-    roundTxt.text = roundShadowTxt.text = gameTextDisplay.round.replace(
-      "[NUMBER]",
-      gameData.roundNum
-    );
+    roundTxt.text = roundShadowTxt.text = gameTextDisplay.round.replace("[NUMBER]", gameData.roundNum);
   }
   roundTxt.color = gameSettings["game" + gameData.roundNum].textColor;
-  roundShadowTxt.color =
-    gameSettings["game" + gameData.roundNum].textShadowColor;
+  roundShadowTxt.color = gameSettings["game" + gameData.roundNum].textShadowColor;
   roundNameTxt.color = gameSettings["game" + gameData.roundNum].textColor;
-  roundNameShadowTxt.color =
-    gameSettings["game" + gameData.roundNum].textShadowColor;
+  roundNameShadowTxt.color = gameSettings["game" + gameData.roundNum].textShadowColor;
 
   if (round) {
-    roundNameTxt.text = roundNameShadowTxt.text =
-      gameSettings["game" + gameData.roundNum].name;
+    roundNameTxt.text = roundNameShadowTxt.text = gameSettings["game" + gameData.roundNum].name;
   } else {
     if (win) {
       playSound("soundComplete");
-      roundNameTxt.text = roundNameShadowTxt.text =
-        gameTextDisplay.roundComplete;
+      roundNameTxt.text = roundNameShadowTxt.text = gameTextDisplay.roundComplete;
     } else {
       playSound("soundFail");
       roundNameTxt.text = roundNameShadowTxt.text = gameTextDisplay.roundFail;
@@ -1029,8 +882,7 @@ function displayGameRound(round, win) {
  */
 export function toggleGameInstruction(con) {
   instructionTxt.text = gameTextDisplay["game" + gameData.roundNum];
-  instructionTxt.color =
-    gameSettings["game" + gameData.roundNum].instruction.color;
+  instructionTxt.color = gameSettings["game" + gameData.roundNum].instruction.color;
 
   var alphaNum = con == true ? 1 : 0;
   TweenMax.to(gameInstructContainer, 0.5, {
@@ -1043,10 +895,8 @@ export function toggleGameInstruction(con) {
 }
 
 function resizeGameWorld() {
-  instructionTxt.x =
-    (canvasW / 100) * gameSettings["game" + gameData.roundNum].instruction.x;
-  instructionTxt.y =
-    (canvasH / 100) * gameSettings["game" + gameData.roundNum].instruction.y;
+  instructionTxt.x = (canvasW / 100) * gameSettings["game" + gameData.roundNum].instruction.x;
+  instructionTxt.y = (canvasH / 100) * gameSettings["game" + gameData.roundNum].instruction.y;
 
   if (gameData.roundNum == 6) {
     if (viewport.isLandscape) {
@@ -1067,8 +917,7 @@ export function startPanCamera() {
     roundData.followCamera = false;
 
     var totalLength = gameSettings.game1.length;
-    defaultData.position =
-      (totalLength - totalLength / 5) * defaultData.segmentLength;
+    defaultData.position = (totalLength - totalLength / 5) * defaultData.segmentLength;
 
     TweenMax.to(defaultData, 2, {
       delay: 1,
@@ -1093,10 +942,8 @@ export function startPanCamera() {
       },
     });
   } else if (gameData.roundNum == 3) {
-    defaultData.position =
-      defaultGameData.tugStart * 2 * defaultData.segmentLength;
-    var totalLength =
-      (defaultGameData.tugStart - 10) * defaultData.segmentLength;
+    defaultData.position = defaultGameData.tugStart * 2 * defaultData.segmentLength;
+    var totalLength = (defaultGameData.tugStart - 10) * defaultData.segmentLength;
     TweenMax.to(defaultData, 2, {
       position: totalLength,
       overwrite: true,
@@ -1132,8 +979,7 @@ export function startPanCamera() {
     });
   } else if (gameData.roundNum == 6) {
     var totalLength = defaultGameData.survivalStart + gameSettings.game6.length;
-    defaultData.position =
-      (totalLength - totalLength / 5) * defaultData.segmentLength;
+    defaultData.position = (totalLength - totalLength / 5) * defaultData.segmentLength;
 
     TweenMax.to(defaultData, 2, {
       position: 6 * defaultData.segmentLength,
@@ -1176,7 +1022,6 @@ export function startGameRound() {
     //DEVNOW
     loopPlayrMoveTimer();
     startGreenLightCount();
-
   } else if (gameData.roundNum == 2) {
     candyContainer.visible = true;
     candyContainer.alpha = 0;
@@ -1258,12 +1103,7 @@ export function toggleGameControl(type, con) {
     }
   } else if (gameData.roundNum == 6) {
     if (type == "mousedown") {
-      var controlDis = getDistance(
-        stage.mouseX,
-        stage.mouseY,
-        itemControl.x,
-        itemControl.y
-      );
+      var controlDis = getDistance(stage.mouseX, stage.mouseY, itemControl.x, itemControl.y);
       if (controlDis < 100) {
         roundData.survivalData.move = true;
         itemControl.alpha = 0.5;
@@ -1336,9 +1176,7 @@ export function updateGame() {
   if (!gameData.paused) {
     if (timeData.enable) {
       timeData.nowDate = new Date();
-      timeData.elapsedTime = Math.floor(
-        timeData.nowDate.getTime() - timeData.startDate.getTime()
-      );
+      timeData.elapsedTime = Math.floor(timeData.nowDate.getTime() - timeData.startDate.getTime());
       timeData.timer = Math.floor(timeData.countdown - timeData.elapsedTime);
 
       if (timeData.oldTimer == -1) {
@@ -1405,11 +1243,7 @@ function updateSprites() {
 
   updatePlayers(dt);
 
-  defaultData.position = getIncrease(
-    defaultData.position,
-    dt * defaultData.speed,
-    defaultData.trackLength
-  );
+  defaultData.position = getIncrease(defaultData.position, dt * defaultData.speed, defaultData.trackLength);
 
   if (gameData.roundNum == 6) {
     var controlX = stage.mouseX - canvasW / 2;
@@ -1424,29 +1258,19 @@ function updateSprites() {
     defaultData.playerX = defaultData.playerX + dx;
   }
 
-  defaultData.playerX =
-    defaultData.playerX -
-    dx * speedPercent * playerSegment.curve * defaultData.centrifugal;
+  defaultData.playerX = defaultData.playerX - dx * speedPercent * playerSegment.curve * defaultData.centrifugal;
 
   if (roundData.lightData.forward) {
     defaultData.speed = getAccelerate(defaultData.speed, worldData.accel, dt);
   } else if (roundData.lightData.stop) {
-    defaultData.speed = getAccelerate(
-      defaultData.speed,
-      defaultData.breaking,
-      dt
-    );
+    defaultData.speed = getAccelerate(defaultData.speed, defaultData.breaking, dt);
   } else {
     defaultData.speed = getAccelerate(defaultData.speed, defaultData.decel, dt);
   }
 
   if (defaultData.playerX < -1 || defaultData.playerX > 1) {
     if (defaultData.speed > defaultData.offRoadLimit)
-      defaultData.speed = getAccelerate(
-        defaultData.speed,
-        defaultData.offRoadDecel,
-        dt
-      );
+      defaultData.speed = getAccelerate(defaultData.speed, defaultData.offRoadDecel, dt);
   }
 
   if (gameData.roundNum == 1) {
@@ -1455,22 +1279,9 @@ function updateSprites() {
       if (player.index != 0) {
         let thisPlayerW = player.sprite.w * defaultData.scale;
         if (defaultData.speed > player.speed) {
-          if (
-            getOverlap(
-              defaultData.playerX,
-              playerW,
-              player.offset,
-              thisPlayerW,
-              0.8
-            )
-          ) {
-            defaultData.speed =
-              player.speed * (player.speed / defaultData.speed);
-            defaultData.position = getIncrease(
-              player.z,
-              -defaultData.playerZ,
-              defaultData.trackLength
-            );
+          if (getOverlap(defaultData.playerX, playerW, player.offset, thisPlayerW, 0.8)) {
+            defaultData.speed = player.speed * (player.speed / defaultData.speed);
+            defaultData.position = getIncrease(player.z, -defaultData.playerZ, defaultData.trackLength);
             break;
           }
         }
@@ -1483,26 +1294,17 @@ function updateSprites() {
 
   defaultData.skyOffset = getIncrease(
     defaultData.skyOffset,
-    (defaultData.skySpeed *
-      playerSegment.curve *
-      (defaultData.position - startPosition)) /
-      defaultData.segmentLength,
+    (defaultData.skySpeed * playerSegment.curve * (defaultData.position - startPosition)) / defaultData.segmentLength,
     1
   );
   defaultData.hillOffset = getIncrease(
     defaultData.hillOffset,
-    (defaultData.hillSpeed *
-      playerSegment.curve *
-      (defaultData.position - startPosition)) /
-      defaultData.segmentLength,
+    (defaultData.hillSpeed * playerSegment.curve * (defaultData.position - startPosition)) / defaultData.segmentLength,
     1
   );
   defaultData.treeOffset = getIncrease(
     defaultData.treeOffset,
-    (defaultData.treeSpeed *
-      playerSegment.curve *
-      (defaultData.position - startPosition)) /
-      defaultData.segmentLength,
+    (defaultData.treeSpeed * playerSegment.curve * (defaultData.position - startPosition)) / defaultData.segmentLength,
     1
   );
 
@@ -1544,20 +1346,10 @@ function renderWorld() {
   }
 
   var baseSegment = findSegment(defaultData.position);
-  var basePercent = percentRemaining(
-    defaultData.position,
-    defaultData.segmentLength
-  );
+  var basePercent = percentRemaining(defaultData.position, defaultData.segmentLength);
   var playerSegment = findSegment(defaultData.position + defaultData.playerZ);
-  var playerPercent = percentRemaining(
-    defaultData.position + defaultData.playerZ,
-    defaultData.segmentLength
-  );
-  var playerY = getInterpolate(
-    playerSegment.p1.world.y,
-    playerSegment.p2.world.y,
-    playerPercent
-  );
+  var playerPercent = percentRemaining(defaultData.position + defaultData.playerZ, defaultData.segmentLength);
+  var playerY = getInterpolate(playerSegment.p1.world.y, playerSegment.p2.world.y, playerPercent);
   var maxy = defaultData.height + defaultData.extraHeight;
 
   var x = 0;
@@ -1613,9 +1405,7 @@ function renderWorld() {
 
     getProject(
       segment.p1,
-      defaultData.playerX *
-        gameSettings["game" + gameData.roundNum].path.width -
-        x,
+      defaultData.playerX * gameSettings["game" + gameData.roundNum].path.width - x,
       playerY + worldData.cameraHeight,
       defaultData.position - (segment.looped ? defaultData.trackLength : 0),
       defaultData.cameraDepth,
@@ -1625,10 +1415,7 @@ function renderWorld() {
     );
     getProject(
       segment.p2,
-      defaultData.playerX *
-        gameSettings["game" + gameData.roundNum].path.width -
-        x -
-        dx,
+      defaultData.playerX * gameSettings["game" + gameData.roundNum].path.width - x - dx,
       playerY + worldData.cameraHeight,
       defaultData.position - (segment.looped ? defaultData.trackLength : 0),
       defaultData.cameraDepth,
@@ -1675,27 +1462,11 @@ function renderWorld() {
         break;
       }
       let player = segment.players[i];
-      let spriteScale = getInterpolate(
-        segment.p1.screen.scale,
-        segment.p2.screen.scale,
-        player.percent
-      );
+      let spriteScale = getInterpolate(segment.p1.screen.scale, segment.p2.screen.scale, player.percent);
       let spriteX =
-        getInterpolate(
-          segment.p1.screen.x,
-          segment.p2.screen.x,
-          player.percent
-        ) +
-        (spriteScale *
-          player.offset *
-          gameSettings["game" + gameData.roundNum].path.width *
-          defaultData.width) /
-          2;
-      let spriteY = getInterpolate(
-        segment.p1.screen.y,
-        segment.p2.screen.y,
-        player.percent
-      );
+        getInterpolate(segment.p1.screen.x, segment.p2.screen.x, player.percent) +
+        (spriteScale * player.offset * gameSettings["game" + gameData.roundNum].path.width * defaultData.width) / 2;
+      let spriteY = getInterpolate(segment.p1.screen.y, segment.p2.screen.y, player.percent);
 
       if (player.active)
         renderSprite(
@@ -1719,11 +1490,7 @@ function renderWorld() {
       spriteScale = segment.p1.screen.scale;
       spriteX =
         segment.p1.screen.x +
-        (spriteScale *
-          sprite.offset *
-          gameSettings["game" + gameData.roundNum].path.width *
-          defaultData.width) /
-          2;
+        (spriteScale * sprite.offset * gameSettings["game" + gameData.roundNum].path.width * defaultData.width) / 2;
       spriteY = segment.p1.screen.y;
 
       if (sprite.active)
@@ -1764,27 +1531,18 @@ function addSegment(curve, y) {
   var totalLane = 2;
 
   if (Math.floor(n / totalLane) % 2) {
-    segmentColor.base =
-      gameSettings["game" + gameData.roundNum].path.light.base;
-    segmentColor.path =
-      gameSettings["game" + gameData.roundNum].path.light.path;
-    segmentColor.glass =
-      gameSettings["game" + gameData.roundNum].path.light.glass;
-    segmentColor.holder =
-      gameSettings["game" + gameData.roundNum].path.light.holder;
-    segmentColor.rope =
-      gameSettings["game" + gameData.roundNum].path.light.rope;
-    segmentColor.side =
-      gameSettings["game" + gameData.roundNum].path.light.side;
-    segmentColor.line =
-      gameSettings["game" + gameData.roundNum].path.light.line;
+    segmentColor.base = gameSettings["game" + gameData.roundNum].path.light.base;
+    segmentColor.path = gameSettings["game" + gameData.roundNum].path.light.path;
+    segmentColor.glass = gameSettings["game" + gameData.roundNum].path.light.glass;
+    segmentColor.holder = gameSettings["game" + gameData.roundNum].path.light.holder;
+    segmentColor.rope = gameSettings["game" + gameData.roundNum].path.light.rope;
+    segmentColor.side = gameSettings["game" + gameData.roundNum].path.light.side;
+    segmentColor.line = gameSettings["game" + gameData.roundNum].path.light.line;
   } else {
     segmentColor.base = gameSettings["game" + gameData.roundNum].path.dark.base;
     segmentColor.path = gameSettings["game" + gameData.roundNum].path.dark.path;
-    segmentColor.glass =
-      gameSettings["game" + gameData.roundNum].path.dark.glass;
-    segmentColor.holder =
-      gameSettings["game" + gameData.roundNum].path.dark.holder;
+    segmentColor.glass = gameSettings["game" + gameData.roundNum].path.dark.glass;
+    segmentColor.holder = gameSettings["game" + gameData.roundNum].path.dark.holder;
     segmentColor.rope = gameSettings["game" + gameData.roundNum].path.dark.rope;
     segmentColor.side = gameSettings["game" + gameData.roundNum].path.dark.side;
     segmentColor.line = gameSettings["game" + gameData.roundNum].path.dark.line;
@@ -1818,15 +1576,10 @@ function addPath(enter, hold, leave, curve, y) {
   var endY = startY + toInt(y, 0) * defaultData.segmentLength;
   var n,
     total = enter + hold + leave;
-  for (n = 0; n < enter; n++)
-    addSegment(easeIn(0, curve, n / enter), easeInOut(startY, endY, n / total));
-  for (n = 0; n < hold; n++)
-    addSegment(curve, easeInOut(startY, endY, (enter + n) / total));
+  for (n = 0; n < enter; n++) addSegment(easeIn(0, curve, n / enter), easeInOut(startY, endY, n / total));
+  for (n = 0; n < hold; n++) addSegment(curve, easeInOut(startY, endY, (enter + n) / total));
   for (n = 0; n < leave; n++)
-    addSegment(
-      easeInOut(curve, 0, n / leave),
-      easeInOut(startY, endY, (enter + hold + n) / total)
-    );
+    addSegment(easeInOut(curve, 0, n / leave), easeInOut(startY, endY, (enter + hold + n) / total));
 }
 
 /*!
@@ -1843,11 +1596,8 @@ export function resetWorld() {
   defaultData.offRoadDecel = -defaultData.maxSpeed / 2;
   defaultData.offRoadLimit = defaultData.maxSpeed / 4;
 
-  defaultData.cameraDepth =
-    1 / Math.tan(((defaultData.fieldOfView / 2) * Math.PI) / 180);
-  defaultData.playerZ =
-    roundData.players.playerZ * defaultData.segmentLength +
-    defaultData.segmentLength / 2; //(defaultData.cameraHeight * defaultData.cameraDepth) + 400;
+  defaultData.cameraDepth = 1 / Math.tan(((defaultData.fieldOfView / 2) * Math.PI) / 180);
+  defaultData.playerZ = roundData.players.playerZ * defaultData.segmentLength + defaultData.segmentLength / 2; //(defaultData.cameraHeight * defaultData.cameraDepth) + 400;
   defaultData.oriPlayerZ = defaultData.playerZ;
   resolution = defaultData.height / 1024;
 
@@ -1896,10 +1646,7 @@ function resetPath() {
   } else if (gameData.roundNum == 3) {
     addPath(pathLength, pathLength, pathLength, 0, 0);
 
-    var totalLength =
-      defaultGameData.tugStart +
-      defaultGameData.tugHole +
-      gameSettings.game3.players;
+    var totalLength = defaultGameData.tugStart + defaultGameData.tugHole + gameSettings.game3.players;
     addSprite(totalLength, $.sprites["game3construct"], 0);
   } else if (gameData.roundNum == 4) {
     addPath(pathLength, pathLength, pathLength, 0, 0);
@@ -1916,9 +1663,7 @@ function resetPath() {
   } else if (gameData.roundNum == 5) {
     addPath(pathLength, pathLength, pathLength, 0, 0);
 
-    var totalLength =
-      gameSettings.game5.length * defaultGameData.bridgeSteps +
-      defaultGameData.bridgeStart;
+    var totalLength = gameSettings.game5.length * defaultGameData.bridgeSteps + defaultGameData.bridgeStart;
     var pos = [-0.5, -0.2, 0.2, 0.5];
     for (var n = 0; n < pos.length; n++) {
       var guardIndex = Math.floor(Math.random() * guards_arr.length);
@@ -1929,23 +1674,14 @@ function resetPath() {
   } else if (gameData.roundNum == 6) {
     addPath(pathLength, pathLength, pathLength, 0, 0);
 
-    segments[defaultGameData.survivalStart].color.path =
-      gameSettings.game6.path.end;
-    segments[
-      defaultGameData.survivalStart + gameSettings.game6.length
-    ].color.path = gameSettings.game6.path.end;
+    segments[defaultGameData.survivalStart].color.path = gameSettings.game6.path.end;
+    segments[defaultGameData.survivalStart + gameSettings.game6.length].color.path = gameSettings.game6.path.end;
 
-    var totalLength =
-      gameSettings.game5.length * defaultGameData.bridgeSteps +
-      defaultGameData.bridgeStart;
+    var totalLength = gameSettings.game5.length * defaultGameData.bridgeSteps + defaultGameData.bridgeStart;
     var pos = [-0.5, -0.2, 0.2, 0.5];
     for (var n = 0; n < pos.length; n++) {
       var guardIndex = Math.floor(Math.random() * guards_arr.length);
-      addSprite(
-        defaultGameData.survivalStart + gameSettings.game6.length + 3,
-        $.sprites["guard" + guardIndex],
-        pos[n]
-      );
+      addSprite(defaultGameData.survivalStart + gameSettings.game6.length + 3, $.sprites["guard" + guardIndex], pos[n]);
     }
   }
   console.log("segments", segments);
@@ -1963,16 +1699,10 @@ function resetPlayers() {
   console.log("halfPeople", roundData.totalPlayers, halfPeople);
 
   for (var n = 0; n < roundData.totalPlayers; n++) {
-    var randomSegment = randomInt(
-      roundData.players.startZ,
-      roundData.players.endZ
-    );
+    var randomSegment = randomInt(roundData.players.startZ, roundData.players.endZ);
     offset = Math.random() * randomChoice([-0.8, 0.8]);
     z = randomSegment * defaultData.segmentLength;
-    speed = randomInt(
-      defaultGameData.playerSpeed[0],
-      defaultGameData.playerSpeed[1]
-    );
+    speed = randomInt(defaultGameData.playerSpeed[0], defaultGameData.playerSpeed[1]);
 
     var playerContainer = new createjs.Container();
     var playerIndex = Math.floor(Math.random() * players_arr.length);
@@ -2013,10 +1743,7 @@ function resetPlayers() {
       } else if (gameData.roundNum == 5) {
         offset = Math.random() * randomChoice([-0.1, 0.1]);
 
-        getSegment =
-          defaultGameData.bridgeStart -
-          1 -
-          roundData.bridgeData.turnArr[playerTurnIndex];
+        getSegment = defaultGameData.bridgeStart - 1 - roundData.bridgeData.turnArr[playerTurnIndex];
       } else if (gameData.roundNum == 6) {
         offset = Math.random() * randomChoice([-0.2, 0.2]);
       }
@@ -2089,8 +1816,7 @@ export function endGame(win, timer) {
         var lifeLeft = roundData.survivalData.userHealth;
         var roundScore = lifeLeft * 0.05;
       } else {
-        var timeLeft =
-          gameSettings["game" + gameData.roundNum].timer - timeData.timer;
+        var timeLeft = gameSettings["game" + gameData.roundNum].timer - timeData.timer;
         var roundScore = Math.round(timeLeft * 0.0005);
       }
 
@@ -2231,9 +1957,7 @@ function toggleFullScreen() {
     } else if (document.documentElement.mozRequestFullScreen) {
       document.documentElement.mozRequestFullScreen();
     } else if (document.documentElement.webkitRequestFullscreen) {
-      document.documentElement.webkitRequestFullscreen(
-        Element.ALLOW_KEYBOARD_INPUT
-      );
+      document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
     }
   } else {
     if (document.exitFullscreen) {
@@ -2253,7 +1977,6 @@ function toggleFullScreen() {
  * OPTIONS - This is the function that runs to toggle options
  *
  */
-
 function toggleOption() {
   if (optionsContainer.visible) {
     optionsContainer.visible = false;

@@ -1,5 +1,5 @@
 import { players_arr, guards_arr, gameData } from './game.js'; // Import gameData
-import { checkMobileEvent, resizeGameFunc } from './mobile.js';
+import { checkMobileEvent } from './mobile.js';
 import { isTablet } from './helpers/device.js'; // Import isTablet helper
 import { initMain } from './main.js'; // Import initMain
 import { gameSettings } from './gameSettings.js';
@@ -21,13 +21,7 @@ export function initPreload(){
 	console.log('players_arr',players_arr); // Ensure it's accessible
 	toggleLoader(true);
 	
-	// checkMobileEvent();
-	
-	// $(window).resize(function(){
-	// 	resizeGameFunc();
-	// });
-	// resizeGameFunc();
-	
+	checkMobileEvent();
 	
 	loader = new createjs.LoadQueue(false);
 	let manifest = [ // Declare manifest variable
