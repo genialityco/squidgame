@@ -29,11 +29,14 @@ export function renderSegment(width, x1, y1, w1, x2, y2, w2, fog, color, index){
 		var holeLength = defaultGameData.tugHole;
 		var totalLength = (holeLength) + defaultGameData.tugStart;
 		if(index < defaultGameData.tugStart || index >= totalLength + 2){
+
+			// Horizontal lines that creates the height of the bridge
 			if(index >= totalLength + 2 && index <= totalLength + 4){
 				renderPolygon(x1-w1, y1, x1+w1, y1, x1+w1, y2+canvasH, x2-w2, y2+canvasH, gameSettings['game'+gameData.roundNum].path.fog, 1, 1, worldContainer);
 			}
 
-			renderPolygon(x1-w1, y1, x1+w1, y1, x2+w2, y2, x2-w2, y2, color.path, worldContainer);
+			//Piso gris intercalado
+			renderPolygon(x1-w1, y1, x1+w1, y1, x2+w2, y2, x2-w2, y2, color.path);
 			
 			var sideW = 10;
 			var holderData = {
@@ -42,8 +45,11 @@ export function renderSegment(width, x1, y1, w1, x2, y2, w2, fog, color, index){
 				w1:w1/100 * sideW,
 				w2:w2/100 * sideW,
 			}
-			renderPolygon(x1-w1-holderData.w1, y1, x1-w1, y1, x2-w2, y2, x2-w2-holderData.w2, y2, color.side, worldContainer);
-    		renderPolygon(x1+w1+holderData.w1, y1, x1+w1, y1, x2+w2, y2, x2+w2+holderData.w2, y2, color.side, worldContainer);
+			//Lateral yellow and black line
+			//Right
+			renderPolygon(x1-w1-holderData.w1, y1, x1-w1, y1, x2-w2, y2, x2-w2-holderData.w2, y2, color.side);
+    		//Left
+			renderPolygon(x1+w1+holderData.w1, y1, x1+w1, y1, x2+w2, y2, x2+w2+holderData.w2, y2, color.side);
 		}
 
 		var holderSpace = 0;
@@ -56,8 +62,9 @@ export function renderSegment(width, x1, y1, w1, x2, y2, w2, fog, color, index){
 			w2:w2/100 * ropeW,
 		}
 
-		renderPolygon(x1-holderData.w1, y1-ropeY, x1-holderData.space1, y1-ropeY, x2-holderData.space2, y2-ropeY, x2-holderData.w2, y2-ropeY, color.rope, worldContainer);
-		renderPolygon(x1+holderData.w1, y1-ropeY, x1+holderData.space1, y1-ropeY, x2+holderData.space2, y2-ropeY, x2+holderData.w2, y2-ropeY, color.rope, worldContainer);
+console.log(x1-holderData.w1, y1-ropeY, x1-holderData.space1, y1-ropeY, x2-holderData.space2, y2-ropeY, x2-holderData.w2, y2-ropeY, color.rope)
+		renderPolygon(x1-holderData.w1, y1-ropeY, x1-holderData.space1, y1-ropeY, x2-holderData.space2, y2-ropeY, x2-holderData.w2, y2-ropeY, color.rope);
+		renderPolygon(x1+holderData.w1, y1-ropeY, x1+holderData.space1, y1-ropeY, x2+holderData.space2, y2-ropeY, x2+holderData.w2, y2-ropeY, color.rope);
 	}else if(gameData.roundNum == 5){
 		var glassW = defaultGameData.bridgeGlassWidth;
 		var holderW = defaultGameData.bridgeGlassHoldWidth;
