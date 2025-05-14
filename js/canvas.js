@@ -14,7 +14,8 @@ import {
   changeGameViewport,
   curPage,
 } from "./game.js"; // Import required variables
-import { stageW, stageH, landscapeSize, portraitSize, viewport } from "./main.js"; // Import stageW, stageH, landscapeSize, portraitSize, and viewport
+import { stageW, stageH, setStageW, setStageH,  } from "./main.js"; // Import stageW, stageH, landscapeSize, portraitSize, and viewport
+import { contentW, contentH, setContentW, setContentH, landscapeSize, portraitSize, viewport } from "./main.js"; // Import stageW, stageH, landscapeSize, portraitSize, and viewport
 import { gameSettings } from "./gameSettings.js";
 import { gameTextDisplay } from "./gameTextDisplay.js";
 import { resizeGameFunc } from "./main.js"; // Import resizeGameFunc
@@ -727,35 +728,35 @@ export function buildGameCanvas() {
 }
 
 export function changeViewport(isLandscape) {
-  let localStageW, localStageH, contentW, contentH; // Declare contentW and contentH as local variables
   if (isLandscape) {
     //landscape
-    localStageW = landscapeSize.w;
-    localStageH = landscapeSize.h;
-    contentW = landscapeSize.cW;
-    contentH = landscapeSize.cH;
+    setStageW(landscapeSize.w);
+	setStageH(landscapeSize.h);
 
+    setContentH(landscapeSize.cW);
+	setContentW(landscapeSize.cH);
+    
     defaultData.width = defaultData.viewport.landscape.w;
     defaultData.height = defaultData.viewport.landscape.h;
     defaultData.scale = defaultData.viewport.landscape.scale;
   } else {
+	
     //portrait
-    localStageW = portraitSize.w;
-    localStageH = portraitSize.h;
-    contentW = portraitSize.cW;
-    contentH = portraitSize.cH;
+    setStageW(portraitSize.w);
+	setStageH(portraitSize.h);
+
+    setContentW(portraitSize.cW);
+	setContentH(portraitSize.cH);
 
     defaultData.width = defaultData.viewport.portrait.w;
     defaultData.height = defaultData.viewport.portrait.h;
     defaultData.scale = defaultData.viewport.portrait.scale;
   }
+  gameCanvas.width = stageW;
+  gameCanvas.height = stageH;
 
-  gameCanvas.width = localStageW;
-  gameCanvas.height = localStageH;
-
-  canvasW = localStageW;
-  canvasH = localStageH;
-
+  canvasW = stageW;
+  canvasH = stageH;
   changeCanvasViewport(contentW, contentH); // Pass contentW and contentH to changeCanvasViewport
   changeGameViewport();
 }

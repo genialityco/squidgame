@@ -5,10 +5,10 @@ import { initGameCanvas, buildGameCanvas, resizeCanvas } from "./canvas.js"; // 
 import { buildGameButton, goPage } from "./game.js"; // Import buildGameButton
 import { checkMobileOrientation } from "./mobile.js"; // Import checkMobileOrientation
 import { isTablet } from "./helpers/device.js"; // Import isTablet helper
-export var stageW = 1280;
-export var stageH = 768;
-var contentW = 1024;
-var contentH = 576;
+export var stageW = 1280; export function setStageW(value) { stageW = value; }
+export var stageH = 768;  export function setStageH(value) { stageH = value; }
+export var contentW = 1024; export function setContentW(value) { contentW = value; } 
+export var contentH = 576; export function setContentH(value) { contentH = value; }
 
 export var viewport = { isLandscape: true };
 export var landscapeSize = { w: stageW, h: stageH, cW: contentW, cH: contentH };
@@ -57,9 +57,9 @@ export function resizeGameFunc() {
     if (contentH * scalePercent > windowH) {
       scalePercent = windowH / contentH;
     }
-
     scalePercent = scalePercent > 1 ? 1 : scalePercent;
 
+   
     if (windowW > stageW && windowH > stageH) {
       if (windowW > stageW) {
         scalePercent = windowW / stageW;
@@ -68,10 +68,10 @@ export function resizeGameFunc() {
         }
       }
     }
+    
 
     var newCanvasW = stageW * scalePercent;
     var newCanvasH = stageH * scalePercent;
-
     offset.left = 0;
     offset.top = 0;
 
@@ -99,7 +99,6 @@ export function resizeGameFunc() {
 
     $("canvas").css("width", newCanvasW);
     $("canvas").css("height", newCanvasH);
-
     $("canvas").css("left", offset.left / 2);
     $("canvas").css("top", offset.top / 2);
 
