@@ -554,10 +554,10 @@ export function goPage(page) {
       piggyContainer.visible = true;
 
       const chosenGame = getUrlParameter("chooseGame");
-      const validGame = chosenGame >= 0 && chosenGame <= 6;
+      const validGame = chosenGame >= 1 && chosenGame <= 6;
 
-      gameData.roundNum = validGame ? chosenGame : gameData.roundNum;
-      gameData.roundSelect = validGame ? chosenGame : gameData.roundNum;
+      gameData.roundNum = validGame ? chosenGame - 1 : 0;
+      gameData.roundSelect = gameData.roundNum;
 
       toggleRound(true);
       prepareRound();
