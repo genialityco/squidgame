@@ -330,7 +330,7 @@ export const questionPool = [
     "level": "Nivel 1"
   },
   {
-    "text": "El término partes en un contrato se refiere a:",
+    "text": "El término partes en un contrato se refiere a:",
     "options": [
       "Solo el cliente",
       "Todos los involucrados en el contrato",

@@ -1218,8 +1218,8 @@ export async function startGameRound() {
   if (gameData.roundNum == 1) {
     //DEVNOW
     loopPlayrMoveTimer();
-	
-	    await showInstructionModal(
+
+    await showInstructionModal(
       `🟥🟢 Red Light, Green Light:
 Corre mientras el semáforo esté en VERDE.
 ¡Detente cuando esté en ROJO o serás eliminado!
@@ -1227,7 +1227,6 @@ Corre mientras el semáforo esté en VERDE.
 📚 Luego responderás preguntas de selección múltiple.
 Responde bien para mejorar tu puntuación.`
     );
-
 
     startGreenLightCount();
   } else if (gameData.roundNum == 2) {
@@ -2192,14 +2191,16 @@ export function endGame(win, timer) {
         roundScore += Math.round(timeLeft * 0.002); // Suma por tiempo restante
       }
 
-      let  scorebase = 100;
+      let scorebase = 100;
       // Normalización del puntaje
       //Hacemos que el puntaje base sea 100 y que tenga una variación de centenas
-      playerData.score += scorebase + roundScore*100;
+      playerData.score += scorebase + roundScore * 100;
+
+      let finalScore = scorebase + roundScore * 100;
 
       /** HERE THE PLAYER SCORE is going to be UPDATED TO THE DATABASE FIRESTORE */
-      showScoreModal(roundScore, () => {
-        updateScore(scorebase + roundScore*100);
+      showScoreModal(finalScore, () => {
+        updateScore(finalScore);
       });
     } else if (!win) {
       var deadArr = [1, 2, 4];
