@@ -12,7 +12,9 @@ import { showInstructionModal } from "../helpers/instructions.js";
 
 export async function startTugGame() {
   await showInstructionModal(
-    `💪 Antes de cruzar, responde unas preguntas.
+    `💪 ¡Desafío Tira y Afloja!
+
+Antes de cruzar, responde unas preguntas.
 ❗ Cada error te restará 5 segundos de tu tiempo total y te eliminará un muñeco, así que tendrás menos probabilidades para pasar
 
 🕹️ Tienes varios muñecos en fila para intentar cruzar.
