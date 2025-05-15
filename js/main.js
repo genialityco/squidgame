@@ -32,17 +32,14 @@ export function initMain() {
     initGameCanvas(stageW, stageH);
     buildGameCanvas();
     buildGameButton();
-    console.log("initMain");
     if (typeof buildScoreBoardCanvas == "function") {
       buildScoreBoardCanvas();
     }
-    console.log("goPage(main);");
     goPage("main");
 
     checkMobileOrientation();
     resizeCanvas();
   //}
-  console.log("failed condition");
 }
 
 /*!

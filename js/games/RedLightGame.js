@@ -112,15 +112,6 @@ export async function startRedLightCount() {
 
   /** QUESTIONS TO GAMIFY KNOWLEDGE */
   pauseGameForModal();
-  await showInstructionModal(
-    `🟥🟢 Red Light, Green Light:
-Corre mientras el semáforo esté en VERDE.
-¡Detente cuando esté en ROJO o serás eliminado!
-
-📚 Luego responderás preguntas de selección múltiple.
-Responde bien para mejorar tu puntuación.`
-  );
-
   await showQuestionModal();
   resumeGameAfterModal();
 

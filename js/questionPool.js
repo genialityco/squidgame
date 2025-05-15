@@ -440,7 +440,7 @@ export const questionPool = [
     "level": "Nivel 3"
   },
   {
-    "text": "¿Qué significa vigencia en un contrato?",
+    "text": "¿Qué significa vigencia en un contrato?",
     "options": [
       "El tiempo durante el cual el contrato está activo",
       " La fecha de firma del documento",

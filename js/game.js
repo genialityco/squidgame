@@ -1143,7 +1143,7 @@ export function startPanCamera() {
       position: totalLength,
       overwrite: true,
       onComplete: async function () {
-		console.log("Mostrantdo instructions")
+        console.log("Mostrantdo instructions");
         await showInstructionModal(
           `💪 ¡Puente de Cristal!
 
@@ -1159,7 +1159,7 @@ Pueden lograrlo todos… o pueden caer uno por uno. 😬
 
 ⏱️ ¿Lograrás llevar a alguien hasta el otro lado?`
         );
-				console.log("Mostrantdo questions")
+        console.log("Mostrantdo questions");
 
         showPreGameQuestions((aciertos) => {
           /** Para eliminar una cantidad específica de "turnos" (jugadores) en el Bridge Game, el proceso es el siguiente:
@@ -1168,7 +1168,7 @@ Pueden lograrlo todos… o pueden caer uno por uno. 😬
         */
           console.log("Aciertos:", aciertos);
 
-        //   eliminatePlayers(aciertos);
+          //   eliminatePlayers(aciertos);
           startGameRound();
         });
       },
@@ -1212,12 +1212,23 @@ function updatePlayerTime() {
  * GAME ROUND BEGIN - This is the function that runs to start game round
  *
  */
-export function startGameRound() {
+export async function startGameRound() {
   gameData.interact = true;
 
   if (gameData.roundNum == 1) {
     //DEVNOW
     loopPlayrMoveTimer();
+	
+	    await showInstructionModal(
+      `🟥🟢 Red Light, Green Light:
+Corre mientras el semáforo esté en VERDE.
+¡Detente cuando esté en ROJO o serás eliminado!
+
+📚 Luego responderás preguntas de selección múltiple.
+Responde bien para mejorar tu puntuación.`
+    );
+
+
     startGreenLightCount();
   } else if (gameData.roundNum == 2) {
     candyContainer.visible = true;
@@ -2134,6 +2145,20 @@ export function randomPlayerNumber() {
   return pad(playerNumber, 3);
 }
 
+function showScoreModal(points, callback) {
+  const modal = document.getElementById("scoreModal");
+  const message = document.getElementById("scoreModalMessage");
+  const button = document.getElementById("scoreModalBtn");
+
+  message.innerText = `🎉 ¡Ganaste ${points} puntos!`;
+  modal.style.display = "flex";
+
+  button.onclick = () => {
+    modal.style.display = "none";
+    if (callback) callback();
+  };
+}
+
 /*!
  *
  * END GAME - This is the function that runs for end game, meaning when each round is finished
@@ -2156,21 +2181,23 @@ export function endGame(win, timer) {
     itemControl.visible = false;
 
     if (win) {
-      //calculate score
+      let roundScore = 500; // Puntaje base
+
       if (gameData.roundNum == 6) {
-        var lifeLeft = roundData.survivalData.userHealth;
-        var roundScore = lifeLeft * 0.05;
+        const lifeLeft = roundData.survivalData.userHealth;
+        roundScore += Math.round(lifeLeft * 0.05); // Suma por vida restante
       } else {
-        var timeLeft =
+        const timeLeft =
           gameSettings["game" + gameData.roundNum].timer - timeData.timer;
-        var roundScore = Math.round(timeLeft * 0.0005);
+        roundScore += Math.round(timeLeft * 0.002); // Suma por tiempo restante
       }
 
-      playerData.score += Math.round(roundScore);
+      playerData.score += roundScore;
 
       /** HERE THE PLAYER SCORE is going to be UPDATED TO THE DATABASE FIRESTORE */
-      alert("Ganaste: " + roundScore + " puntos");
-      updateScore(roundScore);
+      showScoreModal(roundScore, () => {
+        updateScore(roundScore);
+      });
     } else if (!win) {
       var deadArr = [1, 2, 4];
       if (deadArr.indexOf(gameData.roundNum) != -1) {
