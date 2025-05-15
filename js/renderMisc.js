@@ -61,8 +61,6 @@ export function renderSegment(width, x1, y1, w1, x2, y2, w2, fog, color, index){
 			w1:w1/100 * ropeW,
 			w2:w2/100 * ropeW,
 		}
-
-console.log(x1-holderData.w1, y1-ropeY, x1-holderData.space1, y1-ropeY, x2-holderData.space2, y2-ropeY, x2-holderData.w2, y2-ropeY, color.rope)
 		renderPolygon(x1-holderData.w1, y1-ropeY, x1-holderData.space1, y1-ropeY, x2-holderData.space2, y2-ropeY, x2-holderData.w2, y2-ropeY, color.rope);
 		renderPolygon(x1+holderData.w1, y1-ropeY, x1+holderData.space1, y1-ropeY, x2+holderData.space2, y2-ropeY, x2+holderData.w2, y2-ropeY, color.rope);
 	}else if(gameData.roundNum == 5){

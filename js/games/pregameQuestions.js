@@ -5,6 +5,7 @@ let questionIndex = 0;
 let correctAnswers = 0;
 let onComplete = null;
 let selectedQuestions = [];
+const QUESTIONS_PER_GAME = 2;
 
 // Función para seleccionar preguntas aleatorias
 function getRandomQuestions(pool, count) {
@@ -18,7 +19,8 @@ export function showPreGameQuestions(callback) {
   onComplete = callback;
 
   // Seleccionar 8 preguntas al azar sin repetir
-  selectedQuestions = getRandomQuestions(questionPool, 8);
+
+  selectedQuestions = getRandomQuestions(questionPool, QUESTIONS_PER_GAME);
 
   pauseGameForQuestions();
   renderQuestion();

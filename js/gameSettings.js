@@ -155,7 +155,7 @@ export var gameSettings = {
         },
         instruction:{color:'#fff', x:0, y:5},
         glassAlpha:.3,
-        players:10,
+        players:8,
         length:15,
         timer:60000
     },
