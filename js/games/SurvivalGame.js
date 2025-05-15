@@ -18,14 +18,31 @@ import { timerTxt } from "../canvas.js"; // Import shared variables
 //  import { playSound } from "../sound.js"; // Import sound helper
 import { toggleGameTimer, toggleGameInstruction } from "../game.js"; // Import shared functions
 import { gameTextDisplay } from "../gameTextDisplay.js";
+import { showInstructionModal } from "../helpers/instructions.js";
+import { showPreGameQuestions } from "./pregameQuestions.js";
 //  import { randomBoolean } from "../plugins.js"; // Import utility function
-export function startSurvivalGame() {
-  itemControl.visible = true;
-  itemControl.alpha = 1;
-  roundData.survivalData.turn = randomBoolean();
-  swithTurn();
-  beginSurvivalRound(3);
+export async function startSurvivalGame() {
+  await showInstructionModal(`Al iniciar, en la parte superior verás tu rol:
+
+🔪 Atacante: persigue a tu oponente y elimínalo antes de que se acabe el tiempo.
+
+🏃‍♀️ Superviviente: corre y huye para no ser atrapado.
+
+⏱️ Cada ronda dura 15 segundos… ¡y cada segundo cuenta!
+
+Reacciona rápido, elige bien tu ruta y juega por tu vida.
+¿Serás cazador o presa?`);
+
+  showPreGameQuestions(() => {
+    // ✅ Esta parte se ejecuta luego de responder las preguntas
+    itemControl.visible = true;
+    itemControl.alpha = 1;
+    roundData.survivalData.turn = randomBoolean();
+    swithTurn();
+    beginSurvivalRound(3);
+  });
 }
+
 
 function beginSurvivalRound(time) {
   TweenMax.to(roundData.survivalData, time, {
