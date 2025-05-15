@@ -24,20 +24,25 @@ var scalePercent = 0;
  *
  */
 export function initMain() {
-  if (!$.browser.mobile || !isTablet()) {
+  //console.log("initMain", 'ismobile',$.browser.mobile, 'istablet', isTablet());
+  //Don't know why this condition is here, but it seems to be preventing the game from running on mobile devices
+  //if (!$.browser.mobile || !isTablet()) {
+  
     $("#canvasHolder").show();
     initGameCanvas(stageW, stageH);
     buildGameCanvas();
     buildGameButton();
+    console.log("initMain");
     if (typeof buildScoreBoardCanvas == "function") {
       buildScoreBoardCanvas();
     }
-
+    console.log("goPage(main);");
     goPage("main");
 
     checkMobileOrientation();
     resizeCanvas();
-  }
+  //}
+  console.log("failed condition");
 }
 
 /*!
