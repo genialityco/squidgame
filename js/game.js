@@ -46,7 +46,7 @@ export var gameCustomScore = {
 };
 
 //Social share, [SCORE] will replace with game score
-export var shareEnable = true; //toggle share
+export var shareEnable = false; //toggle share
 export var shareText = "SHARE YOUR SCORE"; //social share message
 export var shareWinTitle = "I won 45.6 billion on Survival Game."; //social share score title
 export var shareWinMessage = "I won 45.6 billion on Survival Game! Try it now!"; //social share score message
