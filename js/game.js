@@ -2194,11 +2194,12 @@ export function endGame(win, timer) {
 
       let  scorebase = 100;
       // Normalización del puntaje
+      //Hacemos que el puntaje base sea 100 y que tenga una variación de centenas
       playerData.score += scorebase + roundScore*100;
 
       /** HERE THE PLAYER SCORE is going to be UPDATED TO THE DATABASE FIRESTORE */
       showScoreModal(roundScore, () => {
-        updateScore(roundScore);
+        updateScore(scorebase + roundScore*100);
       });
     } else if (!win) {
       var deadArr = [1, 2, 4];
