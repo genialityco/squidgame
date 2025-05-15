@@ -14,17 +14,13 @@ export async function startTugGame() {
   await showInstructionModal(
     `💪 ¡Desafío Tira y Afloja!
 
-Antes de cruzar, responde unas preguntas.
-❗ Cada error te restará 5 segundos de tu tiempo total y te eliminará un muñeco, así que tendrás menos probabilidades para pasar
+📚 Antes de comenzar, responde unas preguntas.
+❌ Cada error te resta 5 segundos del tiempo total.
 
-🕹️ Tienes varios muñecos en fila para intentar cruzar.
-Pueden lograrlo todos… o pueden caer uno por uno. ¡Tú decides el orden y la estrategia! 😬
-
-Al iniciar, elige con cuidado qué vidrio pisar:
-Uno es fuerte, el otro se rompe. 💥
-
-🧠 Observa, memoriza y actúa rápido.
-Un paso en falso... y es el fin.`
+🎮 Luego, al iniciar el juego:
+👉 Presiona rápidamente la pantalla, el mouse o el botón verde en la parte superior para tirar la cuerda hacía ti.
+Tienes que hacerlo más rapido que el equipo rival.
+¡Hazlo sin parar hasta que el equipo rival caiga al vacío! 😱`
   );
 
   showPreGameQuestions(() => {
