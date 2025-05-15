@@ -215,6 +215,7 @@ function moveLastStep() {
  * - Optionally, could update camera or lastPos to new front player.
  */
 export function eliminatePlayers(cantidadAEliminar) {
+  console.log("Eliminando jugadores: " + cantidadAEliminar);
   roundData.bridgeData.playerIndex += cantidadAEliminar;
   for (let i = 0; i < cantidadAEliminar; i++) {
     players[players.length - 1 - i].active = false;

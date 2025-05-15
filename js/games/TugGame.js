@@ -18,11 +18,9 @@ export async function startTugGame() {
 ❌ Cada error te resta 5 segundos del tiempo total.
 
 🎮 Luego, al iniciar el juego:
-👉 Presiona rápidamente la pantalla, el mouse o el botón verde en la parte superior.
-¡Hazlo sin parar hasta que el equipo rival caiga al vacío! 😱
-
-⏱️ ¡Velocidad, fuerza y concentración!
-¿Tienes lo que se necesita para ganar?`
+👉 Presiona rápidamente la pantalla, el mouse o el botón verde en la parte superior para tirar la cuerda hacía ti.
+Tienes que hacerlo más rapido que el equipo rival.
+¡Hazlo sin parar hasta que el equipo rival caiga al vacío! 😱`
   );
 
   showPreGameQuestions(() => {

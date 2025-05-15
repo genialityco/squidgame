@@ -63,20 +63,20 @@ onAuthStateChanged(auth, (user) => {
 });
 
 // Add test button to bottom left
-(function addTestButton() {
-  const btn = document.createElement("button");
-  btn.textContent = "test";
-  btn.style.position = "fixed";
-  btn.style.left = "10px";
-  btn.style.bottom = "10px";
-  btn.style.zIndex = 12000;
-  btn.style.padding = "8px 16px";
-  btn.style.borderRadius = "8px";
-  btn.style.background = "#28a745";
-  btn.style.color = "#fff";
-  btn.style.border = "none";
-  btn.style.fontWeight = "bold";
-  btn.style.cursor = "pointer";
-  btn.onclick = () => updateScore(10);
-  document.body.appendChild(btn);
-})();
+// (function addTestButton() {
+//   const btn = document.createElement("button");
+//   btn.textContent = "test";
+//   btn.style.position = "fixed";
+//   btn.style.left = "10px";
+//   btn.style.bottom = "10px";
+//   btn.style.zIndex = 12000;
+//   btn.style.padding = "8px 16px";
+//   btn.style.borderRadius = "8px";
+//   btn.style.background = "#28a745";
+//   btn.style.color = "#fff";
+//   btn.style.border = "none";
+//   btn.style.fontWeight = "bold";
+//   btn.style.cursor = "pointer";
+//   btn.onclick = () => updateScore(10);
+//   document.body.appendChild(btn);
+// })();

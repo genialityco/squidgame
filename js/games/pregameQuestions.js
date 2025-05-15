@@ -5,7 +5,7 @@ let questionIndex = 0;
 let correctAnswers = 0;
 let onComplete = null;
 let selectedQuestions = [];
-const QUESTIONS_PER_GAME = 2;
+const QUESTIONS_PER_GAME = 4;
 
 // Función para seleccionar preguntas aleatorias
 function getRandomQuestions(pool, count) {
@@ -19,6 +19,8 @@ export function showPreGameQuestions(callback) {
   onComplete = callback;
 
   // Seleccionar 8 preguntas al azar sin repetir
+
+  console.log("Mostrando preguntas")
 
   selectedQuestions = getRandomQuestions(questionPool, QUESTIONS_PER_GAME);
 
@@ -35,7 +37,7 @@ function renderQuestion() {
     const adjustment = (correctAnswers * 5 - (selectedQuestions.length - correctAnswers) * 5) * 1000;
     timeData.countdown = Math.max(timeData.countdown + adjustment, 0);
     resumeGameAfterQuestions();
-    if (typeof onComplete === "function") onComplete();
+    if (typeof onComplete === "function") onComplete(correctAnswers);
     return;
   }
 

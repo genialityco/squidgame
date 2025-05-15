@@ -12,11 +12,11 @@ export const questionPool = [
   {
     "text": "La denuncia de irregularidades por parte de empleados es una parte importante de un programa de compliance?",
     "options": [
-      "Solo si el empleado tiene pruebas",
+      "VERDADERO",
       "FALSO",
-      "VERDADERO"
+      "Solo si el empleado tiene pruebas"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "level": "Nivel 1"
   },
   {
@@ -33,8 +33,8 @@ export const questionPool = [
     "text": "El departamento legal es el único responsable del cumplimiento dentro de una empresa?",
     "options": [
       "FALSO",
-      "Legal y control interno",
-      "VERDADERO"
+      "VERDADERO",
+      "Legal y control interno"
     ],
     "correctIndex": 0,
     "level": "Nivel 2"
@@ -42,19 +42,19 @@ export const questionPool = [
   {
     "text": "No se tomarán medidas ni se investigará si una denuncia hecha a través de la línea ética en ese momento es infundada?",
     "options": [
-      "No, porque no hay pruebas",
+      "FALSO",
       "VERDADERO",
-      "FALSO"
+      "No, porque no hay pruebas"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "level": "Nivel 2"
   },
   {
     "text": "La línea ética debe ser el último recurso para reportar una conducta inapropiada?",
     "options": [
       "FALSO",
-      "Solo existe ese recurso",
-      "VERDADERO"
+      "VERDADERO",
+      "Solo existe ese recurso"
     ],
     "correctIndex": 0,
     "level": "Nivel 1"
@@ -62,21 +62,21 @@ export const questionPool = [
   {
     "text": "Qué deberías hacer si un familiar cercano es contratado por un competidor de la empresa?",
     "options": [
-      "Pedir a mi familia que renuncie",
+      "Reportar el conflicto de interés",
       "No mencionarlo porque no es asunto de la empresa",
-      "Reportar el conflicto de interés"
+      "Pedir a mi familia que renuncie"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "level": "Nivel 1"
   },
   {
     "text": "Cuál de las siguientes situaciones puede ser un conflicto de interés?",
     "options": [
-      "Contratar a un amigo para un proyecto de la empresa",
       "Ambos",
+      "Contratar a un amigo para un proyecto de la empresa",
       "Un colaborador tiene una relación sentimental con alguien que trabaja con la competencia"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "level": "Nivel 2"
   },
   {
@@ -92,11 +92,11 @@ export const questionPool = [
   {
     "text": "Un empleado está evaluando propuestas de proveedores, y una de las compañias es propiedad de su hermano. ¿Qué debería hacer el empleado?",
     "options": [
+      "Informar a su superior sobre el conflicto de interés y abstenerse de participar en la decisión.\n",
       "Favorecer la propuesta de su hermano para mantener buenas relaciones familiares.",
-      "Evaluar la propuesta de su hermano objetivamente y tomar la mejor decisión para la empresa.",
-      "Informar a su superior sobre el conflicto de interés y abstenerse de participar en la decisión.\n"
+      "Evaluar la propuesta de su hermano objetivamente y tomar la mejor decisión para la empresa."
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "level": "Nivel 3"
   },
   {
@@ -112,11 +112,11 @@ export const questionPool = [
   {
     "text": "Una directora tiene acceso a información confidencial sobre una fusión inminente y su esposo trabaja en una empresa que se vería afectada por la fusión. ¿Qué debería hacer?",
     "options": [
-      "Solicitar a un amigo que le cuente esta noticia a su esposo",
       "Mantener la confidencialidad de la información y abstenerse de discutir temas relacionados en casa",
+      "Solicitar a un amigo que le cuente esta noticia a su esposo",
       "Compartir la información con su esposo en su entorno privado"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "level": "Nivel 2"
   },
   {
@@ -132,29 +132,29 @@ export const questionPool = [
   {
     "text": "¿Qué combinación de roles debería evitarse para mantener una buena segregación de funciones",
     "options": [
+      "Compra de materiales y registro de inventario.",
       "Elaboración de informes y revisión de calidad",
-      "Gestión de relaciones con clientes y soporte técnico.",
-      "Compra de materiales y registro de inventario."
+      "Gestión de relaciones con clientes y soporte técnico."
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "level": "Nivel 3"
   },
   {
     "text": "Cuál es la principal diferencia entre control interno y compliance (ética e integridad)?",
     "options": [
-      "Control interno y compliance son términos intercambiables y se refieren a lo mismo.",
       "Control interno se ocupa de la gestión y mitigación de riesgos internos, mientras que compliance se enfoca en el cumplimiento de leyes y regulaciones externas",
+      "Control interno y compliance son términos intercambiables y se refieren a lo mismo.",
       "Control interno se enfoca en cumplir con las normativas legales, mientras que compliance se enfoca en la eficiencia operativa."
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "level": "Nivel 2"
   },
   {
     "text": "Cuál de las siguientes tareas es más probable que sea responsabilidad del equipo de compliance en lugar del equipo de control interno?",
     "options": [
       "Monitorear el cumplimiento de las leyes de protección de datos y privacidad.",
-      "Revisar y aprobar las transacciones financieras diarias.",
-      "Evaluar la eficiencia de los procesos operativos internos."
+      "Evaluar la eficiencia de los procesos operativos internos.",
+      "Revisar y aprobar las transacciones financieras diarias."
     ],
     "correctIndex": 0,
     "level": "Nivel 2"
@@ -162,101 +162,101 @@ export const questionPool = [
   {
     "text": "¿Qué es el soborno?",
     "options": [
-      "Un acto de inducir a alguien a una acción legal y ética.",
+      "Un acto de inducir a alguien a una acción u omisión con objetivos ilegales",
       "Un acto de ofrecer dinero o regalos sin esperar nada a cambio",
-      "Un acto de inducir a alguien a una acción u omisión con objetivos ilegales"
+      "Un acto de inducir a alguien a una acción legal y ética."
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "level": "Nivel 1"
   },
   {
     "text": "¿Qué puede incluir el soborno para inducir a alguien a actuar de manera antiética?",
     "options": [
-      "Ofrecer ayuda y soporte moral",
       "Ofrecer dinero, regalos, entretenimiento, beneficios",
+      "Ofrecer ayuda y soporte moral",
       "Ofrecer una disculpa por un malentendido"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "level": "Nivel 1"
   },
   {
     "text": "¿Cómo debe manejarse la participación en actividades político-partidarias por parte de los colaboradores del Grupo?",
     "options": [
-      "Debe ser aprobada previamente por la empresa.",
       "Se debe hacer en carácter personal, no como representante de la empresa.",
+      "Debe ser aprobada previamente por la empresa.",
       "Puede hacerse en nombre de la empresa si se busca promover el desarrollo sostenible."
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "level": "Nivel 3"
   },
   {
     "text": "Cuál es la postura del Grupo respecto a opiniones personales de sus colaboradores sobre gobernantes y funcionarios públicos?",
     "options": [
-      "Solo están permitidas si se expresan dentro de la empresa.",
       "Son permitidas y respetadas siempre que no se difundan usando herramientas de la empresa.",
+      "Solo están permitidas si se expresan dentro de la empresa.",
       "Estan prohibida en cualquier contexto"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "level": "Nivel 3"
   },
   {
     "text": "La línea ética solo puede ser utilizada por empleados de la empresa?",
     "options": [
-      "Solo por empelados de Genfar y Eurofarma",
+      "FALSO",
       "VERDADERO",
-      "FALSO"
+      "Solo por empelados de Genfar y Eurofarma"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "level": "Nivel 1"
   },
   {
     "text": "Puedo aceptar u ofrecer recuerdos y/o regalos a funcionarios públicos?",
     "options": [
-      "Solo menores a cien dolares",
+      "FALSO",
       "VERDADERO",
-      "FALSO"
+      "Solo menores a cien dolares"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "level": "Nivel 1"
   },
   {
     "text": "Es aceptable que un empleado que realiza pagos también tenga la responsabilidad de aprobar los pagos, siempre y cuando los montos sean pequeños?",
     "options": [
+      "FALSO",
       "VERDADERO",
-      "Si el monto es menor a 500 USD",
-      "FALSO"
+      "Si el monto es menor a 500 USD"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "level": "Nivel 2"
   },
   {
     "text": "Es obligatorio proporcionar pruebas concretas cuando se hace una denuncia a través de la línea ética?",
     "options": [
-      "Solo fotos y videos",
       "FALSO",
-      "VERDADERO"
+      "VERDADERO",
+      "Solo fotos y videos"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "level": "Nivel 1"
   },
   {
     "text": "¿ Cuales son dos elementos claves de un ambiente de control interno eficiente y eficaz?",
     "options": [
-      "Prevenir, detectar o corregir errores ; segregación de funciones ",
+      "Sistema de politicas y procedimientos ; la prevención y detención de fraude",
       "Minimización de riesgos ; Aseguramiento de las ventas de la empresa",
-      "Sistema de politicas y procedimientos ; la prevención y detención de fraude"
+      "Prevenir, detectar o corregir errores ; segregación de funciones "
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "level": "Nivel 3"
   },
   {
     "text": "¿ Cuál es un ejemplo de un control preventivo?",
     "options": [
+      "Contraseñas y authenticator para acceder al sistemas ",
       "Analisis posterior de errores",
-      "Correción del informe ",
-      "Contraseñas y authenticator para acceder al sistemas "
+      "Correción del informe "
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "level": "Nivel 3"
   },
   {
@@ -273,8 +273,8 @@ export const questionPool = [
     "text": "¿ Puede realizar una denuncia de forma anónima en la linea etica y funciona 24/7 ?",
     "options": [
       "VERDADERO",
-      "Si funciona 24/7 , pero no se puede hacer de forma anónima ",
-      "FALSO"
+      "FALSO",
+      "Si funciona 24/7 , pero no se puede hacer de forma anónima "
     ],
     "correctIndex": 0,
     "level": "Nivel 1"
@@ -283,8 +283,8 @@ export const questionPool = [
     "text": "¿Qué documento permite formalizar las obligaciones y derechos entre dos o más partes?",
     "options": [
       "Contrato",
-      "Política interna ",
-      "Cotización"
+      "Cotización",
+      "Política interna "
     ],
     "correctIndex": 0,
     "level": "Nivel 1"
@@ -292,19 +292,19 @@ export const questionPool = [
   {
     "text": "¿Qué cláusula protege la información interna o sensible compartida entre las partes?",
     "options": [
-      "Cláusula de ética y cumplimiento",
       "Cláusula de confidencialidad",
-      "Cláusula de penalidad"
+      "Cláusula de penalidad",
+      "Cláusula de ética y cumplimiento"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "level": "Nivel 1"
   },
   {
     "text": "¿Qué documento es obligatorio cuando se recolectan datos personales?",
     "options": [
       "Autorización de tratamiento de datos ",
-      "Clausula Compromisoria ",
-      "Acuerdo de privacidad"
+      "Acuerdo de privacidad",
+      "Clausula Compromisoria "
     ],
     "correctIndex": 0,
     "level": "Nivel 2"
@@ -312,31 +312,31 @@ export const questionPool = [
   {
     "text": "El incumplimiento de un contrato puede generar:",
     "options": [
+      "Penalidades o sanciones",
       "Un cambio automático del objeto contractual",
-      "La nulidad de las leyes",
-      "Penalidades o sanciones"
+      "La nulidad de las leyes"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "level": "Nivel 3"
   },
   {
     "text": "¿Qué tipo de información suele estar protegida por una cláusula de confidencialidad?",
     "options": [
-      "Comentarios de redes sociales sobre los productos",
+      "Precios, estrategias, clientes",
       "Chismes laborales",
-      "Precios, estrategias, clientes"
+      "Comentarios de redes sociales sobre los productos"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "level": "Nivel 1"
   },
   {
     "text": "El término partes en un contrato se refiere a:",
     "options": [
-      "Solo el cliente",
       "Todos los involucrados en el contrato",
+      "Solo el cliente",
       "Testigos"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "level": "Nivel 1"
   },
   {
@@ -352,21 +352,21 @@ export const questionPool = [
   {
     "text": "¿Qué información debe incluir idealmente un contrato?",
     "options": [
+      "Las obligaciones, plazos, sanciones, vigencia y precio",
       "Solo los datos del proveedor con el que se va a realizar el contrato",
-      "Solo las obligaciones",
-      "Las obligaciones, plazos, sanciones, vigencia y precio"
+      "Solo las obligaciones"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "level": "Nivel 3"
   },
   {
     "text": "La Ley de Protección de Datos Personales busca principalmente:",
     "options": [
-      "Proteger la información de las empresas",
       "Proteger la privacidad de las personas",
+      "Proteger la información de las empresas",
       "Limitar el uso del internet"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "level": "Nivel 3"
   },
   {
@@ -382,19 +382,19 @@ export const questionPool = [
   {
     "text": "¿Quién es el responsable de custodiar la información confidencial entregada?",
     "options": [
-      "Solo quien recibe la información",
+      "Ambas partes",
       "El area de TI",
-      "Ambas partes"
+      "Solo quien recibe la información"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "level": "Nivel 2"
   },
   {
     "text": "¿Qué significa que un contrato sea bilateral?",
     "options": [
       "Que obliga a ambas partes",
-      "Que solo es válido en dos ciudades",
-      "Que requiere firma en dos copias"
+      "Que requiere firma en dos copias",
+      "Que solo es válido en dos ciudades"
     ],
     "correctIndex": 0,
     "level": "Nivel 3"
@@ -402,19 +402,19 @@ export const questionPool = [
   {
     "text": "¿Qué documento suele adjuntarse al contrato para detallar precios, productos o servicios?",
     "options": [
-      "Carta",
       "Anexo",
+      "Carta",
       "Informe"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "level": "Nivel 2"
   },
   {
     "text": "¿Qué rol juega el área legal en los contratos?",
     "options": [
       "Revisa riesgos, términos y cumplimiento legal",
-      "Solo archiva los contratos",
-      "Solo revisa los terminos"
+      "Solo revisa los terminos",
+      "Solo archiva los contratos"
     ],
     "correctIndex": 0,
     "level": "Nivel 2"
@@ -422,29 +422,29 @@ export const questionPool = [
   {
     "text": "¿Cuál es el principal riesgo legal de no firmar un NDA antes de compartir información sensible sobre nuevos medicamentos?",
     "options": [
-      "Aumento de precios y cambio de condiciones",
       "Que terceros tengan acceso a propiedad intelectual de Genfar y la puedan compartir",
-      "Pérdida de stock y sanciones "
+      "Pérdida de stock y sanciones ",
+      "Aumento de precios y cambio de condiciones"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "level": "Nivel 3"
   },
   {
     "text": "¿Cuál de estos datos NO se considera dato personal?",
     "options": [
-      "Número de celular",
       "Tipo de sangre",
-      "Dirección"
+      "Dirección",
+      "Número de celular"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "level": "Nivel 3"
   },
   {
-    "text": "¿Qué significa vigencia en un contrato?",
+    "text": "¿Qué significa vigencia en un contrato?",
     "options": [
       "El tiempo durante el cual el contrato está activo",
-      " La fecha de firma del documento",
-      "Fecha y lugar donde se firmó"
+      "Fecha y lugar donde se firmó",
+      " La fecha de firma del documento"
     ],
     "correctIndex": 0,
     "level": "Nivel 3"
@@ -462,11 +462,11 @@ export const questionPool = [
   {
     "text": "¿ Que se entiende por ética profesional?",
     "options": [
-      "Actuar conforme a las normas sociales",
+      "Hacer lo que se considera correcto según los valores y principios del entorno laboral",
       "Cumplir unicamente con las ordenes del jefe",
-      "Hacer lo que se considera correcto según los valores y principios del entorno laboral"
+      "Actuar conforme a las normas sociales"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "level": "Nivel 1"
   },
   {
