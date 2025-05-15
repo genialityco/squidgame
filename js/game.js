@@ -2181,7 +2181,7 @@ export function endGame(win, timer) {
     itemControl.visible = false;
 
     if (win) {
-      let roundScore = 500; // Puntaje base
+      let roundScore = 0; // Puntaje base
 
       if (gameData.roundNum == 6) {
         const lifeLeft = roundData.survivalData.userHealth;
@@ -2192,7 +2192,9 @@ export function endGame(win, timer) {
         roundScore += Math.round(timeLeft * 0.002); // Suma por tiempo restante
       }
 
-      playerData.score += roundScore;
+      let  scorebase = 100;
+      // Normalización del puntaje
+      playerData.score += scorebase + roundScore*100;
 
       /** HERE THE PLAYER SCORE is going to be UPDATED TO THE DATABASE FIRESTORE */
       showScoreModal(roundScore, () => {

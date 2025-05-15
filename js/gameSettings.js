@@ -25,7 +25,7 @@ export var gameSettings = {
         chooseNumbers:true
     },
     game1:{
-        name:'RED LIGHT, GREEN LIGHT',
+        name:'LUZ ROJA, LUZ VERDE',
         textColor:'#CC17B2',
         textShadowColor:'#6D2767',
         background:{
@@ -53,10 +53,10 @@ export var gameSettings = {
         players:50,
         length:85,
         dead:[5,15],
-        timer:30000
+        timer:150000
     },
     game2:{
-        name:'DALGONA CANDY',
+        name:'GALLETA DALGONA',
         textColor:'#CC17B2',
         textShadowColor:'#6D2767',
         background:{
@@ -82,10 +82,10 @@ export var gameSettings = {
         ],
         drawColor:'#A66B35',
         drawStroke:20,
-        timer:30000
+        timer:15000
     },
     game3:{
-        name:'TUG OF WAR',
+        name:'TIRA Y AFLOJA',
         textColor:'#CC17B2',
         textShadowColor:'#6D2767',
         background:{
@@ -108,10 +108,10 @@ export var gameSettings = {
         players:20,
         oppSpeed:[10, 20],
         userSpeed:[20, 35],
-        timer:30000
+        timer:15000
     },
     game4:{
-        name:'MARBLE GAME',
+        name:'CANICAS',
         textColor:'#CC17B2',
         textShadowColor:'#6D2767',
         background:{
@@ -131,10 +131,10 @@ export var gameSettings = {
         status:{totalColor:'#000', playerColor:'#333', statusColor:'#333'},
         players:20,
         totalBall:3,
-        timer:60000
+        timer:40000
     },
     game5:{
-        name:'GLASS BRIDGE',
+        name:'PUENTE DE CRISTAL',
         textColor:'#CC17B2',
         textShadowColor:'#6D2767',
         background:{
@@ -157,10 +157,10 @@ export var gameSettings = {
         glassAlpha:.3,
         players:8,
         length:15,
-        timer:60000
+        timer:20000
     },
     game6:{
-        name:'SURVIVAL GAME',
+        name:'SUPERVIVENCIA',
         textColor:'#CC17B2',
         textShadowColor:'#6D2767',
         background:{
