@@ -53,7 +53,7 @@ export var gameSettings = {
         players:50,
         length:85,
         dead:[5,15],
-        timer:15000
+        timer:20000
     },
     game2:{
         name:'GALLETA DALGONA',
