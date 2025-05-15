@@ -1143,6 +1143,7 @@ export function startPanCamera() {
       position: totalLength,
       overwrite: true,
       onComplete: async function () {
+		console.log("Mostrantdo instructions")
         await showInstructionModal(
           `💪 ¡Puente de Cristal!
 
@@ -1158,12 +1159,16 @@ Pueden lograrlo todos… o pueden caer uno por uno. 😬
 
 ⏱️ ¿Lograrás llevar a alguien hasta el otro lado?`
         );
-        showPreGameQuestions((playerstoeliminate) => {
+				console.log("Mostrantdo questions")
+
+        showPreGameQuestions((aciertos) => {
           /** Para eliminar una cantidad específica de "turnos" (jugadores) en el Bridge Game, el proceso es el siguiente:
         Si quieres eliminar, por ejemplo, 3 jugadores, simplemente incrementa el valor de roundData.bridgeData.playerIndex en 3.
          y se Desactivar jugadores en el arreglo players de la parte final:
         */
-          eliminatePlayers(2);
+          console.log("Aciertos:", aciertos);
+
+        //   eliminatePlayers(aciertos);
           startGameRound();
         });
       },
