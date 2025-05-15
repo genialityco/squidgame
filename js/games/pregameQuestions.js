@@ -94,10 +94,7 @@ function handleAnswer(selectedIndex, correctIndex, options) {
     result.innerText = "✅ ¡Correcto!";
     correctAnswers++;
   } else {
-    result.innerHTML = `❌ Incorrecto.<br>
-    ✅ La respuesta correcta era: <span style="color: #00e676; font-weight: bold;">
-      "${options[correctIndex]}"
-    </span>.`;
+    result.innerHTML = `❌ Incorrecto.`;
   }
 
   questionOptions.appendChild(result);

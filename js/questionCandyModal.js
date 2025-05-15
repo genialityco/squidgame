@@ -48,10 +48,7 @@ function handleAnswer(selectedIndex, correctIndex, options) {
   if (isCorrect) {
     result.innerText = "✅ ¡Correcto!";
   } else {
-    result.innerHTML = `❌ Respuesta incorrecta, pierdes 5 segundos.<br>
-✅ <span style="color: #00e676; font-weight: bold;"> La correcta era:
-  "${options[correctIndex]}"
-</span>.`;
+    result.innerHTML = `❌ Respuesta incorrecta, pierdes 5 segundos.`;
   }
 
   result.style.fontSize = "20px";

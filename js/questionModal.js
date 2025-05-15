@@ -83,8 +83,7 @@ function handleAnswer(selectedIndex) {
   if (isCorrect) {
     result.innerText = "✅ ¡Respuesta correcta, ganas 5 segundos!";
   } else {
-    result.innerHTML = `❌ Respuesta incorrecta, pierdes 5 segundos.<br>
-    ✅ <span style="color: #00e676; font-weight: bold;">La correcta era: "${currentQuestion.options[correctIndex]}"</span>.`;
+    result.innerHTML = `❌ Respuesta incorrecta, pierdes 5 segundos.`;
   }
 
   questionOptions.appendChild(result);
