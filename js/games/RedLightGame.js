@@ -23,6 +23,42 @@ import { showInstructionModal } from "../helpers/instructions.js";
 //https://gsap.com/docs/v3/GSAP/gsap.to()
 export let RedLightGameTweenTimer = null;
 
+function flashRedBorder() {
+  const flash = document.createElement("div");
+  flash.id = "red-light-flash";
+  Object.assign(flash.style, {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100vw",
+    height: "100vh",
+    border: "10px solid red",
+    boxSizing: "border-box",
+    pointerEvents: "none",
+    zIndex: 9999,
+    animation: "flash-border 1s ease-in-out",
+  });
+  document.body.appendChild(flash);
+
+  setTimeout(() => {
+    flash.remove();
+  }, 1000);
+}
+
+function injectFlashBorderStyle() {
+  if (document.getElementById("flash-border-style")) return;
+  const style = document.createElement("style");
+  style.id = "flash-border-style";
+  style.innerHTML = `
+    @keyframes flash-border {
+      0%, 100% { border-color: transparent; }
+      25%, 75% { border-color: red; }
+      50% { border-color: darkred; }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
 export function startGreenLightCount() {
   // Stop any ongoing tweens on lightData
   TweenMax.killTweensOf(roundData.lightData);
@@ -76,6 +112,17 @@ export function startGreenLightCount() {
     roundData.lightData.countTime,
     gameSettings.game1.decreaseTime
   );
+
+  injectFlashBorderStyle();
+
+  //  parpadeo 1 segundo antes del cambio
+  const warningDelay = roundData.lightData.countTime - 1;
+  if (warningDelay > 0) {
+    setTimeout(() => {
+      flashRedBorder();
+    }, warningDelay * 1000);
+  }
+
   // Start timer for green light phase, then switch to red light
   TweenMax.to(roundData.lightData.timeTween, roundData.lightData.countTime, {
     overwrite: true,

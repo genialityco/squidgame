@@ -12,15 +12,17 @@ import { showInstructionModal } from "../helpers/instructions.js";
 
 export async function startTugGame() {
   await showInstructionModal(
-    `💪 ¡Desafío Tira y Afloja!
+    `💪 Desafío Tira y Afloja
 
-📚 Antes de comenzar, responde unas preguntas.
-❌ Cada error te resta 5 segundos del tiempo total.
+📚 Antes de empezar, responde preguntas:  
+✅ Acertar suma 3 segundos.  
+❌ Fallar resta 3 segundos.
 
-🎮 Luego, al iniciar el juego:
-👉 Presiona rápidamente la pantalla, el mouse o el botón verde en la parte superior para tirar la cuerda hacía ti.
-Tienes que hacerlo más rapido que el equipo rival.
-¡Hazlo sin parar hasta que el equipo rival caiga al vacío! 😱`
+🎮 Luego, presiona rápidamente el botón verde de la parte superior
+(pantalla 📱 o mouse 💻) para tirar la cuerda hacia ti.
+
+🏆 ¡Sé más rápido que el equipo rival hasta que caigan al vacío!
+`
   );
 
   showPreGameQuestions(() => {

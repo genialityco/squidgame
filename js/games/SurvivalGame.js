@@ -22,16 +22,23 @@ import { showInstructionModal } from "../helpers/instructions.js";
 import { showPreGameQuestions } from "./pregameQuestions.js";
 //  import { randomBoolean } from "../plugins.js"; // Import utility function
 export async function startSurvivalGame() {
-  await showInstructionModal(`Al iniciar, en la parte superior verás tu rol:
+  await showInstructionModal(`⚔️ Survival Game
 
-🔪 Atacante: persigue a tu oponente y elimínalo antes de que se acabe el tiempo.
+📚 Antes de jugar, responde preguntas:  
+✅ Acertar suma 3 segundos.  
+❌ Fallar resta 3 segundos.
 
-🏃‍♀️ Superviviente: corre y huye para no ser atrapado.
+🕒 El tiempo total de la ronda comienza en 15 segundos,  
+y se ajusta según tus respuestas.
 
-⏱️ Cada ronda dura 15 segundos… ¡y cada segundo cuenta!
+Al iniciar, verás tu rol en la parte superior:
 
-Reacciona rápido, elige bien tu ruta y juega por tu vida.
-¿Serás cazador o presa?`);
+🔪 Atacante: persigue y elimina a tu oponente.  
+🏃‍♀️ Superviviente: corre y evita ser atrapado.
+
+¡Reacciona rápido, elige bien tu ruta…  
+¿Serás cazador o presa?
+`);
 
   showPreGameQuestions(() => {
     // ✅ Esta parte se ejecuta luego de responder las preguntas

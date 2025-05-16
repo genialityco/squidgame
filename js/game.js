@@ -110,7 +110,10 @@ import {
   stopSurvivalRound,
 } from "./games/SurvivalGame.js";
 import { moveFrontPlayer, eliminatePlayers } from "./games/BridgeGame.js";
-import { showPreGameQuestions } from "./games/pregameQuestions.js";
+import {
+  showPreGameQuestions,
+  pauseGameForQuestions,
+} from "./games/pregameQuestions.js";
 import { showInstructionModal } from "./helpers/instructions.js";
 
 //player assets
@@ -894,9 +897,7 @@ export function prepareRound() {
       bridgeSegment--;
     }
 
-    console.log("prepareRound", roundData.bridgeData.turnArr);
     roundData.bridgeData.turnArr = [];
-    console.log("prepareRound", roundData.bridgeData.turnArr);
     for (var n = gameSettings.game5.players - 1; n >= 0; n--) {
       roundData.bridgeData.turnArr.push(n);
     }
@@ -1143,23 +1144,22 @@ export function startPanCamera() {
       position: totalLength,
       overwrite: true,
       onComplete: async function () {
-        console.log("Mostrantdo instructions");
         await showInstructionModal(
-          `💪 ¡Puente de Cristal!
+          `💥 Puente de Cristal
 
-Antes de cruzar, responde unas preguntas.
-Cada error te restará 5 segundos de tu tiempo total.
+📚 Antes de cruzar, responde preguntas:  
+✅ Acertar suma 3 segundos.  
+❌ Fallar resta 3 segundos.
 
-Al iniciar, elige con cuidado qué vidrio pisar:
-Uno es fuerte, el otro se rompe. 
+🦶 Elige con cuidado qué vidrio pisar:  
+uno es resistente, el otro se rompe.
 
-Tienes 8 muñecos en fila para intentar cruzar.
-❌Si caes o respondes mal una pregunta, perderás un muñeco.
-Pueden lograrlo todos… o pueden caer uno por uno. 😬
+👥 Tienes 8 muñecos para cruzar.  
+❌ Si caes, pierdes un muñeco.
 
-⏱️ ¿Lograrás llevar a alguien hasta el otro lado?`
+⏱️ ¿Lograrás llevar a alguien al otro lado?
+`
         );
-        console.log("Mostrantdo questions");
 
         showPreGameQuestions((aciertos) => {
           /** Para eliminar una cantidad específica de "turnos" (jugadores) en el Bridge Game, el proceso es el siguiente:
@@ -1220,41 +1220,55 @@ export async function startGameRound() {
     loopPlayrMoveTimer();
 
     await showInstructionModal(
-      `🟥🟢 Red Light, Green Light:
-Corre mientras el semáforo esté en VERDE.
-¡Detente cuando esté en ROJO o serás eliminado!
+      `🟥🟢 **Red Light, Green Light**
 
-📚 Luego responderás preguntas de selección múltiple.
-Responde bien para mejorar tu puntuación.`
+🚦 Corre cuando la luz esté VERDE:  
+📱 En celulares toca la pantalla o 💻 En computadoras haz clic avanzar.  
+🏃‍♂️ El muñeco correrá hacia donde hagas clic o toques.
+
+🛑 ¡Detente por completo cuando la luz sea ROJA o serás eliminado!
+
+🧠 Luego responderás preguntas de selección múltiple:  
+✅ Acertar suma 3 segundos.  
+❌ Fallar resta 3 segundos.
+
+¡Reacciona rápido y piensa bien!
+
+`
     );
 
     startGreenLightCount();
   } else if (gameData.roundNum == 2) {
     candyContainer.visible = true;
     candyContainer.alpha = 0;
+    pauseGameForQuestions();
 
     TweenMax.to(candyContainer, 0.5, {
       alpha: 1,
       overwrite: true,
       onComplete: async function () {
         await showInstructionModal(
-          `🍬 Solo los más pacientes y precisos lograrán superar esta dulce prueba…
+          `🍬 **Desafío de la Galleta**
 
-📚 Antes de empezar, responde unas preguntas.
-❌ Cada error te restará 5 segundos del tiempo total.
+📚 Antes de empezar, responde preguntas:  
+✅ Acertar suma 3 segundos.  
+❌ Fallar resta 3 segundos.
 
-🖱️ Luego, usa tu dedo, mouse o cursor para recortar la figura sin romper la galleta.
+✂️ Usa tu dedo (📱) o mouse/cursor (💻) para recortar la figura sin romper el borde.
 
-⏱️ ¡Tienes tiempo limitado, así que ve con cuidado y precisión!
-💥 Si rompes el borde… ¡quedarás eliminado!
+⏱️ ¡Tienes tiempo limitado!  
+💥 Si rompes la galleta, quedarás eliminado.
 
-✨ Pulso firme, mente fría…`
+🧘‍♂️ Pulso firme, mente fría… ¡y mucha precisión!
+`
         );
 
         startCandyGame();
       },
     });
   } else if (gameData.roundNum == 3) {
+    pauseGameForQuestions();
+
     startTugGame();
   } else if (gameData.roundNum == 4) {
     handContainer.visible = true;
@@ -1264,6 +1278,7 @@ Responde bien para mejorar tu puntuación.`
     $.sprites["handWrap" + 1].x += 200;
 
     resetMarbleGame();
+    pauseGameForQuestions();
 
     TweenMax.to($.sprites["handWrap" + 0], 0.5, { x: 0, overwrite: true });
     TweenMax.to($.sprites["handWrap" + 1], 0.5, { x: 0, overwrite: true });
@@ -1273,20 +1288,21 @@ Responde bien para mejorar tu puntuación.`
       overwrite: true,
       onComplete: async function () {
         await showInstructionModal(
-          `🟢 JUEGO DE LAS CANICAS 🟢
-📚 Antes de jugar, responde unas preguntas.
-❌ Por cada error, perderás 5 segundos de tu tiempo total.
+          `🟢 Juego de las Canicas
 
-🎮 En el juego, deberás adivinar si la cantidad de canicas de tu oponente es par o impar.
-✔️ Si aciertas ganarás una canica del oponente
-❌ Sino pierdes una canica
+📚 Antes de jugar, responde preguntas:  
+✅ Acertar suma 3 segundos.  
+❌ Fallar resta 3 segundos.
 
-Después vendrá una ronda automatica donde el oponente adivinará las canicas en tú mano.
+🎮 Adivina si tu oponente tiene una cantidad par o impar de canicas:  
+✔️ Acertar te da una canica.  
+❌ Fallar te hace perder una.
 
-Ganará el jugador que se quede con todas las canicas.
+🔄 Luego será el turno del oponente para adivinar tus canicas.
 
-¡Piensa bien, juega con estrategia y no te confíes!
-¿Sobrevivirás al juego de las canicas?`
+🥇 Gana quien se quede con todas las canicas.  
+🧠 ¡Estrategia, mente fría… y suerte!
+`
         );
 
         showPreGameQuestions(() => {

@@ -111,7 +111,7 @@ function handleAnswer(selectedIndex, correctIndex, options) {
   questionOptions.appendChild(continueBtn);
 }
 
-function pauseGameForQuestions() {
+export function pauseGameForQuestions() {
   toggleGameTimer(false);
   gameData.paused = true;
 }
