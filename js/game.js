@@ -557,11 +557,19 @@ export function goPage(page) {
       buttonStart.visible = true;
       piggyContainer.visible = true;
 
-      const chosenGame = getUrlParameter("chooseGame");
-      const validGame = chosenGame >= 1 && chosenGame <= 6;
-
-      gameData.roundNum = validGame ? chosenGame - 1 : 0;
-      gameData.roundSelect = gameData.roundNum;
+      /** Ajustando la selección del juego para que le juego en el preview sea el mismo que el juego
+       * que realmente se va a jugar
+       */
+      const chosenGame =  parseInt(getUrlParameter("chooseGame"));
+      let validGame = chosenGame;
+      //Limit game number to 1-6
+      if (validGame < 1) validGame = 1;
+      if (validGame > 6) validGame = 6;
+      
+      //Current displayed game in the start screen  1 start index based
+      gameData.roundNum = validGame ? validGame: 1;
+      //Selected game to play 0 start index based
+      gameData.roundSelect = validGame ? validGame - 1: 0;
 
       toggleRound(true);
       prepareRound();
