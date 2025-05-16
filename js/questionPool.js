@@ -1,482 +1,1100 @@
 export const questionPool = [
   {
-    "text": "La capacitación en ética e integridad es un proceso único y no necesita actualización?",
-    "options": [
-      "FALSO",
-      "VERDADERO",
-      "Es un proceso solo para empleados nuevos"
-    ],
-    "correctIndex": 0,
-    "level": "Nivel 1"
+    text: "La capacitación en ética e integridad es un proceso único y no necesita actualización?",
+    options: ["VERDADERO", "FALSO", "Es un proceso solo para empleados nuevos"],
+    correctIndex: 1,
+    level: 1,
   },
   {
-    "text": "La denuncia de irregularidades por parte de empleados es una parte importante de un programa de compliance?",
-    "options": [
-      "Solo si el empleado tiene pruebas",
-      "FALSO",
-      "VERDADERO"
-    ],
-    "correctIndex": 2,
-    "level": "Nivel 1"
+    text: "La denuncia de irregularidades por parte de empleados es una parte importante de un programa de compliance?",
+    options: ["FALSO", "VERDADERO", "Solo si el empleado tiene pruebas"],
+    correctIndex: 1,
+    level: 1,
   },
   {
-    "text": "El incumplimiento de las normativas de ética e integridad solo afecta a la alta dirección de la empresa?",
-    "options": [
-      "FALSO",
-      "VERDADERO",
-      "Solo a los socios"
-    ],
-    "correctIndex": 0,
-    "level": "Nivel 2"
+    text: "La línea ética debe ser el último recurso para reportar una conducta inapropiada?",
+    options: ["VERDADERO", "Solo existe ese recurso", "FALSO"],
+    correctIndex: 2,
+    level: 1,
   },
   {
-    "text": "El departamento legal es el único responsable del cumplimiento dentro de una empresa?",
-    "options": [
-      "FALSO",
-      "Legal y control interno",
-      "VERDADERO"
-    ],
-    "correctIndex": 0,
-    "level": "Nivel 2"
-  },
-  {
-    "text": "No se tomarán medidas ni se investigará si una denuncia hecha a través de la línea ética en ese momento es infundada?",
-    "options": [
-      "No, porque no hay pruebas",
-      "VERDADERO",
-      "FALSO"
-    ],
-    "correctIndex": 2,
-    "level": "Nivel 2"
-  },
-  {
-    "text": "La línea ética debe ser el último recurso para reportar una conducta inapropiada?",
-    "options": [
-      "FALSO",
-      "Solo existe ese recurso",
-      "VERDADERO"
-    ],
-    "correctIndex": 0,
-    "level": "Nivel 1"
-  },
-  {
-    "text": "Qué deberías hacer si un familiar cercano es contratado por un competidor de la empresa?",
-    "options": [
+    text: "Qué deberías hacer si un familiar cercano es contratado por un competidor de la empresa?",
+    options: [
+      "Reportar el conflicto de interés",
       "Pedir a mi familia que renuncie",
       "No mencionarlo porque no es asunto de la empresa",
-      "Reportar el conflicto de interés"
     ],
-    "correctIndex": 2,
-    "level": "Nivel 1"
+    correctIndex: 0,
+    level: 1,
   },
   {
-    "text": "Cuál de las siguientes situaciones puede ser un conflicto de interés?",
-    "options": [
-      "Contratar a un amigo para un proyecto de la empresa",
-      "Ambos",
-      "Un colaborador tiene una relación sentimental con alguien que trabaja con la competencia"
-    ],
-    "correctIndex": 1,
-    "level": "Nivel 2"
-  },
-  {
-    "text": "La segregación de funciones no es necesaria en pequeñas empresas debido a la limitación de personal?",
-    "options": [
-      "FALSO",
-      "VERDADERO",
-      "No, porque no hay suficientes personas"
-    ],
-    "correctIndex": 0,
-    "level": "Nivel 2"
-  },
-  {
-    "text": "Un empleado está evaluando propuestas de proveedores, y una de las compañias es propiedad de su hermano. ¿Qué debería hacer el empleado?",
-    "options": [
-      "Favorecer la propuesta de su hermano para mantener buenas relaciones familiares.",
-      "Evaluar la propuesta de su hermano objetivamente y tomar la mejor decisión para la empresa.",
-      "Informar a su superior sobre el conflicto de interés y abstenerse de participar en la decisión.\n"
-    ],
-    "correctIndex": 2,
-    "level": "Nivel 3"
-  },
-  {
-    "text": "Un colaborador recibe un regalo costoso de un proveedor con el que trabaja regularmente. ¿Cuál debería ser su curso de acción?",
-    "options": [
-      "Devolver el regalo al proveedor e informar a su superior inmediato y al departamento de cumplimiento",
-      "Aceptar el regalo, ya que es una muestra de buena voluntad del proveedor",
-      "Aceptar el regalo y enviar un agradecimiento por escrito al proveedor"
-    ],
-    "correctIndex": 0,
-    "level": "Nivel 3"
-  },
-  {
-    "text": "Una directora tiene acceso a información confidencial sobre una fusión inminente y su esposo trabaja en una empresa que se vería afectada por la fusión. ¿Qué debería hacer?",
-    "options": [
-      "Solicitar a un amigo que le cuente esta noticia a su esposo",
-      "Mantener la confidencialidad de la información y abstenerse de discutir temas relacionados en casa",
-      "Compartir la información con su esposo en su entorno privado"
-    ],
-    "correctIndex": 1,
-    "level": "Nivel 2"
-  },
-  {
-    "text": "Un gerente decide contratar a una empresa de catering para un evento de Genfar. La empresa de catering es propiedad de su cuñado. ¿Cuál es el curso de acción más adecuado?",
-    "options": [
-      "Revelar la relación familiar y permitir que otro miembro del equipo tome la decisión de contratación",
-      "Negociar un descuento especial con la empresa de su cuñado para beneficio de la compañía.",
-      "Contratar a la empresa de su cuñado ya que confía en su calidad."
-    ],
-    "correctIndex": 0,
-    "level": "Nivel 3"
-  },
-  {
-    "text": "¿Qué combinación de roles debería evitarse para mantener una buena segregación de funciones",
-    "options": [
-      "Elaboración de informes y revisión de calidad",
-      "Gestión de relaciones con clientes y soporte técnico.",
-      "Compra de materiales y registro de inventario."
-    ],
-    "correctIndex": 2,
-    "level": "Nivel 3"
-  },
-  {
-    "text": "Cuál es la principal diferencia entre control interno y compliance (ética e integridad)?",
-    "options": [
-      "Control interno y compliance son términos intercambiables y se refieren a lo mismo.",
-      "Control interno se ocupa de la gestión y mitigación de riesgos internos, mientras que compliance se enfoca en el cumplimiento de leyes y regulaciones externas",
-      "Control interno se enfoca en cumplir con las normativas legales, mientras que compliance se enfoca en la eficiencia operativa."
-    ],
-    "correctIndex": 1,
-    "level": "Nivel 2"
-  },
-  {
-    "text": "Cuál de las siguientes tareas es más probable que sea responsabilidad del equipo de compliance en lugar del equipo de control interno?",
-    "options": [
-      "Monitorear el cumplimiento de las leyes de protección de datos y privacidad.",
-      "Revisar y aprobar las transacciones financieras diarias.",
-      "Evaluar la eficiencia de los procesos operativos internos."
-    ],
-    "correctIndex": 0,
-    "level": "Nivel 2"
-  },
-  {
-    "text": "¿Qué es el soborno?",
-    "options": [
-      "Un acto de inducir a alguien a una acción legal y ética.",
+    text: "¿Qué es el soborno?",
+    options: [
+      "Un acto de inducir a alguien a una acción u omisión con objetivos ilegales",
       "Un acto de ofrecer dinero o regalos sin esperar nada a cambio",
-      "Un acto de inducir a alguien a una acción u omisión con objetivos ilegales"
+      "Un acto de inducir a alguien a una acción legal y ética",
     ],
-    "correctIndex": 2,
-    "level": "Nivel 1"
+    correctIndex: 0,
+    level: 1,
   },
   {
-    "text": "¿Qué puede incluir el soborno para inducir a alguien a actuar de manera antiética?",
-    "options": [
-      "Ofrecer ayuda y soporte moral",
+    text: "¿Qué puede incluir el soborno para inducir a alguien a actuar de manera antiética?",
+    options: [
       "Ofrecer dinero, regalos, entretenimiento, beneficios",
-      "Ofrecer una disculpa por un malentendido"
+      "Ofrecer una disculpa por un malentendido",
+      "Ofrecer ayuda y soporte moral",
     ],
-    "correctIndex": 1,
-    "level": "Nivel 1"
+    correctIndex: 0,
+    level: 1,
   },
   {
-    "text": "¿Cómo debe manejarse la participación en actividades político-partidarias por parte de los colaboradores del Grupo?",
-    "options": [
-      "Debe ser aprobada previamente por la empresa.",
-      "Se debe hacer en carácter personal, no como representante de la empresa.",
-      "Puede hacerse en nombre de la empresa si se busca promover el desarrollo sostenible."
-    ],
-    "correctIndex": 1,
-    "level": "Nivel 3"
+    text: "La línea ética solo puede ser utilizada por empleados de la empresa?",
+    options: ["VERDADERO", "FALSO", "Solo por empelados de Genfar y Eurofarma"],
+    correctIndex: 1,
+    level: 1,
   },
   {
-    "text": "Cuál es la postura del Grupo respecto a opiniones personales de sus colaboradores sobre gobernantes y funcionarios públicos?",
-    "options": [
-      "Solo están permitidas si se expresan dentro de la empresa.",
-      "Son permitidas y respetadas siempre que no se difundan usando herramientas de la empresa.",
-      "Estan prohibida en cualquier contexto"
-    ],
-    "correctIndex": 1,
-    "level": "Nivel 3"
+    text: "Puedo aceptar u ofrecer recuerdos y/o regalos a funcionarios públicos?",
+    options: ["VERDADERO", "FALSO", "Solo menores a cien dólares"],
+    correctIndex: 1,
+    level: 1,
   },
   {
-    "text": "La línea ética solo puede ser utilizada por empleados de la empresa?",
-    "options": [
-      "Solo por empelados de Genfar y Eurofarma",
-      "VERDADERO",
-      "FALSO"
-    ],
-    "correctIndex": 2,
-    "level": "Nivel 1"
+    text: " Es obligatorio proporcionar pruebas concretas cuando se hace una denuncia a través de la línea ética?",
+    options: ["FALSO", "Solo fotos y videos", "VERDADERO"],
+    correctIndex: 0,
+    level: 1,
   },
   {
-    "text": "Puedo aceptar u ofrecer recuerdos y/o regalos a funcionarios públicos?",
-    "options": [
-      "Solo menores a cien dolares",
-      "VERDADERO",
-      "FALSO"
-    ],
-    "correctIndex": 2,
-    "level": "Nivel 1"
+    text: "¿El objetivo de la segregación de funciones es evitar errores y fraudes mediante la distribución de tareas?",
+    options: ["FALSO", "VERDADERO", "No, es reducir el número de empleados"],
+    correctIndex: 1,
+    level: 1,
   },
   {
-    "text": "Es aceptable que un empleado que realiza pagos también tenga la responsabilidad de aprobar los pagos, siempre y cuando los montos sean pequeños?",
-    "options": [
-      "VERDADERO",
-      "Si el monto es menor a 500 USD",
-      "FALSO"
-    ],
-    "correctIndex": 2,
-    "level": "Nivel 2"
-  },
-  {
-    "text": "Es obligatorio proporcionar pruebas concretas cuando se hace una denuncia a través de la línea ética?",
-    "options": [
-      "Solo fotos y videos",
-      "FALSO",
-      "VERDADERO"
-    ],
-    "correctIndex": 1,
-    "level": "Nivel 1"
-  },
-  {
-    "text": "¿ Cuales son dos elementos claves de un ambiente de control interno eficiente y eficaz?",
-    "options": [
-      "Prevenir, detectar o corregir errores ; segregación de funciones ",
-      "Minimización de riesgos ; Aseguramiento de las ventas de la empresa",
-      "Sistema de politicas y procedimientos ; la prevención y detención de fraude"
-    ],
-    "correctIndex": 2,
-    "level": "Nivel 3"
-  },
-  {
-    "text": "¿ Cuál es un ejemplo de un control preventivo?",
-    "options": [
-      "Analisis posterior de errores",
-      "Correción del informe ",
-      "Contraseñas y authenticator para acceder al sistemas "
-    ],
-    "correctIndex": 2,
-    "level": "Nivel 3"
-  },
-  {
-    "text": "¿El objetivo de la segregación de funciones es evitar errores y fraudentes mediante la distribucción de tareas?",
-    "options": [
-      "VERDADERO",
-      "FALSO",
-      "No, es reducir el número de empleados"
-    ],
-    "correctIndex": 0,
-    "level": "Nivel 1"
-  },
-  {
-    "text": "¿ Puede realizar una denuncia de forma anónima en la linea etica y funciona 24/7 ?",
-    "options": [
+    text: "¿ Puede realizar una denuncia de forma anónima en la línea ética y funciona 24/7 ?",
+    options: [
       "VERDADERO",
       "Si funciona 24/7 , pero no se puede hacer de forma anónima ",
-      "FALSO"
+      "FALSO",
     ],
-    "correctIndex": 0,
-    "level": "Nivel 1"
+    correctIndex: 0,
+    level: 1,
   },
   {
-    "text": "¿Qué documento permite formalizar las obligaciones y derechos entre dos o más partes?",
-    "options": [
-      "Contrato",
-      "Política interna ",
-      "Cotización"
-    ],
-    "correctIndex": 0,
-    "level": "Nivel 1"
+    text: "¿Qué documento permite formalizar las obligaciones y derechos entre dos o más partes?",
+    options: ["Cotización", "Política interna ", "Contrato"],
+    correctIndex: 2,
+    level: 1,
   },
   {
-    "text": "¿Qué cláusula protege la información interna o sensible compartida entre las partes?",
-    "options": [
+    text: "¿Qué cláusula protege la información interna o sensible compartida entre las partes?",
+    options: [
       "Cláusula de ética y cumplimiento",
       "Cláusula de confidencialidad",
-      "Cláusula de penalidad"
+      "Cláusula de penalidad",
     ],
-    "correctIndex": 1,
-    "level": "Nivel 1"
+    correctIndex: 1,
+    level: 1,
   },
   {
-    "text": "¿Qué documento es obligatorio cuando se recolectan datos personales?",
-    "options": [
+    text: "¿Qué tipo de información suele estar protegida por una cláusula de confidencialidad?",
+    options: [
+      "Comentarios de redes sociales sobre los productos",
+      "Precios, estrategias, clientes",
+      "Chismes laborales",
+    ],
+    correctIndex: 1,
+    level: 1,
+  },
+  {
+    text: "El término “partes” en un contrato se refiere a:",
+    options: [
+      "Testigos",
+      "Todos los involucrados en el contrato",
+      "Solo el cliente",
+    ],
+    correctIndex: 1,
+    level: 1,
+  },
+  {
+    text: "¿ La implementación de los controles es evaluada mediante la autoevaluación del control y auditoria del control?",
+    options: ["VERDADERO", "FALSO", "No, solo de la auditoria del control "],
+    correctIndex: 0,
+    level: 1,
+  },
+  {
+    text: "¿ Que se entiende por ética profesional? ",
+    options: [
+      "Cumplir únicamente con las órdenes del jefe",
+      "Actuar conforme a las normas sociales",
+      "Hacer lo que se considera correcto según los valores y principios del entorno laboral",
+    ],
+    correctIndex: 2,
+    level: 1,
+  },
+  {
+    text: "¿La línea ética de la empresa sirve para denunciar situaciones ilegales o contrarias a los valores de la organización?",
+    options: ["Si, y para consultar las políticas", "Verdadero ", "FALSO"],
+    correctIndex: 1,
+    level: 1,
+  },
+  {
+    text: "El incumplimiento de las normativas de ética e integridad solo afecta a la alta dirección de la empresa?",
+    options: ["Solo a los socios", "FALSO", "VERDADERO"],
+    correctIndex: 1,
+    level: 2,
+  },
+  {
+    text: "El departamento legal es el único responsable del cumplimiento dentro de una empresa?",
+    options: ["Legal y control interno", "FALSO", "VERDADERO"],
+    correctIndex: 1,
+    level: 2,
+  },
+  {
+    text: "No se tomarán medidas ni se investigará si una denuncia hecha a través de la línea ética en ese momento es infundada?",
+    options: ["FALSO", "VERDADERO", "No, porque no hay pruebas"],
+    correctIndex: 0,
+    level: 2,
+  },
+  {
+    text: "Cuál de las siguientes situaciones puede ser un conflicto de interés?",
+    options: [
+      "Ambos",
+      "Un colaborador tiene una relación sentimental con alguien que trabaja con la competencia",
+      "Contratar a un amigo para un proyecto de la empresa",
+    ],
+    correctIndex: 0,
+    level: 2,
+  },
+  {
+    text: "La segregación de funciones no es necesaria en pequeñas empresas debido a la limitación de personal?",
+    options: ["VERDADERO", "No, porque no hay suficientes personas", "FALSO"],
+    correctIndex: 2,
+    level: 2,
+  },
+  {
+    text: "Una directora tiene acceso a información confidencial sobre una fusión inminente y su esposo trabaja en una empresa que se vería afectada por la fusión. ¿Qué debería hacer?",
+    options: [
+      "Compartir la información con su esposo en su entorno privado",
+      "Solicitar a un amigo que le cuente esta noticia a su esposo",
+      "Mantener la confidencialidad de la información y abstenerse de discutir temas relacionados en casa",
+    ],
+    correctIndex: 2,
+    level: 2,
+  },
+  {
+    text: "Cuál es la principal diferencia entre control interno y compliance (ética e integridad)?",
+    options: [
+      "Control interno y compliance son términos intercambiables y se refieren a lo mismo",
+      "Control interno se enfoca en cumplir con las normativas legales, mientras que compliance se enfoca en la eficiencia operativa",
+      "Control interno se ocupa de la gestión y mitigación de riesgos internos, mientras que compliance se enfoca en el cumplimiento de leyes y regulaciones externas",
+    ],
+    correctIndex: 2,
+    level: 2,
+  },
+  {
+    text: "Cuál de las siguientes tareas es más probable que sea responsabilidad del equipo de compliance en lugar del equipo de control interno?",
+    options: [
+      "Evaluar la eficiencia de los procesos operativos internos",
+      "Monitorear el cumplimiento de las leyes de protección de datos y privacidad",
+      "Revisar y aprobar las transacciones financieras diarias",
+    ],
+    correctIndex: 1,
+    level: 2,
+  },
+  {
+    text: "Es aceptable que un empleado que realiza pagos también tenga la responsabilidad de aprobar los pagos, siempre y cuando los montos sean pequeños?",
+    options: ["FALSO", "VERDADERO", "Si el monto es menor a 500 USD"],
+    correctIndex: 0,
+    level: 2,
+  },
+  {
+    text: "¿ Cuál de los siguientes riesgos puede mitigarse con controles internos adecuados ",
+    options: [
+      "Riesgo operativo y de fraude ",
+      "Riesgo de inflación y  operativos ",
+      "Riesgo de fraude y no cumplimiento de ventas",
+    ],
+    correctIndex: 0,
+    level: 2,
+  },
+  {
+    text: "¿Qué documento es obligatorio cuando se recolectan datos personales?",
+    options: [
       "Autorización de tratamiento de datos ",
       "Clausula Compromisoria ",
-      "Acuerdo de privacidad"
+      "Acuerdo de privacidad",
     ],
-    "correctIndex": 0,
-    "level": "Nivel 2"
+    correctIndex: 0,
+    level: 2,
   },
   {
-    "text": "El incumplimiento de un contrato puede generar:",
-    "options": [
-      "Un cambio automático del objeto contractual",
-      "La nulidad de las leyes",
-      "Penalidades o sanciones"
-    ],
-    "correctIndex": 2,
-    "level": "Nivel 3"
+    text: "¿Qué documento permite modificar un contrato ya firmado?",
+    options: ["Adenda ", "Anexo ", "Orden de compra"],
+    correctIndex: 0,
+    level: 2,
   },
   {
-    "text": "¿Qué tipo de información suele estar protegida por una cláusula de confidencialidad?",
-    "options": [
-      "Comentarios de redes sociales sobre los productos",
-      "Chismes laborales",
-      "Precios, estrategias, clientes"
-    ],
-    "correctIndex": 2,
-    "level": "Nivel 1"
-  },
-  {
-    "text": "El término partes en un contrato se refiere a:",
-    "options": [
-      "Solo el cliente",
-      "Todos los involucrados en el contrato",
-      "Testigos"
-    ],
-    "correctIndex": 1,
-    "level": "Nivel 1"
-  },
-  {
-    "text": "¿Qué documento permite modificar un contrato ya firmado?",
-    "options": [
-      "Adenda ",
-      "Anexo ",
-      "Orden de compra"
-    ],
-    "correctIndex": 0,
-    "level": "Nivel 2"
-  },
-  {
-    "text": "¿Qué información debe incluir idealmente un contrato?",
-    "options": [
-      "Solo los datos del proveedor con el que se va a realizar el contrato",
-      "Solo las obligaciones",
-      "Las obligaciones, plazos, sanciones, vigencia y precio"
-    ],
-    "correctIndex": 2,
-    "level": "Nivel 3"
-  },
-  {
-    "text": "La Ley de Protección de Datos Personales busca principalmente:",
-    "options": [
-      "Proteger la información de las empresas",
-      "Proteger la privacidad de las personas",
-      "Limitar el uso del internet"
-    ],
-    "correctIndex": 1,
-    "level": "Nivel 3"
-  },
-  {
-    "text": "El consentimiento para el tratamiento de datos debe ser:",
-    "options": [
+    text: "El consentimiento para el tratamiento de datos debe ser:",
+    options: [
+      "Presunto y expreso",
       "Libre, previo, expreso e informado",
       "Verbal e informado",
-      "Presunto y expreso"
     ],
-    "correctIndex": 0,
-    "level": "Nivel 2"
+    correctIndex: 1,
+    level: 2,
   },
   {
-    "text": "¿Quién es el responsable de custodiar la información confidencial entregada?",
-    "options": [
+    text: "¿Quién es el responsable de custodiar la información confidencial entregada?",
+    options: [
+      "El área de TI",
+      "Ambas partes",
       "Solo quien recibe la información",
-      "El area de TI",
-      "Ambas partes"
     ],
-    "correctIndex": 2,
-    "level": "Nivel 2"
+    correctIndex: 1,
+    level: 2,
   },
   {
-    "text": "¿Qué significa que un contrato sea bilateral?",
-    "options": [
-      "Que obliga a ambas partes",
-      "Que solo es válido en dos ciudades",
-      "Que requiere firma en dos copias"
-    ],
-    "correctIndex": 0,
-    "level": "Nivel 3"
+    text: "¿Qué documento suele adjuntarse al contrato para detallar precios, productos o servicios?",
+    options: ["Carta", "Anexo", "Informe"],
+    correctIndex: 1,
+    level: 2,
   },
   {
-    "text": "¿Qué documento suele adjuntarse al contrato para detallar precios, productos o servicios?",
-    "options": [
-      "Carta",
-      "Anexo",
-      "Informe"
-    ],
-    "correctIndex": 1,
-    "level": "Nivel 2"
-  },
-  {
-    "text": "¿Qué rol juega el área legal en los contratos?",
-    "options": [
-      "Revisa riesgos, términos y cumplimiento legal",
+    text: "¿Qué rol juega el área legal en los contratos?",
+    options: [
       "Solo archiva los contratos",
-      "Solo revisa los terminos"
+      "Solo revisa los términos",
+      "Revisa riesgos, términos y cumplimiento legal",
     ],
-    "correctIndex": 0,
-    "level": "Nivel 2"
+    correctIndex: 2,
+    level: 2,
   },
   {
-    "text": "¿Cuál es el principal riesgo legal de no firmar un NDA antes de compartir información sensible sobre nuevos medicamentos?",
-    "options": [
+    text: "¿ Quién es responsable del control interno en una organización?",
+    options: [
+      "Solo control interno",
+      "todos los empleados",
+      "Control interno y finanzas",
+    ],
+    correctIndex: 1,
+    level: 2,
+  },
+  {
+    text: "En un entorno de control interno eficaz, ¿qué función no debe realizar una sola persona para evitar conflictos de interés?",
+    options: [
+      "Registro de transacciones contables",
+      "Elaboración del presupuesto anual",
+      "Autorización, registro y revisión de transacciones financieras",
+    ],
+    correctIndex: 2,
+    level: 2,
+  },
+  {
+    text: "¿Un sistema de control interno puede eliminar por completo el riesgo de errores y fraudes?",
+    options: [
+      "Sí, siempre que se implemente tecnología avanzada",
+      "Sí, si está bien diseñado y actualizado",
+      "No, solo puede reducir significativamente la probabilidad y el impacto",
+    ],
+    correctIndex: 2,
+    level: 2,
+  },
+  {
+    text: "Un empleado está evaluando propuestas de proveedores, y una de las compañías es propiedad de su hermano. ¿Qué debería hacer el empleado?",
+    options: [
+      "Favorecer la propuesta de su hermano para mantener buenas relaciones familiares",
+      "Informar a su superior sobre el conflicto de interés y abstenerse de participar en la decisión\n",
+      "Evaluar la propuesta de su hermano objetivamente y tomar la mejor decisión para la empresa",
+    ],
+    correctIndex: 1,
+    level: 3,
+  },
+  {
+    text: "Un colaborador recibe un regalo costoso de un proveedor con el que trabaja regularmente. ¿Cuál debería ser su curso de acción?",
+    options: [
+      "Aceptar el regalo y enviar un agradecimiento por escrito al proveedor",
+      "Aceptar el regalo, ya que es una muestra de buena voluntad del proveedor",
+      "Devolver el regalo al proveedor e informar a su superior inmediato y al departamento de cumplimiento",
+    ],
+    correctIndex: 2,
+    level: 3,
+  },
+  {
+    text: "Un gerente decide contratar a una empresa de catering para un evento de Genfar. La empresa de catering es propiedad de su cuñado. ¿Cuál es el curso de acción más adecuado?",
+    options: [
+      "Revelar la relación familiar y permitir que otro miembro del equipo tome la decisión de contratación",
+      "Contratar a la empresa de su cuñado ya que confía en su calidad",
+      "Negociar un descuento especial con la empresa de su cuñado para beneficio de la compañía",
+    ],
+    correctIndex: 0,
+    level: 3,
+  },
+  {
+    text: "¿Qué combinación de roles debería evitarse para mantener una buena segregación de funciones",
+    options: [
+      "Compra de materiales y registro de inventario",
+      "Elaboración de informes y revisión de calidad",
+      "Gestión de relaciones con clientes y soporte técnico",
+    ],
+    correctIndex: 0,
+    level: 3,
+  },
+  {
+    text: " ¿Cómo debe manejarse la participación en actividades político-partidarias por parte de los colaboradores del Grupo?\n",
+    options: [
+      "Puede hacerse en nombre de la empresa si se busca promover el desarrollo sostenible",
+      "Debe ser aprobada previamente por la empresa",
+      "Se debe hacer en carácter personal, no como representante de la empresa",
+    ],
+    correctIndex: 2,
+    level: 3,
+  },
+  {
+    text: "Cuál es la postura del Grupo respecto a opiniones personales de sus colaboradores sobre gobernantes y funcionarios públicos?",
+    options: [
+      "Son permitidas y respetadas siempre que no se difundan usando herramientas de la empresa",
+      "Solo están permitidas si se expresan dentro de la empresa",
+      "Están prohibida en cualquier contexto",
+    ],
+    correctIndex: 0,
+    level: 3,
+  },
+  {
+    text: "¿Qué significa “vigencia” en un contrato?",
+    options: [
+      "Fecha y lugar donde se firmó",
+      " La fecha de firma del documento",
+      "El tiempo durante el cual el contrato está activo",
+    ],
+    correctIndex: 2,
+    level: 3,
+  },
+  {
+    text: "¿ Cuál es uno de los objetivos del control interno ?",
+    options: [
+      "La fiabilidad de la información financiera y de gestión",
+      "El incumplimiento de las leyes, regulaciones y políticas ",
+      "Evitar que se tomen malas decisiones ",
+    ],
+    correctIndex: 0,
+    level: 3,
+  },
+  {
+    text: "Un colaborador comparte por WhatsApp información financiera sensible con un proveedor. Esto:",
+    options: [
+      "Está permitido, mientras no se filtre al publico",
+      "Es aceptable si se borra después",
+      "Es una violación de la confidencialidad",
+    ],
+    correctIndex: 2,
+    level: 3,
+  },
+  {
+    text: "¿Cuáles de las siguientes son herramientas comúnmente utilizadas en programas de compliance?",
+    options: [
+      "Códigos de conducta y políticas internas claras que guían el comportamiento de los empleados",
+      "Solo tener una línea ética ",
+      "Herramientas de auditoría y el código de conducta",
+    ],
+    correctIndex: 0,
+    level: 3,
+  },
+  {
+    text: "¿Cuál de las siguientes afirmaciones es correcta sobre el alcance del fraude?",
+    options: [
+      "El fraude no afecta las operaciones fiscales de una empresa",
+      "El fraude incluye procesos como contrabando y ocultación fiscal",
+      "El fraude se limita a la falsificación de marcas y productos",
+    ],
+    correctIndex: 1,
+    level: 3,
+  },
+  {
+    text: "¿Qué consecuencia puede tener hacer varios registros sobre el mismo evento (descripción, fecha del evento e implicados igual)en la línea ética?",
+    options: [
+      "Mejora de la imagen de la empresa ante la situación reportada",
+      "Incremento en los costos y demoras en el procesamiento",
+      "Aceleración del proceso de investigación y conclusión de las averiguaciones",
+    ],
+    correctIndex: 1,
+    level: 3,
+  },
+  {
+    text: "¿ Cuáles son dos elementos claves de un ambiente de control interno eficiente y eficaz?",
+    options: [
+      "Minimización de riesgos ; Aseguramiento de las ventas de la empresa",
+      "Sistema de políticas y procedimientos ; la prevención y detención de fraude",
+      "Prevenir, detectar o corregir errores ; segregación de funciones ",
+    ],
+    correctIndex: 1,
+    level: 3,
+  },
+  {
+    text: "¿ Cuál es un ejemplo de un control preventivo?",
+    options: [
+      "Contraseñas y authenticator para acceder al sistemas ",
+      "Análisis posterior de errores",
+      "Corrección del informe ",
+    ],
+    correctIndex: 0,
+    level: 3,
+  },
+  {
+    text: "El incumplimiento de un contrato puede generar:",
+    options: [
+      "Un cambio automático del objeto contractual",
+      "Penalidades o sanciones",
+      "La nulidad de las leyes",
+    ],
+    correctIndex: 1,
+    level: 3,
+  },
+  {
+    text: "¿Qué información debe incluir idealmente un contrato?",
+    options: [
+      "Solo los datos del proveedor con el que se va a realizar el contrato",
+      "Solo las obligaciones",
+      "Las obligaciones, plazos, sanciones, vigencia y precio",
+    ],
+    correctIndex: 2,
+    level: 3,
+  },
+  {
+    text: "La Ley de Protección de Datos Personales busca principalmente:",
+    options: [
+      "Limitar el uso del internet",
+      "Proteger la información de las empresas",
+      "Proteger la privacidad de las personas",
+    ],
+    correctIndex: 2,
+    level: 3,
+  },
+  {
+    text: "¿Qué significa que un contrato sea bilateral?",
+    options: [
+      "Que obliga a ambas partes",
+      "Que requiere firma en dos copias",
+      "Que solo es válido en dos ciudades",
+    ],
+    correctIndex: 0,
+    level: 3,
+  },
+  {
+    text: "¿Cuál es el principal riesgo legal de no firmar un NDA antes de compartir información sensible sobre nuevos medicamentos?",
+    options: [
+      "Pérdida de stock y sanciones ",
       "Aumento de precios y cambio de condiciones",
       "Que terceros tengan acceso a propiedad intelectual de Genfar y la puedan compartir",
-      "Pérdida de stock y sanciones "
     ],
-    "correctIndex": 1,
-    "level": "Nivel 3"
+    correctIndex: 2,
+    level: 3,
   },
   {
-    "text": "¿Cuál de estos datos NO se considera dato personal?",
-    "options": [
-      "Número de celular",
-      "Tipo de sangre",
-      "Dirección"
-    ],
-    "correctIndex": 1,
-    "level": "Nivel 3"
+    text: "¿Cuál de estos datos NO se considera dato personal?",
+    options: ["Dirección", "Tipo de sangre", "Número de celular"],
+    correctIndex: 1,
+    level: 3,
   },
   {
-    "text": "¿Qué significa vigencia en un contrato?",
-    "options": [
-      "El tiempo durante el cual el contrato está activo",
-      " La fecha de firma del documento",
-      "Fecha y lugar donde se firmó"
+    text: "¿Qué implicaciones tendría el incumplimiento de las políticas de compliance de la empresa?",
+    options: [
+      "Posibles sanciones legales, daños a la reputación y pérdida de confianza de clientes o inversores",
+      "Mejora en la competitividad empresarial pero recaerían sanciones legales",
+      "Daños a la reputación y pérdida de confianza de clientes o inversores ",
     ],
-    "correctIndex": 0,
-    "level": "Nivel 3"
+    correctIndex: 0,
+    level: 4,
   },
   {
-    "text": "¿ La implementación de los controles es evaluada mediante la autoevaluación del control y auditoria del control?",
-    "options": [
-      "VERDADERO",
-      "FALSO",
-      "No, solo de la auditoria del control "
+    text: "Un colaborador crea documentos falsos para justificar pagos no realizados. ¿Qué debe hacer usted si ve esta situación?",
+    options: [
+      "Solamente informar al supervisor para que el realice el proceso ",
+      "Informar inmediatamente a su supervisor y al departamento de compliance sobre el caso",
+      "No reportó lo identificado, ya que no es de mi área",
     ],
-    "correctIndex": 0,
-    "level": "Nivel 1"
+    correctIndex: 1,
+    level: 4,
   },
   {
-    "text": "¿ Que se entiende por ética profesional?",
-    "options": [
-      "Actuar conforme a las normas sociales",
-      "Cumplir unicamente con las ordenes del jefe",
-      "Hacer lo que se considera correcto según los valores y principios del entorno laboral"
+    text: "Un mismo colaborador es responsable tanto de gestionar el inventario como de realizar las auditorías del mismo. ¿Qué debe hacer el colaborador?",
+    options: [
+      "Respetar las tareas asignadas y no informar nada ",
+      "Informar sobre el riesgo de falta de segregación de funciones y sugerir que se separe la gestión del inventario de las auditorías",
+      "Delegar las tareas asignadas a los otros compañeros, sin informar al supervisor",
     ],
-    "correctIndex": 2,
-    "level": "Nivel 1"
+    correctIndex: 1,
+    level: 4,
   },
   {
-    "text": "¿La linea etica de la empresa sirve para denunciar situaciones ilegales o contrarias a los valores de la organización?",
-    "options": [
+    text: "Un cliente solicita un descuento adicional  del 30% para concretar una gran ventas.¿ Que debe hacer el colaborador? ",
+    options: [
+      "Aprobar el descuento y firmar una desviación ",
+      "La venta es demasiado importante para sus objetivos, por lo tanto debe otorgar el descuento",
+      "Consultar con la política comercial y elevar la solicitud a su supervisor antes de otorgar el descuento",
+    ],
+    correctIndex: 2,
+    level: 4,
+  },
+  {
+    text: "¿Por qué es importante clasificar adecuadamente los riesgos en una matriz de riesgos?",
+    options: [
+      "Porque permite priorizar los riesgos según su impacto y probabilidad, facilitando la toma de decisiones y el diseño de controles adecuados",
+      "Porque facilita la identificación de riesgos externos sin necesidad de evaluar los internos",
+      "Porque permite justificar el uso de cualquier tipo de control, independientemente de su eficacia",
+    ],
+    correctIndex: 0,
+    level: 4,
+  },
+  {
+    text: "¿ Cuándo debe declararse un conflicto de interés? ",
+    options: [
+      "Antes de tomar cualquier decisión relacionada",
+      "Solo si alguien lo detecta",
+      "Una vez finalizada la relación comercial",
+    ],
+    correctIndex: 0,
+    level: 4,
+  },
+  {
+    text: "¿La transparencia en una organización implica compartir la información de forma clara y accesible?",
+    options: [
+      "No, siempre de debe guardar la confidencialidad ",
       "Verdadero ",
       "FALSO",
-      "Si, y para consultar las polticas"
     ],
-    "correctIndex": 0,
-    "level": "Nivel 1"
-  }
+    correctIndex: 1,
+    level: 4,
+  },
+  {
+    text: "¿ Un conflicto de interés se presenta cuándo ?",
+    options: [
+      "Cuando un colaborador asiste a una reunión fuera del horario laboral sin recibir pago adicional",
+      "Cuando un empleado prefiere trabajar en un proyecto que le resulta más interesante, aunque no sea prioritario",
+      "Cuando el colaborador prioriza intereses personales sobre los de la compañía",
+    ],
+    correctIndex: 2,
+    level: 4,
+  },
+  {
+    text: "Un proveedor te invita a un viaje todo pago a una feria internacional. Te pide que no informes a tu jefe. ¿Qué deberías hacer?",
+    options: [
+      "Aceptar la invitación y contarle a otros compañeros para que también puedan ir",
+      "Aceptar la invitación, ya que es una oportunidad profesional",
+      "Agradecer la invitación, pero rechazarla y reportarla a Compliance",
+    ],
+    correctIndex: 2,
+    level: 4,
+  },
+  {
+    text: "Un colaborador de Genfar tiene acceso a información privilegiada y la usa para beneficiar a un proveedor relacionado con un familiar. Esto representa:",
+    options: [
+      "Un conflicto de interés, una violación a la confidencialidad y al código de conducta",
+      "Un conflicto de interés",
+      "Una mala práctica sin consecuencias legales",
+    ],
+    correctIndex: 0,
+    level: 4,
+  },
+  {
+    text: "¿Cuál es el riesgo más común si no se protege adecuadamente la información confidencial?",
+    options: [
+      "Perdida de espacio en el servidor",
+      "Solo filtración de la información",
+      "Filtración de información, daño reputacional y perdidas financieras",
+    ],
+    correctIndex: 2,
+    level: 4,
+  },
+  {
+    text: "¿Por qué es importante que los procesos incluyan revisión independiente?",
+    options: [
+      "Para prevenir errores, fraudes y conflicto de segregación de funciones",
+      "Para agilizar el trabajo",
+      "Para cumplir requisitos legales solamente",
+    ],
+    correctIndex: 0,
+    level: 4,
+  },
+  {
+    text: "Durante una visita comercial, un proveedor (No funcionario público) ofrece cubrir tu almuerzo. ¿Cuál es la forma correcta de actuar?",
+    options: [
+      "Aceptar solo si el cliente o proveedor es muy importante para mis objetivos",
+      "Aceptar, porque de eso depende el negocio pero no contarle a nadie ",
+      "Aceptar si la frecuencia y el costo\u202fde las invitaciones son similares a lo que el empleado de Genfar estaría autorizado a gastar\xa0",
+    ],
+    correctIndex: 2,
+    level: 4,
+  },
+  {
+    text: "¿Qué se debe verificar antes de firmar un contrato con un nuevo proveedor?",
+    options: [
+      "Si existe algún riesgo en la prestación en cuanto al no cumplimiento del proveedor",
+      "Si existe algún riesgo en la prestación en cuanto la cantidad de ventas y la calidad del servicio",
+      "Si existe algún riesgo en la prestación en cuanto al personal y a sus responsabilidades",
+    ],
+    correctIndex: 2,
+    level: 4,
+  },
+  {
+    text: "Una farmacéutica alquila un equipo médico a un hospital. ¿Qué contrato se requiere?",
+    options: [
+      "Contrato de compraventa de equipos médicos",
+      "Contrato de servicios con equipos médicos",
+      "Contrato de arrendamiento",
+    ],
+    correctIndex: 2,
+    level: 4,
+  },
+  {
+    text: "¿Cuál es el propósito principal de una cláusula de “plazo y renovación automática”?",
+    options: [
+      "Terminar el contrato cuando se desee",
+      "Facilitar auditorias ",
+      "Evitar renegociaciones frecuentes",
+    ],
+    correctIndex: 2,
+    level: 4,
+  },
+  {
+    text: "¿Qué se contemplan en los “términos y condiciones”?",
+    options: [
+      "Documentos informativos sin obligatoriedad legal que están contenidos en la orden de compra",
+      "Requisitos operativos de cumplimiento interno que están contenidos en la orden de compra",
+      "Reglas generales del acuerdo que el usuario acepta voluntariamente que están contenidos en la orden de compra",
+    ],
+    correctIndex: 2,
+    level: 4,
+  },
+  {
+    text: "¿Qué efecto tiene una cláusula penal en un contrato?",
+    options: [
+      "Permite la terminación inmediata por incumplimiento",
+      "Establece una sanción económica por incumplimiento",
+      "Elimina la posibilidad de reclamo judicial por incumplimiento",
+    ],
+    correctIndex: 1,
+    level: 4,
+  },
+  {
+    text: "¿Qué ocurre si una parte firma un contrato sin tener las facultades legales?",
+    options: [
+      "No tiene consecuencias ",
+      "Es nulo",
+      "Es valido siempre y cuando haya firmado",
+    ],
+    correctIndex: 1,
+    level: 4,
+  },
+  {
+    text: "¿Qué cláusula ayuda a controlar el riesgo en caso de pandemia o desabastecimiento?",
+    options: [
+      "Cláusula de fuerza mayor",
+      "Clausula confidencialidad",
+      "Cláusula de plazos",
+    ],
+    correctIndex: 0,
+    level: 4,
+  },
+  {
+    text: "¿Qué acción debe tomar una organización si no puede implementar una segregación de funciones completa debido a limitaciones de personal?",
+    options: [
+      "Asegurar el proceso con los recurso disponibles y luego revisar la segregación de funciones",
+      "Implementar controles compensatorios como revisiones adicionales o auditorías",
+      "Permitir que un solo empleado maneje todos los aspectos críticos",
+    ],
+    correctIndex: 1,
+    level: 5,
+  },
+  {
+    text: "¿Qué significa mitigación de riesgos?",
+    options: [
+      "El proceso de identificar, evaluar y tomar medidas para reducir o controlar los riesgos",
+      "El proceso de trasladar todos los riesgos a una aseguradora",
+      "El proceso de eliminar todos los riesgos en la organización",
+    ],
+    correctIndex: 0,
+    level: 5,
+  },
+  {
+    text: "Un proveedor ofrece un soborno a un empleado para ganar un contrato importante con la empresa. El colaborador está tentado, pero sabe que el soborno es ilegal. ¿Qué debe hacer el colaborador en esta situación?",
+    options: [
+      "Aceptar el soborno y utilizando formas para que no sea descubierto",
+      "Rechazar el soborno, pero no reportarlo para no afectar la reputación del proveedor",
+      "Rechazar el soborno, informar inmediatamente al departamento de compliance y seguir el procedimiento para reportar el incidente",
+    ],
+    correctIndex: 2,
+    level: 5,
+  },
+  {
+    text: 'En una matriz RACI( Descripciones de roles y responsabilidades) mal definida, dos áreas están como "Responsable" en una misma actividad crítica. ¿Qué riesgo genera esto?',
+    options: [
+      "Riesgo estratégico y de operaciones",
+      "Riesgo de duplicidad o ausencia de ejecución efectiva",
+      "Riesgo de cumplimiento",
+    ],
+    correctIndex: 1,
+    level: 5,
+  },
+  {
+    text: "¿Qué es un contrato marco?",
+    options: [
+      "Un contrato sencillo y sin límite de cuantía",
+      "Un contrato de términos generales aplicable a futuras negociaciones",
+      "Un contrato sin plazos",
+    ],
+    correctIndex: 1,
+    level: 5,
+  },
+  {
+    text: "¿Qué tipos de riesgos pueden presentarse en el sistema de control interno de una organización?",
+    options: [
+      "Riesgos operativos, financieros, estratégicos, tecnológicos, de mercado y de cumplimiento",
+      "Riesgos operativos, financieros, estratégicos, tecnológicos y de cumplimiento",
+      "Riesgos operativos, financieros, estratégicos y de cumplimiento",
+    ],
+    correctIndex: 1,
+    level: 5,
+  },
+  {
+    text: "Un error sistemático en el cálculo de impuestos, no detectado por los controles internos, puede representar:",
+    options: [
+      "Riesgo operativo y reputacional ",
+      "Riesgo de cumplimiento y financiero",
+      "Riesgo financiero, de cumplimiento y legal",
+    ],
+    correctIndex: 2,
+    level: 5,
+  },
+  {
+    text: "Qué representa un mayor riesgo para el control interno en una operación de compras?",
+    options: [
+      "Falta de inventario físico en tiempo real",
+      "Cambiar frecuentemente de proveedor para obtener mejores precios",
+      "No contar con una política formal de aprobación de cambios en las órdenes de compra",
+    ],
+    correctIndex: 2,
+    level: 5,
+  },
+  {
+    text: 'Una colaboradora de Eurofarma estaba a puesto a ser ascendida, cuando su manager la invitó a una cena a solas, para " discutir mejor" el nuevo cargo. ¿ Esta es una invitación que puede ser considerada como acoso sexual o forma parte de las actitudes transparentes ?',
+    options: [
+      "No es acoso sexual, ya que no hubo toques no deseados o favores sexuales involucrados, sólo una invitación a una reunión de trabajo",
+      "Si, puede configurar acoso sexual y debe ser informado, pues el gestor posee condición de superior jerárquico e hizo una invitación embarazosa, condicionando la promoción de la colaboradora al encuentro",
+      "Es acoso sexual pero no debe ser informado, ya que la colaboradora puede rechazar la invitación y no perjudicar su trabajo o al gestor",
+    ],
+    correctIndex: 1,
+    level: 5,
+  },
+  {
+    text: "¿Cuál es un ejemplo de fraude financiero?",
+    options: [
+      "Aumentar el presupuesto del área para contratar más personal sin haber consultado a la gerencia financiera",
+      "Manipulación de la información financiera para alterar la situación de la empresa",
+      "Re expresión de estados financieros por cambios en las normas contables IFRS ",
+    ],
+    correctIndex: 1,
+    level: 5,
+  },
+  {
+    text: "¿Cuál de las siguientes afirmaciones describe mejor el riesgo de fraude en el contexto de la segregación de funciones?",
+    options: [
+      "La segregación de funciones es irrelevante cuando existen controles automáticos de monitoreo continuo",
+      "La falta de segregación de funciones puede permitir que un empleado tenga la capacidad de cometer fraude sin ser detectado",
+      "La segregación de funciones elimina por completo el riesgo de fraude al evitar que un solo empleado controle todos los aspectos de una transacción",
+    ],
+    correctIndex: 1,
+    level: 5,
+  },
+  {
+    text: "¿ Porque es importante documentar las funciones y responsabilidad?",
+    options: [
+      "Para tener una reducción de procesos y eliminar riesgos",
+      "Para aumentar la carga administrativa",
+      "Para reducir errores y minimizar riesgos de segregación de funciones ",
+    ],
+    correctIndex: 2,
+    level: 5,
+  },
+  {
+    text: "¿ Puede la empresa de un familiar y/o amigo de un colaborador de Genfar participar en el proceso de selección para ser proveedor ?",
+    options: [
+      "Si, pero el colaborador debe declarar el vínculo y no debe participar en el proceso de selección",
+      "No, porque empresas de personas cercanas a nosotros están prohibidas de participar en los procesos de selección ",
+      "Si, y el colaborador no debe declarar el vínculo con el dueño de la empresa",
+    ],
+    correctIndex: 0,
+    level: 5,
+  },
+  {
+    text: "¿Qué harías si descubres que tu jefe inmediato está incumpliendo una política de la empresa?",
+    options: [
+      "Contarle fuera del horario de la oficina a otro gerente el cual es su amigo",
+      "Reportarlo como anónimo en la línea ética ",
+      "Hablar del tema con tus compañeros para decidir juntos ",
+    ],
+    correctIndex: 1,
+    level: 5,
+  },
+  {
+    text: "¿Cuál puede ser un ejemplo de incumplimiento de confidencialidad ?",
+    options: [
+      "Comentar decisiones estratégicas con personas externas",
+      "Leer un reporte financiero interno",
+      "Guardar copias de contratos en el SharePoint de la empresa",
+    ],
+    correctIndex: 0,
+    level: 5,
+  },
+  {
+    text: "Durante un almuerzo, un proveedor le ofrece un regalo costoso y le pide no comentarlo con nadie. ¿Qué debe hacer?",
+    options: [
+      "Se debe rechazar el regalo y no decir nada en la empresa",
+      "No decir nada, ya que enfrentaré represarías",
+      "Se debe rechazar el regalo y reportar al área de Compliance y reportar a la  línea ética",
+    ],
+    correctIndex: 2,
+    level: 5,
+  },
+  {
+    text: "Te piden firmar un documento donde se certifica que se realizó una capacitación de ética a la que no asististe. ¿Qué deberías hacer?",
+    options: [
+      "Firmarlo después de leer el material por tu cuenta",
+      "Negarte a firmar y reportar la situación a Compliance",
+      "Firmarlo para evitar problemas con tu jefe",
+    ],
+    correctIndex: 1,
+    level: 5,
+  },
+  {
+    text: "¿ Si usted nota que un colega se comporta inapropiadamente con otro colega, que haría? ",
+    options: [
+      "Primero hablar con el colaborador y decirle que su comportamiento no es aceptable e informar sobre este comportamiento ",
+      "Solo hablar con mi jefe sobre este acontecimiento ",
+      "Ignorar los comentarios y comportamientos ya que no pertenecen a mi área",
+    ],
+    correctIndex: 0,
+    level: 5,
+  },
+  {
+    text: "¿Qué documento legal debería usarse para campañas de marketing que usan testimonios de pacientes?",
+    options: [
+      "Autorización de Uso de Imagen",
+      "Autorización en el registro sanitario",
+      "Autorización de publicidad y Marketing",
+    ],
+    correctIndex: 0,
+    level: 5,
+  },
+  {
+    text: "¿Qué implica la cláusula de “no competencia” en un contrato con un proveedor farmacéutico?",
+    options: [
+      "Que solo puede operar localmente",
+      "Que tiene la potestad de cambiar los precios",
+      "Que no puede venderle a otros laboratorios competidores ",
+    ],
+    correctIndex: 2,
+    level: 5,
+  },
+  {
+    text: " ¿Cuál de las siguientes combinaciones de funciones debe estar segregada para minimizar riesgos en una organización?",
+    options: [
+      "Generación de reportes y supervisión de personal",
+      "Autorización de transacciones y conciliación bancaria",
+      "Desarrollo de políticas y revisión de documentos legales",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    text: "Cuando debemos utilizar al canal de denuncias del grupo Eurofarma de acuerdo con las actitudes transparentes?",
+    options: [
+      "Para proteger a las personas y a la empresa, siempre que sepa de casos de acoso, discriminación, corrupción , fraude, conflicto de interés y otras actitudes que vayan en contra del código de ética y conducta del Grupo Eurofarma",
+      "Cuando sepamos de acciones que van en contra del código de ética y conducta, como acoso, discriminación, corrupción, fraude y conflictos de intereses, tomadas por colaboradores del Grupo Eurofarma ",
+      "Solo cuando una actitud que hiere el código de ética y conducta del grupo Eurofarma, como el acoso y la discriminación, sucede conmigo",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    text: "¿Cuál es la alternativa adecuada cuando una empresa pequeña no puede cumplir con la segregación ideal por limitaciones de personal?",
+    options: [
+      "Eliminar controles para agilizar los procesos",
+      "Implementar controles compensatorios como revisiones independientes periódicas",
+      "Asignar funciones múltiples a un mismo empleado sin dejar registro",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    text: "¿ Cuál es una señal de falta de segregación de funciones?",
+    options: [
+      "El área de tesorería informa mensualmente a la gerencia sobre las operaciones realizadas",
+      "Un mismo empleado realiza el registro contable, maneja el efectivo y concilia los saldos",
+      "El director financiero revisa y aprueba reportes generados por el área contable",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    text: "¿ Que se entiende por segregación de funciones?",
+    options: [
+      "un jefe delegue la función de aprobación durante periodos de vacaciones a un empleado que ya participa activamente en la ejecución del proceso",
+      "A que una sola persona tenga el control sobre dos o más fases claves de una transacción o un proceso",
+      "A que una sola persona no debe tener el control sobre dos o más fases claves de una transacción o un proceso",
+    ],
+    correctIndex: 2,
+    level: 6,
+  },
+  {
+    text: "¿ Que se puede encontrar en el manual de control interno?",
+    options: [
+      "Las descripciones de las funciones por área ",
+      "Las descripciones de las leyes, procedimientos y regulaciones por cada país",
+      "La descripción de procesos y subprocesos operativos y de soporte de la compañía",
+    ],
+    correctIndex: 2,
+    level: 6,
+  },
+  {
+    text: "¿ Que se entiende por SOP ( Procedimiento operativo estándar) ?",
+    options: [
+      "El SOP describe de forma general el inicio y fin de un proceso",
+      "El SOP describe de manera detallada una tarea o actividad",
+      "El SOP es un formulario de aprobación ",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    text: "¿ Cuando se debe establecer un control mitigatorio ?",
+    options: [
+      "Cuando un empleado solicite mayor autonomía para facilitar su trabajo",
+      "Cuando se detecta algún hallazgo o fraude dentro del proceso",
+      "Cuando por razones operativas o por estructura no es posible separar las funciones incompatibles dentro del marco de segregación de funciones",
+    ],
+    correctIndex: 2,
+    level: 6,
+  },
+  {
+    text: "Según la política ¿Cuál es el límite permitido para aceptar un regalo/invitación en términos de su valor monetario?",
+    options: [
+      "150 USD o 1/3 de salario mínimo",
+      "100 USD o 1/3 de salario mínimo ",
+      "120 USD o 1/3 de salario mínimo",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    text: "¿ Para qué sirve la matriz RACI ( Responsable, autoridad , consultado e informado) en la compañía?",
+    options: [
+      "Para controlar los tiempos de ejecución de cada tarea",
+      "Para asignar y clarificar roles y responsabilidades en procesos o proyectos",
+      "Para definir salarios y jerarquías dentro del organigrama",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    text: "¿Cuál sería el orden adecuado de pasos a seguir antes de establecer una relación comercial con un tercero?",
+    options: [
+      "Primero realizar la orden de compra y después formalizar la contratación",
+      "Primero realizar la debida diligencia y después formalizar la contratación ",
+      "Primero formalizar la contratación y después realizar la orden de compra",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    text: "¿Rechazarías una orden de tu superior si va en contra de los valores de la empresa?",
+    options: [
+      "Solo si crees que puedes ser sancionado después",
+      "No, porque es tu jefe",
+      "Sí, e informarías a un canal adecuado",
+    ],
+    correctIndex: 2,
+    level: 6,
+  },
+  {
+    text: "¿Cómo manejarías el cumplimiento de un proceso si de esto dependiera cumplir tus metas ?",
+    options: [
+      "Sigues el procedimiento, aunque no llegues a la meta",
+      "Preguntas a un colega qué haría él y haces lo mismo",
+      "Lo ajustas un poco si crees que no es tan grave",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    text: "¿Qué significa que un contrato tenga cláusula de indemnidad?",
+    options: [
+      "Que una de las partes tiene la capacidad de anexar nuevos temas al objeto del contrato",
+      "Que una de las partes tiene la capacidad de liberarse de ciertos daños o reclamos",
+      "Que una de las partes tiene la capacidad de modificar unilateralmente el precio del contrato",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    text: "¿Qué cláusula es recomendable en contratos de distribución para proteger la marca Genfar?",
+    options: [
+      "Cláusula de logística",
+      "Cláusula de propiedad intelectual",
+      "Cláusula de pago",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    text: "Un contrato no menciona las condiciones de devolución de productos vencidos. ¿Qué puede pasar?",
+    options: [
+      "El proveedor debe pagar una multa porque se está perdiendo el producto ",
+      "No existe obligación legal de recibirlos",
+      "Deben devolverse igual",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    text: "¿Qué documento es obligatorio antes de iniciar una contratación pública?",
+    options: [
+      "El pliego de condiciones ",
+      "La ficha técnica y documento de tratamiento de  datos personales ",
+      "La guía del usuario ",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    text: "¿ Cuáles son los esquemas de fraude de acuerdo al manual de control interno? ",
+    options: [
+      "Esquemas de corrupción, esquemas de autoridad y esquemas de prevención ",
+      "Esquemas de informes fraudulentos, esquemas de apropiación indebida de activos y esquemas de corrupción ",
+      "Esquemas de detención de fraude, esquemas de corrupción y esquemas de poderes",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    text: "En contratos con distribuidores, es importante limitar:",
+    options: [
+      "El acceso a la planta de producción",
+      "El número de ventas",
+      "El territorio ",
+    ],
+    correctIndex: 2,
+    level: 6,
+  },
+  {
+    text: "Un contrato señala que una farmacéutica será responsable por todos los daños incluso ajenos. ¿Qué cláusula se sugiere revisar?",
+    options: [
+      "Cláusula de responsabilidad ",
+      "Cláusula de resolución",
+      "Cláusula de pagos",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
 ];
