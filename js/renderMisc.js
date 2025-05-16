@@ -141,6 +141,7 @@ export function renderSegment(width, x1, y1, w1, x2, y2, w2, fog, color, index){
 				w1:w1/100 * sideW,
 				w2:w2/100 * sideW,
 			}
+			//Se pinta el cuadrilatero
 			renderPolygon(x1-w1-holderData.w1, y1, x1-w1, y1, x2-w2, y2, x2-w2-holderData.w2, y2, color.line);
     		renderPolygon(x1+w1+holderData.w1, y1, x1+w1, y1, x2+w2, y2, x2+w2+holderData.w2, y2, color.line);
 		}
