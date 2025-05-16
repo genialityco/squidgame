@@ -12,6 +12,21 @@ function renderScore(score) {
   if (scoreDisplay) {
     scoreDisplay.textContent = "Score: " + (score ?? 0);
     scoreDisplay.style.display = "block";
+    // Animate: grow, bounce, and highlight
+    TweenMax.killTweensOf(scoreDisplay);
+    TweenMax.set(scoreDisplay, { scale: 1, boxShadow: "none" });
+    TweenMax.to(scoreDisplay, 0.5, {
+      scale: 2,
+      boxShadow: "0 0 16px 4px #ffe066",
+      ease: Power1.easeOut,
+      onComplete: () => {
+        TweenMax.to(scoreDisplay, 0.25, {
+          scale: 1,
+          boxShadow: "0 0 0px 0px #ffe066",
+          ease: Bounce.easeOut
+        });
+      }
+    });
   }
 }
 
