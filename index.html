@@ -189,16 +189,23 @@
   </div>
 
 
-  <div id="instructionModal"
-    style="display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); color: white; font-family: sans-serif; padding: 40px; box-sizing: border-box;">
-    <div
-      style="max-width: 600px; margin: 80px auto; background: #222; border-radius: 8px; padding: 30px; text-align: center;">
-      <h2 id="instructionTitle">Instrucciones del Juego</h2>
-      <p id="instructionText" style="white-space: pre-wrap;"></p>
-      <button id="continueInstruction"
-        style="margin-top: 20px; padding: 10px 20px; font-size: 16px; cursor: pointer;">Continuar</button>
-    </div>
+<div id="instructionModal"
+  style="display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); color: white; font-family: sans-serif; box-sizing: border-box; overflow: auto;">
+  
+  <div style="max-width: 90%; width: 600px; margin: 40px auto; background: #222; border-radius: 8px; padding: 20px; text-align: center; box-sizing: border-box;">
+    
+    <h2 id="instructionTitle" style="margin-bottom: 16px;">Instrucciones del Juego</h2>
+    
+    <div id="instructionText" style="white-space: pre-wrap; max-height: 50vh; overflow-y: auto; margin-bottom: 20px;"></div>
+    
+    <button id="continueInstruction"
+      style="padding: 10px 20px; font-size: 16px; cursor: pointer; width: 100%; max-width: 250px;">
+      Continuar
+    </button>
+    
   </div>
+</div>
+
 
   <div id="scoreModal" style="
   display: none;

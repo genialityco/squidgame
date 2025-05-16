@@ -1254,7 +1254,7 @@ function updatePlayerTime() {
  */
 export async function startGameRound() {
   gameData.interact = true;
-  toggleGameTimer(true); //resetea el tiempo del juego por un bug de puntaje negativos
+
   if (gameData.roundNum == 1) {
     //DEVNOW
     loopPlayrMoveTimer();
@@ -1480,14 +1480,13 @@ export function updateGame() {
       timeData.elapsedTime = Math.floor(
         timeData.nowDate.getTime() - timeData.startDate.getTime()
       );
-      timeData.timer = Math.floor(timeData.countdown - timeData.elapsedTime);
+      timeData.timer = Math.floor(timeData.countdown - timeData.elapsedTime); 
 
       if (timeData.oldTimer == -1) {
         timeData.oldTimer = timeData.timer;
       }
 
       if (timeData.timer <= 0) {
-        timeData.timer = 0;
         //stop
         if (gameData.roundNum == 6) {
           stopSurvivalRound();
@@ -2254,7 +2253,7 @@ export function endGame(win, timer) {
       playerData.score += scorebase + roundScore * 100;
 
       let finalScore = scorebase + roundScore * 100;
-      console.log("Puntaje final: ", finalScore,gameSettings["game" + gameData.roundNum].timer, timeData.timer);
+
       /** HERE THE PLAYER SCORE is going to be UPDATED TO THE DATABASE FIRESTORE */
       showScoreModal(finalScore, () => {
         updateScore(finalScore);
