@@ -5,8 +5,26 @@ let currentQuestionIndex = 0;
 let questionsToAsk = [];
 let correctAnswers = 0;
 
+function getLevelFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const level = parseInt(params.get("chooseGame"), 10);
+  return isNaN(level) ? null : level;
+}
+
 export function showCandyQuestionSequence(total = 3) {
-  questionsToAsk = shuffleArray([...questionPool]).slice(0, total);
+  const level = getLevelFromURL();
+
+  let pool = questionPool;
+  if (level) {
+    const filtered = questionPool.filter(q => q.level === level);
+    if (filtered.length >= total) {
+      pool = filtered;
+    } else {
+      console.warn(`No hay suficientes preguntas para el nivel ${level}. Usando pool completo.`);
+    }
+  }
+
+  questionsToAsk = shuffleArray([...pool]).slice(0, total);
   currentQuestionIndex = 0;
   correctAnswers = 0;
 
@@ -20,9 +38,7 @@ function showCurrentQuestion() {
   const questionText = document.getElementById("questionText");
   const questionOptions = document.getElementById("questionOptions");
 
-  questionText.innerText = `Pregunta ${currentQuestionIndex + 1}:\n${
-    question.text
-  }`;
+  questionText.innerText = `Pregunta ${currentQuestionIndex + 1}:\n${question.text}`;
   questionOptions.innerHTML = "";
 
   question.options.forEach((option, i) => {
@@ -45,11 +61,9 @@ function handleAnswer(selectedIndex, correctIndex, options) {
   const isCorrect = selectedIndex === correctIndex;
 
   const result = document.createElement("div");
-  if (isCorrect) {
-    result.innerText = "✅ ¡Correcto!";
-  } else {
-    result.innerHTML = `❌ Respuesta incorrecta, pierdes 5 segundos.`;
-  }
+  result.innerText = isCorrect
+    ? "✅ ¡Correcto!"
+    : "❌ Respuesta incorrecta, pierdes 3 segundos.";
 
   result.style.fontSize = "20px";
   result.style.fontWeight = "bold";
@@ -62,9 +76,7 @@ function handleAnswer(selectedIndex, correctIndex, options) {
 
   const nextBtn = document.createElement("button");
   nextBtn.innerText =
-    currentQuestionIndex < questionsToAsk.length - 1
-      ? "Siguiente"
-      : "Finalizar";
+    currentQuestionIndex < questionsToAsk.length - 1 ? "Siguiente" : "Finalizar";
   nextBtn.style.marginTop = "20px";
   nextBtn.style.padding = "10px 20px";
   nextBtn.style.cursor = "pointer";

@@ -278,11 +278,13 @@ export function buildGameButton() {
   buttonStart.cursor = "pointer";
   buttonStart.addEventListener("click", function (evt) {
     playSound("soundClick");
-    if (gameSettings.game0.chooseNumbers) {
-      displayChooseNumber();
-    } else {
-      goPage("game");
-    }
+
+    // ✅ Generar número aleatorio automáticamente
+    chooseNumberData.number = randomInt(1, 999);
+    roundData.playerNumber = pad(chooseNumberData.number, 3);
+    numberTxt.text = roundData.playerNumber;
+
+    goPage("game"); // Ir directamente al juego sin mostrar numberContainer
   });
 
   buttonChoose.cursor = "pointer";
@@ -592,23 +594,53 @@ export function goPage(page) {
 
       // Crear botón personalizado
       if (!resultContainer.getChildByName("backToGamesBtn")) {
-        const backToGamesBtn = new createjs.Text(
-          "Volver a los juegos",
-          "20px Arial",
+        const btnWidth = 240;
+        const btnHeight = 60;
+
+        // Botón de fondo
+        const buttonBg = new createjs.Shape();
+        buttonBg.graphics
+          .beginLinearGradientFill(
+            ["#ff00aa", "#d1008a"],
+            [0, 1],
+            0,
+            0,
+            0,
+            btnHeight
+          )
+          .drawRoundRect(0, 0, btnWidth, btnHeight, 16);
+        buttonBg.shadow = new createjs.Shadow("#000", 3, 3, 8);
+        buttonBg.name = "backToGamesBtnBg";
+
+        // Texto del botón
+        const buttonText = new createjs.Text(
+          "VOLVER A LOS JUEGOS",
+          "bold 18px Arial",
           "#ffffff"
         );
-        backToGamesBtn.name = "backToGamesBtn";
-        backToGamesBtn.textAlign = "center";
-        backToGamesBtn.x = 640; // centro del canvas (1280 / 2)
-        backToGamesBtn.y = 535; // posición vertical deseada
-        backToGamesBtn.cursor = "pointer";
-        backToGamesBtn.shadow = new createjs.Shadow("#000", 2, 2, 4);
+        buttonText.name = "backToGamesBtn";
+        buttonText.textAlign = "center";
+        buttonText.textBaseline = "middle";
+        buttonText.shadow = new createjs.Shadow("#000", 2, 2, 4);
+        buttonText.x = btnWidth / 2;
+        buttonText.y = btnHeight / 2;
 
-        backToGamesBtn.addEventListener("click", () => {
+        // Contenedor del botón
+        const buttonContainer = new createjs.Container();
+        buttonContainer.name = "backToGamesBtn";
+        buttonContainer.addChild(buttonBg, buttonText);
+
+        // Posición responsive
+        buttonContainer.x = canvasW / 2 - btnWidth / 2;
+        buttonContainer.y = canvasH * 0.85;
+
+        buttonContainer.cursor = "pointer";
+
+        buttonContainer.addEventListener("click", () => {
           window.location.href = "https://squidgenfar.netlify.app/";
         });
 
-        resultContainer.addChild(backToGamesBtn);
+        resultContainer.addChild(buttonContainer);
       }
 
       if (gameCustomScore.status) {

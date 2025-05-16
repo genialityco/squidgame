@@ -5,12 +5,34 @@ let resolveQuestionModal;
 let currentQuestion = null;
 
 /**
- * Muestra un modal con una pregunta aleatoria del pool.
+ * Obtiene el nivel desde la URL (?chooseGame=3)
+ */
+function getLevelFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const level = parseInt(params.get("chooseGame"), 10);
+  return isNaN(level) ? null : level;
+}
+
+/**
+ * Muestra un modal con una pregunta aleatoria del pool (filtrado por nivel si existe).
  * @returns {Promise<void>} Promesa que se resuelve al cerrar el modal
  */
 export async function showQuestionModal() {
-  const randomIndex = Math.floor(Math.random() * questionPool.length);
-  currentQuestion = questionPool[randomIndex];
+  const level = getLevelFromURL();
+
+  // Filtra por nivel si existe
+  let pool = questionPool;
+  if (level) {
+    const filtered = questionPool.filter(q => q.level === level);
+    if (filtered.length > 0) {
+      pool = filtered;
+    } else {
+      console.warn(`No hay preguntas para el nivel ${level}, usando pool completo.`);
+    }
+  }
+
+  const randomIndex = Math.floor(Math.random() * pool.length);
+  currentQuestion = pool[randomIndex];
 
   const questionText = document.getElementById("questionText");
   const questionOptions = document.getElementById("questionOptions");
@@ -81,9 +103,9 @@ function handleAnswer(selectedIndex) {
   result.style.color = isCorrect ? "green" : "red";
 
   if (isCorrect) {
-    result.innerText = "✅ ¡Respuesta correcta, ganas 5 segundos!";
+    result.innerText = "✅ ¡Respuesta correcta, ganas 3 segundos!";
   } else {
-    result.innerHTML = `❌ Respuesta incorrecta, pierdes 5 segundos.`;
+    result.innerHTML = `❌ Respuesta incorrecta, pierdes 3 segundos.`;
   }
 
   questionOptions.appendChild(result);

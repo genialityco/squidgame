@@ -7,6 +7,12 @@ let onComplete = null;
 let selectedQuestions = [];
 const QUESTIONS_PER_GAME = 4;
 
+function getLevelFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const level = parseInt(params.get("chooseGame"), 10);
+  return isNaN(level) ? null : level;
+}
+
 function getRandomQuestions(pool, count) {
   const shuffled = [...pool].sort(() => 0.5 - Math.random());
   return shuffled.slice(0, count);
@@ -19,7 +25,20 @@ export function showPreGameQuestions(callback) {
 
   console.log("Mostrando preguntas");
 
-  selectedQuestions = getRandomQuestions(questionPool, QUESTIONS_PER_GAME);
+  const level = getLevelFromURL();
+  let pool = questionPool;
+
+  if (level) {
+    pool = questionPool.filter((q) => q.level === level);
+    if (pool.length < QUESTIONS_PER_GAME) {
+      console.warn(
+        `No hay suficientes preguntas para el nivel ${level}. Se tomarán aleatorias.`
+      );
+      pool = questionPool;
+    }
+  }
+
+  selectedQuestions = getRandomQuestions(pool, QUESTIONS_PER_GAME);
 
   pauseGameForQuestions();
   renderQuestion();
@@ -32,7 +51,8 @@ function renderQuestion() {
 
   if (questionIndex >= selectedQuestions.length) {
     const adjustment =
-      (correctAnswers * 5 - (selectedQuestions.length - correctAnswers) * 5) * 1000;
+      (correctAnswers * 5 - (selectedQuestions.length - correctAnswers) * 5) *
+      1000;
     timeData.countdown = Math.max(timeData.countdown + adjustment, 0);
     resumeGameAfterQuestions();
     if (typeof onComplete === "function") onComplete(correctAnswers);
@@ -51,7 +71,8 @@ function renderQuestion() {
     btn.style.fontSize = "16px";
     btn.style.cursor = "pointer";
     btn.dataset.index = i;
-    btn.onclick = () => handleAnswer(i, question.correctIndex, question.options);
+    btn.onclick = () =>
+      handleAnswer(i, question.correctIndex, question.options);
     questionOptions.appendChild(btn);
   });
 
