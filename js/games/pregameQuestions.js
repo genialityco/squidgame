@@ -1,5 +1,6 @@
 import { questionPool } from "../questionPool.js";
 import { timeData, gameData, toggleGameTimer } from "../game.js";
+import { gameSettings } from "../gameSettings.js";
 
 let questionIndex = 0;
 let correctAnswers = 0;
@@ -54,6 +55,18 @@ function renderQuestion() {
       (correctAnswers * 5 - (selectedQuestions.length - correctAnswers) * 5) *
       1000;
     timeData.countdown = Math.max(timeData.countdown + adjustment, 0);
+    const level = getLevelFromURL();
+    if (level) {
+      const gameKey = "game" + level;
+      if (gameSettings[gameKey]) {
+        const baseTimer = gameSettings[gameKey].timer;
+        gameSettings[gameKey].adjustedTimer = baseTimer + adjustment;
+        console.log(
+          `[Timer ajustado] ${gameKey}: ${gameSettings[gameKey].adjustedTimer} ms`
+        );
+      }
+    }
+
     resumeGameAfterQuestions();
     if (typeof onComplete === "function") onComplete(correctAnswers);
     return;

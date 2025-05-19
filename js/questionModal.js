@@ -23,11 +23,13 @@ export async function showQuestionModal() {
   // Filtra por nivel si existe
   let pool = questionPool;
   if (level) {
-    const filtered = questionPool.filter(q => q.level === level);
+    const filtered = questionPool.filter((q) => q.level === level);
     if (filtered.length > 0) {
       pool = filtered;
     } else {
-      console.warn(`No hay preguntas para el nivel ${level}, usando pool completo.`);
+      console.warn(
+        `No hay preguntas para el nivel ${level}, usando pool completo.`
+      );
     }
   }
 
@@ -120,6 +122,21 @@ function handleAnswer(selectedIndex) {
   } else {
     players[0].speed = Math.max(players[0].speed - 200, 400);
     timeData.savedTime = Math.max(timeData.savedTime - 3000, 0);
+  }
+
+  // Al final del handleAnswer, después de modificar timeData.savedTime:
+
+  // Guardar el timer ajustado para esta ronda
+  const level = getLevelFromURL();
+  if (level) {
+    const gameKey = "game" + level;
+    if (gameSettings[gameKey]) {
+      const baseTimer = gameSettings[gameKey].timer;
+      gameSettings[gameKey].adjustedTimer = baseTimer + timeData.savedTime;
+      console.log(
+        `[Timer ajustado] ${gameKey}: ${gameSettings[gameKey].adjustedTimer} ms`
+      );
+    }
   }
 
   // Botón continuar

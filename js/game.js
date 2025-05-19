@@ -562,16 +562,16 @@ export function goPage(page) {
       /** Ajustando la selección del juego para que le juego en el preview sea el mismo que el juego
        * que realmente se va a jugar
        */
-      const chosenGame =  parseInt(getUrlParameter("chooseGame"));
+      const chosenGame = parseInt(getUrlParameter("chooseGame"));
       let validGame = chosenGame;
       //Limit game number to 1-6
       if (validGame < 1) validGame = 1;
       if (validGame > 6) validGame = 6;
-      
+
       //Current displayed game in the start screen  1 start index based
-      gameData.roundNum = validGame ? validGame: 1;
+      gameData.roundNum = validGame ? validGame : 1;
       //Selected game to play 0 start index based
-      gameData.roundSelect = validGame ? validGame - 1: 0;
+      gameData.roundSelect = validGame ? validGame - 1 : 0;
 
       toggleRound(true);
       prepareRound();
@@ -645,7 +645,7 @@ export function goPage(page) {
         buttonContainer.cursor = "pointer";
 
         buttonContainer.addEventListener("click", () => {
-          window.location.href = "https://squidgenfar.netlify.app/";
+          window.location.href = "https://supervivencialebic.netlify.app";
         });
 
         resultContainer.addChild(buttonContainer);
@@ -1480,7 +1480,7 @@ export function updateGame() {
       timeData.elapsedTime = Math.floor(
         timeData.nowDate.getTime() - timeData.startDate.getTime()
       );
-      timeData.timer = Math.floor(timeData.countdown - timeData.elapsedTime); 
+      timeData.timer = Math.floor(timeData.countdown - timeData.elapsedTime);
 
       if (timeData.oldTimer == -1) {
         timeData.oldTimer = timeData.timer;
@@ -2238,14 +2238,23 @@ export function endGame(win, timer) {
     if (win) {
       let roundScore = 0; // Puntaje base
 
+      console.log("Round:", gameData.roundNum);
+
       if (gameData.roundNum == 6) {
         const lifeLeft = roundData.survivalData.userHealth;
-        roundScore += Math.round(lifeLeft * 0.05); // Suma por vida restante
+        console.log("User Health:", lifeLeft);
+        roundScore += Math.round(lifeLeft * 0.05);
       } else {
-        const timeLeft =
-          gameSettings["game" + gameData.roundNum].timer - timeData.timer;
-        roundScore += Math.round(timeLeft * 0.002); // Suma por tiempo restante
+        const initialTime = gameSettings["game" + gameData.roundNum].adjustedTimer || gameSettings["game" + gameData.roundNum].timer;
+        const usedTime = timeData.timer;
+        const timeLeft = initialTime - usedTime;
+        console.log("Initial Time:", initialTime);
+        console.log("Used Time:", usedTime);
+        console.log("Time Left:", timeLeft);
+        roundScore += Math.round(timeLeft * 0.002);
       }
+
+      console.log("Round Score (normalized):", roundScore);
 
       let scorebase = 100;
       // Normalización del puntaje
@@ -2253,6 +2262,9 @@ export function endGame(win, timer) {
       playerData.score += scorebase + roundScore * 100;
 
       let finalScore = scorebase + roundScore * 100;
+
+      console.log("final score:", finalScore);
+      console.log("playerscore:");
 
       /** HERE THE PLAYER SCORE is going to be UPDATED TO THE DATABASE FIRESTORE */
       showScoreModal(finalScore, () => {

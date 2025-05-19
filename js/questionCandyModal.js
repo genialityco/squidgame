@@ -16,11 +16,13 @@ export function showCandyQuestionSequence(total = 3) {
 
   let pool = questionPool;
   if (level) {
-    const filtered = questionPool.filter(q => q.level === level);
+    const filtered = questionPool.filter((q) => q.level === level);
     if (filtered.length >= total) {
       pool = filtered;
     } else {
-      console.warn(`No hay suficientes preguntas para el nivel ${level}. Usando pool completo.`);
+      console.warn(
+        `No hay suficientes preguntas para el nivel ${level}. Usando pool completo.`
+      );
     }
   }
 
@@ -38,7 +40,9 @@ function showCurrentQuestion() {
   const questionText = document.getElementById("questionText");
   const questionOptions = document.getElementById("questionOptions");
 
-  questionText.innerText = `Pregunta ${currentQuestionIndex + 1}:\n${question.text}`;
+  questionText.innerText = `Pregunta ${currentQuestionIndex + 1}:\n${
+    question.text
+  }`;
   questionOptions.innerHTML = "";
 
   question.options.forEach((option, i) => {
@@ -76,7 +80,9 @@ function handleAnswer(selectedIndex, correctIndex, options) {
 
   const nextBtn = document.createElement("button");
   nextBtn.innerText =
-    currentQuestionIndex < questionsToAsk.length - 1 ? "Siguiente" : "Finalizar";
+    currentQuestionIndex < questionsToAsk.length - 1
+      ? "Siguiente"
+      : "Finalizar";
   nextBtn.style.marginTop = "20px";
   nextBtn.style.padding = "10px 20px";
   nextBtn.style.cursor = "pointer";
@@ -97,6 +103,19 @@ function finishSequence() {
   const secondsDelta =
     (correctAnswers - (questionsToAsk.length - correctAnswers)) * 3000;
   timeData.savedTime = Math.max(timeData.savedTime + secondsDelta, 0);
+  
+  // Guardar el timer ajustado para esta ronda (ej: game2 para Candy Game)
+  const level = getLevelFromURL();
+  if (level) {
+    const gameKey = "game" + level;
+    if (gameSettings[gameKey]) {
+      const baseTimer = gameSettings[gameKey].timer;
+      gameSettings[gameKey].adjustedTimer = baseTimer + timeData.savedTime;
+      console.log(
+        `[Timer ajustado] ${gameKey}: ${gameSettings[gameKey].adjustedTimer} ms`
+      );
+    }
+  }
 
   resumeGameAfterModal();
 }
