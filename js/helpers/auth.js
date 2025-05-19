@@ -10,6 +10,8 @@ const loginPassword = document.getElementById("loginPassword");
 const loginBtn = document.getElementById("loginBtn");
 const userEmailDisplay = document.getElementById("userEmailDisplay");
 const authStatusMsg = document.getElementById("authStatusMsg");
+export let currentUserId = null;
+
 
 function showLoginModal() {
   loginModal.style.display = "flex";
@@ -36,6 +38,7 @@ function hideStatusMsg() {
 // Observe auth state
 onAuthStateChanged(auth, (user) => {
   if (user) {
+    currentUserId = user.uid;
     hideLoginModal();
     showUserEmail(user.email || "Logged in");
     showStatusMsg("Logged in", 1200);

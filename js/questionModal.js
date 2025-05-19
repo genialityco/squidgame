@@ -1,5 +1,8 @@
 import { timeData, players } from "./game.js";
+import { saveSingleAttempt } from "./helpers/metrics.js";
+import { currentUserId } from "../js/helpers/auth.js";
 import { questionPool } from "./questionPool.js";
+import { gameSettings } from "./gameSettings.js";
 
 let resolveQuestionModal;
 let currentQuestion = null;
@@ -75,19 +78,19 @@ function handleAnswer(selectedIndex) {
   const questionOptions = document.getElementById("questionOptions");
   const buttons = questionOptions.querySelectorAll("button");
 
-  // Resaltar botones según la respuesta
+  // Resaltar botones
   buttons.forEach((btn) => {
     const i = parseInt(btn.dataset.index);
     btn.disabled = true;
 
     if (i === correctIndex) {
-      btn.style.backgroundColor = "#2ecc71"; // Verde
+      btn.style.backgroundColor = "#2ecc71";
       btn.style.color = "white";
       btn.style.fontWeight = "bold";
     }
 
     if (i === selectedIndex && selectedIndex !== correctIndex) {
-      btn.style.backgroundColor = "#e74c3c"; // Rojo
+      btn.style.backgroundColor = "#e74c3c";
       btn.style.color = "white";
     }
 
@@ -104,15 +107,13 @@ function handleAnswer(selectedIndex) {
   result.style.whiteSpace = "pre-wrap";
   result.style.color = isCorrect ? "green" : "red";
 
-  if (isCorrect) {
-    result.innerText = "✅ ¡Respuesta correcta, ganas 3 segundos!";
-  } else {
-    result.innerHTML = `❌ Respuesta incorrecta, pierdes 3 segundos.`;
-  }
+  result.innerText = isCorrect
+    ? "✅ ¡Respuesta correcta, ganas 3 segundos!"
+    : "❌ Respuesta incorrecta, pierdes 3 segundos.";
 
   questionOptions.appendChild(result);
 
-  // Ajustar velocidad y tiempo
+  // Ajuste velocidad y tiempo
   if (isCorrect) {
     players[0].speed += 300;
     setTimeout(() => {
@@ -124,19 +125,22 @@ function handleAnswer(selectedIndex) {
     timeData.savedTime = Math.max(timeData.savedTime - 3000, 0);
   }
 
-  // Al final del handleAnswer, después de modificar timeData.savedTime:
-
-  // Guardar el timer ajustado para esta ronda
+  // Guardar intento individual con métrica
   const level = getLevelFromURL();
-  if (level) {
-    const gameKey = "game" + level;
-    if (gameSettings[gameKey]) {
-      const baseTimer = gameSettings[gameKey].timer;
-      gameSettings[gameKey].adjustedTimer = baseTimer + timeData.savedTime;
-      console.log(
-        `[Timer ajustado] ${gameKey}: ${gameSettings[gameKey].adjustedTimer} ms`
-      );
-    }
+  if (level && currentQuestion?.id) {
+    saveSingleAttempt({
+      round: level,
+      questionId: currentQuestion.id,
+      correct: isCorrect,
+    });
+  }
+
+  // Ajustar el timer de la ronda
+  const gameKey = "game" + level;
+  if (gameSettings[gameKey]) {
+    const baseTimer = gameSettings[gameKey].timer;
+    gameSettings[gameKey].adjustedTimer = baseTimer + timeData.savedTime;
+    console.log(`[Timer ajustado] ${gameKey}: ${gameSettings[gameKey].adjustedTimer} ms`);
   }
 
   // Botón continuar
@@ -154,3 +158,4 @@ function handleAnswer(selectedIndex) {
   };
   questionOptions.appendChild(continueBtn);
 }
+

@@ -1,23 +1,27 @@
 export const questionPool = [
   {
+    id: "Q001",
     text: "La capacitación en ética e integridad es un proceso único y no necesita actualización?",
     options: ["VERDADERO", "FALSO", "Es un proceso solo para empleados nuevos"],
     correctIndex: 1,
     level: 1,
   },
   {
+    id: "Q002",
     text: "La denuncia de irregularidades por parte de empleados es una parte importante de un programa de compliance?",
     options: ["FALSO", "VERDADERO", "Solo si el empleado tiene pruebas"],
     correctIndex: 1,
     level: 1,
   },
   {
+    id: "Q003",
     text: "La línea ética debe ser el último recurso para reportar una conducta inapropiada?",
     options: ["VERDADERO", "Solo existe ese recurso", "FALSO"],
     correctIndex: 2,
     level: 1,
   },
   {
+    id: "Q004",
     text: "Qué deberías hacer si un familiar cercano es contratado por un competidor de la empresa?",
     options: [
       "Reportar el conflicto de interés",
@@ -28,6 +32,7 @@ export const questionPool = [
     level: 1,
   },
   {
+    id: "Q005",
     text: "¿Qué es el soborno?",
     options: [
       "Un acto de inducir a alguien a una acción u omisión con objetivos ilegales",
@@ -38,6 +43,7 @@ export const questionPool = [
     level: 1,
   },
   {
+    id: "Q006",
     text: "¿Qué puede incluir el soborno para inducir a alguien a actuar de manera antiética?",
     options: [
       "Ofrecer dinero, regalos, entretenimiento, beneficios",
@@ -48,30 +54,35 @@ export const questionPool = [
     level: 1,
   },
   {
+    id: "Q007",
     text: "La línea ética solo puede ser utilizada por empleados de la empresa?",
     options: ["VERDADERO", "FALSO", "Solo por empelados de Genfar y Eurofarma"],
     correctIndex: 1,
     level: 1,
   },
   {
+    id: "Q008",
     text: "Puedo aceptar u ofrecer recuerdos y/o regalos a funcionarios públicos?",
     options: ["VERDADERO", "FALSO", "Solo menores a cien dólares"],
     correctIndex: 1,
     level: 1,
   },
   {
+    id: "Q009",
     text: " Es obligatorio proporcionar pruebas concretas cuando se hace una denuncia a través de la línea ética?",
     options: ["FALSO", "Solo fotos y videos", "VERDADERO"],
     correctIndex: 0,
     level: 1,
   },
   {
+    id: "Q010",
     text: "¿El objetivo de la segregación de funciones es evitar errores y fraudes mediante la distribución de tareas?",
     options: ["FALSO", "VERDADERO", "No, es reducir el número de empleados"],
     correctIndex: 1,
     level: 1,
   },
   {
+    id: "Q011",
     text: "¿ Puede realizar una denuncia de forma anónima en la línea ética y funciona 24/7 ?",
     options: [
       "VERDADERO",
@@ -82,12 +93,14 @@ export const questionPool = [
     level: 1,
   },
   {
+    id: "Q012",
     text: "¿Qué documento permite formalizar las obligaciones y derechos entre dos o más partes?",
     options: ["Cotización", "Política interna ", "Contrato"],
     correctIndex: 2,
     level: 1,
   },
   {
+    id: "Q013",
     text: "¿Qué cláusula protege la información interna o sensible compartida entre las partes?",
     options: [
       "Cláusula de ética y cumplimiento",
@@ -98,6 +111,7 @@ export const questionPool = [
     level: 1,
   },
   {
+    id: "Q014",
     text: "¿Qué tipo de información suele estar protegida por una cláusula de confidencialidad?",
     options: [
       "Comentarios de redes sociales sobre los productos",
@@ -108,6 +122,7 @@ export const questionPool = [
     level: 1,
   },
   {
+    id: "Q015",
     text: "El término “partes” en un contrato se refiere a:",
     options: [
       "Testigos",
@@ -118,12 +133,14 @@ export const questionPool = [
     level: 1,
   },
   {
+    id: "Q016",
     text: "¿ La implementación de los controles es evaluada mediante la autoevaluación del control y auditoria del control?",
     options: ["VERDADERO", "FALSO", "No, solo de la auditoria del control "],
     correctIndex: 0,
     level: 1,
   },
   {
+    id: "Q017",
     text: "¿ Que se entiende por ética profesional? ",
     options: [
       "Cumplir únicamente con las órdenes del jefe",
@@ -134,30 +151,35 @@ export const questionPool = [
     level: 1,
   },
   {
+    id: "Q018",
     text: "¿La línea ética de la empresa sirve para denunciar situaciones ilegales o contrarias a los valores de la organización?",
     options: ["Si, y para consultar las políticas", "Verdadero ", "FALSO"],
     correctIndex: 1,
     level: 1,
   },
   {
+    id: "Q019",
     text: "El incumplimiento de las normativas de ética e integridad solo afecta a la alta dirección de la empresa?",
     options: ["Solo a los socios", "FALSO", "VERDADERO"],
     correctIndex: 1,
     level: 2,
   },
   {
+    id: "Q020",
     text: "El departamento legal es el único responsable del cumplimiento dentro de una empresa?",
     options: ["Legal y control interno", "FALSO", "VERDADERO"],
     correctIndex: 1,
     level: 2,
   },
   {
+    id: "Q021",
     text: "No se tomarán medidas ni se investigará si una denuncia hecha a través de la línea ética en ese momento es infundada?",
     options: ["FALSO", "VERDADERO", "No, porque no hay pruebas"],
     correctIndex: 0,
     level: 2,
   },
   {
+    id: "Q022",
     text: "Cuál de las siguientes situaciones puede ser un conflicto de interés?",
     options: [
       "Ambos",
@@ -168,12 +190,14 @@ export const questionPool = [
     level: 2,
   },
   {
+    id: "Q023",
     text: "La segregación de funciones no es necesaria en pequeñas empresas debido a la limitación de personal?",
     options: ["VERDADERO", "No, porque no hay suficientes personas", "FALSO"],
     correctIndex: 2,
     level: 2,
   },
   {
+    id: "Q024",
     text: "Una directora tiene acceso a información confidencial sobre una fusión inminente y su esposo trabaja en una empresa que se vería afectada por la fusión. ¿Qué debería hacer?",
     options: [
       "Compartir la información con su esposo en su entorno privado",
@@ -184,6 +208,7 @@ export const questionPool = [
     level: 2,
   },
   {
+    id: "Q025",
     text: "Cuál es la principal diferencia entre control interno y compliance (ética e integridad)?",
     options: [
       "Control interno y compliance son términos intercambiables y se refieren a lo mismo",
@@ -194,6 +219,7 @@ export const questionPool = [
     level: 2,
   },
   {
+    id: "Q026",
     text: "Cuál de las siguientes tareas es más probable que sea responsabilidad del equipo de compliance en lugar del equipo de control interno?",
     options: [
       "Evaluar la eficiencia de los procesos operativos internos",
@@ -204,12 +230,14 @@ export const questionPool = [
     level: 2,
   },
   {
+    id: "Q027",
     text: "Es aceptable que un empleado que realiza pagos también tenga la responsabilidad de aprobar los pagos, siempre y cuando los montos sean pequeños?",
     options: ["FALSO", "VERDADERO", "Si el monto es menor a 500 USD"],
     correctIndex: 0,
     level: 2,
   },
   {
+    id: "Q028",
     text: "¿ Cuál de los siguientes riesgos puede mitigarse con controles internos adecuados ",
     options: [
       "Riesgo operativo y de fraude ",
@@ -220,6 +248,7 @@ export const questionPool = [
     level: 2,
   },
   {
+    id: "Q029",
     text: "¿Qué documento es obligatorio cuando se recolectan datos personales?",
     options: [
       "Autorización de tratamiento de datos ",
@@ -230,12 +259,14 @@ export const questionPool = [
     level: 2,
   },
   {
+    id: "Q030",
     text: "¿Qué documento permite modificar un contrato ya firmado?",
     options: ["Adenda ", "Anexo ", "Orden de compra"],
     correctIndex: 0,
     level: 2,
   },
   {
+    id: "Q031",
     text: "El consentimiento para el tratamiento de datos debe ser:",
     options: [
       "Presunto y expreso",
@@ -246,6 +277,7 @@ export const questionPool = [
     level: 2,
   },
   {
+    id: "Q032",
     text: "¿Quién es el responsable de custodiar la información confidencial entregada?",
     options: [
       "El área de TI",
@@ -256,12 +288,14 @@ export const questionPool = [
     level: 2,
   },
   {
+    id: "Q033",
     text: "¿Qué documento suele adjuntarse al contrato para detallar precios, productos o servicios?",
     options: ["Carta", "Anexo", "Informe"],
     correctIndex: 1,
     level: 2,
   },
   {
+    id: "Q034",
     text: "¿Qué rol juega el área legal en los contratos?",
     options: [
       "Solo archiva los contratos",
@@ -272,6 +306,7 @@ export const questionPool = [
     level: 2,
   },
   {
+    id: "Q035",
     text: "¿ Quién es responsable del control interno en una organización?",
     options: [
       "Solo control interno",
@@ -282,6 +317,7 @@ export const questionPool = [
     level: 2,
   },
   {
+    id: "Q036",
     text: "En un entorno de control interno eficaz, ¿qué función no debe realizar una sola persona para evitar conflictos de interés?",
     options: [
       "Registro de transacciones contables",
@@ -292,6 +328,7 @@ export const questionPool = [
     level: 2,
   },
   {
+    id: "Q037",
     text: "¿Un sistema de control interno puede eliminar por completo el riesgo de errores y fraudes?",
     options: [
       "Sí, siempre que se implemente tecnología avanzada",
@@ -302,6 +339,7 @@ export const questionPool = [
     level: 2,
   },
   {
+    id: "Q038",
     text: "Un empleado está evaluando propuestas de proveedores, y una de las compañías es propiedad de su hermano. ¿Qué debería hacer el empleado?",
     options: [
       "Favorecer la propuesta de su hermano para mantener buenas relaciones familiares",
@@ -312,6 +350,7 @@ export const questionPool = [
     level: 3,
   },
   {
+    id: "Q039",
     text: "Un colaborador recibe un regalo costoso de un proveedor con el que trabaja regularmente. ¿Cuál debería ser su curso de acción?",
     options: [
       "Aceptar el regalo y enviar un agradecimiento por escrito al proveedor",
@@ -322,6 +361,7 @@ export const questionPool = [
     level: 3,
   },
   {
+    id: "Q040",
     text: "Un gerente decide contratar a una empresa de catering para un evento de Genfar. La empresa de catering es propiedad de su cuñado. ¿Cuál es el curso de acción más adecuado?",
     options: [
       "Revelar la relación familiar y permitir que otro miembro del equipo tome la decisión de contratación",
@@ -332,6 +372,7 @@ export const questionPool = [
     level: 3,
   },
   {
+    id: "Q041",
     text: "¿Qué combinación de roles debería evitarse para mantener una buena segregación de funciones",
     options: [
       "Compra de materiales y registro de inventario",
@@ -342,6 +383,7 @@ export const questionPool = [
     level: 3,
   },
   {
+    id: "Q042",
     text: " ¿Cómo debe manejarse la participación en actividades político-partidarias por parte de los colaboradores del Grupo?\n",
     options: [
       "Puede hacerse en nombre de la empresa si se busca promover el desarrollo sostenible",
@@ -352,6 +394,7 @@ export const questionPool = [
     level: 3,
   },
   {
+    id: "Q043",
     text: "Cuál es la postura del Grupo respecto a opiniones personales de sus colaboradores sobre gobernantes y funcionarios públicos?",
     options: [
       "Son permitidas y respetadas siempre que no se difundan usando herramientas de la empresa",
@@ -362,6 +405,7 @@ export const questionPool = [
     level: 3,
   },
   {
+    id: "Q044",
     text: "¿Qué significa “vigencia” en un contrato?",
     options: [
       "Fecha y lugar donde se firmó",
@@ -372,6 +416,7 @@ export const questionPool = [
     level: 3,
   },
   {
+    id: "Q045",
     text: "¿ Cuál es uno de los objetivos del control interno ?",
     options: [
       "La fiabilidad de la información financiera y de gestión",
@@ -382,6 +427,7 @@ export const questionPool = [
     level: 3,
   },
   {
+    id: "Q046",
     text: "Un colaborador comparte por WhatsApp información financiera sensible con un proveedor. Esto:",
     options: [
       "Está permitido, mientras no se filtre al publico",
@@ -392,6 +438,7 @@ export const questionPool = [
     level: 3,
   },
   {
+    id: "Q047",
     text: "¿Cuáles de las siguientes son herramientas comúnmente utilizadas en programas de compliance?",
     options: [
       "Códigos de conducta y políticas internas claras que guían el comportamiento de los empleados",
@@ -402,6 +449,7 @@ export const questionPool = [
     level: 3,
   },
   {
+    id: "Q048",
     text: "¿Cuál de las siguientes afirmaciones es correcta sobre el alcance del fraude?",
     options: [
       "El fraude no afecta las operaciones fiscales de una empresa",
@@ -412,6 +460,7 @@ export const questionPool = [
     level: 3,
   },
   {
+    id: "Q049",
     text: "¿Qué consecuencia puede tener hacer varios registros sobre el mismo evento (descripción, fecha del evento e implicados igual)en la línea ética?",
     options: [
       "Mejora de la imagen de la empresa ante la situación reportada",
@@ -422,6 +471,7 @@ export const questionPool = [
     level: 3,
   },
   {
+    id: "Q050",
     text: "¿ Cuáles son dos elementos claves de un ambiente de control interno eficiente y eficaz?",
     options: [
       "Minimización de riesgos ; Aseguramiento de las ventas de la empresa",
@@ -432,6 +482,7 @@ export const questionPool = [
     level: 3,
   },
   {
+    id: "Q051",
     text: "¿ Cuál es un ejemplo de un control preventivo?",
     options: [
       "Contraseñas y authenticator para acceder al sistemas ",
@@ -442,6 +493,7 @@ export const questionPool = [
     level: 3,
   },
   {
+    id: "Q052",
     text: "El incumplimiento de un contrato puede generar:",
     options: [
       "Un cambio automático del objeto contractual",
@@ -452,6 +504,7 @@ export const questionPool = [
     level: 3,
   },
   {
+    id: "Q053",
     text: "¿Qué información debe incluir idealmente un contrato?",
     options: [
       "Solo los datos del proveedor con el que se va a realizar el contrato",
@@ -462,6 +515,7 @@ export const questionPool = [
     level: 3,
   },
   {
+    id: "Q054",
     text: "La Ley de Protección de Datos Personales busca principalmente:",
     options: [
       "Limitar el uso del internet",
@@ -472,6 +526,7 @@ export const questionPool = [
     level: 3,
   },
   {
+    id: "Q055",
     text: "¿Qué significa que un contrato sea bilateral?",
     options: [
       "Que obliga a ambas partes",
@@ -482,6 +537,7 @@ export const questionPool = [
     level: 3,
   },
   {
+    id: "Q056",
     text: "¿Cuál es el principal riesgo legal de no firmar un NDA antes de compartir información sensible sobre nuevos medicamentos?",
     options: [
       "Pérdida de stock y sanciones ",
@@ -492,12 +548,14 @@ export const questionPool = [
     level: 3,
   },
   {
+    id: "Q057",
     text: "¿Cuál de estos datos NO se considera dato personal?",
     options: ["Dirección", "Tipo de sangre", "Número de celular"],
     correctIndex: 1,
     level: 3,
   },
   {
+    id: "Q058",
     text: "¿Qué implicaciones tendría el incumplimiento de las políticas de compliance de la empresa?",
     options: [
       "Posibles sanciones legales, daños a la reputación y pérdida de confianza de clientes o inversores",
@@ -508,6 +566,7 @@ export const questionPool = [
     level: 4,
   },
   {
+    id: "Q059",
     text: "Un colaborador crea documentos falsos para justificar pagos no realizados. ¿Qué debe hacer usted si ve esta situación?",
     options: [
       "Solamente informar al supervisor para que el realice el proceso ",
@@ -518,6 +577,7 @@ export const questionPool = [
     level: 4,
   },
   {
+    id: "Q060",
     text: "Un mismo colaborador es responsable tanto de gestionar el inventario como de realizar las auditorías del mismo. ¿Qué debe hacer el colaborador?",
     options: [
       "Respetar las tareas asignadas y no informar nada ",
@@ -528,6 +588,7 @@ export const questionPool = [
     level: 4,
   },
   {
+    id: "Q061",
     text: "Un cliente solicita un descuento adicional  del 30% para concretar una gran ventas.¿ Que debe hacer el colaborador? ",
     options: [
       "Aprobar el descuento y firmar una desviación ",
@@ -538,6 +599,7 @@ export const questionPool = [
     level: 4,
   },
   {
+    id: "Q062",
     text: "¿Por qué es importante clasificar adecuadamente los riesgos en una matriz de riesgos?",
     options: [
       "Porque permite priorizar los riesgos según su impacto y probabilidad, facilitando la toma de decisiones y el diseño de controles adecuados",
@@ -548,6 +610,7 @@ export const questionPool = [
     level: 4,
   },
   {
+    id: "Q063",
     text: "¿ Cuándo debe declararse un conflicto de interés? ",
     options: [
       "Antes de tomar cualquier decisión relacionada",
@@ -558,6 +621,7 @@ export const questionPool = [
     level: 4,
   },
   {
+    id: "Q064",
     text: "¿La transparencia en una organización implica compartir la información de forma clara y accesible?",
     options: [
       "No, siempre de debe guardar la confidencialidad ",
@@ -568,6 +632,7 @@ export const questionPool = [
     level: 4,
   },
   {
+    id: "Q065",
     text: "¿ Un conflicto de interés se presenta cuándo ?",
     options: [
       "Cuando un colaborador asiste a una reunión fuera del horario laboral sin recibir pago adicional",
@@ -578,6 +643,7 @@ export const questionPool = [
     level: 4,
   },
   {
+    id: "Q066",
     text: "Un proveedor te invita a un viaje todo pago a una feria internacional. Te pide que no informes a tu jefe. ¿Qué deberías hacer?",
     options: [
       "Aceptar la invitación y contarle a otros compañeros para que también puedan ir",
@@ -588,6 +654,7 @@ export const questionPool = [
     level: 4,
   },
   {
+    id: "Q067",
     text: "Un colaborador de Genfar tiene acceso a información privilegiada y la usa para beneficiar a un proveedor relacionado con un familiar. Esto representa:",
     options: [
       "Un conflicto de interés, una violación a la confidencialidad y al código de conducta",
@@ -598,6 +665,7 @@ export const questionPool = [
     level: 4,
   },
   {
+    id: "Q068",
     text: "¿Cuál es el riesgo más común si no se protege adecuadamente la información confidencial?",
     options: [
       "Perdida de espacio en el servidor",
@@ -608,6 +676,7 @@ export const questionPool = [
     level: 4,
   },
   {
+    id: "Q069",
     text: "¿Por qué es importante que los procesos incluyan revisión independiente?",
     options: [
       "Para prevenir errores, fraudes y conflicto de segregación de funciones",
@@ -618,6 +687,7 @@ export const questionPool = [
     level: 4,
   },
   {
+    id: "Q070",
     text: "Durante una visita comercial, un proveedor (No funcionario público) ofrece cubrir tu almuerzo. ¿Cuál es la forma correcta de actuar?",
     options: [
       "Aceptar solo si el cliente o proveedor es muy importante para mis objetivos",
@@ -628,6 +698,7 @@ export const questionPool = [
     level: 4,
   },
   {
+    id: "Q071",
     text: "¿Qué se debe verificar antes de firmar un contrato con un nuevo proveedor?",
     options: [
       "Si existe algún riesgo en la prestación en cuanto al no cumplimiento del proveedor",
@@ -638,6 +709,7 @@ export const questionPool = [
     level: 4,
   },
   {
+    id: "Q072",
     text: "Una farmacéutica alquila un equipo médico a un hospital. ¿Qué contrato se requiere?",
     options: [
       "Contrato de compraventa de equipos médicos",
@@ -648,6 +720,7 @@ export const questionPool = [
     level: 4,
   },
   {
+    id: "Q073",
     text: "¿Cuál es el propósito principal de una cláusula de “plazo y renovación automática”?",
     options: [
       "Terminar el contrato cuando se desee",
@@ -658,6 +731,7 @@ export const questionPool = [
     level: 4,
   },
   {
+    id: "Q074",
     text: "¿Qué se contemplan en los “términos y condiciones”?",
     options: [
       "Documentos informativos sin obligatoriedad legal que están contenidos en la orden de compra",
@@ -668,6 +742,7 @@ export const questionPool = [
     level: 4,
   },
   {
+    id: "Q075",
     text: "¿Qué efecto tiene una cláusula penal en un contrato?",
     options: [
       "Permite la terminación inmediata por incumplimiento",
@@ -678,6 +753,7 @@ export const questionPool = [
     level: 4,
   },
   {
+    id: "Q076",
     text: "¿Qué ocurre si una parte firma un contrato sin tener las facultades legales?",
     options: [
       "No tiene consecuencias ",
@@ -688,6 +764,7 @@ export const questionPool = [
     level: 4,
   },
   {
+    id: "Q077",
     text: "¿Qué cláusula ayuda a controlar el riesgo en caso de pandemia o desabastecimiento?",
     options: [
       "Cláusula de fuerza mayor",
@@ -698,6 +775,7 @@ export const questionPool = [
     level: 4,
   },
   {
+    id: "Q078",
     text: "¿Qué acción debe tomar una organización si no puede implementar una segregación de funciones completa debido a limitaciones de personal?",
     options: [
       "Asegurar el proceso con los recurso disponibles y luego revisar la segregación de funciones",
@@ -708,6 +786,7 @@ export const questionPool = [
     level: 5,
   },
   {
+    id: "Q079",
     text: "¿Qué significa mitigación de riesgos?",
     options: [
       "El proceso de identificar, evaluar y tomar medidas para reducir o controlar los riesgos",
@@ -718,6 +797,7 @@ export const questionPool = [
     level: 5,
   },
   {
+    id: "Q080",
     text: "Un proveedor ofrece un soborno a un empleado para ganar un contrato importante con la empresa. El colaborador está tentado, pero sabe que el soborno es ilegal. ¿Qué debe hacer el colaborador en esta situación?",
     options: [
       "Aceptar el soborno y utilizando formas para que no sea descubierto",
@@ -728,6 +808,7 @@ export const questionPool = [
     level: 5,
   },
   {
+    id: "Q081",
     text: 'En una matriz RACI( Descripciones de roles y responsabilidades) mal definida, dos áreas están como "Responsable" en una misma actividad crítica. ¿Qué riesgo genera esto?',
     options: [
       "Riesgo estratégico y de operaciones",
@@ -738,6 +819,7 @@ export const questionPool = [
     level: 5,
   },
   {
+    id: "Q082",
     text: "¿Qué es un contrato marco?",
     options: [
       "Un contrato sencillo y sin límite de cuantía",
@@ -748,6 +830,7 @@ export const questionPool = [
     level: 5,
   },
   {
+    id: "Q083",
     text: "¿Qué tipos de riesgos pueden presentarse en el sistema de control interno de una organización?",
     options: [
       "Riesgos operativos, financieros, estratégicos, tecnológicos, de mercado y de cumplimiento",
@@ -758,6 +841,7 @@ export const questionPool = [
     level: 5,
   },
   {
+    id: "Q084",
     text: "Un error sistemático en el cálculo de impuestos, no detectado por los controles internos, puede representar:",
     options: [
       "Riesgo operativo y reputacional ",
@@ -768,6 +852,7 @@ export const questionPool = [
     level: 5,
   },
   {
+    id: "Q085",
     text: "Qué representa un mayor riesgo para el control interno en una operación de compras?",
     options: [
       "Falta de inventario físico en tiempo real",
@@ -778,6 +863,7 @@ export const questionPool = [
     level: 5,
   },
   {
+    id: "Q086",
     text: 'Una colaboradora de Eurofarma estaba a puesto a ser ascendida, cuando su manager la invitó a una cena a solas, para " discutir mejor" el nuevo cargo. ¿ Esta es una invitación que puede ser considerada como acoso sexual o forma parte de las actitudes transparentes ?',
     options: [
       "No es acoso sexual, ya que no hubo toques no deseados o favores sexuales involucrados, sólo una invitación a una reunión de trabajo",
@@ -788,6 +874,7 @@ export const questionPool = [
     level: 5,
   },
   {
+    id: "Q087",
     text: "¿Cuál es un ejemplo de fraude financiero?",
     options: [
       "Aumentar el presupuesto del área para contratar más personal sin haber consultado a la gerencia financiera",
@@ -798,6 +885,7 @@ export const questionPool = [
     level: 5,
   },
   {
+    id: "Q088",
     text: "¿Cuál de las siguientes afirmaciones describe mejor el riesgo de fraude en el contexto de la segregación de funciones?",
     options: [
       "La segregación de funciones es irrelevante cuando existen controles automáticos de monitoreo continuo",
@@ -808,6 +896,7 @@ export const questionPool = [
     level: 5,
   },
   {
+    id: "Q089",
     text: "¿ Porque es importante documentar las funciones y responsabilidad?",
     options: [
       "Para tener una reducción de procesos y eliminar riesgos",
@@ -818,6 +907,7 @@ export const questionPool = [
     level: 5,
   },
   {
+    id: "Q090",
     text: "¿ Puede la empresa de un familiar y/o amigo de un colaborador de Genfar participar en el proceso de selección para ser proveedor ?",
     options: [
       "Si, pero el colaborador debe declarar el vínculo y no debe participar en el proceso de selección",
@@ -828,6 +918,7 @@ export const questionPool = [
     level: 5,
   },
   {
+    id: "Q091",
     text: "¿Qué harías si descubres que tu jefe inmediato está incumpliendo una política de la empresa?",
     options: [
       "Contarle fuera del horario de la oficina a otro gerente el cual es su amigo",
@@ -838,6 +929,7 @@ export const questionPool = [
     level: 5,
   },
   {
+    id: "Q092",
     text: "¿Cuál puede ser un ejemplo de incumplimiento de confidencialidad ?",
     options: [
       "Comentar decisiones estratégicas con personas externas",
@@ -848,6 +940,7 @@ export const questionPool = [
     level: 5,
   },
   {
+    id: "Q093",
     text: "Durante un almuerzo, un proveedor le ofrece un regalo costoso y le pide no comentarlo con nadie. ¿Qué debe hacer?",
     options: [
       "Se debe rechazar el regalo y no decir nada en la empresa",
@@ -858,6 +951,7 @@ export const questionPool = [
     level: 5,
   },
   {
+    id: "Q094",
     text: "Te piden firmar un documento donde se certifica que se realizó una capacitación de ética a la que no asististe. ¿Qué deberías hacer?",
     options: [
       "Firmarlo después de leer el material por tu cuenta",
@@ -868,6 +962,7 @@ export const questionPool = [
     level: 5,
   },
   {
+    id: "Q095",
     text: "¿ Si usted nota que un colega se comporta inapropiadamente con otro colega, que haría? ",
     options: [
       "Primero hablar con el colaborador y decirle que su comportamiento no es aceptable e informar sobre este comportamiento ",
@@ -878,6 +973,7 @@ export const questionPool = [
     level: 5,
   },
   {
+    id: "Q096",
     text: "¿Qué documento legal debería usarse para campañas de marketing que usan testimonios de pacientes?",
     options: [
       "Autorización de Uso de Imagen",
@@ -888,6 +984,7 @@ export const questionPool = [
     level: 5,
   },
   {
+    id: "Q097",
     text: "¿Qué implica la cláusula de “no competencia” en un contrato con un proveedor farmacéutico?",
     options: [
       "Que solo puede operar localmente",
@@ -898,6 +995,7 @@ export const questionPool = [
     level: 5,
   },
   {
+    id: "Q098",
     text: " ¿Cuál de las siguientes combinaciones de funciones debe estar segregada para minimizar riesgos en una organización?",
     options: [
       "Generación de reportes y supervisión de personal",
@@ -908,6 +1006,7 @@ export const questionPool = [
     level: 6,
   },
   {
+    id: "Q099",
     text: "Cuando debemos utilizar al canal de denuncias del grupo Eurofarma de acuerdo con las actitudes transparentes?",
     options: [
       "Para proteger a las personas y a la empresa, siempre que sepa de casos de acoso, discriminación, corrupción , fraude, conflicto de interés y otras actitudes que vayan en contra del código de ética y conducta del Grupo Eurofarma",
@@ -918,6 +1017,7 @@ export const questionPool = [
     level: 6,
   },
   {
+    id: "Q100",
     text: "¿Cuál es la alternativa adecuada cuando una empresa pequeña no puede cumplir con la segregación ideal por limitaciones de personal?",
     options: [
       "Eliminar controles para agilizar los procesos",
@@ -928,6 +1028,7 @@ export const questionPool = [
     level: 6,
   },
   {
+    id: "Q101",
     text: "¿ Cuál es una señal de falta de segregación de funciones?",
     options: [
       "El área de tesorería informa mensualmente a la gerencia sobre las operaciones realizadas",
@@ -938,6 +1039,7 @@ export const questionPool = [
     level: 6,
   },
   {
+    id: "Q102",
     text: "¿ Que se entiende por segregación de funciones?",
     options: [
       "un jefe delegue la función de aprobación durante periodos de vacaciones a un empleado que ya participa activamente en la ejecución del proceso",
@@ -948,6 +1050,7 @@ export const questionPool = [
     level: 6,
   },
   {
+    id: "Q103",
     text: "¿ Que se puede encontrar en el manual de control interno?",
     options: [
       "Las descripciones de las funciones por área ",
@@ -958,6 +1061,7 @@ export const questionPool = [
     level: 6,
   },
   {
+    id: "Q104",
     text: "¿ Que se entiende por SOP ( Procedimiento operativo estándar) ?",
     options: [
       "El SOP describe de forma general el inicio y fin de un proceso",
@@ -968,6 +1072,7 @@ export const questionPool = [
     level: 6,
   },
   {
+    id: "Q105",
     text: "¿ Cuando se debe establecer un control mitigatorio ?",
     options: [
       "Cuando un empleado solicite mayor autonomía para facilitar su trabajo",
@@ -978,6 +1083,7 @@ export const questionPool = [
     level: 6,
   },
   {
+    id: "Q106",
     text: "Según la política ¿Cuál es el límite permitido para aceptar un regalo/invitación en términos de su valor monetario?",
     options: [
       "150 USD o 1/3 de salario mínimo",
@@ -988,6 +1094,7 @@ export const questionPool = [
     level: 6,
   },
   {
+    id: "Q107",
     text: "¿ Para qué sirve la matriz RACI ( Responsable, autoridad , consultado e informado) en la compañía?",
     options: [
       "Para controlar los tiempos de ejecución de cada tarea",
@@ -998,6 +1105,7 @@ export const questionPool = [
     level: 6,
   },
   {
+    id: "Q108",
     text: "¿Cuál sería el orden adecuado de pasos a seguir antes de establecer una relación comercial con un tercero?",
     options: [
       "Primero realizar la orden de compra y después formalizar la contratación",
@@ -1008,6 +1116,7 @@ export const questionPool = [
     level: 6,
   },
   {
+    id: "Q109",
     text: "¿Rechazarías una orden de tu superior si va en contra de los valores de la empresa?",
     options: [
       "Solo si crees que puedes ser sancionado después",
@@ -1018,6 +1127,7 @@ export const questionPool = [
     level: 6,
   },
   {
+    id: "Q110",
     text: "¿Cómo manejarías el cumplimiento de un proceso si de esto dependiera cumplir tus metas ?",
     options: [
       "Sigues el procedimiento, aunque no llegues a la meta",
@@ -1028,6 +1138,7 @@ export const questionPool = [
     level: 6,
   },
   {
+    id: "Q111",
     text: "¿Qué significa que un contrato tenga cláusula de indemnidad?",
     options: [
       "Que una de las partes tiene la capacidad de anexar nuevos temas al objeto del contrato",
@@ -1038,6 +1149,7 @@ export const questionPool = [
     level: 6,
   },
   {
+    id: "Q112",
     text: "¿Qué cláusula es recomendable en contratos de distribución para proteger la marca Genfar?",
     options: [
       "Cláusula de logística",
@@ -1048,6 +1160,7 @@ export const questionPool = [
     level: 6,
   },
   {
+    id: "Q113",
     text: "Un contrato no menciona las condiciones de devolución de productos vencidos. ¿Qué puede pasar?",
     options: [
       "El proveedor debe pagar una multa porque se está perdiendo el producto ",
@@ -1058,6 +1171,7 @@ export const questionPool = [
     level: 6,
   },
   {
+    id: "Q114",
     text: "¿Qué documento es obligatorio antes de iniciar una contratación pública?",
     options: [
       "El pliego de condiciones ",
@@ -1068,6 +1182,7 @@ export const questionPool = [
     level: 6,
   },
   {
+    id: "Q115",
     text: "¿ Cuáles son los esquemas de fraude de acuerdo al manual de control interno? ",
     options: [
       "Esquemas de corrupción, esquemas de autoridad y esquemas de prevención ",
@@ -1078,6 +1193,7 @@ export const questionPool = [
     level: 6,
   },
   {
+    id: "Q116",
     text: "En contratos con distribuidores, es importante limitar:",
     options: [
       "El acceso a la planta de producción",
@@ -1088,6 +1204,7 @@ export const questionPool = [
     level: 6,
   },
   {
+    id: "Q117",
     text: "Un contrato señala que una farmacéutica será responsable por todos los daños incluso ajenos. ¿Qué cláusula se sugiere revisar?",
     options: [
       "Cláusula de responsabilidad ",
@@ -1095,6 +1212,919 @@ export const questionPool = [
       "Cláusula de pagos",
     ],
     correctIndex: 0,
+    level: 6,
+  },
+  {
+    id: "Q118",
+    text: "¿ Cuál es el límite permitido para aceptar un regalo/invitación en términos de su valor monetario?",
+    options: [
+      "150 USD o 1/3 de salario mínimo",
+      "100 USD o 1/3 de salario mínimo ",
+      "120 USD o 1/3 de salario mínimo",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q119",
+    text: "¿ Para qué sirve la matriz RACI ( Responsable, autoridad , consultado e informado) en la compañía?",
+    options: [
+      "Para controlar los tiempos de ejecución de cada tarea",
+      "Para asignar y clarificar roles y responsabilidades en procesos o proyectos",
+      "Para definir salarios y jerarquías dentro del organigrama",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q120",
+    text: "¿Cuál sería el orden adecuado de pasos a seguir antes de establecer una relación comercial con un tercero?",
+    options: [
+      "Primero realizar la orden de compra y después formalizar la contratación",
+      "Primero realizar la debida diligencia y después formalizar la contratación ",
+      "Primero formalizar la contratación y después realizar la orden de compra",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q121",
+    text: "¿Rechazarías una orden de tu superior si va en contra de los valores de la empresa?",
+    options: [
+      "Solo si crees que puedes ser sancionado después",
+      "No, porque es tu jefe",
+      "Sí, e informarías a un canal adecuado",
+    ],
+    correctIndex: 2,
+    level: 6,
+  },
+  {
+    id: "Q122",
+    text: "¿Cómo manejarías el cumplimiento de un proceso si de esto dependiera cumplir tus metas ?",
+    options: [
+      "Sigues el procedimiento, aunque no llegues a la meta",
+      "Preguntas a un colega qué haría él y haces lo mismo",
+      "Lo ajustas un poco si crees que no es tan grave",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    id: "Q123",
+    text: "¿Qué significa que un contrato tenga cláusula de indemnidad?",
+    options: [
+      "Que una de las partes tiene la capacidad de anexar nuevos temas al objeto del contrato",
+      "Que una de las partes tiene la capacidad de liberarse de ciertos daños o reclamos",
+      "Que una de las partes tiene la capacidad de modificar unilateralmente el precio del contrato",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q124",
+    text: "¿Qué cláusula es recomendable en contratos de distribución para proteger la marca Genfar?",
+    options: [
+      "Cláusula de logística",
+      "Cláusula de propiedad intelectual",
+      "Cláusula de pago",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q125",
+    text: "Un contrato no menciona las condiciones de devolución de productos vencidos. ¿Qué puede pasar?",
+    options: [
+      "El proveedor debe pagar una multa porque se está perdiendo el producto ",
+      "No existe obligación legal de recibirlos",
+      "Deben devolverse igual",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q126",
+    text: "¿Qué documento es obligatorio antes de iniciar una contratación pública?",
+    options: [
+      "El pliego de condiciones ",
+      "La ficha técnica y documento de tratamiento de  datos personales ",
+      "La guía del usuario ",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    id: "Q127",
+    text: "¿ Cuáles son los esquemas de fraude de acuerdo al manual de control interno? ",
+    options: [
+      "Esquemas de corrupción, esquemas de autoridad y esquemas de prevención ",
+      "Esquemas de informes fraudulentos, esquemas de apropiación indebida de activos y esquemas de corrupción ",
+      "Esquemas de detención de fraude, esquemas de corrupción y esquemas de poderes",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q128",
+    text: "En contratos con distribuidores, es importante limitar:",
+    options: [
+      "El acceso a la planta de producción",
+      "El número de ventas",
+      "El territorio ",
+    ],
+    correctIndex: 2,
+    level: 6,
+  },
+  {
+    id: "Q129",
+    text: "Un contrato señala que una farmacéutica será responsable por todos los daños incluso ajenos. ¿Qué cláusula se sugiere revisar?",
+    options: [
+      "Cláusula de responsabilidad ",
+      "Cláusula de resolución",
+      "Cláusula de pagos",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    id: "Q130",
+    text: "¿ Cuál es el límite permitido para aceptar un regalo/invitación en términos de su valor monetario?",
+    options: [
+      "150 USD o 1/3 de salario mínimo",
+      "100 USD o 1/3 de salario mínimo ",
+      "120 USD o 1/3 de salario mínimo",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q131",
+    text: "¿ Para qué sirve la matriz RACI ( Responsable, autoridad , consultado e informado) en la compañía?",
+    options: [
+      "Para controlar los tiempos de ejecución de cada tarea",
+      "Para asignar y clarificar roles y responsabilidades en procesos o proyectos",
+      "Para definir salarios y jerarquías dentro del organigrama",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q132",
+    text: "¿Cuál sería el orden adecuado de pasos a seguir antes de establecer una relación comercial con un tercero?",
+    options: [
+      "Primero realizar la orden de compra y después formalizar la contratación",
+      "Primero realizar la debida diligencia y después formalizar la contratación ",
+      "Primero formalizar la contratación y después realizar la orden de compra",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q133",
+    text: "¿Rechazarías una orden de tu superior si va en contra de los valores de la empresa?",
+    options: [
+      "Solo si crees que puedes ser sancionado después",
+      "No, porque es tu jefe",
+      "Sí, e informarías a un canal adecuado",
+    ],
+    correctIndex: 2,
+    level: 6,
+  },
+  {
+    id: "Q134",
+    text: "¿Cómo manejarías el cumplimiento de un proceso si de esto dependiera cumplir tus metas ?",
+    options: [
+      "Sigues el procedimiento, aunque no llegues a la meta",
+      "Preguntas a un colega qué haría él y haces lo mismo",
+      "Lo ajustas un poco si crees que no es tan grave",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    id: "Q135",
+    text: "¿Qué significa que un contrato tenga cláusula de indemnidad?",
+    options: [
+      "Que una de las partes tiene la capacidad de anexar nuevos temas al objeto del contrato",
+      "Que una de las partes tiene la capacidad de liberarse de ciertos daños o reclamos",
+      "Que una de las partes tiene la capacidad de modificar unilateralmente el precio del contrato",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q136",
+    text: "¿Qué cláusula es recomendable en contratos de distribución para proteger la marca Genfar?",
+    options: [
+      "Cláusula de logística",
+      "Cláusula de propiedad intelectual",
+      "Cláusula de pago",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q137",
+    text: "Un contrato no menciona las condiciones de devolución de productos vencidos. ¿Qué puede pasar?",
+    options: [
+      "El proveedor debe pagar una multa porque se está perdiendo el producto ",
+      "No existe obligación legal de recibirlos",
+      "Deben devolverse igual",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q138",
+    text: "¿Qué documento es obligatorio antes de iniciar una contratación pública?",
+    options: [
+      "El pliego de condiciones ",
+      "La ficha técnica y documento de tratamiento de  datos personales ",
+      "La guía del usuario ",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    id: "Q139",
+    text: "¿ Cuáles son los esquemas de fraude de acuerdo al manual de control interno? ",
+    options: [
+      "Esquemas de corrupción, esquemas de autoridad y esquemas de prevención ",
+      "Esquemas de informes fraudulentos, esquemas de apropiación indebida de activos y esquemas de corrupción ",
+      "Esquemas de detención de fraude, esquemas de corrupción y esquemas de poderes",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q140",
+    text: "En contratos con distribuidores, es importante limitar:",
+    options: [
+      "El acceso a la planta de producción",
+      "El número de ventas",
+      "El territorio ",
+    ],
+    correctIndex: 2,
+    level: 6,
+  },
+  {
+    id: "Q141",
+    text: "Un contrato señala que una farmacéutica será responsable por todos los daños incluso ajenos. ¿Qué cláusula se sugiere revisar?",
+    options: [
+      "Cláusula de responsabilidad ",
+      "Cláusula de resolución",
+      "Cláusula de pagos",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    id: "Q142",
+    text: "¿ Cuál es el límite permitido para aceptar un regalo/invitación en términos de su valor monetario?",
+    options: [
+      "150 USD o 1/3 de salario mínimo",
+      "100 USD o 1/3 de salario mínimo ",
+      "120 USD o 1/3 de salario mínimo",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q143",
+    text: "¿ Para qué sirve la matriz RACI ( Responsable, autoridad , consultado e informado) en la compañía?",
+    options: [
+      "Para controlar los tiempos de ejecución de cada tarea",
+      "Para asignar y clarificar roles y responsabilidades en procesos o proyectos",
+      "Para definir salarios y jerarquías dentro del organigrama",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q144",
+    text: "¿Cuál sería el orden adecuado de pasos a seguir antes de establecer una relación comercial con un tercero?",
+    options: [
+      "Primero realizar la orden de compra y después formalizar la contratación",
+      "Primero realizar la debida diligencia y después formalizar la contratación ",
+      "Primero formalizar la contratación y después realizar la orden de compra",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q145",
+    text: "¿Rechazarías una orden de tu superior si va en contra de los valores de la empresa?",
+    options: [
+      "Solo si crees que puedes ser sancionado después",
+      "No, porque es tu jefe",
+      "Sí, e informarías a un canal adecuado",
+    ],
+    correctIndex: 2,
+    level: 6,
+  },
+  {
+    id: "Q146",
+    text: "¿Cómo manejarías el cumplimiento de un proceso si de esto dependiera cumplir tus metas ?",
+    options: [
+      "Sigues el procedimiento, aunque no llegues a la meta",
+      "Preguntas a un colega qué haría él y haces lo mismo",
+      "Lo ajustas un poco si crees que no es tan grave",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    id: "Q147",
+    text: "¿Qué significa que un contrato tenga cláusula de indemnidad?",
+    options: [
+      "Que una de las partes tiene la capacidad de anexar nuevos temas al objeto del contrato",
+      "Que una de las partes tiene la capacidad de liberarse de ciertos daños o reclamos",
+      "Que una de las partes tiene la capacidad de modificar unilateralmente el precio del contrato",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q148",
+    text: "¿Qué cláusula es recomendable en contratos de distribución para proteger la marca Genfar?",
+    options: [
+      "Cláusula de logística",
+      "Cláusula de propiedad intelectual",
+      "Cláusula de pago",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q149",
+    text: "Un contrato no menciona las condiciones de devolución de productos vencidos. ¿Qué puede pasar?",
+    options: [
+      "El proveedor debe pagar una multa porque se está perdiendo el producto ",
+      "No existe obligación legal de recibirlos",
+      "Deben devolverse igual",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q150",
+    text: "¿Qué documento es obligatorio antes de iniciar una contratación pública?",
+    options: [
+      "El pliego de condiciones ",
+      "La ficha técnica y documento de tratamiento de  datos personales ",
+      "La guía del usuario ",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    id: "Q151",
+    text: "¿ Cuáles son los esquemas de fraude de acuerdo al manual de control interno? ",
+    options: [
+      "Esquemas de corrupción, esquemas de autoridad y esquemas de prevención ",
+      "Esquemas de informes fraudulentos, esquemas de apropiación indebida de activos y esquemas de corrupción ",
+      "Esquemas de detención de fraude, esquemas de corrupción y esquemas de poderes",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q152",
+    text: "En contratos con distribuidores, es importante limitar:",
+    options: [
+      "El acceso a la planta de producción",
+      "El número de ventas",
+      "El territorio ",
+    ],
+    correctIndex: 2,
+    level: 6,
+  },
+  {
+    id: "Q153",
+    text: "Un contrato señala que una farmacéutica será responsable por todos los daños incluso ajenos. ¿Qué cláusula se sugiere revisar?",
+    options: [
+      "Cláusula de responsabilidad ",
+      "Cláusula de resolución",
+      "Cláusula de pagos",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    id: "Q154",
+    text: "¿ Cuál es el límite permitido para aceptar un regalo/invitación en términos de su valor monetario?",
+    options: [
+      "150 USD o 1/3 de salario mínimo",
+      "100 USD o 1/3 de salario mínimo ",
+      "120 USD o 1/3 de salario mínimo",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q155",
+    text: "¿ Para qué sirve la matriz RACI ( Responsable, autoridad , consultado e informado) en la compañía?",
+    options: [
+      "Para controlar los tiempos de ejecución de cada tarea",
+      "Para asignar y clarificar roles y responsabilidades en procesos o proyectos",
+      "Para definir salarios y jerarquías dentro del organigrama",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q156",
+    text: "¿Cuál sería el orden adecuado de pasos a seguir antes de establecer una relación comercial con un tercero?",
+    options: [
+      "Primero realizar la orden de compra y después formalizar la contratación",
+      "Primero realizar la debida diligencia y después formalizar la contratación ",
+      "Primero formalizar la contratación y después realizar la orden de compra",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q157",
+    text: "¿Rechazarías una orden de tu superior si va en contra de los valores de la empresa?",
+    options: [
+      "Solo si crees que puedes ser sancionado después",
+      "No, porque es tu jefe",
+      "Sí, e informarías a un canal adecuado",
+    ],
+    correctIndex: 2,
+    level: 6,
+  },
+  {
+    id: "Q158",
+    text: "¿Cómo manejarías el cumplimiento de un proceso si de esto dependiera cumplir tus metas ?",
+    options: [
+      "Sigues el procedimiento, aunque no llegues a la meta",
+      "Preguntas a un colega qué haría él y haces lo mismo",
+      "Lo ajustas un poco si crees que no es tan grave",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    id: "Q159",
+    text: "¿Qué significa que un contrato tenga cláusula de indemnidad?",
+    options: [
+      "Que una de las partes tiene la capacidad de anexar nuevos temas al objeto del contrato",
+      "Que una de las partes tiene la capacidad de liberarse de ciertos daños o reclamos",
+      "Que una de las partes tiene la capacidad de modificar unilateralmente el precio del contrato",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q160",
+    text: "¿Qué cláusula es recomendable en contratos de distribución para proteger la marca Genfar?",
+    options: [
+      "Cláusula de logística",
+      "Cláusula de propiedad intelectual",
+      "Cláusula de pago",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q161",
+    text: "Un contrato no menciona las condiciones de devolución de productos vencidos. ¿Qué puede pasar?",
+    options: [
+      "El proveedor debe pagar una multa porque se está perdiendo el producto ",
+      "No existe obligación legal de recibirlos",
+      "Deben devolverse igual",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q162",
+    text: "¿Qué documento es obligatorio antes de iniciar una contratación pública?",
+    options: [
+      "El pliego de condiciones ",
+      "La ficha técnica y documento de tratamiento de  datos personales ",
+      "La guía del usuario ",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    id: "Q163",
+    text: "¿ Cuáles son los esquemas de fraude de acuerdo al manual de control interno? ",
+    options: [
+      "Esquemas de corrupción, esquemas de autoridad y esquemas de prevención ",
+      "Esquemas de informes fraudulentos, esquemas de apropiación indebida de activos y esquemas de corrupción ",
+      "Esquemas de detención de fraude, esquemas de corrupción y esquemas de poderes",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q164",
+    text: "En contratos con distribuidores, es importante limitar:",
+    options: [
+      "El acceso a la planta de producción",
+      "El número de ventas",
+      "El territorio ",
+    ],
+    correctIndex: 2,
+    level: 6,
+  },
+  {
+    id: "Q165",
+    text: "Un contrato señala que una farmacéutica será responsable por todos los daños incluso ajenos. ¿Qué cláusula se sugiere revisar?",
+    options: [
+      "Cláusula de responsabilidad ",
+      "Cláusula de resolución",
+      "Cláusula de pagos",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    id: "Q166",
+    text: "¿ Cuál es el límite permitido para aceptar un regalo/invitación en términos de su valor monetario?",
+    options: [
+      "150 USD o 1/3 de salario mínimo",
+      "100 USD o 1/3 de salario mínimo ",
+      "120 USD o 1/3 de salario mínimo",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q167",
+    text: "¿ Para qué sirve la matriz RACI ( Responsable, autoridad , consultado e informado) en la compañía?",
+    options: [
+      "Para controlar los tiempos de ejecución de cada tarea",
+      "Para asignar y clarificar roles y responsabilidades en procesos o proyectos",
+      "Para definir salarios y jerarquías dentro del organigrama",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q168",
+    text: "¿Cuál sería el orden adecuado de pasos a seguir antes de establecer una relación comercial con un tercero?",
+    options: [
+      "Primero realizar la orden de compra y después formalizar la contratación",
+      "Primero realizar la debida diligencia y después formalizar la contratación ",
+      "Primero formalizar la contratación y después realizar la orden de compra",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q169",
+    text: "¿Rechazarías una orden de tu superior si va en contra de los valores de la empresa?",
+    options: [
+      "Solo si crees que puedes ser sancionado después",
+      "No, porque es tu jefe",
+      "Sí, e informarías a un canal adecuado",
+    ],
+    correctIndex: 2,
+    level: 6,
+  },
+  {
+    id: "Q170",
+    text: "¿Cómo manejarías el cumplimiento de un proceso si de esto dependiera cumplir tus metas ?",
+    options: [
+      "Sigues el procedimiento, aunque no llegues a la meta",
+      "Preguntas a un colega qué haría él y haces lo mismo",
+      "Lo ajustas un poco si crees que no es tan grave",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    id: "Q171",
+    text: "¿Qué significa que un contrato tenga cláusula de indemnidad?",
+    options: [
+      "Que una de las partes tiene la capacidad de anexar nuevos temas al objeto del contrato",
+      "Que una de las partes tiene la capacidad de liberarse de ciertos daños o reclamos",
+      "Que una de las partes tiene la capacidad de modificar unilateralmente el precio del contrato",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q172",
+    text: "¿Qué cláusula es recomendable en contratos de distribución para proteger la marca Genfar?",
+    options: [
+      "Cláusula de logística",
+      "Cláusula de propiedad intelectual",
+      "Cláusula de pago",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q173",
+    text: "Un contrato no menciona las condiciones de devolución de productos vencidos. ¿Qué puede pasar?",
+    options: [
+      "El proveedor debe pagar una multa porque se está perdiendo el producto ",
+      "No existe obligación legal de recibirlos",
+      "Deben devolverse igual",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q174",
+    text: "¿Qué documento es obligatorio antes de iniciar una contratación pública?",
+    options: [
+      "El pliego de condiciones ",
+      "La ficha técnica y documento de tratamiento de  datos personales ",
+      "La guía del usuario ",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    id: "Q175",
+    text: "¿ Cuáles son los esquemas de fraude de acuerdo al manual de control interno? ",
+    options: [
+      "Esquemas de corrupción, esquemas de autoridad y esquemas de prevención ",
+      "Esquemas de informes fraudulentos, esquemas de apropiación indebida de activos y esquemas de corrupción ",
+      "Esquemas de detención de fraude, esquemas de corrupción y esquemas de poderes",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q176",
+    text: "En contratos con distribuidores, es importante limitar:",
+    options: [
+      "El acceso a la planta de producción",
+      "El número de ventas",
+      "El territorio ",
+    ],
+    correctIndex: 2,
+    level: 6,
+  },
+  {
+    id: "Q177",
+    text: "Un contrato señala que una farmacéutica será responsable por todos los daños incluso ajenos. ¿Qué cláusula se sugiere revisar?",
+    options: [
+      "Cláusula de responsabilidad ",
+      "Cláusula de resolución",
+      "Cláusula de pagos",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    id: "Q178",
+    text: "¿ Cuál es el límite permitido para aceptar un regalo/invitación en términos de su valor monetario?",
+    options: [
+      "150 USD o 1/3 de salario mínimo",
+      "100 USD o 1/3 de salario mínimo ",
+      "120 USD o 1/3 de salario mínimo",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q179",
+    text: "¿ Para qué sirve la matriz RACI ( Responsable, autoridad , consultado e informado) en la compañía?",
+    options: [
+      "Para controlar los tiempos de ejecución de cada tarea",
+      "Para asignar y clarificar roles y responsabilidades en procesos o proyectos",
+      "Para definir salarios y jerarquías dentro del organigrama",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q180",
+    text: "¿Cuál sería el orden adecuado de pasos a seguir antes de establecer una relación comercial con un tercero?",
+    options: [
+      "Primero realizar la orden de compra y después formalizar la contratación",
+      "Primero realizar la debida diligencia y después formalizar la contratación ",
+      "Primero formalizar la contratación y después realizar la orden de compra",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q181",
+    text: "¿Rechazarías una orden de tu superior si va en contra de los valores de la empresa?",
+    options: [
+      "Solo si crees que puedes ser sancionado después",
+      "No, porque es tu jefe",
+      "Sí, e informarías a un canal adecuado",
+    ],
+    correctIndex: 2,
+    level: 6,
+  },
+  {
+    id: "Q182",
+    text: "¿Cómo manejarías el cumplimiento de un proceso si de esto dependiera cumplir tus metas ?",
+    options: [
+      "Sigues el procedimiento, aunque no llegues a la meta",
+      "Preguntas a un colega qué haría él y haces lo mismo",
+      "Lo ajustas un poco si crees que no es tan grave",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    id: "Q183",
+    text: "¿Qué significa que un contrato tenga cláusula de indemnidad?",
+    options: [
+      "Que una de las partes tiene la capacidad de anexar nuevos temas al objeto del contrato",
+      "Que una de las partes tiene la capacidad de liberarse de ciertos daños o reclamos",
+      "Que una de las partes tiene la capacidad de modificar unilateralmente el precio del contrato",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q184",
+    text: "¿Qué cláusula es recomendable en contratos de distribución para proteger la marca Genfar?",
+    options: [
+      "Cláusula de logística",
+      "Cláusula de propiedad intelectual",
+      "Cláusula de pago",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q185",
+    text: "Un contrato no menciona las condiciones de devolución de productos vencidos. ¿Qué puede pasar?",
+    options: [
+      "El proveedor debe pagar una multa porque se está perdiendo el producto ",
+      "No existe obligación legal de recibirlos",
+      "Deben devolverse igual",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q186",
+    text: "¿Qué documento es obligatorio antes de iniciar una contratación pública?",
+    options: [
+      "El pliego de condiciones ",
+      "La ficha técnica y documento de tratamiento de  datos personales ",
+      "La guía del usuario ",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    id: "Q187",
+    text: "¿ Cuáles son los esquemas de fraude de acuerdo al manual de control interno? ",
+    options: [
+      "Esquemas de corrupción, esquemas de autoridad y esquemas de prevención ",
+      "Esquemas de informes fraudulentos, esquemas de apropiación indebida de activos y esquemas de corrupción ",
+      "Esquemas de detención de fraude, esquemas de corrupción y esquemas de poderes",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q188",
+    text: "En contratos con distribuidores, es importante limitar:",
+    options: [
+      "El acceso a la planta de producción",
+      "El número de ventas",
+      "El territorio ",
+    ],
+    correctIndex: 2,
+    level: 6,
+  },
+  {
+    id: "Q189",
+    text: "Un contrato señala que una farmacéutica será responsable por todos los daños incluso ajenos. ¿Qué cláusula se sugiere revisar?",
+    options: [
+      "Cláusula de responsabilidad ",
+      "Cláusula de resolución",
+      "Cláusula de pagos",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    id: "Q190",
+    text: "¿ Cuál es el límite permitido para aceptar un regalo/invitación en términos de su valor monetario?",
+    options: [
+      "150 USD o 1/3 de salario mínimo",
+      "100 USD o 1/3 de salario mínimo ",
+      "120 USD o 1/3 de salario mínimo",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q191",
+    text: "¿ Para qué sirve la matriz RACI ( Responsable, autoridad , consultado e informado) en la compañía?",
+    options: [
+      "Para controlar los tiempos de ejecución de cada tarea",
+      "Para asignar y clarificar roles y responsabilidades en procesos o proyectos",
+      "Para definir salarios y jerarquías dentro del organigrama",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q192",
+    text: "¿Cuál sería el orden adecuado de pasos a seguir antes de establecer una relación comercial con un tercero?",
+    options: [
+      "Primero realizar la orden de compra y después formalizar la contratación",
+      "Primero realizar la debida diligencia y después formalizar la contratación ",
+      "Primero formalizar la contratación y después realizar la orden de compra",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q193",
+    text: "¿Rechazarías una orden de tu superior si va en contra de los valores de la empresa?",
+    options: [
+      "Solo si crees que puedes ser sancionado después",
+      "No, porque es tu jefe",
+      "Sí, e informarías a un canal adecuado",
+    ],
+    correctIndex: 2,
+    level: 6,
+  },
+  {
+    id: "Q194",
+    text: "¿Cómo manejarías el cumplimiento de un proceso si de esto dependiera cumplir tus metas ?",
+    options: [
+      "Sigues el procedimiento, aunque no llegues a la meta",
+      "Preguntas a un colega qué haría él y haces lo mismo",
+      "Lo ajustas un poco si crees que no es tan grave",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    id: "Q195",
+    text: "¿Qué significa que un contrato tenga cláusula de indemnidad?",
+    options: [
+      "Que una de las partes tiene la capacidad de anexar nuevos temas al objeto del contrato",
+      "Que una de las partes tiene la capacidad de liberarse de ciertos daños o reclamos",
+      "Que una de las partes tiene la capacidad de modificar unilateralmente el precio del contrato",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q196",
+    text: "¿Qué cláusula es recomendable en contratos de distribución para proteger la marca Genfar?",
+    options: [
+      "Cláusula de logística",
+      "Cláusula de propiedad intelectual",
+      "Cláusula de pago",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q197",
+    text: "Un contrato no menciona las condiciones de devolución de productos vencidos. ¿Qué puede pasar?",
+    options: [
+      "El proveedor debe pagar una multa porque se está perdiendo el producto ",
+      "No existe obligación legal de recibirlos",
+      "Deben devolverse igual",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q198",
+    text: "¿Qué documento es obligatorio antes de iniciar una contratación pública?",
+    options: [
+      "El pliego de condiciones ",
+      "La ficha técnica y documento de tratamiento de  datos personales ",
+      "La guía del usuario ",
+    ],
+    correctIndex: 0,
+    level: 6,
+  },
+  {
+    id: "Q199",
+    text: "¿ Cuáles son los esquemas de fraude de acuerdo al manual de control interno? ",
+    options: [
+      "Esquemas de corrupción, esquemas de autoridad y esquemas de prevención ",
+      "Esquemas de informes fraudulentos, esquemas de apropiación indebida de activos y esquemas de corrupción ",
+      "Esquemas de detención de fraude, esquemas de corrupción y esquemas de poderes",
+    ],
+    correctIndex: 1,
+    level: 6,
+  },
+  {
+    id: "Q200",
+    text: "En contratos con distribuidores, es importante limitar:",
+    options: [
+      "El acceso a la planta de producción",
+      "El número de ventas",
+      "El territorio ",
+    ],
+    correctIndex: 2,
     level: 6,
   },
 ];
