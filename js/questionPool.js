@@ -238,7 +238,7 @@ export const questionPool = [
   },
   {
     id: "Q028",
-    text: "¿ Cuál de los siguientes riesgos puede mitigarse con controles internos adecuados ",
+    text: "¿ Cuál de los siguientes riesgos puede mitigarse con controles internos adecuados ?",
     options: [
       "Riesgo operativo y de fraude ",
       "Riesgo de inflación y  operativos ",

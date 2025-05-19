@@ -26,11 +26,10 @@ export function showPreGameQuestions(callback) {
 
   console.log("Mostrando preguntas");
 
-  const level = getLevelFromURL();
   let pool = questionPool;
 
-  if (level) {
-    pool = questionPool.filter((q) => q.level === level);
+  if (gameData.roundNum) {
+    pool = questionPool.filter((q) => q.level === gameData.roundNum);
     if (pool.length < QUESTIONS_PER_GAME) {
       console.warn(
         `No hay suficientes preguntas para el nivel ${level}. Se tomarán aleatorias.`
@@ -55,9 +54,8 @@ function renderQuestion() {
       (correctAnswers * 5 - (selectedQuestions.length - correctAnswers) * 5) *
       1000;
     timeData.countdown = Math.max(timeData.countdown + adjustment, 0);
-    const level = getLevelFromURL();
-    if (level) {
-      const gameKey = "game" + level;
+    if (gameData.roundNum) {
+      const gameKey = "game" + gameData.roundNum;
       if (gameSettings[gameKey]) {
         const baseTimer = gameSettings[gameKey].timer;
         gameSettings[gameKey].adjustedTimer = baseTimer + adjustment;

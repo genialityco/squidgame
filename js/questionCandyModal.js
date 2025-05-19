@@ -12,11 +12,10 @@ function getLevelFromURL() {
 }
 
 export function showCandyQuestionSequence(total = 3) {
-  const level = getLevelFromURL();
 
   let pool = questionPool;
-  if (level) {
-    const filtered = questionPool.filter((q) => q.level === level);
+  if (gameData.roundNum) {
+    const filtered = questionPool.filter((q) => q.level === gameData.roundNum);
     if (filtered.length >= total) {
       pool = filtered;
     } else {

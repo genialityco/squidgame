@@ -82,7 +82,7 @@ export var gameSettings = {
         ],
         drawColor:'#A66B35',
         drawStroke:20,
-        timer:15000
+        timer:25000
     },
     game3:{
         name:'TIRA Y AFLOJA',

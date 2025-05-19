@@ -2251,7 +2251,7 @@ export function endGame(win, timer) {
         console.log("Initial Time:", initialTime);
         console.log("Used Time:", usedTime);
         console.log("Time Left:", timeLeft);
-        roundScore += Math.round(timeLeft * 0.002);
+        roundScore += Math.abs(Math.round(timeLeft * 0.002));
       }
 
       console.log("Round Score (normalized):", roundScore);
