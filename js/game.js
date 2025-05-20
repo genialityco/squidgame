@@ -1273,16 +1273,16 @@ export async function startGameRound() {
       `🟥🟢 **Red Light, Green Light**
 
 🚦 Corre cuando la luz esté VERDE:  
-📱 En celulares toca la pantalla o 💻 En computadoras haz clic avanzar.  
-🏃‍♂️ El muñeco correrá hacia donde hagas clic o toques.
+📱 En celulares toca la pantalla o 💻 En computadoras haz clic para avanzar.  
+🏃‍♂️ Tu personaje correrá hacia donde hagas clic o toques.
 
 🛑 ¡Detente por completo cuando la luz sea ROJA o serás eliminado!
+⚠️ Antes de cambiar a ROJO, la pantalla se tornará roja como advertencia.
+💀 Si no te detienes a tiempo o te mueves en rojo, tu personaje morirá.
 
-🧠 Luego responderás preguntas de selección múltiple:  
-✅ Acertar suma 3 segundos.  
-❌ Fallar resta 3 segundos.
-
-¡Reacciona rápido y piensa bien!
+🧠 Después, responde las preguntas:
+✅ Cada respuesta correcta suma 3 segundos.
+❌ Cada error resta 3 segundos.
 
 `
     );
