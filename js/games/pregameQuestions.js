@@ -1,6 +1,7 @@
 import { questionPool } from "../questionPool.js";
 import { timeData, gameData, toggleGameTimer } from "../game.js";
 import { gameSettings } from "../gameSettings.js";
+import { saveAttempt } from "../helpers/metrics.js"; // ✅ Importación para guardar intentos
 
 let questionIndex = 0;
 let correctAnswers = 0;
@@ -32,7 +33,7 @@ export function showPreGameQuestions(callback) {
     pool = questionPool.filter((q) => q.level === gameData.roundNum);
     if (pool.length < QUESTIONS_PER_GAME) {
       console.warn(
-        `No hay suficientes preguntas para el nivel ${level}. Se tomarán aleatorias.`
+        `No hay suficientes preguntas para el nivel ${gameData.roundNum}. Se tomarán aleatorias.`
       );
       pool = questionPool;
     }
@@ -54,6 +55,7 @@ function renderQuestion() {
       (correctAnswers * 5 - (selectedQuestions.length - correctAnswers) * 5) *
       1000;
     timeData.countdown = Math.max(timeData.countdown + adjustment, 0);
+
     if (gameData.roundNum) {
       const gameKey = "game" + gameData.roundNum;
       if (gameSettings[gameKey]) {
@@ -63,6 +65,19 @@ function renderQuestion() {
           `[Timer ajustado] ${gameKey}: ${gameSettings[gameKey].adjustedTimer} ms`
         );
       }
+
+      // ✅ Guardar intento múltiple
+      const correctQuestionIds = selectedQuestions
+        .filter((q) => q.selectedIndex === q.correctIndex)
+        .map((q) => q.id);
+
+      const passed = correctAnswers >= Math.ceil(selectedQuestions.length / 2);
+
+      saveAttempt({
+        round: gameData.roundNum,
+        correctQuestionIds,
+        passed,
+      });
     }
 
     resumeGameAfterQuestions();
@@ -91,6 +106,9 @@ function renderQuestion() {
 }
 
 function handleAnswer(selectedIndex, correctIndex, options) {
+  const question = selectedQuestions[questionIndex];
+  question.selectedIndex = selectedIndex; // ✅ Guardar selección del usuario
+
   const questionOptions = document.getElementById("questionOptions");
   const buttons = questionOptions.querySelectorAll("button");
 

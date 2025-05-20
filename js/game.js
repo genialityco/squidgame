@@ -115,6 +115,7 @@ import {
   pauseGameForQuestions,
 } from "./games/pregameQuestions.js";
 import { showInstructionModal } from "./helpers/instructions.js";
+import { hasReachedAttemptLimit } from "./helpers/metrics.js";
 
 //player assets
 export var players_arr = [{ src: "assets/player.png" }];
@@ -1253,7 +1254,16 @@ function updatePlayerTime() {
  *
  */
 export async function startGameRound() {
-  gameData.interact = true;
+  const attemptLimitReached = await hasReachedAttemptLimit(gameData.roundNum);
+
+    if (attemptLimitReached) {
+    alert("⚠️ Has alcanzado el máximo de 5 intentos en esta ronda.");
+    goPage("main"); // O redirige a otra pantalla
+    return;
+  }
+
+    gameData.interact = true;
+
 
   if (gameData.roundNum == 1) {
     //DEVNOW

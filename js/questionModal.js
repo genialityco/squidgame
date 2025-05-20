@@ -1,4 +1,4 @@
-import { timeData, players } from "./game.js";
+import { timeData, players, gameData } from "./game.js";
 import { saveSingleAttempt } from "./helpers/metrics.js";
 import { currentUserId } from "../js/helpers/auth.js";
 import { questionPool } from "./questionPool.js";
@@ -126,7 +126,7 @@ function handleAnswer(selectedIndex) {
   }
 
   // Guardar intento individual con métrica
-  const level = getLevelFromURL();
+  const level = gameData.roundNum;
   if (level && currentQuestion?.id) {
     saveSingleAttempt({
       round: level,

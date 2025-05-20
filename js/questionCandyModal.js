@@ -102,9 +102,8 @@ function finishSequence() {
   const secondsDelta =
     (correctAnswers - (questionsToAsk.length - correctAnswers)) * 3000;
   timeData.savedTime = Math.max(timeData.savedTime + secondsDelta, 0);
-  
-  // Guardar el timer ajustado para esta ronda (ej: game2 para Candy Game)
-  const level = getLevelFromURL();
+
+  const level = gameData.roundNum || getLevelFromURL();
   if (level) {
     const gameKey = "game" + level;
     if (gameSettings[gameKey]) {
@@ -114,6 +113,23 @@ function finishSequence() {
         `[Timer ajustado] ${gameKey}: ${gameSettings[gameKey].adjustedTimer} ms`
       );
     }
+
+    // ✅ GUARDAR EL INTENTO CON VARIAS PREGUNTAS
+    const correctQuestionIds = questionsToAsk
+      .filter((q, idx) => {
+        // Asegura que solo se incluyan si fueron respondidas correctamente
+        const correctIndex = q.correctIndex;
+        return idx < currentQuestionIndex && q.selectedIndex === correctIndex;
+      })
+      .map((q) => q.id);
+
+    const passed = correctAnswers >= Math.ceil(questionsToAsk.length / 2);
+
+    saveAttempt({
+      round: level,
+      correctQuestionIds,
+      passed,
+    });
   }
 
   resumeGameAfterModal();

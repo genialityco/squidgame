@@ -48,7 +48,7 @@ export async function saveAttempt({ round, correctQuestionIds, passed }) {
 
   const snapshot = await getDocs(q);
   const attemptNumber = snapshot.size + 1;
-
+  
   await addDoc(attemptsRef, {
     userId: currentUserId,
     round,
@@ -86,4 +86,19 @@ export async function saveSingleAttempt({ round, questionId, correct }) {
   });
 
   console.log(`✅ Intento ${attemptNumber} guardado para ronda ${round}`);
+}
+
+export async function hasReachedAttemptLimit(round, limit = 5) {
+  if (!currentUserId) return true; // Bloquea si no está autenticado
+
+  const attemptsRef = collection(db, "attempts");
+  const q = query(
+    attemptsRef,
+    where("userId", "==", currentUserId),
+    where("round", "==", round)
+  );
+
+  const snapshot = await getDocs(q);
+  console.log(snapshot);
+  return snapshot.size >= limit;
 }
