@@ -10,6 +10,7 @@ import {
   defaultGameData,
   players,
   millisecondsToTimeGame,
+  goPage,
 } from "../game.js"; // Import shared variables
 import { gameSettings } from '../gameSettings.js';
 import { itemControl, itemLight } from "../canvas.js"; // Import shared variables
@@ -20,8 +21,18 @@ import { toggleGameTimer, toggleGameInstruction } from "../game.js"; // Import s
 import { gameTextDisplay } from "../gameTextDisplay.js";
 import { showInstructionModal } from "../helpers/instructions.js";
 import { showPreGameQuestions } from "./pregameQuestions.js";
+import { hasReachedAttemptLimit } from "../helpers/metrics.js";
 //  import { randomBoolean } from "../plugins.js"; // Import utility function
 export async function startSurvivalGame() {
+
+   const attemptLimitReached = await hasReachedAttemptLimit(gameData.roundNum);
+  
+      if (attemptLimitReached) {
+      alert("⚠️ Has alcanzado el máximo de 5 intentos en esta ronda, por favor dirijase a la sección de juegos e intente con el siguiente juego.");
+      goPage("main"); // O redirige a otra pantalla
+      return;
+    }
+
   await showInstructionModal(`⚔️ Survival Game
 
 📚 Antes de jugar, responde preguntas:  

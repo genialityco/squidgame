@@ -1257,7 +1257,7 @@ export async function startGameRound() {
   const attemptLimitReached = await hasReachedAttemptLimit(gameData.roundNum);
 
     if (attemptLimitReached) {
-    alert("⚠️ Has alcanzado el máximo de 5 intentos en esta ronda.");
+    alert("⚠️ Has alcanzado el máximo de 5 intentos en esta ronda, por favor dirijase a la sección de juegos e intente con el siguiente juego.");
     goPage("main"); // O redirige a otra pantalla
     return;
   }
