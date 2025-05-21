@@ -88,7 +88,7 @@ export async function saveSingleAttempt({ round, questionId, correct }) {
   console.log(`✅ Intento ${attemptNumber} guardado para ronda ${round}`);
 }
 
-export async function hasReachedAttemptLimit(round, limit = 5) {
+export async function hasReachedAttemptLimit(round, limit = 100) {
   if (!currentUserId) return true; // Bloquea si no está autenticado
 
   const attemptsRef = collection(db, "attempts");
