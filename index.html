@@ -46,6 +46,40 @@
   </head>
 
   <body>
+    <!-- MENSAJE DE FINALIZACIÓN DE JUEGO -->
+    <div
+      id="gameEndedMsg"
+      style="
+        position: fixed;
+        top: 0; left: 0; width: 100vw; height: 100vh;
+        background: rgba(0,0,0,0.92);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 20000;
+        font-size: 2rem;
+        font-family: sans-serif;
+        text-align: center;
+        flex-direction: column;
+      "
+    >
+      <span>El tiempo para jugar ha finalizado,<br>gracias por participar.</span>
+    </div>
+
+    <!--
+    <script>
+      // Oculta todo el contenido del juego excepto el mensaje final
+      document.addEventListener('DOMContentLoaded', function() {
+        // Oculta todos los hijos del body excepto #gameEndedMsg
+        Array.from(document.body.children).forEach(function(child) {
+          if (child.id !== 'gameEndedMsg') {
+            child.style.display = 'none';
+          }
+        });
+      });
+    </script>
+
     <!-- BOTÓN VOLVER A LOS JUEGOS -->
     <div style="position: fixed; top: 10px; right: 10px; z-index: 11000">
       <button
